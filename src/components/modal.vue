@@ -1,9 +1,5 @@
 <template>
   <div>
-    <button class="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition" @click="openModal">
-      Click to Open modal
-    </button>
-
     <div v-if="showModal" class="fixed z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
       <div class="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
         <div class="flex justify-end p-2">
@@ -63,7 +59,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* Add your CSS styles here */
-</style>

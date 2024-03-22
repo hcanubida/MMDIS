@@ -11,11 +11,6 @@
           <h4>DENR-X Compound, Puntod, Cagayan de Oro City</h4>
         </div> 
       </div>
-      <div class="header-btn">
-        <div class="btn-login">
-          <button class="btn-lgn" @click="showModal">Log in</button>
-        </div>
-      </div>
     </div>
 </template>
   
