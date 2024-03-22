@@ -1,9 +1,8 @@
 <!-- home.vue -->
 
 <template>
-<Header>
-    <LoginBtn/>
-</Header>
+<Header/>    
+<Login/>
 <div class="team-container" style="margin-top: 170px;">
     <div style="display: flex;text-align: center;width: 100%;align-items: center;flex-direction: column;">
         <h1>Meet the Team</h1>
@@ -149,12 +148,13 @@
 
 <script>
   import Header from '../components/header.vue'; // Import Header component
-  import LoginBtn from '../components/login-btn.vue'; // Import Login Button component
+  import Login from '../components/login-btn.vue'; // Import Login Button component
   import '../assets/home.css'
   
   export default {
   components: {
-    Header // Register Header component
+    Header,
+    Login
   }
 };
 </script>
