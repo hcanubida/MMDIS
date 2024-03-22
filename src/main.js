@@ -7,6 +7,6 @@ import App from './App.vue';
 
 
 
-/* eslint-disable vue/injection-key */
-createApp(App).use(router).mount('#app')
-/* eslint-enable vue/injection-key */
+createApp(App)
+  .use(router)
+  .mount('#app');

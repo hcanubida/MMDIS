@@ -1,10 +1,8 @@
 <!-- login.vue -->
 
 <template>
+    <Header/>
     <div  class="panel">
-        <div class="flex justify-center items-center h-screen">
-            <Header></Header>
-        </div> 
         <div class="panel1">
             <img :src="mgb" class="img123"  />
             <div class="login" >

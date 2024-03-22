@@ -6,7 +6,7 @@
             <!-- Accomplishment Reports Section -->
             <div class="section">
                 <div class="img">
-                    <img src="../assets/icons/ar.png" alt="MGBLogo" style="width: 35%; margin-left: 45px;">
+                    <img src="../../assets/icons/ar.png" alt="MGBLogo" style="width: 35%; margin-left: 45px;">
                     <h1>Accomplishment Reports</h1>
                 </div>
                 <div class="btn">
@@ -24,7 +24,7 @@
             <!-- Databases Section -->
             <div class="section" style="padding-bottom: 310px;">
                 <div class="img">
-                    <img src="../assets/icons/db.png" alt="MGBLogo" style="width: 35%;">
+                    <img src="../../assets/icons/db.png" alt="MGBLogo" style="width: 35%;">
                     <h1>Databases</h1>
                 </div>
                 <div class="btn">
@@ -39,6 +39,7 @@
   
   <script>
   import Header from '../../components/header.vue'; // Import Header component
+  import '../../assets/mtss.css'
   
   export default {
       components: {

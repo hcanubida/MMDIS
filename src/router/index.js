@@ -1,3 +1,5 @@
+//router file
+
 import { createRouter, createWebHistory } from "vue-router";
 import home from "../views/home.vue";
 import login from "../views/login.vue";
