@@ -16,9 +16,7 @@
 }
 
 .header-text {
-    letter-spacing: 2px;
-    line-height: 0px;
-    align-self: center;
+  align-self: center;
 }
 
 .header-container {

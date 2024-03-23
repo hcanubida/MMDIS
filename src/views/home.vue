@@ -5,14 +5,14 @@
 <Login/>
 <div class="team-container" style="margin-top: 170px;">
     <div style="display: flex;text-align: center;width: 100%;align-items: center;flex-direction: column;">
-        <h1>Meet the Team</h1>
-        <h2 style="width: 50%;">
+        <p class="text-5xl text-gray-900 dark:text-white">Meet the Team</p>
+        <p class="text-xl text-gray-900 dark:text-white mt-4" style="width: 50%;">
             We, as a team, under the leading guidance of our division chief and section chiefs, 
             undertake the initial evaluation of mining and mining-related applications, 
             monitor the disposition and utilization of mineral lands and resources, and 
             conduct surveys of mineral lands to ensure effective management and 
             utilization of our natural resources.
-        </h2>
+        </p>
     </div>
         <div style="display: flex; flex-wrap: wrap; justify-content: center;">
             <div class="container">

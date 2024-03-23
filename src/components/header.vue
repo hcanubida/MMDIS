@@ -5,10 +5,10 @@
       <div class="header">
         <img src="../assets/icons/logo.png" alt="MGBLogo" id="logo" @click="goToDashboard">
         <div class="header-text">
-          <h4>Republic of the Philippines</h4>
-          <h3>Department of Environment and Natural Resources</h3>
-          <h1>Mines and Geosciences Bureau - Region X</h1>
-          <h4>DENR-X Compound, Puntod, Cagayan de Oro City</h4>
+          <p class="text-base text-gray-900 dark:text-white">Republic of the Philippines</p>
+          <p class="text-base text-gray-900 dark:text-white">Department of Environment and Natural Resources</p>
+          <p class="text-lg font-bold text-gray-900 dark:text-white">Mines and Geosciences Bureau - Region X</p>
+          <p class="text-base text-gray-900 dark:text-white">DENR-X Compound, Puntod, Cagayan de Oro City</p>
         </div> 
       </div>
     </div>
