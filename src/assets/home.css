@@ -9,16 +9,14 @@
     line-height: 25px;
     border-radius: 108px 108px 0px 0px;
 }
-.personnel-v2 {
+#personnel-v2 {
     display: flex;
     background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);
     margin: 2px;
     width: 118px;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     padding: 3px;
-    line-height: 0px;
-    border-radius: 118px 118px 0px 0px;
 }
 
 .personnel-v3 {

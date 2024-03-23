@@ -1,21 +1,21 @@
 
-.header {
-    position: fixed;
-    width: 100%;
-    background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);
-    height: 15%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    top: 0;
-    left: 0;
+#header {
+  position: fixed;
+  width: 100%;
+  background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 0;
+  left: 0;
 }
 
 #logo {
     height: 100%;
 }
 
-.header-text {
+#header-text {
   align-self: center;
 }
 
@@ -23,29 +23,3 @@
   display: flex;
   justify-content: flex-end;
 }
-
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 900px) {
-    .header {
-      float: left;
-      display: flex;
-      text-align: left;
-
-    }
-
-    #logo {
-      height: 100%;
-    }
-    .header-text {
-      top: 0;
-      letter-spacing: 0px;
-      font-size: 11.3px;
-      position: fixed;
-      margin-left: 80px;
-
-    }
-    .btn-lgn {
-      width: 12px;
-    }
-
-  }

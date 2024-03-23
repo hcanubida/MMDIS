@@ -26,48 +26,44 @@
                 </div>
 
                 <div class="sections">
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Alvarina.jpg" class="image-v2" style="">
-                        <p class="p-text" style="font-size: 12px; margin: 15px 0px 15px 0px;">Jay Ralph E. Alvarina</p>
-                        <p class="p-text" style="color: white; text-align: center;">Administrative</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Aide III</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Jay Ralph E. Alvarina</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Administrative Aide III</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Alaud.jpg" class="image-v2" style="">
-                        <p class="p-text">Jepee L. Alaud</p>
-                        <p class="p-text" style="color: white; text-align: center;  padding-bottom: 30px;">Driver</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Jepee L. Alaud</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Driver</p>
                     </div>
                 </div>
             </div>
 
             <div class="container-v2">
                 <div class="sections">
-                    <div class="personnel-v3">
+                    <div class="flex m-2 w-40 justify-center flex-col p-1 rounded-t-full" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Orteza.jpg" class="image-v3" style="">
-                        <h4 class="h3-text">Maria Raniela P. Orteza</h4>
-                        <p class="p-text" style="color: white; text-align: center;">Engineer IV</p>
+                        <p class="text-base text-gray-900 text-center dark:text-white font-semibold">Maria Raniela P. Orteza</p>
+                        <p class="text-sm text-gray-900 text-center dark:text-white font-semibold">Engineer IV</p>
                         <p class="p-text" style="color: white; text-align: center;">Section Chief, MTES</p>
                     </div>
                 </div>
 
                 <div class="sections">
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Tupaz.png" class="image-v2" style="">
-                        <p class="p-text">Gladyz P. Tupaz</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Mining Claims</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Examiner III</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Gladyz P. Tupaz</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Mining Claims Examiner III</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/SALES.png" class="image-v2" style="">
-                        <p class="p-text" style="">Ritzielaine Rosse</p>
-                        <p class="p-text" style="color: black; text-align: center;">V. Sales</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Engineer II</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Ritzielaine Rosse V. Sales</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Engineer II</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Lantaca.jpg" class="image-v2" style="">
-                        <p class="p-text" style="font-size: 12px; margin: 15px 0px 15px 0px;">Sheena Mae O. Lantaca</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Mining Claims</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Examiner II</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Sheena Mae O. Lantaca</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Mining Claims Examiner II</p>
                     </div>
                 </div>
             </div>
@@ -82,27 +78,25 @@
                     </div>
                 </div>
                 <div class="sections">
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Penaso.jpg" class="image-v2" style="">
-                        <p class="p-text">June Ray P. Penaso</p>
-                        <p class="p-text-p" style="color: white; text-align: center; padding-bottom: 30px;">Engineer II</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">June Ray P. Penaso</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Engineer II</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Cabahit.png" class="image-v2" style="">
-                        <p class="p-text">Lemuel C. Cabahit</p>
-                        <p class="p-text-p" style="color: white; text-align: center; padding-bottom: 30px;">Engineer II</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Lemuel C. Cabahit</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Engineer II</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Aba.jpg" class="image-v2" style="">
-                        <p class="p-text">Louisse Kaye P.</p>
-                        <p class="p-text" style="color: black; text-align: center;">Aba</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Economist II</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Louisse Kaye P. Aba</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Economist II</p>
                     </div>
-                    <div class="personnel-v2">
+                    <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                         <img src="../assets/personnel/Gonzales.jpg" class="image-v2" style="">
-                        <p class="p-text">Lowie M. </p>
-                        <p class="p-text" style="color: black; text-align: center;">Gonzales</p>
-                        <p class="p-text-p" style="color: white; text-align: center;">Engineer</p>
+                        <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Lowie M. Gonzales</p>
+                        <p class="text-xs text-gray-50 text-center dark:text-white">Engineer</p>
                     </div>
                 </div>
             </div>
@@ -117,26 +111,25 @@
                 </div>
             </div>
             <div class="sections">
-                <div class="personnel-v2">
+                <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                     <img src="../assets/personnel/Simeon.png" class="image-v2" style="">
-                    <p class="p-text">Jay A. Simeon</p>
-                    <p class="p-text-p" style="color: white; text-align: center; padding-bottom: 30px;">Engineer III</p>
+                    <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Jay A. Simeon</p>
+                    <p class="text-xs text-gray-50 text-center dark:text-white">Engineer III</p>
                 </div>
-                <div class="personnel-v2">
+                <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                     <img src="../assets/personnel/Gamayon.jpg" class="image-v2" style="">
-                    <p class="p-text">Rey E. Gamayon</p>
-                    <p class="p-text-p" style="color: white; text-align: center; padding-bottom: 30px;">Cartographer II</p>
+                    <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Rey E. Gamayon</p>
+                    <p class="text-xs text-gray-50 text-center dark:text-white">Cartographer II</p>
                 </div>
-                <div class="personnel-v2">
+                <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                     <img src="../assets/personnel/Juanico.png" class="image-v2" style="">
-                    <p class="p-text">Herman C. Juanico</p>
-                    <p class="p-text-p" style="color: white; text-align: center; padding-bottom: 30px;">Geologic Aide</p>
+                    <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Herman C. Juanico</p>
+                    <p class="text-xs text-gray-50 text-center dark:text-white">Geologic Aide</p>
                 </div> 
-                <div class="personnel-v2">
+                <div class="flex m-0 w-32 justify-start flex-col p-1" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">
                     <img src="../assets/personnel/CANUBIDA.png" class="image-v2" style="">
-                    <p class="p-text" style="font-size: 12px; margin: 15px 0px 15px 0px;">Hannah Bennett Althea</p>
-                    <p class="p-text">Canubida</p>
-                    <p class="p-text-p" style="color: white; text-align: center;">GIS Specialist</p>
+                    <p class="text-xs text-gray-900 text-center dark:text-white font-semibold">Hannah Bennett Althea Canubida</p>
+                    <p class="text-xs text-gray-50 text-center dark:text-white">GIS Specialist B</p>
                 </div>
             </div>
         </div>
