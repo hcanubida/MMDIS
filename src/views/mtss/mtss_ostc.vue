@@ -1,53 +1,37 @@
 <template>
     <Header></Header>
     
-    <div class="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 py-5">
-    <div class="w-full max-w-3xl">
-        <div class="-mx-2 md:flex">
-            <div class="w-full md:w-1/3 px-2">
-                <div class="rounded-lg shadow-sm mb-4">
-                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
-                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Users</h4>
-                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">3,682</h3>
-                            <p class="text-xs text-green-500 leading-tight">▲ 57.1%</p>
-                        </div>
-                        <div class="absolute bottom-0 inset-x-0">
-                            <canvas id="chart1" height="70"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/3 px-2">
-                <div class="rounded-lg shadow-sm mb-4">
-                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
-                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Subscribers</h4>
-                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">11,427</h3>
-                            <p class="text-xs text-red-500 leading-tight">▼ 42.8%</p>
-                        </div>
-                        <div class="absolute bottom-0 inset-x-0">
-                            <canvas id="chart2" height="70"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="w-full md:w-1/3 px-2">
-                <div class="rounded-lg shadow-sm mb-4">
-                    <div class="rounded-lg bg-white shadow-lg md:shadow-xl relative overflow-hidden">
-                        <div class="px-3 pt-8 pb-10 text-center relative z-10">
-                            <h4 class="text-sm uppercase text-gray-500 leading-tight">Comments</h4>
-                            <h3 class="text-3xl text-gray-700 font-semibold leading-tight my-3">8,028</h3>
-                            <p class="text-xs text-green-500 leading-tight">▲ 8.2%</p>
-                        </div>
-                        <div class="absolute bottom-0 inset-x-0">
-                            <canvas id="chart3" height="70"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="mt-28 relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+  <div class="relative mx-4 mt-4 flex flex-col gap-4 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none md:flex-row md:items-center">
+    <div class="w-max rounded-lg bg-gray-900 p-5 text-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+        class="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
+        ></path>
+      </svg>
     </div>
+    <div>
+      <h6 class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
+        Annual Statistics for Ore Sample Transport Certificates 
+      </h6>
+      <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
+        Here is the visualization of Ore Sample Transport Certificates issued annually.
+      </p>
+    </div>
+  </div>
+  <div class="py-6 mt-4 grid place-items-center px-2">
+    <div id="pie-chart"></div>
+  </div>
 </div>
     <div class="ostc">
         <div class="relative overflow-x-auto mt-2">
@@ -121,95 +105,41 @@
 </template>
 
 <script>
-  import Header from '../../components/header.vue'; // Import Header component
+import Header from '../../components/header.vue'; // Import Header component
+import '../../assets/mtss.css';
+import router from '../../router'; // Import your Vue Router instance
 
-  export default {
-      components: {
-          Header // Register Header component
-      }
-  };
+export default {
+    components: {
+        Header // Register Header component
+    },
+    mounted() {
+        this.renderChart();
+    },
+    methods: {
+        renderChart() {
+            const chartConfig = {
+                series: [44, 55],
+                chart: {
+                    type: "pie",
+                    width: 280,
+                    height: 280,
+                },
+                title: {
+                    show: false,
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                colors: ["#020617", "#ff8f00"],
+                legend: {
+                    show: false,
+                },
+            };
 
-// const chartOptions = {
-//     maintainAspectRatio: false,
-//     legend: {
-//         display: false,
-//     },
-//     tooltips: {
-//         enabled: false,
-//     },
-//     elements: {
-//         point: {
-//             radius: 0
-//         },
-//     },
-//     scales: {
-//         xAxes: [{
-//             gridLines: false,
-//             scaleLabel: false,
-//             ticks: {
-//                 display: false
-//             }
-//         }],
-//         yAxes: [{
-//             gridLines: false,
-//             scaleLabel: false,
-//             ticks: {
-//                 display: false,
-//                 suggestedMin: 0,
-//                 suggestedMax: 10
-//             }
-//         }]
-//     }
-// };
-// //
-// var ctx = document.getElementById('chart1').getContext('2d');
-// var chart = new Chart(ctx, {
-//     type: "line",
-//     data: {
-//         labels: [1, 2, 1, 3, 5, 4, 7],
-//         datasets: [
-//             {
-//                 backgroundColor: "rgba(101, 116, 205, 0.1)",
-//                 borderColor: "rgba(101, 116, 205, 0.8)",
-//                 borderWidth: 2,
-//                 data: [1, 2, 1, 3, 5, 4, 7],
-//             },
-//         ],
-//     },
-//     options: chartOptions
-// });
-// //
-// var ctx = document.getElementById('chart2').getContext('2d');
-// var chart = new Chart(ctx, {
-//     type: "line",
-//     data: {
-//         labels: [2, 3, 2, 9, 7, 7, 4],
-//         datasets: [
-//             {
-//                 backgroundColor: "rgba(246, 109, 155, 0.1)",
-//                 borderColor: "rgba(246, 109, 155, 0.8)",
-//                 borderWidth: 2,
-//                 data: [2, 3, 2, 9, 7, 7, 4],
-//             },
-//         ],
-//     },
-//     options: chartOptions
-// });
-// //
-// var ctx = document.getElementById('chart3').getContext('2d');
-// var chart = new Chart(ctx, {
-//     type: "line",
-//     data: {
-//         labels: [2, 5, 1, 3, 2, 6, 7],
-//         datasets: [
-//             {
-//                 backgroundColor: "rgba(246, 153, 63, 0.1)",
-//                 borderColor: "rgba(246, 153, 63, 0.8)",
-//                 borderWidth: 2,
-//                 data: [2, 5, 1, 3, 2, 6, 7],
-//             },
-//         ],
-//     },
-//     options: chartOptions
-// });
+            const chart = new ApexCharts(document.querySelector("#pie-chart"), chartConfig);
+            chart.render();
+        }
+    }
+};
 </script>
