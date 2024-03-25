@@ -1,6 +1,7 @@
 <template>
-    <div class="absolute mt-28 w-full rounded-xl bg-white bg-clip-border text-gray-700 shadow-md overflow-hidden">
-        
+    <Header/>
+    <UserBtn/>
+    <div class="mt-28 w-full rounded-xl bg-white bg-clip-border text-gray-700 shadow-md overflow-hidden">
             <div class="mx-4 mt-2 flex flex-col gap-4 rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none md:flex-row md:items-center">
                 <div class="w-max rounded-lg bg-gray-900 p-5 text-white" >
                 <svg
@@ -31,7 +32,10 @@
             <div class="py-6 mt-4 grid place-items-center px-2">
                 <div id="pie-chart"></div>
             </div>
+            <div class="flex justify-end">
+            <SearchBar/>
             <AddBtn/>
+            </div>
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -109,13 +113,12 @@
                         </tr>
                     </tbody>
                 </table>
-        <Header/>
-        <UserBtn/>
     </div>
 </template>
 
 <script>
 import Header from '../../components/header.vue'; // Import Header component
+import SearchBar from '../../components/search-bar.vue'; // Import Search Bar component
 import AddBtn from '../../components/add-btn.vue'; // Import Add Button component
 import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
 import '../../assets/mtss.css';
@@ -125,7 +128,8 @@ export default {
     components: {
         Header, // Register Header component
         AddBtn,
-        UserBtn
+        UserBtn,
+        SearchBar
     },
     mounted() {
         this.renderChart();
