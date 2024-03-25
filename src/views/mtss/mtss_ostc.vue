@@ -42,13 +42,28 @@
                         Client
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Color
+                        Certication No.
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Category
+                        Date Received by ORD
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Price
+                        Date Received by MMD
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Payment Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sample Inspection
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date Issued
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        MMD Personnel
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Proof of MOV Uploaded
                     </th>
                 </tr>
             </thead>
