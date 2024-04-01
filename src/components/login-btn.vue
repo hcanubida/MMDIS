@@ -7,7 +7,7 @@
       </button>
       <!-- Dropdown Content -->
       <div v-if="isDropdownOpen" class="absolute right-0 mt-40 w-24 bg-white rounded-lg shadow-lg z-10 text-center">
-        <a href="#" @click="redirectToMTESLoginPage" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MTES</a>
+        <a href="#" @click="redirectToMTESLoginPage" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-t-lg">MTES</a>
         <a href="#" @click="redirectToLoginPage" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MTSS</a>
         <a href="#" @click="redirectToMLSSLoginPage" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MLSS</a>
       </div>
