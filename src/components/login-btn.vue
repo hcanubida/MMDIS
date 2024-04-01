@@ -29,7 +29,7 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
     redirectToLoginPage() {
-      router.push('/mtss/mtss_dashboard');
+      router.push('/mtss/dashboard');
     },
   }
 };

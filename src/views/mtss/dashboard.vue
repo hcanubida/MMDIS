@@ -49,40 +49,40 @@ export default {
     },
     methods: {
         redirectToOSTC() {
-            router.push('/mtss/mtss_ostc');
+            router.push('/mtss/ostc');
         },
         redirectToInventory() {
-            router.push('/mtss/mtss_inventory');
+            router.push('/mtss/inventory');
         },
         redirectToWPM() {
-            router.push('/mtss/mtss_wpm');
+            router.push('/mtss/wpm');
         },
         redirectToMBM() {
-            router.push('/mtss/mtss_mbm');
+            router.push('/mtss/mbm');
         },
         redirectToInvestigation() {
-            router.push('/mtss/mtss_investigation');
+            router.push('/mtss/investigation');
         },
         redirectToAI() {
-            router.push('/mtss/mtss_ai');
+            router.push('/mtss/ai');
         },
         redirectToDMPF() {
-            router.push('/mtss/mtss_dmpf');
+            router.push('/mtss/dmpf');
         },
         redirectToPCMRB() {
-            router.push('/mtss/mtss_pcmrb');
+            router.push('/mtss/pcmrb');
         },
         redirectToMPSA() {
-            router.push('/mtss/mtss_mpsa');
+            router.push('/mtss/mpsa');
         },
         redirectToISAG() {
-            router.push('/mtss/mtss_isag');
+            router.push('/mtss/isag');
         },
         redirectToEP() {
-            router.push('/mtss/mtss_ep');
+            router.push('/mtss/ep');
         },
         redirectToMPP() {
-            router.push('/mtss/mtss_mpp');
+            router.push('/mtss/mpp');
         }
     }
 }

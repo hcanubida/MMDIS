@@ -2,8 +2,8 @@
 <script setup>
 import home from './views/home.vue';
 import login from './views/login.vue';
-import mtss_dashboard from './views/mtss/mtss_dashboard.vue';
-import mtss_ostc from './views/mtss/mtss_ostc.vue';
+import dashboard from './views/mtss/dashboard.vue';
+import ostc from './views/mtss/ostc.vue';
 
 import './assets/tw.css'
 
