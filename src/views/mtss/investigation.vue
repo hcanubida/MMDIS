@@ -22,10 +22,10 @@
                 </div>
                 <div>
                 <h6 class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                    Annual Statistics for Inventory 
+                    Annual Statistics for Investigation 
                 </h6>
                 <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-                    Here is the visualization of Inventory.
+                    Here is the visualization of Investigation conducted annually.
                 </p>
                 </div>
             </div>
@@ -40,25 +40,31 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Month
+                                MGB Mining Related Complaints/Casesacted upon
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Location
+                                Complaint Received
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Travel Date (from)
+                                Date Acted(from)
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Travel Date (to)
+                                Date Acted(to)
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Report Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Transmittal Date
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Released Date
+                                Date Released
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 MMD Personnel
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                               Remarks
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Proof of MOV Uploaded

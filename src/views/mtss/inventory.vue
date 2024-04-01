@@ -25,7 +25,7 @@
                     Annual Statistics for Inventory 
                 </h6>
                 <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-                    Here is the visualization of Inventory.
+                    Here is the visualization of Inventory released within the year.
                 </p>
                 </div>
             </div>

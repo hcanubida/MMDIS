@@ -22,10 +22,10 @@
                 </div>
                 <div>
                 <h6 class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                    Annual Statistics for Inventory 
+                    Annual Statistics for Work Program Monitoring 
                 </h6>
                 <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-                    Here is the visualization of Inventory.
+                    Here is the visualization of all the Work Programs monitored within the year.
                 </p>
                 </div>
             </div>
@@ -40,16 +40,16 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Month
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Location
+                                Work Program/Term and Conditions/<br> Requirements of: (Field Monitoring)
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Travel Date (from)
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Travel Date (to)
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Report Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Transmittal Date
