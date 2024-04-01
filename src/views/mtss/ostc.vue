@@ -25,7 +25,7 @@
                     Annual Statistics for Ore Sample Transport Certificates 
                 </h6>
                 <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-                    Here is the visualization of Ore Sample Transport Certificates issued annually.
+                    Here is the visualization of Ore Sample Transport Certificates issued within the year.
                 </p>
                 </div>
             </div>
