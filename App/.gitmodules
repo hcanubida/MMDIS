@@ -1,0 +1,3 @@
+[submodule "Application_project"]
+	path = Application_project
+	url = https://github.com/BonStudent/Application_project
