@@ -43,13 +43,16 @@
                                 Month
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Location
+                                Petitioner
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Travel Date (from)
+                                Location of Declared<br>Minahang Bayan
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Travel Date (to)
+                                Travel Date
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Report Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Transmittal Date
@@ -62,6 +65,9 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Proof of MOV Uploaded
+                            </th>
+                            <th>
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -118,7 +124,7 @@
 <script>
 import Header from '../../components/header.vue'; // Import Header component
 import SearchBar from '../../components/search-bar.vue'; // Import Search Bar component
-import AddBtn from '../../components/add-btn.vue'; // Import Add Button component
+import AddBtn from '../../components/mbm-add-btn.vue'; // Import Add Button component
 import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
 import '../../assets/mtss.css';
 import router from '../../router'; // Import your Vue Router instance
