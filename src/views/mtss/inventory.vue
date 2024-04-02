@@ -46,10 +46,7 @@
                                 Location
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Travel Date (from)
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Travel Date (to)
+                                Travel Date
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Transmittal Date
@@ -118,7 +115,7 @@
 <script>
 import Header from '../../components/header.vue'; // Import Header component
 import SearchBar from '../../components/search-bar.vue'; // Import Search Bar component
-import AddBtn from '../../components/add-btn.vue'; // Import Add Button component
+import AddBtn from '../../components/inventory-addbtn.vue'; // Import Add Button component
 import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
 import '../../assets/mtss.css';
 import router from '../../router'; // Import your Vue Router instance
