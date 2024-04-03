@@ -1,11 +1,11 @@
-<!-- App.vue -->
 <script setup>
-import home from './views/home.vue';
-import login from './views/login.vue';
-import dashboard from './views/mtss/dashboard.vue';
-import ostc from './views/mtss/ostc.vue';
+import dashboard from './views/dashboards/FTAA-dashboard.vue';
+import Login from './views/Login.vue'
+import Signup from './views/Signup.vue'
+import firstpage from './views/firstpage.vue';
+import secondpage from './views/secondpage.vue';
 
-import './assets/tw.css'
+import './assets/index.css'
 
 </script>
 
