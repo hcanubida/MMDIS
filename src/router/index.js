@@ -19,6 +19,27 @@ import ReqEP from "../views/requirements/EPmandatoryReq.vue"
 
 
 
+
+//router file MTES
+
+import firstpage from "../views/mtes/firstpage.vue";
+import loginmtes from "../views/mtes/Login.vue"
+import signup from "../views/mtes/Signup.vue"
+import secondpage from "../views/mtes/secondpage.vue"
+
+//---Dashboards
+import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
+import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue"
+
+//---tables in dashboards
+import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
+import EPtable from "../views/mtes/tables/EP-table.vue"
+
+//--Mandatory Requirements
+import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
+import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
+
+
 const routes = [
     { path: "/", component: login },
     { path: "/firstpage", component: firstpage },
@@ -35,6 +56,23 @@ const routes = [
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
 
+
+
+
+    //routes for MTES
+    { path: "/loginmtes", component: loginmtes },
+    { path: "/firstpage", component: firstpage },
+    { path: "/signup", component: signup },
+    { path: "/secondpage", component: secondpage },
+    { path: "/table", component: FTTAtable },
+
+    //-----Dashboards Routes-----
+    { path: "/ftta", component: fttadashboard },
+    { path: "/ep", component: epdashboard },
+
+    //-----Mandatory Requirements------
+    { path: "/ReqFTTA", component: ReqFTTA },
+    { path: "/ReqEP", component: ReqEP },
 ];
 
 const router = createRouter({
