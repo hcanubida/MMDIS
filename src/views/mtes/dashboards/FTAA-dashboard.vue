@@ -35,12 +35,13 @@
 </template>
 
 <script setup>
-import appdet from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/modals/FTTA-add.vue'
-import viewdetail from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/modals/FTTA-details.vue'
-import qwe from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/header.vue';
-import Pie from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/charts/Pie.vue'
-import BarChart from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/charts/bar.vue'
-import Tableview from '/Users/PC8/maam hannah git/MMDIS/src/views/mtes/tables/FTTA-table.vue'
+import appdet from '../../../components/MTES/modals/FTTA-add.vue'
+import viewdetail from '../../../components/MTES/modals/FTTA-details.vue'
+import qwe from '../../../components/MTES/header.vue';
+import Pie from '../../../components/MTES/charts/Pie.vue'
+import BarChart from '../../../components/MTES/charts/bar.vue'
+import Tableview from '../../../views/mtes/tables/FTTA-table.vue'
+
 import axios from 'axios';
 
 import { ref, onMounted } from 'vue'

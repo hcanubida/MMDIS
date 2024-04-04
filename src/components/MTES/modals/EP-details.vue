@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import { viewDetail1 } from '/Users/PC8/maam hannah git/MMDIS/src/views/mtes/dashboards/EP-dasboard.vue';
-import axios from 'axios';
+import { viewDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+
 
 export default { 
     props: {

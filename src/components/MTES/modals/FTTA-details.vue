@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import { viewDetail } from '/Users//PC8/maam hannah git/MMDIS/src/views/mtes/dashboards/FTAA-dashboard.vue';
-import axios from 'axios';
+import { viewDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
+import axios from '/axios';
 
 export default { 
     props: {

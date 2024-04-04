@@ -63,8 +63,9 @@
 </template>
 
 <script setup>
-import taas from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/header.vue'
-import mgb from '/Users/PC8/maam hannah git/MMDIS/src/assets/MTES/mgb.png'
+import taas from '../../components/MTES/header.vue'
+import mgb from '../../assets/MTES/mgb.png'
+
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';

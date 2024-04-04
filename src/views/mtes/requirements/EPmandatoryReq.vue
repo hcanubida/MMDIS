@@ -330,7 +330,8 @@
 
 
 <script setup>
-import upload from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/multiple-upload.vue'
+import upload from '../../../components/MTES/multiple-upload.vue'
+
 </script>
 
 
