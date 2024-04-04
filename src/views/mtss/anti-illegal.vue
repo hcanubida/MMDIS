@@ -117,10 +117,9 @@
 
 <script>
 import Header from '../../components/header.vue'; // Import Header component
-import SearchBar from '../../components/search-bar.vue'; // Import Search Bar component
-import AddBtn from '../../components/add-btn.vue'; // Import Add Button component
+import SearchBar from '../../components/MTSS/search-bar.vue'; // Import Search Bar component
+import AddBtn from '../../components/MTSS/add-btn.vue'; // Import Add Button component
 import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
-import '../../assets/mtss.css';
 import router from '../../router'; // Import your Vue Router instance
 
 export default {

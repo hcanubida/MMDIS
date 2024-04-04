@@ -142,7 +142,7 @@
 <script>
   import Header from '../components/header.vue'; // Import Header component
   import Login from '../components/login-btn.vue'; // Import Login Button component
-  import '../assets/home.css'
+  import '../assets/home.css';
   
   export default {
   components: {
