@@ -1,8 +1,7 @@
-// router file
+// router file MTSS
 
 import { createRouter, createWebHistory } from "vue-router";
 import home from "../views/home.vue";
-import login from "../views/login.vue";
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue"; // Import mtss_ostc component
 import inventory from "../views/mtss/inventory.vue";
@@ -16,6 +15,8 @@ import mpsa from "../views/mtss/mpsa.vue";
 import isag from "../views/mtss/isag.vue";
 import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
+import loginmtss from "../views/mtss/login.vue";
+
 
 
 //router file MTES
@@ -41,7 +42,6 @@ import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
 
 const routes = [
     { path: "/", component: home },
-    { path: "/login", component: login },
     { path: "/mtss/dashboard", component: dashboard },
     { path: "/mtss/ostc", component: ostc }, // Use mtss_ostc component here
     { path: "/mtss/inventory", component: inventory },
@@ -55,6 +55,7 @@ const routes = [
     { path: "/mtss/isag", component: isag },
     { path: "/mtss/ep", component: ep },
     { path: "/mtss/mpp", component: mpp },
+    { path: "/mtss/login", component: loginmtss },
 
     //mtes routes
     { path: "/loginmtes", component: loginmtes },
