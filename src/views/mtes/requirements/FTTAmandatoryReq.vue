@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import headd from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/header.vue'
+import headd from '../../../components/MTES/header.vue'
 </script>
 
 <style lang="scss" scoped>

@@ -35,12 +35,12 @@
   </template>
   
   <script setup>
-  import appdet from "/Users/PC8/maam hannah git/MMDIS/src/components/MTES/modals/EP-add.vue"
-  import viewdetail1 from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/modals/EP-details.vue'
-  import qwe from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/header.vue';
-  import Pie from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/charts/Pie.vue'
-  import BarChart from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/charts/bar.vue'
-  import Tableview from '/Users/PC8/maam hannah git/MMDIS/src/views/mtes/tables/EP-table.vue'
+  import appdet from "../../../components/MTES/modals/EP-add.vue"
+  import viewdetail1 from '../../../components/MTES/modals/EP-details.vue'
+  import qwe from '../../../components/MTES/header.vue';
+  import Pie from '../../../components/MTES/charts/Pie.vue'
+  import BarChart from '../../../components/MTES/charts/bar.vue'
+  import Tableview from '../../mtes/tables/EP-table.vue'
   import axios from 'axios';
   
   import { ref, onMounted } from 'vue'

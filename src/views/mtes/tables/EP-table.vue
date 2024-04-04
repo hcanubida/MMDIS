@@ -7,30 +7,30 @@
         <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl">
           <thead>
             <tr style="background-color: #e6cfaf;">
-              <th>Application No.</th>
-              <th>Status</th>
-              <th>Tenement Name</th>
-              <th>Area (Hectares)</th>
-              <th>Date Filed</th>
-              <th>Barangay</th>
-              <th>City</th>
-              <th>Province</th>
-              <th>Commodity</th>
-              <th>Action</th>
+              <th class="th">Application No.</th>
+              <th class="th">Status</th>
+              <th class="th">Tenement Name</th>
+              <th class="th">Area (Hectares)</th>
+              <th class="th">Date Filed</th>
+              <th class="th">Barangay</th>
+              <th class="th">City</th>
+              <th class="th">Province</th>
+              <th class="th">Commodity</th>
+              <th class="th">Action</th>
             </tr>
           </thead>
   
           <tbody>
             <tr v-for="(detail, index) in details" :key="index">
-              <td>{{ detail.id }}</td>
-              <td>{{ detail.status }}</td>
-              <td>{{ detail.tenement_name }}</td>
-              <td>{{ detail.area_hectares }}</td>
-              <td>{{ detail.date_filed }}</td>
-              <td>{{ detail.barangay }}</td>
-              <td>{{ detail.city }}</td>
-              <td>{{ detail.province }}</td>
-              <td>{{ detail.commodity }}</td>
+              <td class="td">{{ detail.id }}</td>
+              <td class="td">{{ detail.status }}</td>
+              <td class="td">{{ detail.tenement_name }}</td>
+              <td class="td">{{ detail.area_hectares }}</td>
+              <td class="td">{{ detail.date_filed }}</td>
+              <td class="td">{{ detail.barangay }}</td>
+              <td class="td">{{ detail.city }}</td>
+              <td class="td">{{ detail.province }}</td>
+              <td class="td">{{ detail.commodity }}</td>
               <!-- <td></td>
               <td></td>
               <td></td>
@@ -40,7 +40,7 @@
               <td></td>
               <td></td>
               <td></td> -->
-              <td>
+              <td class="td">
                 <button class="text-red-500" @click="navigateTomodalView()">
                   View
                 </button>
@@ -131,11 +131,11 @@
     margin: 15px;
   }
   
-  th,
-  td {
-    border: 1px solid #888888;
-    text-align: center;
-    padding: 10px;
-    position: sticky;
+  .th,
+  .td {
+  border: 1px solid #888888;
+  text-align: center;
+  padding: 10px;
+  position: sticky;
   }
   </style>
