@@ -40,7 +40,7 @@
 
 <script>
 import { viewDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-import axios from '/axios';
+import axios from 'axios';
 
 export default { 
     props: {

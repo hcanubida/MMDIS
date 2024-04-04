@@ -31,8 +31,8 @@
 </template>
 
 <script setup>
-import taas from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/header.vue'
-import mgb from '/Users/PC8/maam hannah git/MMDIS/src/assets/MTES/mgb.png'
+import taas from '../../../src/components/MTES/header.vue'
+import mgb from '../../../src/assets/MTES/mgb.png'
 
 </script>
 <script>
