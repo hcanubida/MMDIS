@@ -2,7 +2,6 @@
 
 import { createRouter, createWebHistory } from "vue-router";
 import home from "../views/home.vue";
-import login from "../views/login.vue";
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue"; // Import mtss_ostc component
 import inventory from "../views/mtss/inventory.vue";
@@ -21,7 +20,7 @@ import mpp from "../views/mtss/mpp.vue";
 //router file MTES
 
 import firstpage from "../views/mtes/firstpage.vue";
-import loginmtes from "../views/mtes/Login.vue"
+import login from "../views/mtes/Login.vue"
 import signup from "../views/mtes/Signup.vue"
 import secondpage from "../views/mtes/secondpage.vue"
 
@@ -40,8 +39,11 @@ import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
 
 
 const routes = [
-    { path: "/", component: home },
-    { path: "/login", component: login },
+
+    { path: "/", component: login },
+
+    //mtss routes
+    { path: "/home", component: home },
     { path: "/mtss/dashboard", component: dashboard },
     { path: "/mtss/ostc", component: ostc }, // Use mtss_ostc component here
     { path: "/mtss/inventory", component: inventory },
@@ -57,16 +59,13 @@ const routes = [
     { path: "/mtss/mpp", component: mpp },
 
     //mtes routes
-    { path: "/loginmtes", component: loginmtes },
     { path: "/firstpage", component: firstpage },
     { path: "/signup", component: signup },
     { path: "/secondpage", component: secondpage },
     { path: "/table", component: FTTAtable },
-
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },
     { path: "/ep", component: epdashboard },
-
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },

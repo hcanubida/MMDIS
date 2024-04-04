@@ -125,7 +125,7 @@ const handleLogin = async () => {
         pleaseWait.value = true;
 
         setTimeout(() => {
-            router.push("/firstpage") // Set submitting back to false after timeout
+            router.push("/home") // Set submitting back to false after timeout
         }, 2000);;
     }
 }

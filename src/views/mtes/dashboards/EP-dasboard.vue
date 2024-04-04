@@ -47,8 +47,8 @@
   
   const user = ref();
   onMounted(async () => {
-    const data = await axios.get('http://127.0.0.1:8000/get_accounts/')
-    user.value = data;
+    // const data = await axios.get('http://127.0.0.1:8000/get_accounts/')
+    // user.value = data;
   })
   
   
