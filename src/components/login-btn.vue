@@ -31,6 +31,9 @@ export default {
     redirectToLoginPage() {
       router.push('/mtss/dashboard');
     },
+    redirectToMTESLoginPage(){
+      router.push('/loginmtes');
+    }
   }
 };
 </script>
