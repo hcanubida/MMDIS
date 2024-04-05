@@ -39,6 +39,7 @@
 <script>
 import Header from '../../components/header.vue'; // Import Header component
 import UserBtn from '../../components/user-dbbtn.vue';
+import '../../assets/mtss.css';
 import router from '../../router'; // Import your Vue Router instance
 
 export default {
