@@ -9,6 +9,7 @@
             <thead class="titlehead">
                 <tr>
                     <th>Requirements</th>
+                    <th>Level of Compliance (marked)</th>
                     <th>Upload</th>
                     <th>Remarks / Status</th>
                 </tr>
@@ -16,7 +17,87 @@
             <tbody>
                 <tr>
                     <td class="reqData">
-                        1. Application Form (MGB Form No. 11-2)
+                        1. Petition/ Proposal
+                        for Minahang Bayan
+
+                    </td>
+
+                    <td>
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                    </td>
+
+                    <td class="inputimg">
+                        <upload />
+                    </td>
+
+                    <td style="text-align: left;">
+                        <label>Remarks:</label><br>
+                        <textarea></textarea>
+                        <label>Recommendation or Lacking Submission :</label><br>
+                        <textarea style="color: red;"></textarea>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td class="reqData">
+                        2. Area Status <br>&nbsp;
+                        <br>&nbsp;
+                        MGB X (Status vis-avis the prior and existing mining rights and application, and areas closed to
+                        mining applications) <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        NCIP 10 (List of ICCs/IPs Legitimate Leaders and Conduct Consultation with the
+                        ICCs/Ips)<br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        DENR 10 (Area Status/Clearance)<br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        LGU (Province/City Government Concerned - Area Status/Clearance)
+                    </td>
+
+                    <td>
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select> <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
                     </td>
 
                     <td class="inputimg">
@@ -32,26 +113,50 @@
                 </tr>
                 <tr>
                     <td class="reqData">
-                        2. Duly certified Articles of Incorporation/ Partnership/ Association, By-Laws, and Certificate
-                        of Registration issued by the SEC or authorized Government agency concerned;
+                        3. Proofs of Notice and Endorsement of the Sanggunian Concerned:<br>&nbsp;
+                        <br>&nbsp;
+                        Panlalawigan
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Bayan/Panlungsod
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Barangay
+
+                    </td>
+                    
+                    <td>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select> 
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
                     </td>
 
-                    <td class="inputimg">
-                        <upload />
-                    </td>
-
-                    <td style="text-align: left;">
-                        <label>Remarks:</label><br>
-                        <textarea></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="reqData">
-                        3. Location map/sketch plan of the area of the proposed processing plant using NAMRIA
-                        topographic map in a scale of 1:50,000
-                    </td>
+                    
 
                     <td class="inputimg">
                         <upload />
@@ -66,95 +171,184 @@
                 </tr>
                 <tr>
                     <td class="reqData">
-                        4. <u> Feasibility Study</u> including work programs, plant site, mill and plant lay-out/design,
-                        details of technology to be employed in the proposed operation, anti-pollution devices/ measures
-                        as well as the plant capacity of <u>Project Description</u> with detailed financial statement
-                        for its operations incorporating the social and environmental expenditures, taxes and fees paid.
-                        (MGB Form No. 5-3A);
-                    </td>
-
-                    <td class="inputimg">
-                        <upload />
-                    </td>
-
-                    <td style="text-align: left; width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="reqData">
-                        5. For corporation/partnership/Association/cooperative: SEC/CDA-certifies Certificate of
-                        Registration,
-                        Articles of Incorporation/Partnership/ Association and By-Laws; or a Certification from MGB
-                        CO/RO concerned
-                        that such documents are duly registered in that Office (note: with minimum authorized capital of
-                        PhP100 M
-                        and paid-up capital of PhP6.25M pursuant to DMO No. 2013-01);
-                    </td>
-
-                    <td class="inputimg">
-                        <upload />
-                    </td>
-
-                    <td style="text-align: left; width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="reqData">
-                        6. Location Map/Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/boundaries (in
-                        tabulated
-                        form) with major environmental features/other projects (prepared, sealed and signed by a
-                        deputized Geodetic
-                        Engineer)
-                    </td>
-
-                    <td class="inputimg">
-                        <upload />
-                    </td>
-
-                    <td style="text-align: left; width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="reqData">
-                        7. Proof of technical competence to undertake the implementation of activities under the
-                        Programs:<br>&nbsp;
-                        7.1 Curricula Vitae and track records in exploration and environmental management;<br>&nbsp;
-                        7.2 Sworn statement/employment contract/ proof of availed services of the technical person(s)
-                        who will
-                        undertake the <br>&nbsp;implementation of the Programs
-                    </td>
-
-                    <td class="inputimg">
-                        <upload />
-                    </td>
-
-                    <td style="text-align: left; width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="reqData">
-                        8. Proof of financial capability to undertake the implementation of the activities under the
-                        work programs:
+                        4.  MGB RO Evaluation Report re:<br>&nbsp;
                         <br>&nbsp;
-                        * Latest Audited Financial Statement and/or Annual Report for the preceding Year<br>&nbsp;
-                        * Credit lines and/or certification/s of bank guarantee/deposit and/or similar negotiable
-                        instruments
+                        Area viability for Small Scale Mining <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Allocation for Mineral Processing Zone (if applicable)
+                    </td>
+
+                    <td>
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                    </td>
+
+                    <td class="inputimg">
+                        <upload />
+                    </td>
+
+                    <td style="text-align: left; width: 400px;">
+                        <label>Remarks:</label><br>
+                        <textarea></textarea>
+                        <label>Recommendation or Lacking Submission :</label><br>
+                        <textarea style="color: red;"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="reqData">
+                        5.   Proofs of Notice:<br>&nbsp;
+                        <br>&nbsp;
+                        To mining tenement holder(s)
+                    </td>
+                    
+                    <td>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+
+                    </td>
+
+                    <td class="inputimg">
+                        <upload />
+                    </td>
+
+                    <td style="text-align: left; width: 400px;">
+                        <label>Remarks:</label><br>
+                        <textarea></textarea>
+                        <label>Recommendation or Lacking Submission :</label><br>
+                        <textarea style="color: red;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="reqData">
+                        6.  Proofs of Posting:<br>&nbsp;
+                        <br>&nbsp;
+                        MGB RO concerned
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Provincial Governor’s Office
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Mayor’s Office
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        Barangay(s)
+                    </td>
+
+                    <td>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select> 
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                    </td>
+
+                    
+                    
+                    <td class="inputimg">
+                        <upload />
+                    </td>
+
+                    <td style="text-align: left; width: 400px;">
+                        <label>Remarks:</label><br>
+                        <textarea></textarea>
+                        <label>Recommendation or Lacking Submission :</label><br>
+                        <textarea style="color: red;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="reqData">
+                        7.  Proof of Publication
+                    </td>
+                    <td>
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
+                    </td>
+
+                    <td class="inputimg">
+                        <upload />
+                    </td>
+
+                    <td style="text-align: left; width: 400px;">
+                        <label>Remarks:</label><br>
+                        <textarea></textarea>
+                        <label>Recommendation or Lacking Submission :</label><br>
+                        <textarea style="color: red;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="reqData">
+                        8.  PMRB Certificate
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        That there is no formal Protest filed<br>&nbsp;
+                        or<br>&nbsp;
+                        That the Favorable Decision has become final & executory
+                    </td>
+
+                
+                    <td>
+                        <br>&nbsp;
+                        <br>&nbsp;
+                        <select>
+                            <option value="submitted">Select</option>
+                            <option value="approved">YES</option>
+                            <option value="pending">NO</option>
+                            <option value="rejected">N/A</option>
+                        </select>
                     </td>
 
                     <td class="inputimg">
