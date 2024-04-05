@@ -15,7 +15,6 @@ import mpsa from "../views/mtss/mpsa.vue";
 import isag from "../views/mtss/isag.vue";
 import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
-import loginmtss from "../views/mtss/login.vue";
 
 
 
@@ -61,7 +60,6 @@ const routes = [
     { path: "/mtss/isag", component: isag },
     { path: "/mtss/ep", component: ep },
     { path: "/mtss/mpp", component: mpp },
-    { path: "/mtss/login", component: loginmtss },
 
     //mtes routes
     { path: "/firstpage", component: firstpage },

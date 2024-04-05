@@ -13,5 +13,5 @@
 </template>
   
   <script>
-	import '../assets/header.css'
+   import '../assets/header.css';
   </script>
