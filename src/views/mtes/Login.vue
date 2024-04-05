@@ -121,12 +121,12 @@ const handleLogin = async () => {
     } else {
         pleaseWait.value = true;
 
-        setTimeout(() => {
-            router.push("/firstpage") // Set submitting back to false after timeout
-        }, 2000);;
         // setTimeout(() => {
-        //     router.push("/mtss/dashboard") // Set submitting back to false after timeout
+        //     router.push("/firstpage") // Set submitting back to false after timeout
         // }, 2000);;
+        setTimeout(() => {
+            router.push("/mtss/dashboard") // Set submitting back to false after timeout
+        }, 2000);;
     }
 }
 
