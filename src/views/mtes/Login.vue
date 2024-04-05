@@ -1,24 +1,24 @@
 <template>
-    <div class="panel">
+    <div class="panel flex justify-center items-center">
         <div class="flex justify-center items-center h-screen">
             <taas />
         </div>
-        <div class="panel1">
+        <div class="panel1 h-auto flex flex-row justify-center items-center">
             <img :src="mgb" class="img123" />
-            <div class="login">
+            <div class="login -ml-16">
                 <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
                     <h1 style="font-weight: 700; font-size: 25px;">Welcome Back!</h1>
                     <p style="font-size: 15px;">Login to access the MGB-X </p>
-                    <p style="font-size: 15px;">MTTS System:</p>
+                    <p style="font-size: 15px;">MMD Information System:</p>
                 </div>
                 <form>
-                    <div class="inputfield">
+                    <div class="inputfield flex flex-col">
                         <input v-model="form.username" id="username" name="username" type="username"
-                            autocomplete="username" placeholder="   Username"
-                            class="drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
+                            autocomplete="username" placeholder="Username"
+                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
                         <input v-model="form.password" id="password" name="password" type="password"
-                            autocomplete="password" placeholder="   Password"
-                            class="drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
+                            autocomplete="password" placeholder="Password"
+                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
                         <!--    -->
                         <div class="error1" v-if="isValid"
                             style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
@@ -50,11 +50,8 @@
                         </div>
                     </div>
                 </form>
-                <div class="third">
-                    <button class="buttonlogin" :disabled="submitting" @click="handleLogin">Login</button>
-                    <p style="color: #0099e6; text-decoration: underline; cursor: pointer; margin-top: 15px;">Forgot
-                        Password?</p>
-                    <p style="color:black; cursor: pointer;" @click="redirectToUrl">Don't have an account yet?</p>
+                <div class="third flex flex-col items-center">
+                    <button class="buttonlogin  hover:bg-red-200 bg-yellow-600 text-white pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
                 </div>
             </div>
         </div>
@@ -64,7 +61,7 @@
 
 <script setup>
 import taas from '../../components/MTES/header.vue'
-import mgb from '../../assets/MTES/mgb.png'
+import mgb from '../../assets/icons/mgb.png'
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
@@ -127,6 +124,9 @@ const handleLogin = async () => {
         setTimeout(() => {
             router.push("/firstpage") // Set submitting back to false after timeout
         }, 2000);;
+        // setTimeout(() => {
+        //     router.push("/mtss/dashboard") // Set submitting back to false after timeout
+        // }, 2000);;
     }
 }
 
@@ -134,26 +134,8 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-.panel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
 .panel1 {
-    height: auto;
     width: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.inputfield {
-    display: flex;
-    flex-direction: column;
 }
 
 .login {
@@ -161,9 +143,7 @@ const handleLogin = async () => {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: #eacda3;
-    margin-left: -70px;
     height: 450px;
-
 }
 
 .img123 {
@@ -171,24 +151,9 @@ const handleLogin = async () => {
     width: 300px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-
-}
-
-.third {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 45px;
-
 }
 
 .buttonlogin {
-    background-color:#e09a38;
-    color: white;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-bottom: 10px;
-    padding-top: 10px;
     border-radius: 20px;
 }
 </style>
