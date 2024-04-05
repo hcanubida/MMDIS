@@ -9,7 +9,7 @@
         <button @click="navigateToFTTAdashboard()" class="button1">
           Financial or Technical Assistance Agreement
         </button>
-        <button class="button1">
+        <button @click="navigateToMPSAdashboard()" class="button1">
           Mineral Production Sharing Agreement
         </button>
         <button @click="navigateToEPdashboard()" class="button1">
@@ -39,12 +39,12 @@
 </template>
 
 <script setup>
-import taas from '../../components/MTES/header.vue'
+import taas from '../../../src/components/MTES/header.vue'
 
 </script>
 
 <script>
-import router from '../../router/index';
+import router from '../../../src/router/index';
 
 export default {
 
@@ -57,6 +57,9 @@ export default {
       // Use router.push to navigate to '/newappcontent'
       router.push('/ep');
     },
+    navigateToMPSAdashboard(){
+      router.push('/mpsa')
+    }
   }
 };
 </script>

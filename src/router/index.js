@@ -1,4 +1,4 @@
-// router file
+// router file MTSS
 
 import { createRouter, createWebHistory } from "vue-router";
 import home from "../views/home.vue";
@@ -15,6 +15,8 @@ import mpsa from "../views/mtss/mpsa.vue";
 import isag from "../views/mtss/isag.vue";
 import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
+import loginmtss from "../views/mtss/login.vue";
+
 
 
 //router file MTES
@@ -27,6 +29,7 @@ import secondpage from "../views/mtes/secondpage.vue"
 //---Dashboards
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
 import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue"
+import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue"
 
 //---tables in dashboards
 import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
@@ -35,6 +38,7 @@ import EPtable from "../views/mtes/tables/EP-table.vue"
 //--Mandatory Requirements
 import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
 import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
+import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
 
 
 
@@ -57,6 +61,7 @@ const routes = [
     { path: "/mtss/isag", component: isag },
     { path: "/mtss/ep", component: ep },
     { path: "/mtss/mpp", component: mpp },
+    { path: "/mtss/login", component: loginmtss },
 
     //mtes routes
     { path: "/firstpage", component: firstpage },
@@ -66,9 +71,11 @@ const routes = [
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },
     { path: "/ep", component: epdashboard },
+    { path: "/mpsa", component: mpsadashboard},
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
+    { path: "/ReqMPSA", component: ReqMPSA },
 
 
 ];

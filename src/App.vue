@@ -1,7 +1,7 @@
 <!-- App.vue -->
 <script setup>
 import home from './views/home.vue';
-import login from './views/login.vue';
+import loginmtss from './views/mtss/login.vue';
 import dashboard from './views/mtss/dashboard.vue';
 import ostc from './views/mtss/ostc.vue';
 

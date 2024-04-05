@@ -57,7 +57,7 @@ export default {
         labels: ['District 1', 'District 2', 'District 3', 'District 4'],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16',],
+            backgroundColor: ['#A79277', '#EAD8C0', '#D1BB9E', '#FFF2E1',],
             data: [40, 20, 70, 10]
           }
         ]
@@ -66,7 +66,7 @@ export default {
         labels: ['District 1', 'District 2'],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651'],
+            backgroundColor: ['#A79277', '#FFF2E1'],
             data: [40, 20,]
           }
         ]
@@ -75,7 +75,7 @@ export default {
         labels: ['District 1'],
         datasets: [
           {
-            backgroundColor: ['#41B883'],
+            backgroundColor: ['#A79277'],
             data: [40]
           }
         ]
@@ -84,7 +84,7 @@ export default {
         labels: ['District 1'],
         datasets: [
           {
-            backgroundColor: ['#41B883'],
+            backgroundColor: ['#A79277'],
             data: [40]
           }
         ]
@@ -93,7 +93,7 @@ export default {
         labels: ['District 1'],
         datasets: [
           {
-            backgroundColor: ['#41B883'],
+            backgroundColor: ['#A79277'],
             data: [40]
           }
         ]
@@ -102,7 +102,7 @@ export default {
         labels: ['District 1'],
         datasets: [
           {
-            backgroundColor: ['#41B883'],
+            backgroundColor: ['#A79277'],
             data: [40]
           }
         ]
@@ -111,7 +111,7 @@ export default {
         labels: ['District 1'],
         datasets: [
           {
-            backgroundColor: ['#41B883'],
+            backgroundColor: ['#A79277'],
             data: [40]
           }
         ]
