@@ -18,15 +18,9 @@ export default {
     };
   },
   methods: {
-    toggleDropdown() {
-      this.isDropdownOpen = !this.isDropdownOpen;
-    },
     redirectToLoginPage() {
-      router.push('/mtss/dashboard');
+      router.push('/login');
     },
-    redirectToMTESLoginPage(){
-      router.push('/loginmtes');
-    }
   }
 };
 </script>
