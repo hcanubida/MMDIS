@@ -9,14 +9,14 @@
                 <h1 class="font-bold">Accomplishment Reports</h1>
             </div>
             <div class="flex flex-col">
-                <button @click="redirectToOSTC" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">OSTC</button>
-                <button @click="redirectToInventory" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Inventory</button>
-                <button @click="redirectToWPM" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Work Program Monitoring</button>
-                <button @click="redirectToMBM" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Minahang Bayan Monitoring</button>
-                <button @click="redirectToInvestigation" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Investigation</button>
-                <button @click="redirectToAI" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Anti-Illegal</button>
-                <button @click="redirectToDMPF" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">DMPF</button>
-                <button @click="redirectToPCMRB" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">PCMRB Meetings</button>
+                <button @click="redirectToOSTC" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">OSTC</button>
+                <button @click="redirectToInventory" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Inventory</button>
+                <button @click="redirectToWPM" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Work Program Monitoring</button>
+                <button @click="redirectToMBM" class="text-lg mb-4 rounded-xl p-3  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Minahang Bayan Monitoring</button>
+                <button @click="redirectToInvestigation" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Investigation</button>
+                <button @click="redirectToAI" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Anti-Illegal</button>
+                <button @click="redirectToDMPF" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">DMPF</button>
+                <button @click="redirectToPCMRB" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">PCMRB Meetings</button>
             </div>
         </div>
 
