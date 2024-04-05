@@ -3,8 +3,8 @@
         <div class="flex justify-center items-center h-screen">
             <taas />
         </div>
-        <div class="panel1 h-auto flex flex-row justify-center items-center">
-            <img :src="mgb" class="img123" />
+        <div class="panel1 h-auto flex flex-row justify-center items-center mt-16">
+            <img :src="mgb" class="img123" style="width: 330px;"/>
             <div class="login -ml-16">
                 <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
                     <h1 style="font-weight: 700; font-size: 25px;">Welcome Back!</h1>
@@ -66,13 +66,11 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
-
 const isValid = ref(false);
 const isUsername = ref(false);
 const pleaseWait = ref(false);
 const submitting = ref(false);
 const error = ref('');
-
 
 const router = useRouter();
 const form = ref({
@@ -82,10 +80,8 @@ const form = ref({
 
 const handleLogin = async () => {
     const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
-    // const account = accounts.value.find(acc => acc.username === username.value && acc.password === password);
 
     const response = await axios.get('http://127.0.0.1:8000/get_accounts/');
-
 
     const account = response.data.find(acc => acc.username === form.value.username && acc.password === form.value.password);
 
@@ -113,7 +109,7 @@ const handleLogin = async () => {
             isUsername.value = false;
         }, 2000);
     } else if (account.password !== form.value.password) {
-        error.value = 'Wrong Pasword'
+        error.value = 'Wrong Password'
         isUsername.value = true;
         setTimeout(() => {
             isUsername.value = false;
@@ -121,16 +117,25 @@ const handleLogin = async () => {
     } else {
         pleaseWait.value = true;
 
-        // setTimeout(() => {
-        //     router.push("/firstpage") // Set submitting back to false after timeout
-        // }, 2000);;
         setTimeout(() => {
-            router.push("/mtss/dashboard") // Set submitting back to false after timeout
-        }, 2000);;
+            switch (account.section) {
+                case 'mtes':
+                    router.push("/firstpage");
+                    break;
+                case 'mtss':
+                    router.push("/mtss/dashboard");
+                    break;
+                case 'mlss':
+                    router.push("/mlss/dashboard");
+                    break;
+                default:
+                    // Redirect to a default page if the section is not specified
+                    router.push("/default-page");
+                    break;
+            }
+        }, 2000);
     }
 }
-
-
 </script>
 
 <style scoped>

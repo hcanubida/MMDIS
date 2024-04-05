@@ -1,3 +1,5 @@
+<!-- logout button -->
+
 <template>
   <div class="h-24 mr-2 top-0 flex fixed w-full justify-end">
     <div class="flex justify-end mr-3 items-center">
@@ -23,8 +25,17 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    redirectToHome() {
+    logout() {
+      // Clear user session (example: remove authentication token and clear local storage)
+      localStorage.removeItem('authToken'); // Assuming you store the authentication token in local storage
+
+      // Redirect to the login page
       router.push('/');
+    },
+    redirectToHome() {
+      if (window.confirm('Are you sure you want to logout?')) {
+        this.logout();
+      }
     }
   }
 }
