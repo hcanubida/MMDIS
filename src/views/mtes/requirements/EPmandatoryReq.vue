@@ -330,23 +330,24 @@
 
 
 <script setup>
-import upload from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/multiple-upload.vue'
+// import upload from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/multiple-upload.vue'
+import upload from '../../../../src/components/MTES/multiple-upload.vue'
 </script>
 
 
 <script>
 export default {
   methods: {
-    fileSelected(){
+    fileSelected() {
       this.$refs.fileInput.click();
     },
-    onFileSelect(event){
+    onFileSelect(event) {
       const files = event.target.files;
-      if(files.length === 0) return;
-      for (let i = 0; i < files.length; i++){
-        if(file[i].type.split("/")[0] != "image")continue;
-        if(!this.images.some((e)=> e.name === files[i].name)){
-          this.images.push({name:files[i].name, url:URL.createObjectURL(files[i])})
+      if (files.length === 0) return;
+      for (let i = 0; i < files.length; i++) {
+        if (file[i].type.split("/")[0] != "image") continue;
+        if (!this.images.some((e) => e.name === files[i].name)) {
+          this.images.push({ name: files[i].name, url: URL.createObjectURL(files[i]) })
         }
       }
       console.log(this.images);

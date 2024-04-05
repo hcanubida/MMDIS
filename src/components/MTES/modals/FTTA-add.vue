@@ -59,8 +59,7 @@
 </script>
 
 <script>
-import { addDetail } from '/Users//PC8/maam hannah git/MMDIS/src/views/mtes/dashboards/FTAA-dashboard.vue';
-
+import { addDetail } from '@/views/mtes/dashboards/FTAA-dashboard.vue';
 
 export default {
   data() {

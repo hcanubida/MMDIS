@@ -36,7 +36,10 @@ import EPtable from "../views/mtes/tables/EP-table.vue"
 //--Mandatory Requirements
 import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
 import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
-
+import ReqISAG from "../views/mtes/requirements/ISAGmandatiryReq.vue"
+import ReqMPP from "../views/mtes/requirements/MPPmandatoryReq.vue"
+import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
+import ReqMINAHAN from "../views/mtes/requirements/MINAHANmandatoryReq.vue"
 
 
 const routes = [
@@ -70,6 +73,10 @@ const routes = [
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
+    { path: "/ReqISAG", component: ReqISAG },
+    { path: "/ReqMPP", component: ReqMPP },
+    { path: "/ReqMPSA", component: ReqMPSA },
+    { path: "/ReqMINAHAN", component: ReqMINAHAN },
 
 
 ];
