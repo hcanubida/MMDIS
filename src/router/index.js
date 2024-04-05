@@ -43,10 +43,10 @@ import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
 
 const routes = [
 
-    { path: "/", component: login },
+    { path: "/", component: home },
 
     //mtss routes
-    { path: "/home", component: home },
+    { path: "/login", component: login },
     { path: "/mtss/dashboard", component: dashboard },
     { path: "/mtss/ostc", component: ostc }, // Use mtss_ostc component here
     { path: "/mtss/inventory", component: inventory },
