@@ -39,7 +39,13 @@
 </template>
 
 <script>
+import { viewDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
+import { viewDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
+import { viewDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+import { viewDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { viewDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
+import { viewDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
+
 import axios from 'axios';
 
 export default { 
@@ -56,7 +62,12 @@ export default {
     },
     methods: {
         Exit() {
-            viewDetail.value = false
+            viewDetail3.value = false,
+            viewDetail4.value = false,
+            viewDetail2.value = false,
+            viewDetail1.value = false,
+            viewDetail.value = false,
+            viewDetail5.value = false
         },
         async fetchDetails() {
             try {

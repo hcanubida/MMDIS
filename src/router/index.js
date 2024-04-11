@@ -29,6 +29,12 @@ import secondpage from "../views/mtes/secondpage.vue"
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
 import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue"
 import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue"
+import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue"
+import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue"
+import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue"
+import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue"
+import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue"
+import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue"
 
 //---tables in dashboards
 import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
@@ -38,7 +44,9 @@ import EPtable from "../views/mtes/tables/EP-table.vue"
 import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
 import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
 import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
-
+import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue"
+import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue"
+import ReqMB from "../views/mtes/requirements/MBmandatory.vue"
 
 
 const routes = [
@@ -66,14 +74,25 @@ const routes = [
     { path: "/signup", component: signup },
     { path: "/secondpage", component: secondpage },
     { path: "/table", component: FTTAtable },
+
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },
     { path: "/ep", component: epdashboard },
     { path: "/mpsa", component: mpsadashboard},
+    { path: "/isag", component: isagdashboard},
+    { path: "/mb", component: mbdashboard},
+    { path: "/mpl", component: mpldashboard},
+    { path: "/mpp", component: mppdashboard},
+    { path: "/otp", component: otpdashboard},
+    { path: "/ssmc", component: ssmcdashboard},
+
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
     { path: "/ReqMPSA", component: ReqMPSA },
+    { path: "/ReqISAG", component: ReqISAG },
+    { path: "/ReqMPP", component: ReqMPP },
+    { path: "/ReqMB", component: ReqMB },
 
 
 ];

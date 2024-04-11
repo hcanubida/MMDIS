@@ -2,6 +2,7 @@
   <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
     <div class="flex justify-center items-center h-screen">
       <taas />
+      <UserBtn style="margin-left: 702px"/>
     </div>
     <div class="conta">
       <div class="button-container">
@@ -16,7 +17,7 @@
 
 <script setup>
 import taas from '../../components/MTES/header.vue'
-
+import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
 <script>
@@ -74,10 +75,10 @@ export default {
   font-size: 25px;
   flex: 1 2 8rem;
   cursor: pointer;
- 
+
 }
 
-.button:hover{
+.button:hover {
   background-color: #e7d1b1;
   transition: 0.3s;
 }

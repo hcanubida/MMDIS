@@ -45,7 +45,7 @@
         </div>
 
         <div class="appdetailsbutton">
-          <button class="butons" @click="navigateToMandatoryReq()">Next</button>
+          <button class="butons" @click="navigateToMandatory">Next</button>
         </div>
       </div>
 
@@ -59,8 +59,12 @@
 </script>
 
 <script>
+import { addDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
+import { addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
+import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-
+import { addDetail5 } from '@/views/mtes/dashboards/MPP-dashboard.vue';
 
 export default {
   data() {
@@ -70,7 +74,12 @@ export default {
       selectedCategory: 'individual',
       otherCategory: '',
       date: this.getCurrentDate(),
-      addDetail: true
+      addDetail3: true,
+      addDetail4: true,
+      addDetail1: true,
+      addDetail2: true,
+      addDetail: true,
+      addDetail5: true
     };
   },
   watch: {
@@ -81,12 +90,13 @@ export default {
     }
   },
   methods: {
-    navigateToMandatoryReq() {
-      // Use router.push to navigate to '/newappcontent'
-      window.location.href = '/ReqFTTA';
-    },
     Exit() {
-      addDetail.value = false
+      addDetail3.value = false,
+        addDetail4.value = false,
+        addDetail2.value = false,
+        addDetail1.value = false,
+        addDetail.value = false,
+        addDetail5.value = false
     },
     getCurrentDate() {
       const today = new Date();
@@ -101,7 +111,28 @@ export default {
       }
       return `${yyyy}-${mm}-${dd}`;
     },
+    navigateToMandatory() {
+      const getRoutePath = () => {
+        if (this.addDetail) {
+          return '/ReqFTTA';
+        } else if (this.addDetail1) {
+          return '/ReqEP';
+        } else if (this.addDetail2) {
+          return '/ReqMPSA';
+        } else if (this.addDetail4) {
+          return '/ReqISAG';
+        } else if (this.addDetail3) {
+          return '/ReqMB';
+        } else if (this.addDetail6) {
+          return '/ReqMPP';
+        } else {
+          return '/'; // Default route path or handle other cases if necessary
+        }
+      };
 
+      const routePath = getRoutePath();
+      window.location.href = routePath;
+    },
 
     formatContactNum() {
       // Remove non-numeric characters
@@ -201,6 +232,10 @@ export default {
   font-size: 23px;
 }
 
+.butons:hover {
+  background-color: #ececec;
+}
+
 .inputall {
   display: flex;
   width: 300px;
@@ -211,6 +246,10 @@ export default {
   padding-left: 4px;
   margin-top: 20px;
   font-weight: 20;
+}
+
+.inputall::placeholder {
+  color: black;
 }
 
 .cate::placeholder {

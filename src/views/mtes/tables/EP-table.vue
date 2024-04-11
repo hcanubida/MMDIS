@@ -31,15 +31,6 @@
               <td class="td">{{ detail.city }}</td>
               <td class="td">{{ detail.province }}</td>
               <td class="td">{{ detail.commodity }}</td>
-              <!-- <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td> -->
               <td class="td">
                 <button class="text-red-500" @click="navigateTomodalView()">
                   View

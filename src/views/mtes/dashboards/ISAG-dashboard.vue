@@ -8,18 +8,18 @@
       </div>
       <!-- Text -->
       <div class="textz">
-        <p class="text1">Mineral Production Sharing Agreement</p>
+        <p class="text1">Industrial Sand and Gravel Permit</p>
         <h2 class="text2">
           SUMMARY
         </h2>
       </div>
   
-      <div v-if="addDetail2">
+      <div v-if="addDetail3">
         <appdet></appdet>
       </div>
   
-      <div v-if="viewDetail2">
-        <viewdetail2 :detail_id2="detail_id2" />
+      <div v-if="viewDetail3">
+        <viewdetail :detail_id3="detail_id3" />
       </div>
   
       <!-- Charts for summary  -->
@@ -37,11 +37,11 @@
   
   <script setup>
   import appdet from "../../../components/MTES/modals/add-details.vue"
-  import viewdetail2 from '../../../components/MTES/modals/view-details.vue'
+  import viewdetail from '../../../components/MTES/modals/view-details.vue'
   import qwe from '../../../components/MTES/header.vue';
   import Pie from '../../../components/MTES/charts/Pie.vue'
   import BarChart from '../../../components/MTES/charts/bar.vue'
-  import Tableview from '../../mtes/tables/MPSA-table.vue'
+  import Tableview from '../../mtes/tables/ISAG-table.vue'
   import UserBtn from '../../../components/user-dbbtn.vue'
   import axios from 'axios';
   
@@ -58,18 +58,18 @@
   <script>
   import { ref } from 'vue';
   
-  const detail_id2 = ref('')
-  const addDetail2 = ref(false)
-  const detailToggle2 = () => {
-    addDetail2.value = true
+  const detail_id3 = ref('')
+  const addDetail3 = ref(false)
+  const detailToggle3 = () => {
+    addDetail3.value = true
   };
   
-  const viewDetail2 = ref(false)
-  const viewToggle2 = () => {
-    viewDetail2.value = true
+  const viewDetail3 = ref(false)
+  const viewToggle3 = () => {
+    viewDetail3.value = true
   };
   
-  export { addDetail2, detailToggle2, viewDetail2, viewToggle2, detail_id2 }
+  export { addDetail3, detailToggle3, viewDetail3, viewToggle3, detail_id3 }
   
   </script>
   

@@ -2,6 +2,7 @@
   <div class="panel">
     <div class="flex justify-center items-center h-screen">
       <taas />
+      <UserBtn style="margin-left: 321px"/>
     </div>
     <div class="new-app-content">
       <h1>New Applications</h1>
@@ -15,22 +16,22 @@
         <button @click="navigateToEPdashboard()" class="button1">
           Exploration Permit
         </button>
-        <button class="button1">
+        <button @click="navigateToMPPdashboard()" class="button1">
           Mineral Processing Permit
         </button>
-        <button class="button1">
+        <button  @click="navigateToISAGdashboard()" class="button1">
           Industrial Sand and Gravel Permit
         </button>
-        <button class="button1">
+        <button  @click="navigateToOTPdashboard()" class="button1">
           Ore Transport Permit
         </button>
-        <button class="button1">
+        <button @click="navigateToMBdashboard()" class="button1">
           Declaration of Minahang Bayan
         </button>
-        <button class="button1">
+        <button @click="navigateToSSMCdashboard()" class="button1">
           Small-Scale Mining Contract
         </button>
-        <button class="button1">
+        <button @click="navigateToMPLdashboard()" class="button1">
           Mineral Processor’s License
         </button>
       </div>
@@ -40,7 +41,7 @@
 
 <script setup>
 import taas from '../../../src/components/MTES/header.vue'
-
+import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
 <script>
@@ -59,7 +60,25 @@ export default {
     },
     navigateToMPSAdashboard(){
       router.push('/mpsa')
-    }
+    },
+    navigateToISAGdashboard(){
+      router.push('/isag')
+    },
+    navigateToMBdashboard(){
+      router.push('/mb')
+    },
+    navigateToMPLdashboard(){
+      router.push('/mpl')
+    },
+    navigateToMPPdashboard(){
+      router.push('/mpp')
+    },
+    navigateToOTPdashboard(){
+      router.push('/otp')
+    },
+    navigateToSSMCdashboard(){
+      router.push('/ssmc')
+    },
   }
 };
 </script>
@@ -99,7 +118,7 @@ export default {
   font-size: 1rem;
   border-radius: 5px;
   border: none;
-  background-color: #eacda3;
+  background-color: #e0b983;
   color: rgb(0, 0, 0);
   cursor: pointer;
   transition: background-color 0.3s;

@@ -4,6 +4,7 @@
     <!-- Header -->
     <div>
       <qwe />
+      <UserBtn/>
     </div>
     <!-- Text -->
     <div class="textz">
@@ -35,12 +36,13 @@
 </template>
 
 <script setup>
-import appdet from "../../../components/MTES/modals/FTTA-add.vue"
-import viewdetail from '../../../components/MTES/modals/FTTA-details.vue'
+import appdet from "../../../components/MTES/modals/add-details.vue"
+import viewdetail from '../../../components/MTES/modals/view-details.vue'
 import qwe from '../../../components/MTES/header.vue';
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
 import Tableview from '../../mtes/tables/FTTA-table.vue'
+import UserBtn from '../../../components/user-dbbtn.vue'
 import axios from 'axios';
 
 import { ref, onMounted } from 'vue'
