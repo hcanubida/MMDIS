@@ -8,7 +8,7 @@
         <button class="button ease-in-out duration-300 " @click="navigateToSecondPage">NEW APPLICATIONS</button>
       </div>
       <div class="button-container">
-        <button class="button">PERMIT</button>
+        <button class="button ease-in-out duration-300 " @click="navigateToSecondPage">PERMIT</button>
       </div>
     </div>
   </div>
@@ -21,11 +21,13 @@ import taas from '../../components/MTES/header.vue'
 
 <script>
 import secondpage from '../mtes/secondpage.vue'
+import permit from '../mtes/permit.vue';
 
 export default {
   methods: {
     navigateToSecondPage() {
       // Use router.push to navigate to '/secondpage'
+      window.location.href = '/secondpage';
       window.location.href = '/secondpage';
     }
   }

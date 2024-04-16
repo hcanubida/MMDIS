@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr>
-          <td class="reqData">
+          <td class="reqData1">
             1. Application Form (MGB Form No. 5-1)
           </td>
 
@@ -515,7 +515,7 @@
                        a. MGB Regional Office No. X <br> &nbsp;
                        b. Province of Misamis Oriental <br> &nbsp;
                        c. City of Cagayan de Oro<br> &nbsp;
-                  5.3  radio announced daily for one (1) week in a Local radio program
+                  5.3  radio announced daily for one (1) week in a Local radio program <br>&nbsp;
               <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
             </td>
 
