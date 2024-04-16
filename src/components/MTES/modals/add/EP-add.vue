@@ -43,8 +43,9 @@
 
           </div>
         </div>
+
         <div class="appdetailsbutton">
-          <button class="butons" @click="navigateToMandatory">Add</button>
+          <button class="butons" @click="navigateToMandatoryReq()">Next</button>
         </div>
       </div>
 
@@ -58,7 +59,7 @@
 </script>
 
 <script>
-import { addDetail1 } from '../../../../views/mtes/dashboards/EP-dasboard.vue';
+import { addDetail } from '/Users//PC8/maam hannah git/MMDIS/src/views/mtes/dashboards/FTAA-dashboard.vue';
 
 
 export default {
@@ -69,7 +70,7 @@ export default {
       selectedCategory: 'individual',
       otherCategory: '',
       date: this.getCurrentDate(),
-      addDetail1: true
+      addDetail: true
     };
   },
   watch: {
@@ -80,8 +81,12 @@ export default {
     }
   },
   methods: {
+    navigateToMandatoryReq() {
+      // Use router.push to navigate to '/newappcontent'
+      window.location.href = '/ReqFTTA';
+    },
     Exit() {
-      addDetail1.value = false
+      addDetail.value = false
     },
     getCurrentDate() {
       const today = new Date();
@@ -196,10 +201,6 @@ export default {
   font-size: 23px;
 }
 
-.butons:hover {
-  background-color: #ececec;
-}
-
 .inputall {
   display: flex;
   width: 300px;
@@ -210,10 +211,6 @@ export default {
   padding-left: 4px;
   margin-top: 20px;
   font-weight: 20;
-}
-
-.inputall::placeholder {
-  color: black;
 }
 
 .cate::placeholder {

@@ -92,13 +92,6 @@ const routes = [
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
-    { path: "/ReqMPSA", component: ReqMPSA },
-    { path: "/ReqISAG", component: ReqISAG },
-    { path: "/ReqMPP", component: ReqMPP },
-    { path: "/ReqMB", component: ReqMB },
-
-    // Fax Sheets
-    { path: "/FaxFTTA", component: FaxFTTA },
 
 
 ];
