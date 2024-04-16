@@ -43,10 +43,9 @@
 
           </div>
         </div>
-<!-- 
         <div class="appdetailsbutton">
           <button class="butons" @click="navigateToMandatory">Add</button>
-        </div> -->
+        </div>
       </div>
 
 
@@ -59,11 +58,8 @@
 </script>
 
 <script>
-import { addDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
-import { addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
-import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
-import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-import { addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
+import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+
 
 export default {
   data() {
@@ -73,11 +69,7 @@ export default {
       selectedCategory: 'individual',
       otherCategory: '',
       date: this.getCurrentDate(),
-      addDetail3: true,
-      addDetail4: true,
-      addDetail2: true,
-      addDetail: true,
-      addDetail5: true
+      addDetail1: true
     };
   },
   watch: {
@@ -89,11 +81,7 @@ export default {
   },
   methods: {
     Exit() {
-      addDetail3.value = false,
-        addDetail4.value = false,
-        addDetail2.value = false,
-        addDetail.value = false,
-        addDetail5.value = false
+      addDetail1.value = false
     },
     getCurrentDate() {
       const today = new Date();
@@ -108,9 +96,7 @@ export default {
       }
       return `${yyyy}-${mm}-${dd}`;
     },
-    navigateToMandatory() {
 
-    },
 
     formatContactNum() {
       // Remove non-numeric characters

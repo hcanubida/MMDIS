@@ -41,9 +41,9 @@
                     </div>
 
                 </div>
-                <div class="appdetailsbutton1">
+                <!-- <div class="appdetailsbutton1">
                     <button class="butons1" @click="navigateToMandatory()">Next</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -98,25 +98,24 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatory() {
-            if (this.addDetail) {
-                this.routePath = '/ReqFTTA';
-            } else if (this.addDetail1) {
-                this.routePath = '/ReqEP';
-            } else if (this.addDetail2) {
-                this.routePath = '/ReqMPSA';
-            } else if (this.addDetail4) {
-                this.routePath = '/ReqISAG';
-            } else if (this.addDetail3) {
-                this.routePath = '/ReqMB';
-            } else if (this.addDetail6) {
-                this.routePath = '/ReqMPP';
-            } else {
-                this.routePath = '/'; // Default route path or handle other cases if necessary
-            }
-            window.location.href = this.routePath;
-        },
-
+        // navigateToMandatory() {
+        //     if (this.addDetail) {
+        //         this.routePath = '/ReqFTTA';
+        //     } else if (this.addDetail1) {
+        //         this.routePath = '/ReqEP';
+        //     } else if (this.addDetail2) {
+        //         this.routePath = '/ReqMPSA';
+        //     } else if (this.addDetail4) {
+        //         this.routePath = '/ReqISAG';
+        //     } else if (this.addDetail3) {
+        //         this.routePath = '/ReqMB';
+        //     } else if (this.addDetail6) {
+        //         this.routePath = '/ReqMPP';
+        //     } else {
+        //         this.routePath = '/'; // Default route path or handle other cases if necessary
+        //     }
+        //     window.location.href = this.routePath;
+        // },
     }
 }
 </script>
