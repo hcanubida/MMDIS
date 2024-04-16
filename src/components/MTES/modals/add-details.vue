@@ -45,7 +45,7 @@
         </div>
 
         <div class="appdetailsbutton">
-          <button class="butons" @click="navigateToMandatory">Next</button>
+          <button class="butons" @click="navigateToMandatory">Add</button>
         </div>
       </div>
 
@@ -64,7 +64,7 @@ import { addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
 import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
 import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-import { addDetail5 } from '@/views/mtes/dashboards/MPP-dashboard.vue';
+import { addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
 
 export default {
   data() {
@@ -112,26 +112,7 @@ export default {
       return `${yyyy}-${mm}-${dd}`;
     },
     navigateToMandatory() {
-      const getRoutePath = () => {
-        if (this.addDetail) {
-          return '/ReqFTTA';
-        } else if (this.addDetail1) {
-          return '/ReqEP';
-        } else if (this.addDetail2) {
-          return '/ReqMPSA';
-        } else if (this.addDetail4) {
-          return '/ReqISAG';
-        } else if (this.addDetail3) {
-          return '/ReqMB';
-        } else if (this.addDetail6) {
-          return '/ReqMPP';
-        } else {
-          return '/'; // Default route path or handle other cases if necessary
-        }
-      };
 
-      const routePath = getRoutePath();
-      window.location.href = routePath;
     },
 
     formatContactNum() {

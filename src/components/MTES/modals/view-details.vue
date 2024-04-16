@@ -15,23 +15,34 @@
                 <div class="appdetails2">
                     <div class="appdetails3">
                         <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id }}</a></p>
-                        <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number }}</a></p>
-                        <p class="detailss">Status: <a :style="{color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400}">{{ details.status }}</a></p>
-                        <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares }}</a></p>
+                        <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number
+                                }}</a></p>
+                        <p class="detailss">Status: <a
+                                :style="{ color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400 }">{{
+                            details.status }}</a></p>
+                        <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares
+                                }}</a></p>
                         <p class="detailss">Barangay: <a style="font-weight: 400;">{{ details.barangay }}</a></p>
-                        <p class="detailss">City: 
-                            <a style="font-weight: 400;">{{ details.city }}</a></p>
+                        <p class="detailss">City:
+                            <a style="font-weight: 400;">{{ details.city }}</a>
+                        </p>
                         <p class="detailss">Commodity: <a style="font-weight: 400;">{{ details.commodity }}</a></p>
                         <p class="detailss">Date Filed: <a style="font-weight: 400;">{{ details.date_filed }}</a></p>
                     </div>
 
                     <div class="appdetails4">
                         <p class="detailss">Category: <a style="font-weight: 400;">{{ details.category }}</a></p>
-                        <p class="detailss">Authorized <br> Representative: <a style="font-weight: 400;">{{ details.authorized_rep }}</a></p>
-                        <p class="detailss">Contact Number: <a style="font-weight: 400;">{{ details.contact_no }}</a></p>
+                        <p class="detailss">Authorized <br> Representative: <a style="font-weight: 400;">{{
+                            details.authorized_rep }}</a></p>
+                        <p class="detailss">Contact Number: <a style="font-weight: 400;">{{ details.contact_no }}</a>
+                        </p>
                         <p class="detailss">Email: <a style="font-weight: 400;">{{ details.email }}</a></p>
                         <p class="detailss">Others: <a style="font-weight: 400;">{{ details.others }}</a></p>
                     </div>
+
+                </div>
+                <div class="appdetailsbutton1">
+                    <button class="butons1" @click="navigateToMandatory()">Next</button>
                 </div>
             </div>
         </div>
@@ -39,22 +50,29 @@
 </template>
 
 <script>
-import { viewDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
-import { viewDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
-import { viewDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
-import { viewDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
-import { viewDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-import { viewDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
+import { viewDetail3, addDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
+import { viewDetail4, addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
+import { viewDetail1, addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+import { viewDetail2, addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
+import { viewDetail, addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
+import { viewDetail5, addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
 
 import axios from 'axios';
 
-export default { 
+export default {
     props: {
         detail_id: String,
     },
     data() {
         return {
             details: [],
+            addDetail3: true,
+            addDetail4: true,
+            addDetail1: true,
+            addDetail2: true,
+            addDetail: true,
+            addDetail5: true,
+            routePath: ''
         };
     },
     mounted() {
@@ -63,11 +81,11 @@ export default {
     methods: {
         Exit() {
             viewDetail3.value = false,
-            viewDetail4.value = false,
-            viewDetail2.value = false,
-            viewDetail1.value = false,
-            viewDetail.value = false,
-            viewDetail5.value = false
+                viewDetail4.value = false,
+                viewDetail2.value = false,
+                viewDetail1.value = false,
+                viewDetail.value = false,
+                viewDetail5.value = false
         },
         async fetchDetails() {
             try {
@@ -80,9 +98,27 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
+        navigateToMandatory() {
+            if (this.addDetail) {
+                this.routePath = '/ReqFTTA';
+            } else if (this.addDetail1) {
+                this.routePath = '/ReqEP';
+            } else if (this.addDetail2) {
+                this.routePath = '/ReqMPSA';
+            } else if (this.addDetail4) {
+                this.routePath = '/ReqISAG';
+            } else if (this.addDetail3) {
+                this.routePath = '/ReqMB';
+            } else if (this.addDetail6) {
+                this.routePath = '/ReqMPP';
+            } else {
+                this.routePath = '/'; // Default route path or handle other cases if necessary
+            }
+            window.location.href = this.routePath;
+        },
+
     }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -101,18 +137,41 @@ export default {
     flex-direction: column;
 }
 
-.detailss{
+.detailss {
     margin-bottom: 10px;
 }
+
 .appdetails {
-  background-color: #ffd498;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  width: auto;
-  /* Set a maximum width */
-  height: auto;
-  /* Let the height adjust based on content */
-  padding: 20px;
+    background-color: #ffd498;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    width: auto;
+    /* Set a maximum width */
+    height: auto;
+    /* Let the height adjust based on content */
+    padding: 20px;
+}
+
+.appdetailsbutton1 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.butons1 {
+    /* border: 1px solid white; */
+    padding: 5px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: #fafafa;
+    color: rgb(92, 92, 92);
+    width: 300px;
+    height: 50px;
+    font-size: 23px;
+}
+
+.butons1:hover {
+    background-color: #ececec;
 }
 </style>

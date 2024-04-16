@@ -48,6 +48,9 @@ import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue"
 import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue"
 import ReqMB from "../views/mtes/requirements/MBmandatory.vue"
 
+//Fax Sheet
+import FaxFTTA from "../views/mtes/faxsheet/fax-ftta.vue";
+
 
 const routes = [
 
@@ -93,6 +96,9 @@ const routes = [
     { path: "/ReqISAG", component: ReqISAG },
     { path: "/ReqMPP", component: ReqMPP },
     { path: "/ReqMB", component: ReqMB },
+
+    // Fax Sheets
+    { path: "/FaxFTTA", component: FaxFTTA },
 
 
 ];
