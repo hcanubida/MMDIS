@@ -20,7 +20,6 @@
       <tbody>
         <tr>
           <td class="reqData1">
-          <td class="reqData1">
             1. Application Form (MGB Form No. 5-1)
           </td>
 
@@ -235,11 +234,8 @@
               4. Secretary’s Certificate attesting to a Board Resolution regarding the authorization of the company’s
               authorized signatory;
             </td>
-
-            <td class="inputimg">
-              <upload />
             <td class="inputimg1">
-              <<upload />
+              <upload />
             </td>
 
             <td style="text-align: left;width: 400px;">
@@ -326,9 +322,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off" class="textarea1"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea rows="3" style="color: black;" wrap="off" class="textarea1"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -341,9 +337,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -358,9 +354,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -374,9 +370,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -393,9 +389,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -408,9 +404,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -426,7 +422,7 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -449,9 +445,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -463,9 +459,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -477,9 +473,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -491,9 +487,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -513,9 +509,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -527,9 +523,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
             </td>
           </tr>
 
@@ -541,9 +537,9 @@
 
             <td style="text-align: left;width: 1000px;">
               <label>Remarks:</label>
-              <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+              <textarea class="textarea1" rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
-              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
+              <textarea class="textarea1"  rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
             </td>
           </tr>
@@ -557,7 +553,26 @@
 
 
 <script setup>
-import upload from '/Users/PC8/maam hannah git/MMDIS/src/components/MTES/multiple-upload.vue'
+import upload from '../../../components/MTES/multiple-upload.vue'
+import headd from '../../../components/MTES/header.vue'
+
+
+function copyRemarksFromTable1ToTable2() {
+    // Get all the rows in Table 1
+    const table1Rows = document.querySelectorAll('.table1 tbody tr');
+    
+    // Loop through each row
+    table1Rows.forEach((row, index) => {
+        // Get the remarks textarea within the current row
+        const table1Remarks = row.querySelector('textarea').value;
+        
+        // Find the corresponding row in Table 2 based on the index
+        const table2Row = document.querySelectorAll('.table2 tbody tr')[index];
+        
+        // Set the remarks in Table 2 to match those from Table 1
+        table2Row.querySelector('textarea').value = table1Remarks;
+    });
+}
 </script>
 
 <script>

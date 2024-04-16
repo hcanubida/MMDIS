@@ -23,7 +23,8 @@ import mpp from "../views/mtss/mpp.vue";
 import firstpage from "../views/mtes/firstpage.vue";
 import login from "../views/mtes/Login.vue"
 import signup from "../views/mtes/Signup.vue"
-import secondpage from "../views/mtes/secondpage.vue"
+import applicationpage from "../views/mtes/secondpage.vue"
+import permitpage from "../views/mtes/permit.vue"
 
 //---Dashboards
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
@@ -75,7 +76,8 @@ const routes = [
     //mtes routes
     { path: "/firstpage", component: firstpage },
     { path: "/signup", component: signup },
-    { path: "/secondpage", component: secondpage },
+    { path: "/applicationpage", component: applicationpage },
+    { path: "/permitpage", component: permitpage },
     { path: "/table", component: FTTAtable },
 
     //-----Dashboards Routes-----
@@ -92,6 +94,10 @@ const routes = [
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },
     { path: "/ReqEP", component: ReqEP },
+    { path: "/ReqMPSA", component: ReqMPSA },
+    { path: "/ReqISAG", component: ReqISAG },
+    { path: "/ReqMPP", component: ReqMPP },
+    { path: "/ReqMB", component: ReqMB },
 
 
 ];

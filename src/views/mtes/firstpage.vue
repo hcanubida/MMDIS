@@ -6,7 +6,7 @@
     </div>
     <div class="conta">
       <div class="button-container">
-        <button class="button ease-in-out duration-300 " @click="navigateToSecondPage">NEW APPLICATIONS</button>
+        <button class="button ease-in-out duration-300 " @click="navigateToFirstPage">NEW APPLICATIONS</button>
       </div>
       <div class="button-container">
         <button class="button ease-in-out duration-300 " @click="navigateToSecondPage">PERMIT</button>
@@ -21,16 +21,17 @@ import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
 <script>
-import secondpage from '../mtes/secondpage.vue'
-import permit from '../mtes/permit.vue';
 
 export default {
   methods: {
+    navigateToFirstPage() {
+      // Use router.push to navigate to '/applicationpage'
+      window.location.href = '/applicationpage';
+    },
     navigateToSecondPage() {
-      // Use router.push to navigate to '/secondpage'
-      window.location.href = '/secondpage';
-      window.location.href = '/secondpage';
-    }
+      // Use router.push to navigate to '/permitpage'
+      window.location.href = '/permitpage';
+    },
   }
 };
 </script>

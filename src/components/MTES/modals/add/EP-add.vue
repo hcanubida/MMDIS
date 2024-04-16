@@ -59,7 +59,7 @@
 </script>
 
 <script>
-import { addDetail } from '/Users//PC8/maam hannah git/MMDIS/src/views/mtes/dashboards/FTAA-dashboard.vue';
+import { addDetail1 } from '../../../../views/mtes/dashboards/EP-dasboard.vue';
 
 
 export default {
@@ -70,7 +70,7 @@ export default {
       selectedCategory: 'individual',
       otherCategory: '',
       date: this.getCurrentDate(),
-      addDetail: true
+      addDetail1: true
     };
   },
   watch: {
@@ -86,7 +86,7 @@ export default {
       window.location.href = '/ReqFTTA';
     },
     Exit() {
-      addDetail.value = false
+      addDetail1.value = false
     },
     getCurrentDate() {
       const today = new Date();

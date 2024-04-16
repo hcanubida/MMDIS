@@ -4,7 +4,7 @@
       <!-- Header -->
       <div>
         <qwe />
-        <UserBtn/>
+        <userbutton />
       </div>
       <!-- Text -->
       <div class="textz">
@@ -43,7 +43,7 @@
   import Pie from '../../../components/MTES/charts/Pie.vue'
   import BarChart from '../../../components/MTES/charts/bar.vue'
   import Tableview from '../../mtes/tables/SSMC-table.vue'
-  import UserBtn from '../../../components/user-dbbtn.vue'
+  import userbutton from '../../../components/user-dbbtn.vue'
   import axios from 'axios';
   
   import { ref, onMounted } from 'vue'
