@@ -46,16 +46,16 @@
   <script>
   import axios from 'axios';
   import { ref } from 'vue';
-  import { addDetail1, detailToggle1, viewDetail1, detail_id1 } from '../../mtes/dashboards/EP-dasboard.vue';
+  import { addDetail6, detailToggle6, viewDetail6, detail_id6 } from '../../mtes/dashboards/OTP-dashboard.vue';
   
   export default {
     name: 'typeofapp',
     data() {
       return {
         details: [],
-        addDetail1: false,
-        viewDetail1:false,
-        detail_id1: null
+        addDetail6: false,
+        viewDetail6:false,
+        detail_id6: null
       };
     },
     mounted() {
@@ -71,11 +71,11 @@
         }
       },
       navigateTomodal() {
-        addDetail1.value = true// Define your navigation logic here
+        addDetail6.value = true// Define your navigation logic here
       },
       navigateTomodalView(id) {
-        detail_id1.value = id
-        viewDetail1.value = true// Define your navigation logic here
+        detail_id6.value = id
+        viewDetail6.value = true// Define your navigation logic here
       },
     }
   };

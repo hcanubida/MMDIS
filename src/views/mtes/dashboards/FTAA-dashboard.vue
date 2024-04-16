@@ -36,8 +36,8 @@
 </template>
 
 <script setup>
-import appdet from "../../../components/MTES/modals/add-details.vue"
-import viewdetail from '../../../components/MTES/modals/view-details.vue'
+import appdet from "../../../components/MTES/modals/add/FTAA-add.vue"
+import viewdetail from '../../../components/MTES/modals/view/FTAA-details.vue'
 import qwe from '../../../components/MTES/header.vue';
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'

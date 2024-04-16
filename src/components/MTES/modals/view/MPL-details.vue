@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqEP()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqMPL()">Next</button>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { viewDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+import { viewDetail8 } from '../../../../views/mtes/dashboards/MPL-dashboard.vue';
 import axios from 'axios';
 
 export default { 
@@ -59,7 +59,7 @@ export default {
     },
     methods: {
         Exit() {
-            viewDetail1.value = false
+            viewDetail8.value = false
         },
         async fetchDetails() {
             try {
@@ -72,9 +72,9 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqEP() {
+        navigateToMandatoryReqMPL() {
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqEP';
+        window.location.href = '/ReqMPL';
       },
     }
 }

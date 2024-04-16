@@ -63,6 +63,7 @@ import { addDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
 import { addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
 import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
+import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
 import { addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
 
 export default {
@@ -76,6 +77,7 @@ export default {
       addDetail3: true,
       addDetail4: true,
       addDetail2: true,
+      addDetail1: true,
       addDetail: true,
       addDetail5: true
     };
@@ -93,6 +95,7 @@ export default {
         addDetail4.value = false,
         addDetail2.value = false,
         addDetail.value = false,
+        addDetail1.value = false,
         addDetail5.value = false
     },
     getCurrentDate() {
