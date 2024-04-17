@@ -33,6 +33,12 @@
         <button class="button1">
           Mineral Processor’s License
         </button>
+        <button class="button1">
+          Accreditation as Mineral Trader, Retailer, and Dealer
+        </button>
+        <button class="button1">
+          Mineral Ore Export Permit
+        </button>
       </div>
     </div>
   </div>

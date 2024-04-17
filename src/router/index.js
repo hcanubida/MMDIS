@@ -24,6 +24,7 @@ import firstpage from "../views/mtes/firstpage.vue";
 import loginmtes from "../views/mtes/Login.vue"
 import signup from "../views/mtes/Signup.vue"
 import secondpage from "../views/mtes/secondpage.vue"
+import permit from "@/views/mtes/permit.vue";
 
 //---Dashboards
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
@@ -34,12 +35,19 @@ import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
 import EPtable from "../views/mtes/tables/EP-table.vue"
 
 //--Mandatory Requirements
-import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
-import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
-import ReqISAG from "../views/mtes/requirements/ISAGmandatiryReq.vue"
-import ReqMPP from "../views/mtes/requirements/MPPmandatoryReq.vue"
-import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
-import ReqMINAHAN from "../views/mtes/requirements/MINAHANmandatoryReq.vue"
+import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue";
+
+
+import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue";
+import ReqISAG from "../views/mtes/requirements/ISAGmandatiryReq.vue";
+import ReqMPP from "../views/mtes/requirements/MPPmandatoryReq.vue";
+import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue";
+import ReqMINAHAN from "../views/mtes/requirements/MINAHANmandatoryReq.vue";
+import ReqAMTRD from "@/views/mtes/requirements/AMTRDmandatoryReq.vue";
+import ReqOTP from "@/views/mtes/requirements/OTPmandatoryReq.vue";
+import ReqMPL from "@/views/mtes/requirements/MPLmandatoryReq.vue";
+import ReqSSMC from "@/views/mtes/requirements/SSMCmandatoryReq.vue";
+import ReqMOEP from "@/views/mtes/requirements/MOEPmandatoryReq.vue";
 
 
 const routes = [
@@ -58,6 +66,7 @@ const routes = [
     { path: "/mtss/isag", component: isag },
     { path: "/mtss/ep", component: ep },
     { path: "/mtss/mpp", component: mpp },
+    
 
     //mtes routes
     { path: "/loginmtes", component: loginmtes },
@@ -65,6 +74,7 @@ const routes = [
     { path: "/signup", component: signup },
     { path: "/secondpage", component: secondpage },
     { path: "/table", component: FTTAtable },
+    { path: "/permit", component: permit },
 
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },
@@ -77,6 +87,17 @@ const routes = [
     { path: "/ReqMPP", component: ReqMPP },
     { path: "/ReqMPSA", component: ReqMPSA },
     { path: "/ReqMINAHAN", component: ReqMINAHAN },
+    { path: "/ReqAMTRD", component: ReqAMTRD },
+    { path: "/ReqOTP", component: ReqOTP},
+    { path: "/ReqMPL", component: ReqMPL},
+    { path: "/ReqSSMC", component: ReqSSMC},
+    { path: "/ReqMOEP", component: ReqMOEP},
+    
+    
+    
+    
+    
+
 
 
 ];
