@@ -50,7 +50,14 @@ import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue"
 import ReqMB from "../views/mtes/requirements/MBmandatory.vue"
 
 //Fax Sheet
-import FaxFTTA from "../views/mtes/faxsheet/fax-ftta.vue";
+import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
+import FaxEP from "../views/mtes/faxsheet/ep-factsheet.vue";
+import FaxISAG from "../views/mtes/faxsheet/isag-factsheet.vue";
+import FaxMB from "../views/mtes/faxsheet/mb-factsheet.vue";
+import FaxMPP from "../views/mtes/faxsheet/mpp-factsheet.vue";
+import FaxMPSA from "../views/mtes/faxsheet/mpsa-factsheet.vue";
+import FaxOTP from "../views/mtes/faxsheet/otp-factsheet.vue";
+import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
 
 
 const routes = [
@@ -79,6 +86,16 @@ const routes = [
     { path: "/applicationpage", component: applicationpage },
     { path: "/permitpage", component: permitpage },
     { path: "/table", component: FTTAtable },
+
+    //Fax sheets
+    { path: "/FTTAFax", component: FaxFTTA },
+    { path: "/EpFax", component: FaxEP },
+    { path: "/ISAGFax", component: FaxISAG },
+    { path: "/MBFax", component: FaxMB },
+    { path: "/MPPFax", component: FaxMPP },
+    { path: "/MPSAFax", component: FaxMPSA },
+    { path: "/OTPFax", component: FaxOTP },
+    { path: "/SSMCFax", component: FaxSSMC },
 
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },

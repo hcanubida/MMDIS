@@ -45,7 +45,7 @@
         </div>
 
         <div class="appdetailsbutton">
-          <button class="butons" @click="navigateToMandatoryReq()">Next</button>
+          <button class="butons" @click="navigateToMandatoryReq()">Add</button>
         </div>
       </div>
 
