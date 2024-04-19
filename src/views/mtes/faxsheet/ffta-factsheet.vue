@@ -4,11 +4,11 @@
             <button @click="downloadPDF">Download as PDF</button>
         </div>
     </div>
-    <div class="a4container" id="pdf-content">
-        <div ref="content" class="a4content">
-            <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo">
+    <div class="foliocontainer" id="pdf-content">
+        <div ref="content" class="foliocontent">
+            <img src="../../../assets/MTES/body.jpg" alt="folio-sized photo" class="foliophoto">
             <p
-                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 190px;">
+                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 210px;">
                 FACT SHEET / EVALUATION SHEET</p>
             <p
                 style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 250px;right: 160px;">
@@ -18,21 +18,21 @@
                     <tbody class="fbody">
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 NAME OF APPLICANT:</td>
                             <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">Jhon
                                 Doe D. Doe</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 APPLICATION NUMBER:</td>
                             <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
                                 0001-2024</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 LOCATION:</td>
                             <td
                                 style="width: auto; letter-spacing: 2px;font-size: 12px;font-weight: 600; text-align: center;padding-left: 15px;padding-right: 15px;">
@@ -40,28 +40,28 @@
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 COMMODITY:</td>
                             <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">N/A
                             </td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 AREA (HECTARES):</td>
                             <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">3.119
                             </td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700; ">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700; ">
                                 DATE FILED:</td>
                             <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">Jhon
                                 Doe D. Doe</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 OTHERS:</td>
                             <td
                                 style="padding-left: 15px;padding-right: 15px;width: 400px; letter-spacing: 3px;font-size: 12px;font-weight: 600;text-align: center;">
@@ -70,9 +70,6 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <!-- other table -->
-
                 <p
                     style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 50px;right: 160px;">
                     II.&nbsp;&nbsp;&nbsp;APPLICANT'S DETAILS</p>
@@ -80,35 +77,35 @@
                     <tbody class="fbody">
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 CATEGORY:</td>
                             <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
                                 COORPERATE</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 AUTHORIZED REPRESENTATIVE:</td>
                             <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">john
                                 doe D. doe</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 CONTACT NUMBER:</td>
                             <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
                                 09094251053</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 EMAIL ADDRESS:</td>
                             <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
                                 admin@admin.admin</td>
                         </tr>
                         <tr>
                             <td
-                                style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
                                 OTHERS:</td>
                             <td
                                 style="padding-left: 15px;padding-right: 15px;width: 350px; letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
@@ -117,45 +114,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <!-- Other Page -->
-
-            <div ref="content" class="a4content">
-                <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page2">
-                <p
-                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 350px;right: 160px;">
-                    III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS</p>
-                <div class="tbl-faxsheet">
-                    <table class="tbl-faxsheet">
-                        <thead class="thead-faxsheet">
-                            <tr style="text-align: center;">
-                                <th class="th-fax">Requirements</th>
-                                <th class="th-fax">Upload</th>
-                                <th class="th-fax">Remarks / Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="width: 500px;font-size: 13px;">
-                                    1. Application Form (MGB Form No. 5-1)</td>
-                                <td style="width: 300px;text-align: left; font-size: 13px;">
-                                    *Upload Requirements</td>
-                                <td class="td-faxsheet">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </div>
@@ -167,15 +125,15 @@ import jsPDF from 'jspdf';
 export default {
     methods: {
         downloadPDF() {
-            // Initialize jsPDF with A4 size
-            const pdf = new jsPDF('p', 'mm', 'a4');
+            // Initialize jsPDF with folio size in inches
+            const pdf = new jsPDF('p', 'mm', [215.9, 330.2]); // Custom dimensions [width, height] in inches
 
             // Get the HTML content
             const content = document.getElementById('pdf-content');
 
             // Add HTML content to PDF
             pdf.html(content, {
-                // Set width and height of PDF to A4 size
+                // Set width and height of PDF to match the folio size
                 html2canvas: { scale: 0.26 }, // Adjust scale as needed to fit content
                 x: 0,
                 y: 0,
@@ -196,21 +154,21 @@ export default {
     height: 100%;
 }
 
-.a4container {
+.foliocontainer {
     position: relative;
-    width: 8.41in;
-    height: 11.75in;
+    width: 8.5in;
+    height: 13in;
     margin: 0 auto;
     margin-top: 10px;
 }
 
-.a4content {
+.foliocontent {
     /* Adjust this height based on your content */
-    height: 11.6in;
+    height: 13in;
     /* A4 height minus padding and border */
 }
 
-.a4photo {
+.foliophoto {
     position: absolute;
     top: 0;
     left: 0;
@@ -220,7 +178,7 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.a4photo-page2 {
+.foliophoto-page2 {
     position: absolute;
     bottom: -1100px;
     left: 0;
@@ -240,21 +198,25 @@ export default {
 .fbody td {
     padding: 4px;
     padding-bottom: 10px;
-    border: 1px solid rgb(114, 114, 114);
+    border: 1px solid rgb(37, 37, 37);
     width: auto;
 }
+
 .tbl-faxsheet {
     margin-top: 360px;
     text-align: center;
 }
+
 .thead-faxsheet {
     font-size: 15px;
 }
+
 .tbl-faxsheet {
     width: 95%;
     margin-left: 20px;
     text-align: left;
 }
+
 .th-fax,
 td {
     border: 1px solid rgb(114, 114, 114);
@@ -263,7 +225,7 @@ td {
     text-align: center;
 }
 
-.td-faxsheet{
+.td-faxsheet {
     text-align: left;
     font-size: 13px;
     font-weight: 400;

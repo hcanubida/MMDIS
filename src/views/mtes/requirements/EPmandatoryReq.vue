@@ -436,7 +436,6 @@
       <table class="table2">
         <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">Other Requirements</h2>
       <tbody>
-
           <tr>
             <td>
               1. Certificate Environmental Management and Community Relations Record (CEMCRR) or Certificate of Exemption from the CEMCRR; <br> &nbsp;
