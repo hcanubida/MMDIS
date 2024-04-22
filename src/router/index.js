@@ -48,6 +48,11 @@ import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
 import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue"
 import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue"
 import ReqMB from "../views/mtes/requirements/MBmandatory.vue"
+import ReqAMTRD from "../views/mtes/requirements/AMTRDmandatoryReq.vue";
+import ReqOTP from "../views/mtes/requirements/OTPmandatoryReq.vue";
+import ReqMPL from "../views/mtes/requirements/MPLmandatoryReq.vue";
+import ReqSSMC from "../views/mtes/requirements/SSMCmandatoryReq.vue";
+import ReqMOEP from "@/views/mtes/requirements/MOEPmandatoryReq.vue";
 
 //Fax Sheet
 import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
@@ -115,6 +120,11 @@ const routes = [
     { path: "/ReqISAG", component: ReqISAG },
     { path: "/ReqMPP", component: ReqMPP },
     { path: "/ReqMB", component: ReqMB },
+    { path: "/ReqAMTRD", component: ReqAMTRD },
+    { path: "/ReqOTP", component: ReqOTP },
+    { path: "/ReqMPL", component: ReqMPL },
+    { path: "/ReqSSMC", component: ReqSSMC },
+    { path: "/ReqMOEP", component: ReqMOEP },
 
 
 ];
