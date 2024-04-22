@@ -153,6 +153,67 @@
                                     <span style="color: red;"> Lacking Submission </span>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="fax-details2">
+                                    2. Corporate Secretary Certificate attesting to the authority of the person who is
+                                    filing the renewal of Application</td>
+                                <td class="fax-upload2">
+                                    *Upload Requirements</td>
+                                <td class="fax-status2">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details2">
+                                    3. National Commission on Indigenous Peoples Certification Precondition</td>
+                                <td class="fax-upload2">
+                                    *Upload Requirements</td>
+                                <td class="fax-status2">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details2">
+                                    4. Certification of the Regional Office to the compliance with the terms and
+                                    conditions of the MPSA, particularly with regard to: <br>
+                                    &nbsp;&nbsp;a. Three-year Devt’Utilization WP <br>
+                                    &nbsp;&nbsp;b. Survey Plan <br>
+                                    &nbsp;&nbsp;c. ECC <br>
+                                    &nbsp;&nbsp;d. EPEP <br>
+                                    &nbsp;&nbsp;e. SDMP <br>
+                                    &nbsp;&nbsp;f. Implementation of the 3YR WP, EPEP and SDMP <br>
+                                    &nbsp;&nbsp;g. Submission of Reports <br>
+                                    &nbsp;&nbsp;h. Payment of Fees and Taxes</td>
+                                <td class="fax-upload2">
+                                    *Upload Requirements</td>
+                                <td class="fax-status2">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -243,13 +304,16 @@ export default {
     border: 1px solid rgb(114, 114, 114);
     width: auto;
 }
+
 .tbl-faxsheet {
     margin-top: 360px;
     text-align: center;
 }
+
 .thead-faxsheet {
     font-size: 15px;
 }
+
 .tbl-faxsheet {
     width: 95%;
     margin-left: 20px;
@@ -264,16 +328,19 @@ export default {
     width: 430px;
     letter-spacing: 2px;
 }
+
 .fax-upload2 {
     text-align: left;
     font-size: 10px;
 }
+
 .fax-status2 {
     text-align: left;
     font-size: 13px;
     width: 190px;
     padding-right: 0;
 }
+
 .th-fax,
 td {
     border: 1px solid rgb(114, 114, 114);
@@ -281,9 +348,11 @@ td {
     padding-bottom: 10px;
     text-align: center;
 }
+
 .th-fax2 {
     width: 110px;
 }
+
 .th-fax2,
 td {
     border: 1px solid rgb(114, 114, 114);
@@ -291,7 +360,7 @@ td {
     padding-bottom: 10px;
 }
 
-.td-faxsheet{
+.td-faxsheet {
     text-align: left;
     font-size: 13px;
     font-weight: 400;

@@ -70,6 +70,7 @@
 
 #header {
   background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);
+  z-index: 999;
 }
 
 #logo {
