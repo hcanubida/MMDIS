@@ -217,6 +217,153 @@
                         </tbody>
                     </table>
                 </div>
+                <div ref="content" class="a4content">
+                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page3">
+                    <p
+                        style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 350px;right: 120px;">
+                        IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
+                    <div class="tbl-faxsheet">
+                        <table class="tbl-faxsheet1">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align: center;">
+                                    <th class="th-fax2">Requirements</th>
+                                    <th class="th-fax2">Upload</th>
+                                    <th class="th-fax2">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fax-details2">
+                                        1. Letter of Intent with Justification of Renewal</td>
+                                    <td class="fax-upload2">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        2. Corporate Secretary Certificate attesting to the authority of the person who
+                                        is
+                                        filing the renewal of Application</td>
+                                    <td class="fax-upload2">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        3. National Commission on Indigenous Peoples Certification Precondition</td>
+                                    <td class="fax-upload2">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        4. Certification of the Regional Office to the compliance with the terms and
+                                        conditions of the MPSA, particularly with regard to: <br>
+                                        &nbsp;&nbsp;a. Three-year Devt’Utilization WP <br>
+                                        &nbsp;&nbsp;b. Survey Plan <br>
+                                        &nbsp;&nbsp;c. ECC <br>
+                                        &nbsp;&nbsp;d. EPEP <br>
+                                        &nbsp;&nbsp;e. SDMP <br>
+                                        &nbsp;&nbsp;f. Implementation of the 3YR WP, EPEP and SDMP <br>
+                                        &nbsp;&nbsp;g. Submission of Reports <br>
+                                        &nbsp;&nbsp;h. Payment of Fees and Taxes</td>
+                                    <td class="fax-upload2">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div ref="content" class="a4content">
+                        <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page4">
+                        <p
+                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 320px;right: 180px;">
+                            V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
+                        <table class="tbl-faxsheet2">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align:center;">
+                                    <th class="th-fax2">Requirements</th>
+                                    <th class="th-fax2">Upload</th>
+                                    <th class="th-fax2">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                        Status: </td>
+                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                        *Upload Requirements</td>
+                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                        Based on the Status of MTSR (dropdown)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p
+                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 40px;right: 115px;">
+                            VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
+                        <table class="tbl-faxsheet3">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align:center;">
+                                    <th class="th-fax2">Requirements</th>
+                                    <th class="th-fax2">Upload</th>
+                                    <th class="th-fax2">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                        Status: </td>
+                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                        *Upload Requirements</td>
+                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                        Based on the Status of MTSR (dropdown)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -291,11 +438,32 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.a4photo-page3 {
+    position: absolute;
+    bottom: -2250px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.a4photo-page4 {
+    position: absolute;
+    bottom: -3390px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .ftable {
     display: flex;
     justify-content: center;
     margin-top: 280px;
 }
+
 
 
 .fbody td {
@@ -305,9 +473,20 @@ export default {
     width: auto;
 }
 
-.tbl-faxsheet {
+.tbl-faxsheet1 {
     margin-top: 360px;
     text-align: center;
+}
+
+.tbl-faxsheet2 {
+    margin-top: 340px;
+    text-align: center;
+    margin-left: 40px
+}
+.tbl-faxsheet3 {
+    margin-top: 70px;
+    text-align: center;
+    margin-left: 40px
 }
 
 .thead-faxsheet {

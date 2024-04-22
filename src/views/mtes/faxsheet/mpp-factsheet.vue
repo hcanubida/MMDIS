@@ -126,22 +126,210 @@
                 <p
                     style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 350px;right: 160px;">
                     III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS</p>
-                <div class="tbl-faxsheet">
-                    <table class="tbl-faxsheet">
+                <table class="tbl-faxsheet">
+                    <thead class="thead-faxsheet">
+                        <tr style="text-align: center;">
+                            <th class="th-fax2">Requirements</th>
+                            <th class="th-fax2">Upload</th>
+                            <th class="th-fax2">Remarks / Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fax-details2">
+                                1. Application Form (MGB Form No. 11-2)</td>
+                            <td class="fax-upload2">
+                                *Upload Requirements</td>
+                            <td class="fax-status2">
+                                Remarks/Status:&nbsp;
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consect
+                                <br>
+                                <br>
+                                Recommendation or Lacking Submission:
+                                <br>
+                                <span style="color: red;"> Lacking Submission </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fax-details2">
+                                2. Duly certified Articles of Incorporation/ Partnership/ Association, By-Laws, and
+                                Certificate of Registration issued by the SEC or authorized Government agency
+                                concerned;</td>
+                            <td class="fax-upload2">
+                                *Upload Requirements</td>
+                            <td class="fax-status2">
+                                Remarks/Status:&nbsp;
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consect
+                                <br>
+                                <br>
+                                Recommendation or Lacking Submission:
+                                <br>
+                                <span style="color: red;"> Lacking Submission </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fax-details2">
+                                3. Location map/sketch plan of the area of the proposed processing plant using
+                                NAMRIA (topographic map) in a scale of 1:50,000</td>
+                            <td class="fax-upload2">
+                                *Upload Requirements</td>
+                            <td class="fax-status2">
+                                Remarks/Status:&nbsp;
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consect
+                                <br>
+                                <br>
+                                Recommendation or Lacking Submission:
+                                <br>
+                                <span style="color: red;"> Lacking Submission </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fax-details2">
+                                4. <u>Feasibility Study</u> including work programs, plant site, mill and plant
+                                lay-out/design, details of technology to be employed in the proposed operation,
+                                anti-pollution devices/ measures as well as the plant capacity of <br>
+                                <u> Project Description</u> with detailed financial statement for its operations
+                                incorporating the social and environmental expenditures, taxes and fees paid. (MGB
+                                Form No. 5-3A);
+                            </td>
+                            <td class="fax-upload2">
+                                *Upload Requirements</td>
+                            <td class="fax-status2">
+                                Remarks/Status:&nbsp;
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consect
+                                <br>
+                                <br>
+                                Recommendation or Lacking Submission:
+                                <br>
+                                <span style="color: red;"> Lacking Submission </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fax-details2">
+                                5. An application (MGB Form No. 16-04) for or a Certificate of Environmental
+                                Management and Community Relations Record (CEMCRR)</td>
+                            <td class="fax-upload2">
+                                *Upload Requirements</td>
+                            <td class="fax-status2">
+                                Remarks/Status:&nbsp;
+                                <br>
+                                <br>
+                                Lorem ipsum dolor sit amet consect
+                                <br>
+                                <br>
+                                Recommendation or Lacking Submission:
+                                <br>
+                                <span style="color: red;"> Lacking Submission </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ref="content" class="a4content">
+                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page3">
+                    <p
+                        style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 280px;right: 120px;">
+                        IV.&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
+                    <table class="tbl-faxsheet1">
                         <thead class="thead-faxsheet">
                             <tr style="text-align: center;">
-                                <th class="th-fax">Requirements</th>
-                                <th class="th-fax">Upload</th>
-                                <th class="th-fax">Remarks / Status</th>
+                                <th class="th-fax2">Requirements</th>
+                                <th class="th-fax2">Upload</th>
+                                <th class="th-fax2">Remarks / Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="width: 500px;font-size: 13px;">
-                                    1. Application Form (MGB Form No. 5-1)</td>
-                                <td style="width: 300px;text-align: left; font-size: 13px;">
+                                <td class="fax-details3">
+                                    1. Application Form (MGB Form No. 11-2)</td>
+                                <td class="fax-upload3">
                                     *Upload Requirements</td>
-                                <td class="td-faxsheet">
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    2. Duly certified Articles of Incorporation/ Partnership/ Association, By-Laws, and
+                                    Certificate of Registration issued by the SEC or authorized Government agency
+                                    concerned;</td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    3. Location map/sketch plan of the area of the proposed processing plant using
+                                    NAMRIA (topographic map) in a scale of 1:50,000</td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    4. <u>Feasibility Study</u> including work programs, plant site, mill and plant
+                                    lay-out/design, details of technology to be employed in the proposed operation,
+                                    anti-pollution devices/ measures as well as the plant capacity of <br>
+                                    <u> Project Description</u> with detailed financial statement for its operations
+                                    incorporating the social and environmental expenditures, taxes and fees paid. (MGB
+                                    Form No. 5-3A);
+                                </td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    5. An application (MGB Form No. 16-04) for or a Certificate of Environmental
+                                    Management and Community Relations Record (CEMCRR)</td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
                                     Remarks/Status:&nbsp;
                                     <br>
                                     <br>
@@ -155,6 +343,55 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div ref="content" class="a4content">
+                        <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page4">
+                        <p
+                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 310px;right: 180px;">
+                            V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
+                        <table class="tbl-faxsheet2">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align:center;">
+                                    <th class="th-fax2">Requirements</th>
+                                    <th class="th-fax2">Upload</th>
+                                    <th class="th-fax2">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                        Status: </td>
+                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                        *Upload Requirements</td>
+                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                        Based on the Status of MTSR (dropdown)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p
+                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 40px;right: 115px;">
+                            VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
+                        <table class="tbl-faxsheet3">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align:center;">
+                                    <th class="th-fax2">Requirements</th>
+                                    <th class="th-fax2">Upload</th>
+                                    <th class="th-fax2">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                        Status: </td>
+                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                        *Upload Requirements</td>
+                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                        Based on the Status of MTSR (dropdown)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -230,6 +467,26 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.a4photo-page3 {
+    position: absolute;
+    bottom: -2240px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.a4photo-page4 {
+    position: absolute;
+    bottom: -3370px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .ftable {
     display: flex;
     justify-content: center;
@@ -243,18 +500,83 @@ export default {
     border: 1px solid rgb(114, 114, 114);
     width: auto;
 }
+
+.fax-details2 {
+    text-align: left;
+    text-align: justify;
+    font-size: 13px;
+    font-weight: 400;
+    width: 200px;
+    letter-spacing: 2px;
+}
+
+.fax-details3 {
+    text-align: left;
+    text-align: justify;
+    font-size: 13px;
+    font-weight: 400;
+    width: 330px;
+    letter-spacing: 2px;
+}
+
+.fax-upload2 {
+    text-align: left;
+    font-size: 10px;
+}
+
+.fax-upload3 {
+    text-align: left;
+    font-size: 10px;
+    width: 140px;
+}
+
+.fax-status2 {
+    text-align: left;
+    font-size: 13px;
+    width: 190px;
+    padding-right: 0;
+}
+
+.fax-status3 {
+    text-align: left;
+    font-size: 13px;
+    width: 270px;
+    padding-right: 0;
+}
+
 .tbl-faxsheet {
     margin-top: 360px;
     text-align: center;
 }
+
+.tbl-faxsheet1 {
+    margin-top: 285px;
+    text-align: center;
+    margin-left: 30px
+}
+
+.tbl-faxsheet2 {
+    margin-top: 340px;
+    text-align: center;
+    margin-left: 30px
+}
+
+.tbl-faxsheet3 {
+    margin-top: 80px;
+    text-align: center;
+    margin-left: 30px
+}
+
 .thead-faxsheet {
     font-size: 15px;
 }
+
 .tbl-faxsheet {
     width: 95%;
     margin-left: 20px;
     text-align: left;
 }
+
 .th-fax,
 td {
     border: 1px solid rgb(114, 114, 114);
@@ -263,7 +585,18 @@ td {
     text-align: center;
 }
 
-.td-faxsheet{
+.th-fax2 {
+    width: 110px;
+}
+
+.th-fax2,
+td {
+    border: 1px solid rgb(114, 114, 114);
+    padding: 4px;
+    padding-bottom: 10px;
+}
+
+.td-faxsheet {
     text-align: left;
     font-size: 13px;
     font-weight: 400;

@@ -325,7 +325,8 @@
                     </tr>
                     <tr>
                         <td class="reqData4">
-                            5. Proof of Consultation with and Prior Approval by the Sangguniang Panlalawigan, Sangguniang Bayan/Panlungsod, and Sangguniang Barangay concerned
+                            5. Proof of Consultation with and Prior Approval by the Sangguniang Panlalawigan,
+                            Sangguniang Bayan/Panlungsod, and Sangguniang Barangay concerned
                         </td>
 
                         <td class="inputimg4">
@@ -360,7 +361,8 @@
         </div>
 
         <!-- Other Requirements -->
-        <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">OTHER MANDATORY REQUIREMENTS</h2>
+        <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">OTHER MANDATORY REQUIREMENTS
+        </h2>
         <div class="requirements4">
             <table class="table4">
                 <thead class="titlehead4">
@@ -373,7 +375,8 @@
                 <tbody>
                     <tr>
                         <td class="reqData4">
-                            1. Secretary’s Certificate attesting to a Board Resolution regarding the authorization of the company’s authorized signatory (for juridical entity only)
+                            1. Secretary’s Certificate attesting to a Board Resolution regarding the authorization of
+                            the company’s authorized signatory (for juridical entity only)
                         </td>
 
                         <td class="inputimg4">
@@ -406,7 +409,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <!-- Table 2 -->
         <table class="table4">
             <caption class="caption4">Summary of Lacking Requirements</caption>
@@ -427,12 +430,40 @@
                 </tr>
             </tbody>
         </table>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+            <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
+            <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;"
+                v-if="!openFax">
+            <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;"
+                v-if="openFax">
+        </div>
+        <div v-if="openFax">
+            <downloadd />
+        </div>
     </div>
 </template>
 
 <script setup>
 import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
+import downloadd from '../faxsheet/isag-factsheet.vue'
+</script>
+<script>
+export default {
+    data() {
+        return {
+            openFax: false
+        };
+    },
+    methods: {
+        dude() {
+            this.openFax = true;
+        },
+        close() {
+            this.openFax = false;
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>
