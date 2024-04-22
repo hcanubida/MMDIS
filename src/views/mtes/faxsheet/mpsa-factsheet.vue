@@ -130,18 +130,18 @@
                     <table class="tbl-faxsheet">
                         <thead class="thead-faxsheet">
                             <tr style="text-align: center;">
-                                <th class="th-fax">Requirements</th>
-                                <th class="th-fax">Upload</th>
-                                <th class="th-fax">Remarks / Status</th>
+                                <th class="th-fax2">Requirements</th>
+                                <th class="th-fax2">Upload</th>
+                                <th class="th-fax2">Remarks / Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="width: 500px;font-size: 13px;">
-                                    1. Application Form (MGB Form No. 5-1)</td>
-                                <td style="width: 300px;text-align: left; font-size: 13px;">
+                                <td class="fax-details2">
+                                    1. Letter of Intent with Justification of Renewal</td>
+                                <td class="fax-upload2">
                                     *Upload Requirements</td>
-                                <td class="td-faxsheet">
+                                <td class="fax-status2">
                                     Remarks/Status:&nbsp;
                                     <br>
                                     <br>
@@ -255,12 +255,40 @@ export default {
     margin-left: 20px;
     text-align: left;
 }
+
+.fax-details2 {
+    text-align: left;
+    text-align: justify;
+    font-size: 13px;
+    font-weight: 400;
+    width: 430px;
+    letter-spacing: 2px;
+}
+.fax-upload2 {
+    text-align: left;
+    font-size: 10px;
+}
+.fax-status2 {
+    text-align: left;
+    font-size: 13px;
+    width: 190px;
+    padding-right: 0;
+}
 .th-fax,
 td {
     border: 1px solid rgb(114, 114, 114);
     padding: 4px;
     padding-bottom: 10px;
     text-align: center;
+}
+.th-fax2 {
+    width: 110px;
+}
+.th-fax2,
+td {
+    border: 1px solid rgb(114, 114, 114);
+    padding: 4px;
+    padding-bottom: 10px;
 }
 
 .td-faxsheet{

@@ -79,7 +79,7 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+            <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2" class="textarea1"></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
             <textarea class="textarea1" style="color: red;"></textarea>
           </td>
@@ -98,7 +98,7 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+            <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2" class="textarea1"></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
             <textarea class="textarea1" style="color: red;"></textarea>
           </td>
@@ -635,6 +635,11 @@ export default {
 
 
 .table1 {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.table2{
   width: 100%;
   margin-bottom: 20px;
   text-align: left;

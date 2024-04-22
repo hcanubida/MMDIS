@@ -291,7 +291,8 @@
                                 <td class="fax-details2">
                                     8. Proof of financial capability to undertake the implementation of the activities
                                     under the work programs: <br>
-                                    &nbsp;* Latest Audited Financial Statement and/or Annual Report for the preceding Year <br>
+                                    &nbsp;* Latest Audited Financial Statement and/or Annual Report for the preceding
+                                    Year <br>
                                     &nbsp;* Credit lines and/or certification/s of bank guarantee/deposit and/or similar
                                     negotiable instruments</td>
                                 <td class="fax-upload2" style="width: 80px;">
@@ -310,6 +311,397 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p
+                        style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 20px;right: 190px;">
+                        OTHER REQUIREMENTS</p>
+                    <table class="tbl-faxsheet3">
+                        <thead class="thead-faxsheet">
+                            <tr style="text-align: center;">
+                                <th class="th-fax">Requirements</th>
+                                <th class="th-fax">Upload</th>
+                                <th class="th-fax">Remarks / Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fax-details2">
+                                    1. Certificate Environmental Management and Community Relations Record (CEMCRR) or
+                                    Certificate of Exemption from the CEMCRR ;</td>
+                                <td class="fax-upload2" style="width: 80px;">
+                                    *Upload Requirements</td>
+                                <td class="fax-status2">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consectasaa
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div ref="content" class="foliocontent">
+                        <img src="../../../assets//MTES/body.jpg" alt="folio-sized photo" class="foliophoto-page4">
+                        <table class="tbl-faxsheet4">
+                            <thead class="thead-faxsheet">
+                                <tr style="text-align: center;">
+                                    <th class="th-fax">Requirements</th>
+                                    <th class="th-fax">Upload</th>
+                                    <th class="th-fax">Remarks / Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="fax-details2">
+                                        2. Environmental Work Program (MGB Form 16-1 or 16-1A), duly prepared, signed
+                                        and sealed by a licensed Mining Engineer or Geologist;</td>
+                                    <td class="fax-upload2" style="width: 80px;">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consectasaa
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        3. Area Status and Clearance from the One Stop-Shop Committee (FMS, PAWCZMS, LMS
+                                        and other agencies concerned)</td>
+                                    <td class="fax-upload2" style="width: 80px;">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consectasaa
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        4. Secretary’s Certificate attesting to a Board Resolution regarding the
+                                        authorization of the company’s authorized signatory;</td>
+                                    <td class="fax-upload2" style="width: 80px;">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consectasaa
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fax-details2">
+                                        5.Proof of publication, posting and radio announcement of the Notice of
+                                        Application:
+                                        &nbsp;&nbsp;5.1. Published once in: <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;a. Local newspaper <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;b. national newspaper <br>
+                                        &nbsp;&nbsp;5.2. Posted for one (1) week on the bulletin boards of: <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;a. MGB Regional Office No. X <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;b. Province of Misamis Oriental <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;c. City of Cagayan de Oro <br>
+                                        &nbsp;&nbsp;5.3. radio announced daily for one (1) week in a Local radio program
+                                    </td>
+                                    <td class="fax-upload2" style="width: 80px;">
+                                        *Upload Requirements</td>
+                                    <td class="fax-status2">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consectasaa
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ref="content" class="foliocontent">
+                            <img src="../../../assets//MTES/body.jpg" alt="folio-sized photo" class="foliophoto-page5">
+                            <table class="tbl-faxsheet5">
+                                <tbody>
+                                    <tr>
+                                        <td class="fax-details2">
+                                            6. Certification from the Panel of Arbitrators (PA) concerned as to any
+                                            adverse
+                                            claim/protest/opposition</td>
+                                        <td class="fax-upload2" style="width: 80px;">
+                                            *Upload Requirements</td>
+                                        <td class="fax-status2">
+                                            Remarks/Status:&nbsp;
+                                            <br>
+                                            <br>
+                                            Lorem ipsum dolor sit amet consectasaa
+                                            <br>
+                                            <br>
+                                            Recommendation or Lacking Submission:
+                                            <br>
+                                            <span style="color: red;"> Lacking Submission </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fax-details2">
+                                            7. NCIP Certification or proof of landownership, such as certified true
+                                            copies
+                                            of Original/Transfer Certificate of Title, among others.</td>
+                                        <td class="fax-upload2" style="width: 80px;">
+                                            *Upload Requirements</td>
+                                        <td class="fax-status2">
+                                            Remarks/Status:&nbsp;
+                                            <br>
+                                            <br>
+                                            Lorem ipsum dolor sit amet consectasaa
+                                            <br>
+                                            <br>
+                                            Recommendation or Lacking Submission:
+                                            <br>
+                                            <span style="color: red;"> Lacking Submission </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p
+                                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 20px;right: 160px;margin-left: 80px;">
+                                IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
+                            <table class="tbl-faxsheet6">
+                                <thead class="thead-faxsheet">
+                                    <tr style="text-align:center;">
+                                        <th class="th-fax2">Requirements</th>
+                                        <th class="th-fax2">Upload</th>
+                                        <th class="th-fax2">Remarks / Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="fax-details2">
+                                            1. Application Form (MGB Form No. 5-1)</td>
+                                        <td class="fax-upload2" style="width: 80px;">
+                                            *Upload Requirements</td>
+                                        <td class="fax-status2">
+                                            Remarks/Status:&nbsp;
+                                            <br>
+                                            <br>
+                                            Lorem ipsum dolor sit amet consectasaa
+                                            <br>
+                                            <br>
+                                            Recommendation or Lacking Submission:
+                                            <br>
+                                            <span style="color: red;"> Lacking Submission </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fax-details2">
+                                            2. Payment of Filing Fee</td>
+                                        <td class="fax-upload2" style="width: 80px;">
+                                            *Upload Requirements</td>
+                                        <td class="fax-status2">
+                                            Remarks/Status:&nbsp;
+                                            <br>
+                                            <br>
+                                            Lorem ipsum dolor sit amet consectasaa
+                                            <br>
+                                            <br>
+                                            Recommendation or Lacking Submission:
+                                            <br>
+                                            <span style="color: red;"> Lacking Submission </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ref="content" class="foliocontent">
+                                <img src="../../../assets//MTES/body.jpg" alt="folio-sized photo"
+                                    class="foliophoto-page6">
+                                <table class="tbl-faxsheet7">
+                                    <thead class="thead-faxsheet">
+                                        <tr style="text-align:center;">
+                                            <th class="th-fax2">Requirements</th>
+                                            <th class="th-fax2">Upload</th>
+                                            <th class="th-fax2">Remarks / Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="fax-details2">
+                                                3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly
+                                                prepared, signed and sealed by a licensed Mining Engineer or Geologist
+                                            </td>
+                                            <td class="fax-upload2" style="width: 80px;">
+                                                *Upload Requirements</td>
+                                            <td class="fax-status2">
+                                                Remarks/Status:&nbsp;
+                                                <br>
+                                                <br>
+                                                Lorem ipsum dolor sit amet consectasaa
+                                                <br>
+                                                <br>
+                                                Recommendation or Lacking Submission:
+                                                <br>
+                                                <span style="color: red;"> Lacking Submission </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fax-details2">
+                                                4. Affidavit of Undertaking pursuant to DMO No. 99-10 as amended, for a
+                                                corporation, partnership, association or cooperative</td>
+                                            <td class="fax-upload2" style="width: 80px;">
+                                                *Upload Requirements</td>
+                                            <td class="fax-status2">
+                                                Remarks/Status:&nbsp;
+                                                <br>
+                                                <br>
+                                                Lorem ipsum dolor sit amet consectasaa
+                                                <br>
+                                                <br>
+                                                Recommendation or Lacking Submission:
+                                                <br>
+                                                <span style="color: red;"> Lacking Submission </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fax-details2">
+                                                5. For corporation/ partnership/ Association/ cooperative: SEC/
+                                                CDA-certifies Certificate of Registration, Articles of Incorporation/
+                                                Partnership/ Association and By-Laws; or a Certification from MGB CO/ RO
+                                                concerned that such documents are duly registered in that Office (note:
+                                                with minimum authorized capital of PhP100 M and paid-up capital of
+                                                PhP6.25 M pursuant to DMO No. 2013-01);</td>
+                                            <td class="fax-upload2" style="width: 80px;">
+                                                *Upload Requirements</td>
+                                            <td class="fax-status2">
+                                                Remarks/Status:&nbsp;
+                                                <br>
+                                                <br>
+                                                Lorem ipsum dolor sit amet consectasaa
+                                                <br>
+                                                <br>
+                                                Recommendation or Lacking Submission:
+                                                <br>
+                                                <span style="color: red;"> Lacking Submission </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fax-details2">
+                                                6. Location Map/Sketch Plan (1:50,000 NAMRIA topographic map) showing
+                                                coordinates/boundaries (in tabulated form) with major environmental
+                                                features/other projects (prepared, sealed and signed by a deputized
+                                                Geodetic Engineer)</td>
+                                            <td class="fax-upload2" style="width: 80px;">
+                                                *Upload Requirements</td>
+                                            <td class="fax-status2">
+                                                Remarks/Status:&nbsp;
+                                                <br>
+                                                <br>
+                                                Lorem ipsum dolor sit amet consectasaa
+                                                <br>
+                                                <br>
+                                                Recommendation or Lacking Submission:
+                                                <br>
+                                                <span style="color: red;"> Lacking Submission </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fax-details2">
+                                                7. Proof of technical competence to undertake the implementation of
+                                                activities under the Programs: <br>
+                                                &nbsp;&nbsp;* 6.1 Curricula Vitae and track records in exploration
+                                                &nbsp;&nbsp; and environmental
+                                                management; <br>
+                                                &nbsp;&nbsp;* 6.2 Sworn statement/employment contract/ proof of availed
+                                                services of
+                                                the technical person(s) who will undertake the implementation of the
+                                                Programs </td>
+                                            <td class="fax-upload2" style="width: 80px;">
+                                                *Upload Requirements</td>
+                                            <td class="fax-status2">
+                                                Remarks/Status:&nbsp;
+                                                <br>
+                                                <br>
+                                                Lorem ipsum dolor sit amet consectasaa
+                                                <br>
+                                                <br>
+                                                Recommendation or Lacking Submission:
+                                                <br>
+                                                <span style="color: red;"> Lacking Submission </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <div ref="content" class="foliocontent">
+                                        <img src="../../../assets//MTES/body.jpg" alt="folio-sized photo"
+                                            class="foliophoto-page7">
+                                        <p
+                                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 380px;right: 180px;">
+                                            V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
+                                        <table class="tbl-faxsheet8">
+                                            <thead class="thead-faxsheet">
+                                                <tr style="text-align:center;">
+                                                    <th class="th-fax2">Requirements</th>
+                                                    <th class="th-fax2">Upload</th>
+                                                    <th class="th-fax2">Remarks / Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                                        Status: </td>
+                                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                                        *Upload Requirements</td>
+                                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                                        Based on the Status of MTSR (dropdown)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p
+                                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 40px;right: 115px;">
+                                            VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
+                                        <table class="tbl-faxsheet9">
+                                            <thead class="thead-faxsheet">
+                                                <tr style="text-align:center;">
+                                                    <th class="th-fax2">Requirements</th>
+                                                    <th class="th-fax2">Upload</th>
+                                                    <th class="th-fax2">Remarks / Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align: center; font-size: 15px; width: 270px;">
+                                                        Status: </td>
+                                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                                        *Upload Requirements</td>
+                                                    <td style="text-align: center; font-size: 15px; width: 260px;">
+                                                        Based on the Status of MTSR (dropdown)
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -415,6 +807,46 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.foliophoto-page4 {
+    position: absolute;
+    bottom: -3775px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.foliophoto-page5 {
+    position: absolute;
+    bottom: -5050px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.foliophoto-page6 {
+    position: absolute;
+    bottom: -6320px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.foliophoto-page7 {
+    position: absolute;
+    bottom: -7580px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .ftable {
     display: flex;
     justify-content: center;
@@ -435,6 +867,47 @@ export default {
 
 .tbl-faxsheet2 {
     margin-top: 330px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet3 {
+    margin-top: 40px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet4 {
+    margin-top: 450px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet5 {
+    margin-top: 470px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet6 {
+    margin-top: 40px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet7 {
+    margin-top: 480px;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.tbl-faxsheet8 {
+    margin-top: 410px;
+    text-align: center;
+    margin-left: 50px;
+}
+.tbl-faxsheet9 {
+    margin-top: 80px;
     text-align: center;
     margin-left: 50px;
 }
