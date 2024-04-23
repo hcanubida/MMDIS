@@ -63,7 +63,7 @@ import FaxMPP from "../views/mtes/faxsheet/mpp-factsheet.vue";
 import FaxMPSA from "../views/mtes/faxsheet/mpsa-factsheet.vue";
 import FaxOTP from "../views/mtes/faxsheet/otp-factsheet.vue";
 import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
-
+import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue"
 
 const routes = [
 
@@ -101,6 +101,7 @@ const routes = [
     { path: "/MPSAFax", component: FaxMPSA },
     { path: "/OTPFax", component: FaxOTP },
     { path: "/SSMCFax", component: FaxSSMC },
+    { path: "/MPLFax", component: FaxMPL },
 
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },

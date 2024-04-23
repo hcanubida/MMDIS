@@ -446,7 +446,7 @@
             </td>
 
             <td class="inputimg6">
-              <<upload />
+              <upload />
             </td>
 
             <td style="text-align: left;width: 400px;">
@@ -544,18 +544,32 @@
         </tbody>
       </table>
     </div>
+    <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+        <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
+        <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;" v-if="!openFax">
+        <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;" v-if="openFax">
+      </div>
+      <div v-if="openFax">
+          <downloadd />
+      </div>
   </div>
 </template>
 
 
 <script setup>
-import headd from '../../../components/MTES/header.vue'
-import upload from '../../../../src/components/MTES/multiple-upload.vue'
+import headd from '../../../components/MTES/header.vue';
+import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import downloadd from '../faxsheet/mb-factsheet.vue';
 </script>
 
 
 <script>
 export default {
+  data() {
+    return {
+      openFax: false
+    };
+  },
   methods: {
     fileSelected() {
       this.$refs.fileInput.click();
@@ -570,7 +584,12 @@ export default {
         }
       }
       console.log(this.images);
+    },dude() {
+    this.openFax = true;
     },
+    close() {
+      this.openFax = false;
+    }
   }
 }
 </script>

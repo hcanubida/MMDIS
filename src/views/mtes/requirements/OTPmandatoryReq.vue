@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <headd />
+    </div>
+
     <div class="title1">
         <h2>MANDATORY REQUIREMENTS</h2>
     </div>
@@ -191,38 +195,55 @@
                 </tr>
             </tbody>
         </table>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+            <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
+            <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;"
+                v-if="!openFax">
+            <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;"
+                v-if="openFax">
+        </div>
+        <div v-if="openFax">
+            <downloadd />
+        </div>
     </div>
 </template>
 
 
 <script setup>
+import headd from '../../../components/MTES/header.vue'
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import downloadd from '../faxsheet/otp-factsheet.vue'
 
-// Function to copy remarks from Table 1 to Table 2 for all rows
-function copyRemarksFromTable1ToTable2() {
-    // Get all the rows in Table 1
-    const table1Rows = document.querySelectorAll('.table1 tbody tr');
+// // Function to copy remarks from Table 1 to Table 2 for all rows
+// function copyRemarksFromTable1ToTable2() {
+//     // Get all the rows in Table 1
+//     const table1Rows = document.querySelectorAll('.table1 tbody tr');
 
-    // Loop through each row
-    table1Rows.forEach((row, index) => {
-        // Get the remarks textarea within the current row
-        const table1Remarks = row.querySelector('textarea').value;
+//     // Loop through each row
+//     table1Rows.forEach((row, index) => {
+//         // Get the remarks textarea within the current row
+//         const table1Remarks = row.querySelector('textarea').value;
 
-        // Find the corresponding row in Table 2 based on the index
-        const table2Row = document.querySelectorAll('.table2 tbody tr')[index];
+//         // Find the corresponding row in Table 2 based on the index
+//         const table2Row = document.querySelectorAll('.table2 tbody tr')[index];
 
-        // Set the remarks in Table 2 to match those from Table 1
-        table2Row.querySelector('textarea').value = table1Remarks;
-    });
-}
+//         // Set the remarks in Table 2 to match those from Table 1
+//         table2Row.querySelector('textarea').value = table1Remarks;
+//     });
+// }
 </script>
 
 <script>
 export default {
-    mounted() {
-        // Call the function to copy remarks when the component is mounted
-        copyRemarksFromTable1ToTable2();
+    data() {
+        return {
+            openFax: false
+        };
     },
+    // mounted() {
+    //     // Call the function to copy remarks when the component is mounted
+    //     copyRemarksFromTable1ToTable2();
+    // },
     methods: {
         fileSelected() {
             this.$refs.fileInput.click();
@@ -236,7 +257,13 @@ export default {
                     this.images.push({ name: files[i].name, url: URL.createObjectURL(files[i]) })
                 }
             }
+        }, dude() {
+            this.openFax = true;
+        },
+        close() {
+            this.openFax = false;
         }
+
     }
 }
 </script>
@@ -246,12 +273,12 @@ export default {
 
 
 <style scoped>
-.title {
+.title1 {
     display: flex;
     justify-content: center;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 120px;
 }
 
 .requirements {

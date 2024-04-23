@@ -127,21 +127,98 @@
                     style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 350px;right: 160px;">
                     III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS</p>
                 <div class="tbl-faxsheet">
-                    <table class="tbl-faxsheet">
+                    <table class="tbl-faxsheet1">
                         <thead class="thead-faxsheet">
                             <tr style="text-align: center;">
-                                <th class="th-fax">Requirements</th>
-                                <th class="th-fax">Upload</th>
-                                <th class="th-fax">Remarks / Status</th>
+                                <th class="th-fax2">Requirements</th>
+                                <th class="th-fax2">Upload</th>
+                                <th class="th-fax2">Remarks / Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="width: 500px;font-size: 13px;">
-                                    1. Application Form (MGB Form No. 5-1)</td>
-                                <td style="width: 300px;text-align: left; font-size: 13px;">
+                                <td class="fax-details">
+                                    1. Application form</td>
+                                <td class="fax-upload">
                                     *Upload Requirements</td>
-                                <td class="td-faxsheet">
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    2. Original or certified true copy of proof of payment of excise tax or guarantee/
+                                    surety bond <br>
+                                    <br>
+                                    [Note: to submit photocopy of the document but shall present the original copy/
+                                    certified true copy for validation purposes]
+                                </td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    3. MGB-RO-registered original or certified true copy of the sales/purchase/marketing
+                                    contract or purchase order</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    4. Copy of the Permit/Contract issued to the Permit Holder/Contractor/Accreditation
+                                    of traders, retailers, or dealers, or Proof of legality of the source, whichever is
+                                    applicable</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    5. Other supporting papers as the Regional Office concerned may require or the
+                                    applicant may submit</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
                                     Remarks/Status:&nbsp;
                                     <br>
                                     <br>
@@ -156,6 +233,164 @@
                         </tbody>
                     </table>
                 </div>
+                <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page3">
+                <p
+                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 292px;right: 100px;">
+                    IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
+                <div class="tbl-faxsheet">
+                    <table class="tbl-faxsheet2">
+                        <thead class="thead-faxsheet">
+                            <tr style="text-align: center;">
+                                <th class="th-fax2">Requirements</th>
+                                <th class="th-fax2">Upload</th>
+                                <th class="th-fax2">Remarks / Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fax-details">
+                                    1. Application form</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    2. Original or certified true copy of proof of payment of excise tax or guarantee/
+                                    surety bond <br>
+                                    <br>
+                                    [Note: to submit photocopy of the document but shall present the original copy/
+                                    certified true copy for validation purposes]
+                                </td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    3. MGB-RO-registered original or certified true copy of the sales/purchase/marketing
+                                    contract or purchase order</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    4. Copy of the Permit/Contract issued to the Permit Holder/Contractor/Accreditation
+                                    of traders, retailers, or dealers, or Proof of legality of the source, whichever is
+                                    applicable</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details">
+                                    5. Other supporting papers as the Regional Office concerned may require or the
+                                    applicant may submit</td>
+                                <td class="fax-upload">
+                                    *Upload Requirements</td>
+                                <td class="fax-status">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page4">
+                <p
+                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 290px;right: 190px;">
+                    V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
+                <table class="tbl-faxsheet3">
+                    <thead class="thead-faxsheet">
+                        <tr style="text-align:center;">
+                            <th class="th-fax2">Requirements</th>
+                            <th class="th-fax2">Upload</th>
+                            <th class="th-fax2">Remarks / Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; font-size: 15px; width: 270px;">
+                                Status: </td>
+                            <td style="text-align: center;width: 200px; font-size: 15px">
+                                *Upload Requirements</td>
+                            <td style="text-align: center; font-size: 15px; width: 260px;">
+                                Based on the Status of MTSR (dropdown)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p
+                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 20px;right: 125px;">
+                    VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
+                <table class="tbl-faxsheet4">
+                    <thead class="thead-faxsheet">
+                        <tr style="text-align:center;">
+                            <th class="th-fax2">Requirements</th>
+                            <th class="th-fax2">Upload</th>
+                            <th class="th-fax2">Remarks / Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; font-size: 15px; width: 270px;">
+                                Status: </td>
+                            <td style="text-align: center;width: 200px; font-size: 15px">
+                                *Upload Requirements</td>
+                            <td style="text-align: center; font-size: 15px; width: 260px;">
+                                Based on the Status of MTSR (dropdown)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -230,12 +465,65 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.a4photo-page3 {
+    position: absolute;
+    bottom: -2240px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.a4photo-page4 {
+    position: absolute;
+    bottom: -3385px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .ftable {
     display: flex;
     justify-content: center;
     margin-top: 280px;
 }
 
+.fax-details {
+    text-align: left;
+    text-align: justify;
+    font-size: 13px;
+    font-weight: 400;
+    width: 320px;
+    letter-spacing: 2px;
+}
+
+.fax-upload {
+    text-align: left;
+    font-size: 12px;
+    width: 150px;
+}
+
+.fax-status {
+    text-align: left;
+    font-size: 13px;
+    width: 270px;
+    padding-right: 0;
+}
+
+.th-fax2 {
+    width: 110px;
+}
+
+.th-fax2,
+td {
+    border: 1px solid rgb(114, 114, 114);
+    padding: 4px;
+    padding-bottom: 10px;
+    letter-spacing: 1px;
+}
 
 .fbody td {
     padding: 4px;
@@ -243,18 +531,37 @@ export default {
     border: 1px solid rgb(114, 114, 114);
     width: auto;
 }
-.tbl-faxsheet {
+
+.tbl-faxsheet1 {
     margin-top: 360px;
     text-align: center;
 }
+
+.tbl-faxsheet2 {
+    margin-top: 310px;
+    text-align: center;
+}
+.tbl-faxsheet3 {
+    margin-top: 310px;
+    text-align: center;
+    margin-left: 35px;
+}
+.tbl-faxsheet4 {
+    margin-top: 40px;
+    text-align: center;
+    margin-left: 35px;
+}
+
 .thead-faxsheet {
     font-size: 15px;
 }
+
 .tbl-faxsheet {
     width: 95%;
-    margin-left: 20px;
+    margin-left: 30px;
     text-align: left;
 }
+
 .th-fax,
 td {
     border: 1px solid rgb(114, 114, 114);
@@ -263,7 +570,7 @@ td {
     text-align: center;
 }
 
-.td-faxsheet{
+.td-faxsheet {
     text-align: left;
     font-size: 13px;
     font-weight: 400;

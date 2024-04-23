@@ -127,7 +127,7 @@
                     style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 350px;right: 160px;">
                     III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS</p>
                 <div class="tbl-faxsheet">
-                    <table class="tbl-faxsheet">
+                    <table class="tbl-faxsheet1">
                         <thead class="thead-faxsheet">
                             <tr style="text-align: center;">
                                 <th class="th-fax2">Requirements</th>

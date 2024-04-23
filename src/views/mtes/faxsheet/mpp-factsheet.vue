@@ -234,9 +234,6 @@
                 </table>
                 <div ref="content" class="a4content">
                     <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page3">
-                    <p
-                        style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 280px;right: 120px;">
-                        IV.&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
                     <table class="tbl-faxsheet1">
                         <thead class="thead-faxsheet">
                             <tr style="text-align: center;">
@@ -248,7 +245,7 @@
                         <tbody>
                             <tr>
                                 <td class="fax-details3">
-                                    1. Application Form (MGB Form No. 11-2)</td>
+                                    6. Environmental Compliance Certificate (ECC)</td>
                                 <td class="fax-upload3">
                                     *Upload Requirements</td>
                                 <td class="fax-status3">
@@ -265,49 +262,15 @@
                             </tr>
                             <tr>
                                 <td class="fax-details3">
-                                    2. Duly certified Articles of Incorporation/ Partnership/ Association, By-Laws, and
-                                    Certificate of Registration issued by the SEC or authorized Government agency
-                                    concerned;</td>
-                                <td class="fax-upload3">
-                                    *Upload Requirements</td>
-                                <td class="fax-status3">
-                                    Remarks/Status:&nbsp;
+                                    7. Proof of technical competence including, among others: <br>
                                     <br>
+                                    &nbsp;&nbsp;* curricula vitae and track records in mineral processing and
+                                    environmental
+                                    management of the technical personnel who shall undertake the operation.<br>
                                     <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details3">
-                                    3. Location map/sketch plan of the area of the proposed processing plant using
-                                    NAMRIA (topographic map) in a scale of 1:50,000</td>
-                                <td class="fax-upload3">
-                                    *Upload Requirements</td>
-                                <td class="fax-status3">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details3">
-                                    4. <u>Feasibility Study</u> including work programs, plant site, mill and plant
-                                    lay-out/design, details of technology to be employed in the proposed operation,
-                                    anti-pollution devices/ measures as well as the plant capacity of <br>
-                                    <u> Project Description</u> with detailed financial statement for its operations
-                                    incorporating the social and environmental expenditures, taxes and fees paid. (MGB
-                                    Form No. 5-3A);
+                                    &nbsp;&nbsp;* Sworn statement/ employment contract/ proof of availed services of the
+                                    technical
+                                    person/s who will undertake the implementation of the Work Programs
                                 </td>
                                 <td class="fax-upload3">
                                     *Upload Requirements</td>
@@ -325,8 +288,49 @@
                             </tr>
                             <tr>
                                 <td class="fax-details3">
-                                    5. An application (MGB Form No. 16-04) for or a Certificate of Environmental
-                                    Management and Community Relations Record (CEMCRR)</td>
+                                    8. Proof of financial capability to undertake the activities pursuant to the
+                                    Feasibility Study and EPEP, such as: <br>
+                                    <br>
+                                    &nbsp;&nbsp;a. Latest audited Financial Statement and/or Annual Report <br>
+                                    <br>
+                                    Credit Lines/Bank Guarantees and /or similar negotiable instruments
+                                </td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    9. Interim Importation Permit/Certification from EMB on the use of chemicals (e.g.
+                                    cyanide, mercury) in compliance with R.A. No. 6969
+                                </td>
+                                <td class="fax-upload3">
+                                    *Upload Requirements</td>
+                                <td class="fax-status3">
+                                    Remarks/Status:&nbsp;
+                                    <br>
+                                    <br>
+                                    Lorem ipsum dolor sit amet consect
+                                    <br>
+                                    <br>
+                                    Recommendation or Lacking Submission:
+                                    <br>
+                                    <span style="color: red;"> Lacking Submission </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fax-details3">
+                                    10. Brief history of applicant’s activities for the last five (5) years, if any</td>
                                 <td class="fax-upload3">
                                     *Upload Requirements</td>
                                 <td class="fax-status3">
@@ -345,50 +349,94 @@
                     </table>
                     <div ref="content" class="a4content">
                         <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page4">
-                        <p
-                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 310px;right: 180px;">
-                            V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
                         <table class="tbl-faxsheet2">
-                            <thead class="thead-faxsheet">
-                                <tr style="text-align:center;">
-                                    <th class="th-fax2">Requirements</th>
-                                    <th class="th-fax2">Upload</th>
-                                    <th class="th-fax2">Remarks / Status</th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 <tr>
-                                    <td style="text-align: center; font-size: 15px; width: 270px;">
-                                        Status: </td>
-                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                    <td class="fax-details3">
+                                        11. Supply Contract/Agreement with mining rights holders, if applicable</td>
+                                    <td class="fax-upload3">
                                         *Upload Requirements</td>
-                                    <td style="text-align: center; font-size: 15px; width: 260px;">
-                                        Based on the Status of MTSR (dropdown)
+                                    <td class="fax-status3">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
                                     </td>
                                 </tr>
-                            </tbody>
-                        </table>
-                        <p
-                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 40px;right: 115px;">
-                            VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
-                        <table class="tbl-faxsheet3">
-                            <thead class="thead-faxsheet">
-                                <tr style="text-align:center;">
-                                    <th class="th-fax2">Requirements</th>
-                                    <th class="th-fax2">Upload</th>
-                                    <th class="th-fax2">Remarks / Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
                                 <tr>
-                                    <td style="text-align: center; font-size: 15px; width: 270px;">
-                                        Status: </td>
-                                    <td style="text-align: center;width: 200px; font-size: 15px">
+                                    <td class="fax-details3">
+                                        12. Other supporting papers as the Regional Director or the concerned may
+                                        require or the applicant may submit. <br>
+                                        <br>
+                                        &nbsp;&nbsp;12. 1 Environmental Protection and Enhancement Program (EPEP) <br>
+                                        <br>
+                                        &nbsp;&nbsp;12.2 Social Development Management Program (SDMP)
+                                    </td>
+                                    <td class="fax-upload3">
                                         *Upload Requirements</td>
-                                    <td style="text-align: center; font-size: 15px; width: 260px;">
-                                        Based on the Status of MTSR (dropdown)
+                                    <td class="fax-status3">
+                                        Remarks/Status:&nbsp;
+                                        <br>
+                                        <br>
+                                        Lorem ipsum dolor sit amet consect
+                                        <br>
+                                        <br>
+                                        Recommendation or Lacking Submission:
+                                        <br>
+                                        <span style="color: red;"> Lacking Submission </span>
                                     </td>
                                 </tr>
+                                <p
+                                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 620px;right: 180px;">
+                                    V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
+                                <table class="tbl-faxsheet3">
+                                    <thead class="thead-faxsheet">
+                                        <tr style="text-align:center;">
+                                            <th class="th-fax2">Requirements</th>
+                                            <th class="th-fax2">Upload</th>
+                                            <th class="th-fax2">Remarks / Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center; font-size: 15px; width: 270px;">
+                                                Status: </td>
+                                            <td style="text-align: center;width: 200px; font-size: 15px">
+                                                *Upload Requirements</td>
+                                            <td style="text-align: center; font-size: 15px; width: 260px;">
+                                                Based on the Status of MTSR (dropdown)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p
+                                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 20px;right: 115px;">
+                                    VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
+                                <table class="tbl-faxsheet4">
+                                    <thead class="thead-faxsheet">
+                                        <tr style="text-align:center;">
+                                            <th class="th-fax2">Requirements</th>
+                                            <th class="th-fax2">Upload</th>
+                                            <th class="th-fax2">Remarks / Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center; font-size: 15px; width: 270px;">
+                                                Status: </td>
+                                            <td style="text-align: center;width: 200px; font-size: 15px">
+                                                *Upload Requirements</td>
+                                            <td style="text-align: center; font-size: 15px; width: 260px;">
+                                                Based on the Status of MTSR (dropdown)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </tbody>
                         </table>
                     </div>
@@ -487,6 +535,16 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.a4photo-page5 {
+    position: absolute;
+    bottom: -4510px;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .ftable {
     display: flex;
     justify-content: center;
@@ -556,13 +614,19 @@ export default {
 }
 
 .tbl-faxsheet2 {
-    margin-top: 340px;
+    margin-top: 240px;
     text-align: center;
     margin-left: 30px
 }
 
 .tbl-faxsheet3 {
     margin-top: 80px;
+    text-align: center;
+    margin-left: 30px
+}
+
+.tbl-faxsheet4 {
+    margin-top: 40px;
     text-align: center;
     margin-left: 30px
 }

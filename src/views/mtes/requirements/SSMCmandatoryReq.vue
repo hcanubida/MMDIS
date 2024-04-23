@@ -191,7 +191,7 @@
                         </td>
 
                         <td class="inputimg">
-                            <<upload />
+                            <upload />
                         </td>
 
                         <td style="text-align: left;width: 400px;">

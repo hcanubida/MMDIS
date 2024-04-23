@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <headd/>
+    </div>
+
     <div class="title">
         <h2>MANDATORY REQUIREMENTS</h2>
     </div>
@@ -18,10 +22,8 @@
                 <tr>
                     <td class="reqData">
                         1. Application Form/Letter Intent
-
                     </td>
-
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -49,7 +51,7 @@
                         scale of 1:50,000 or 1:10,000
                     </td>
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -76,7 +78,7 @@
 
                     </td>
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -103,7 +105,7 @@
                         4. Small-Scale Miners License of the duly authorized representative
                     </td>
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -129,7 +131,7 @@
                         5. Proof of Technical Competence
                     </td>
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -157,7 +159,7 @@
                         be less than the cost of project
                     </td>
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -183,7 +185,7 @@
                     <td class="reqData">
                         7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL Holder/s
                     </td>
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -218,7 +220,7 @@
                     </td>
 
 
-                    <td>
+                    <td class="td6">
                         <select>
                             <option value="submitted">Select</option>
                             <option value="approved">YES</option>
@@ -373,6 +375,7 @@
 
 <script setup>
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import headd from '../../../components/MTES/header.vue'
 
 // Function to copy remarks from Table 1 to Table 2 for all rows
 function copyRemarksFromTable1ToTable2() {
@@ -448,8 +451,15 @@ export default {
     text-align: left;
     width: 400px;
 }
-
-
+.td6 {
+  width: 200px;
+  text-align: center;
+}
+.select{
+  text-align: center;
+  padding: 10px;
+  box-shadow: 2px 3px 5px rgb(175, 175, 175)
+}
 
 table {
     width: 100%;
