@@ -10,7 +10,7 @@
                     </button>
                 </div>
                 <div class="appdetails1">
-                    <p>Application Details </p>
+                    <p>Application Details</p>
                 </div>
                 <div class="appdetails2">
                     <div class="appdetails3">

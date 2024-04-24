@@ -20,7 +20,7 @@
       </div>
   
       <div v-if="viewDetail6">
-        <viewdetail2 :detail_id2="detail_id6" />
+        <viewdetail2 :detail_id6="detail_id6" />
       </div>
   
       <!-- Charts for summary  -->
@@ -126,7 +126,7 @@
     top: 0;
     left: 0;
     right: 0;
-    margin-top: 35%;
+    margin-top: 34%;
   }
   
   

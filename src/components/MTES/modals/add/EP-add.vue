@@ -14,13 +14,13 @@
         </div>
         <div class="appdetails2">
           <div class="appdetails3">
-            <input class="inputall" placeholder="Name of the Applicant" />
-            <input class="inputall" placeholder="Area(Hectares)" />
+            <input class="inputall" placeholder="Name of the Applicant" v-model="detailstoadd.tenement_name" />
+            <input class="inputall" placeholder="Area(Hectares)" v-model="detailstoadd.area_hectares"/>
             <input class="inputall" v-model="date" readonly placeholder="Date Filed" />
-            <input class="inputall" placeholder="Barangay" />
-            <input class="inputall" placeholder="City" />
-            <input class="inputall" placeholder="Province" />
-            <input class="inputall" placeholder="Commodity" />
+            <input class="inputall" placeholder="Barangay" v-model="detailstoadd.barangay"/>
+            <input class="inputall" placeholder="City" v-model="detailstoadd.city"/>
+            <input class="inputall" placeholder="Province" v-model="detailstoadd.province"/>
+            <input class="inputall" placeholder="Commodity" v-model="detailstoadd.commodity"/>
           </div>
 
           <div class="appdetails4">
@@ -35,17 +35,19 @@
             <!-- Conditional input field for 'Other' category -->
             <input v-if="selectedCategory === 'other'" class="inputall cate" v-model="otherCategory"
               placeholder="Enter other category" />
-            <input class="inputall" placeholder="Authorized Representative" />
+            <input class="inputall" placeholder="Authorized Representative" v-model="detailstoadd.authorized_rep"/>
             <input class="inputall" v-model="contactnum" @input="formatContactNum" maxlength="11" required
               placeholder="Contact Number" />
-            <input class="inputall" placeholder="Email Address" />
-            <input class="inputall" placeholder="Others:" />
+            <input class="inputall" placeholder="Email Address" v-model="detailstoadd.email"/>
+            <input class="inputall" placeholder="Others:" v-model="detailstoadd.others"/>
+            <input class="inputall" placeholder="Status:" v-model="detailstoadd.status" />
+            <input class="inputall" placeholder="Tenement Number:" v-model="detailstoadd.tenement_number" />
 
           </div>
         </div>
 
         <div class="appdetailsbutton">
-          <button class="butons" @click="navigateToMandatoryReq()">Add</button>
+          <button class="butons" @click="submit">Add</button>
         </div>
       </div>
 
@@ -70,7 +72,21 @@ export default {
       selectedCategory: 'individual',
       otherCategory: '',
       date: this.getCurrentDate(),
-      addDetail1: true
+      addDetail1: true,
+      detailstoadd: {
+        status: '',
+        tenement_number: '',
+        tenement_name: '',
+        area_hectares: '',
+        barangay: '',
+        city: '',
+        province: '',
+        commodity: '',
+        authorized_rep: '',
+        email: '',
+        others: '',
+        application: 'ep'
+      }
     };
   },
   watch: {
@@ -114,7 +130,46 @@ export default {
 
       // Limit the input to 11 characters
       this.contactnum = this.contactnum.slice(0, 11);
+    },
+    submit() {
+    const formData = new FormData();
+    formData.append('status', this.detailstoadd.status);
+    formData.append('tenement_number', this.detailstoadd.tenement_number);
+    formData.append('tenement_name', this.detailstoadd.tenement_name);
+    formData.append('area_hectares', this.detailstoadd.area_hectares);
+    formData.append('barangay', this.detailstoadd.barangay);
+    formData.append('city', this.detailstoadd.city);
+    formData.append('province', this.detailstoadd.province);
+    formData.append('commodity', this.detailstoadd.commodity);
+    formData.append('authorized_rep', this.detailstoadd.authorized_rep);
+    formData.append('contact_no', this.contactnum);
+    formData.append('email', this.detailstoadd.email);
+    formData.append('others', this.detailstoadd.others);
+    formData.append('application', this.detailstoadd.application);
+
+    // Append category based on selectedCategory
+    if (this.selectedCategory === 'other') {
+        // Append otherCategory if selectedCategory is 'others'
+        formData.append('category', this.otherCategory);
+    } else {
+        // Append selectedCategory directly otherwise
+        formData.append('category', this.selectedCategory);
     }
+
+
+    // Make axios POST request
+    axios.post('http://127.0.0.1:8000/add_details', formData)
+         .then(response => {
+             // Handle response
+             console.log(response.data);
+             window.location.reload();
+         })
+         .catch(error => {
+             // Handle error
+             console.error('Error:', error);
+         });
+}
+
 
   }
 }

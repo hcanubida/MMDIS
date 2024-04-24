@@ -142,15 +142,12 @@
                                 <td class="fax-upload2">
                                     *Upload Requirements</td>
                                 <td class="fax-status2">
-                                    Remarks/Status:&nbsp;
+                                    remarks <br>
                                     <br>
                                     <br>
-                                    Lorem ipsum dolor sit amet consect
+                                    lacking <br>
                                     <br>
                                     <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
                                 </td>
                             </tr>
                             <tr>
@@ -371,8 +368,14 @@
 
 <script>
 import jsPDF from 'jspdf';
+// import { textInput1 } from '../requirements/MPSAmandatoryReq.vue';
 
 export default {
+    data() {
+        return {
+            textInput1: '',
+        };
+    },
     methods: {
         downloadPDF() {
             // Initialize jsPDF with A4 size

@@ -31,13 +31,14 @@
                         <label>Remarks:</label><br>
                         <textarea class="textarea3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea3" style="color: red;"></textarea>
+                        <textarea class="textarea3" style="color: red;" v-model="textInput1"></textarea>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="reqData3">
-                        2. Corporate Secretary Certificate attesting to the authority of the person who is filing the renewal of Application
+                        2. Corporate Secretary Certificate attesting to the authority of the person who is filing the
+                        renewal of Application
                     </td>
 
                     <td class="inputimg3">
@@ -48,12 +49,12 @@
                         <label>Remarks:</label><br>
                         <textarea class="textarea3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea3" style="color: red;"></textarea>
+                        <textarea class="textarea3" style="color: red;" v-model="textInput2"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td class="reqData3">
-                       3. National Commission on Indigenous Peoples Certification Precondition 
+                        3. National Commission on Indigenous Peoples Certification Precondition
                     </td>
 
                     <td class="inputimg3">
@@ -64,20 +65,21 @@
                         <label>Remarks:</label><br>
                         <textarea class="textarea3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea3" style="color: red;"></textarea>
+                        <textarea class="textarea3" style="color: red;" v-model="textInput3"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td class="reqData2">
-                       4. Certification of the Regional Office to the compliance with the terms and conditions of the MPSA, particularly with regard to:<br>&nbsp;
-                            a. Three-year Devt’Utilization WP<br>&nbsp;
-                            b. Survey Plan<br>&nbsp;
-                            c. ECC<br>&nbsp;
-                            d. EPEP<br>&nbsp;
-                            e. SDMP<br>&nbsp;
-                            f. Implementation of the 3YR WP, EPEP and SDMP<br>&nbsp;
-                            g. Submission of Reports<br>&nbsp;
-                            h. Payment of Fees and Taxes
+                        4. Certification of the Regional Office to the compliance with the terms and conditions of the
+                        MPSA, particularly with regard to:<br>&nbsp;
+                        a. Three-year Devt’Utilization WP<br>&nbsp;
+                        b. Survey Plan<br>&nbsp;
+                        c. ECC<br>&nbsp;
+                        d. EPEP<br>&nbsp;
+                        e. SDMP<br>&nbsp;
+                        f. Implementation of the 3YR WP, EPEP and SDMP<br>&nbsp;
+                        g. Submission of Reports<br>&nbsp;
+                        h. Payment of Fees and Taxes
                     </td>
 
                     <td class="inputimg3">
@@ -88,7 +90,7 @@
                         <label>Remarks:</label><br>
                         <textarea class="textarea3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea3" style="color: red;"></textarea>
+                        <textarea class="textarea3" style="color: red;" v-model="textInput4"></textarea>
                     </td>
                 </tr>
             </tbody>
@@ -97,30 +99,74 @@
 
         <!-- Table 2 -->
         <table class="table3">
-        <caption class="caption3">Summary of Lacking Requirements</caption>
-        <tbody>
-          <tr>  
-            <td style="text-align: center;">
-              <label style="font-size: 20px;font-weight: 600; text-align: center">STATUS:</label>
-            </td>
-
-            <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea3" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
-              <label>Based on the Status of MTSR:</label>
-              <textarea class="textarea3" rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-        <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
-        <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;" v-if="!openFax">
-        <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;" v-if="openFax">
-      </div>
-      <div v-if="openFax">
-          <downloadd />
-      </div>
+            <caption class="caption3">Summary of Lacking Requirements</caption>
+            <tbody>
+                <tr>
+                    <td style="text-align: left;">
+                        <label style="font-size: 15px;font-weight: 500; text-align: center">1. Letter of Intent with
+                            Justification of Renewal</label>
+                    </td>
+                    <td style="text-align: left;width: 1000px;">
+                        <label>Based on the Status of MTSR:</label>
+                        <textarea class="textarea3" rows="3" style="color: red;" wrap="off">{{ textInput1 }}</textarea>
+                        <!-- Disable text wrapping -->
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <label style="font-size: 15px;font-weight: 500; text-align: center">2. Corporate Secretary
+                            Certificate attesting to the authority of the person who is filing the
+                            renewal of Application</label>
+                    </td>
+                    <td style="text-align: left;width: 1000px;">
+                        <label>Based on the Status of MTSR:</label>
+                        <textarea class="textarea3" rows="3" style="color: red;" wrap="off">{{ textInput2 }}</textarea>
+                        <!-- Disable text wrapping -->
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <label style="font-size: 15px;font-weight: 500; text-align: center">3. National Commission on
+                            Indigenous Peoples Certification Precondition</label>
+                    </td>
+                    <td style="text-align: left;width: 1000px;">
+                        <label>Based on the Status of MTSR:</label>
+                        <textarea class="textarea3" rows="3" style="color: red;" wrap="off">{{ textInput3 }}</textarea>
+                        <!-- Disable text wrapping -->
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <label style="font-size: 15px;font-weight: 500; text-align: center"> 4. Certification of the
+                            Regional Office to the compliance with the terms and conditions of the
+                            MPSA, particularly with regard to:<br>&nbsp;
+                            a. Three-year Devt’Utilization WP<br>&nbsp;
+                            b. Survey Plan<br>&nbsp;
+                            c. ECC<br>&nbsp;
+                            d. EPEP<br>&nbsp;
+                            e. SDMP<br>&nbsp;
+                            f. Implementation of the 3YR WP, EPEP and SDMP<br>&nbsp;
+                            g. Submission of Reports<br>&nbsp;
+                            h. Payment of Fees and Taxes</label>
+                    </td>
+                    <td style="text-align: left;width: 1000px;">
+                        <label>Based on the Status of MTSR:</label>
+                        <textarea class="textarea3" rows="3" style="color: red;" wrap="off">{{ textInput4 }}</textarea>
+                        <!-- Disable text wrapping -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="display: flex;flex-wrap: wrap;justify-content: center;">
+            <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
+            <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;"
+                v-if="!openFax">
+            <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;"
+                v-if="openFax">
+        </div>
+        <div v-if="openFax">
+            <downloadd />
+        </div>
     </div>
 </template>
 
@@ -128,22 +174,30 @@
 import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
 import downloadd from '../faxsheet/mpsa-factsheet.vue'
+
 </script>
+
 <script>
 export default {
     data() {
-    return {
-      openFax: false
-    };
-  },
-  methods: {
-    dude() {
-    this.openFax = true;
+        return {
+            openFax: false,
+            textInput1: '',
+            textInput2: '',
+            textInput3: '',
+            textInput4: '',
+            wew: '',
+            picture: '',
+        };
     },
-    close() {
-      this.openFax = false;
+    methods: {
+        dude() {
+            this.openFax = true;
+        },
+        close() {
+            this.openFax = false;
+        }
     }
-  }
 }
 
 </script>
@@ -184,6 +238,7 @@ export default {
     width: 100%;
     margin-bottom: 20px;
     text-align: left;
+    height: auto;
 }
 
 .th3,

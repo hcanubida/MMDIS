@@ -126,7 +126,7 @@ export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
   top: 0;
   left: 0;
   right: 0;
-  margin-top: 35%;
+  margin-top: 34%;
 }
 
 

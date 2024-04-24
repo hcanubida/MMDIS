@@ -14,7 +14,7 @@
                 </div>
                 <div class="appdetails2">
                     <div class="appdetails3">
-                        <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id }}</a></p>
+                        <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id1 }}</a></p>
                         <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number }}</a></p>
                         <p class="detailss">Status: <a :style="{color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400}">{{ details.status }}</a></p>
                         <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares }}</a></p>
@@ -47,7 +47,7 @@ import axios from 'axios';
 
 export default { 
     props: {
-        detail_id: String,
+        detail_id1: String,
     },
     data() {
         return {
@@ -64,7 +64,7 @@ export default {
         async fetchDetails() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/get_details/');
-                this.details = response.data.find(det => det.id === parseInt(this.detail_id))
+                this.details = response.data.find(det => det.id === parseInt(this.detail_id1))
                 console.log(this.detail_id)
                 console.log(this.details)
 

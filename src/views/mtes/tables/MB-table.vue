@@ -1,37 +1,37 @@
 <template>
-    <div class="tablemain">
+    <div class="mbtable">
         <div class="flex lg:justify-end mb-5 ">
-            <button class="button1" @click="navigateTomodal">Add Application</button>
+            <button class="mbbutton" @click="navigateTomodal">Add Application</button>
         </div>
-        <div class="scrollable-table">
-            <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl" id="table">
-                <thead>
+        <div class= "mb_scrollable">
+            <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
+              <!-- <table> -->
+                <thead class="sticky top-0 z-50 border-y-50">
                     <tr style="background-color: #e6cfaf;">
-                        <th class="th">Application No.</th>
-                        <th class="th">Status</th>
-                        <th class="th">Tenement Name</th>
-                        <th class="th">Area (Hectares)</th>
-                        <th class="th">Date Filed</th>
-                        <th class="th">Barangay</th>
-                        <th class="th">City</th>
-                        <th class="th">Province</th>
-                        <th class="th">Commodity</th>
-                        <th class="th">Action</th>
+                        <th class="mbth">Application No.</th>
+                        <th class="mbth">Status</th>
+                        <th class="mbth">Tenement Name</th>
+                        <th class="mbth">Area (Hectares)</th>
+                        <th class="mbth">Date Filed</th>
+                        <th class="mbth">Barangay</th>
+                        <th class="mbth">City</th>
+                        <th class="mbth">Province</th>
+                        <th class="mbth">Commodity</th>
+                        <th class="mbth">Action</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td class="td">{{ detail.id }}</td>
-                        <td class="td">{{ detail.status }}</td>
-                        <td class="td">{{ detail.tenement_name }}</td>
-                        <td class="td">{{ detail.area_hectares }}</td>
-                        <td class="td">{{ detail.date_filed }}</td>
-                        <td class="td">{{ detail.barangay }}</td>
-                        <td class="td">{{ detail.city }}</td>
-                        <td class="td">{{ detail.province }}</td>
-                        <td class="td">{{ detail.commodity }}</td>
-                        <td class="td">
+                        <td class="mbtd">{{ detail.id }}</td>
+                        <td class="mbtd">{{ detail.status }}</td>
+                        <td class="mbtd">{{ detail.tenement_name }}</td>
+                        <td class="mbtd">{{ detail.area_hectares }}</td>
+                        <td class="mbtd">{{ detail.date_filed }}</td>
+                        <td class="mbtd">{{ detail.barangay }}</td>
+                        <td class="mbtd">{{ detail.city }}</td>
+                        <td class="mbtd">{{ detail.province }}</td>
+                        <td class="mbtd">{{ detail.commodity }}</td>
+                        <td class="mbtd">
                             <button class="text-red-500" @click="navigateTomodalView(detail.id)">
                                 View
                             </button>
@@ -40,16 +40,17 @@
                 </tbody>
             </table>
         </div>
+  
     </div>
-</template>
-
-<script>
-import axios from 'axios';
-import { ref } from 'vue';
-
-import { addDetail4, viewDetail4, detailToggle4, detail_id4 } from '../dashboards/MB-dashboard.vue';
-
-export default {
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  import { ref } from 'vue';
+  
+  import { addDetail4, viewDetail4, detailToggle4, detail_id4 } from '../dashboards/MB-dashboard.vue';
+  
+  export default {
     name: 'typeofapp',
     data() {
         return {
@@ -66,7 +67,7 @@ export default {
         async fetchDetails() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/get_details/');
-                this.details = response.data;
+                this.details = response.data.filter(det => det.application == 'mb');
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
@@ -79,13 +80,13 @@ export default {
             viewDetail4.value = true// Define your navigation logic here
         },
     }
-};
-
-
-</script>
-
-<style>
-.button1 {
+  };
+  
+  
+  </script>
+  
+  <style>
+  .mbbutton {
     text-align: center;
     padding: 10px;
     margin: 1rem;
@@ -96,35 +97,35 @@ export default {
     background-color: #eacda3;
     color: white;
     cursor: pointer;
-}
-
-.tablemain {
+  }
+  
+  .mbtable {
     flex: auto;
     flex-direction: column;
     margin-left: 20px;
     border-collapse: collapse;
     width: 100%;
-}
-
-#table {
+  }
+  
+  #table {
     width: 100%;
     margin: auto;
-}
-
-.scrollable-table {
-    max-height: 500px;
-    /* Set the maximum height here */
-    overflow-y: auto;
-    /* Add vertical scrollbar if needed */
+    height: auto;
+  }
+  
+  .mb_scrollable {
+    /* Adjust the maximum height as needed */
     margin: 15px;
-    box-shadow: 2px 3px 5px rgb(175, 175, 175)
-}
-
-.th,
-.td {
+    box-shadow: 2px 3px 5px rgb(175, 175, 175);
+    max-height:200px; 
+    overflow-y: auto; 
+  }
+  
+  .mbth,
+  .mbtd {
     border: 1px solid #888888;
     text-align: center;
     padding: 10px;
     position: sticky;
-}
-</style>
+  }
+  </style>
