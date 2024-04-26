@@ -36,6 +36,8 @@ import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue"
 import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue"
 import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue"
 import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue"
+import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue"
+import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue"
 
 //---tables in dashboards
 import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
@@ -113,6 +115,8 @@ const routes = [
     { path: "/mpp", component: mppdashboard},
     { path: "/otp", component: otpdashboard},
     { path: "/ssmc", component: ssmcdashboard},
+    { path: "/amtrd", component: amtrddashboard},
+    { path: "/moep", component: moepddashboard},
 
     //-----Mandatory Requirements------
     { path: "/ReqFTTA", component: ReqFTTA },

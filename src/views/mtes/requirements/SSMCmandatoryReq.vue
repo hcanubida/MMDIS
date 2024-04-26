@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <headd />
+    </div>
     <div class="title">
         <h2>MANDATORY REQUIREMENTS</h2>
     </div>
@@ -231,13 +234,13 @@
                             <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
                         </td>
 
-                            <td style="text-align: left;width: 1000px;">
-                                <label>Remarks:</label>
-                                <textarea rows="3" style="color: red;"  v-model="table2Remarks" wrap="off"></textarea>
-                                <label>Based on the Status of MTSR:</label>
-                                <textarea rows="3" style="color: black;" wrap="off"></textarea>
-                                <!-- Disable text wrapping -->
-                            </td>
+                        <td style="text-align: left;width: 1000px;">
+                            <label>Remarks:</label>
+                            <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                            <label>Based on the Status of MTSR:</label>
+                            <textarea rows="3" style="color: black;" wrap="off"></textarea>
+                            <!-- Disable text wrapping -->
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -402,12 +405,21 @@
                 </tbdoy>
             </table>
         </div>
+        <div style="display: flex;flex-direction: column;justify-content: center;">
+            <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+            <div>
+                <button style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;">
+                    SAVE
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
 
 <script setup>
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import headd from '../../../components/header.vue'
 
 // Function to copy remarks from Table 1 to Table 2 for all rows
 function copyRemarksFromTable1ToTable2() {
@@ -431,9 +443,9 @@ function copyRemarksFromTable1ToTable2() {
 <script>
 export default {
     data() {
-      return{
-        table2Remarks:''
-      }  
+        return {
+            table2Remarks: ''
+        }
     },
     mounted() {
         // Call the function to copy remarks when the component is mounted
@@ -463,7 +475,7 @@ export default {
     justify-content: center;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 130px;
 }
 
 .requirements {

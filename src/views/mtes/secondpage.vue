@@ -2,38 +2,48 @@
   <div class="panel">
     <div class="flex justify-center items-center h-screen">
       <taas />
-      <UserBtn style="margin-left: 321px"/>
+      <UserBtn style="margin-left: 321px" />
     </div>
     <div class="new-app-content">
-      <h1>New Applications</h1>
-      <div class="button-container">
-        <button @click="navigateToFTTAdashboard()" class="button1">
-          Financial or Technical Assistance Agreement
-        </button>
-        <button @click="navigateToMPSAdashboard()" class="button1">
-          Mineral Production Sharing Agreement
-        </button>
-        <button @click="navigateToEPdashboard()" class="button1">
-          Exploration Permit
-        </button>
-        <button @click="navigateToMPPdashboard()" class="button1">
-          Mineral Processing Permit
-        </button>
-        <button  @click="navigateToISAGdashboard()" class="button1">
-          Industrial Sand and Gravel Permit
-        </button>
-        <button  @click="navigateToOTPdashboard()" class="button1">
-          Ore Transport Permit
-        </button>
-        <button @click="navigateToMBdashboard()" class="button1">
-          Declaration of Minahang Bayan
-        </button>
-        <button @click="navigateToSSMCdashboard()" class="button1">
-          Small-Scale Mining Contract
-        </button>
-        <button @click="navigateToMPLdashboard()" class="button1">
-          Mineral Processor’s License
-        </button>
+      <h1 style="font-size: 50px;margin-bottom: 30px;margin-top: -150px;">New Applications</h1>
+      <div style="display: flex; justify-content: center;">
+        <div class="button-container1">
+          <button @click="navigateToFTTAdashboard()" class="button1">
+            Financial or Technical Assistance Agreement
+          </button>
+          <button @click="navigateToMPSAdashboard()" class="button1">
+            Mineral Production Sharing Agreement
+          </button>
+          <button @click="navigateToEPdashboard()" class="button1">
+            Exploration Permit
+          </button>
+          <button @click="navigateToMPPdashboard()" class="button1">
+            Mineral Processing Permit
+          </button>
+          <button @click="navigateToISAGdashboard()" class="button1">
+            Industrial Sand and Gravel Permit
+          </button>
+          <button @click="navigateToOTPdashboard()" class="button1">
+            Ore Transport Permit
+          </button>
+        </div>
+        <div class="button-container2">
+          <button @click="navigateToMBdashboard()" class="button1">
+            Declaration of Minahang Bayan
+          </button>
+          <button @click="navigateToSSMCdashboard()" class="button1">
+            Small-Scale Mining Contract
+          </button>
+          <button @click="navigateToMPLdashboard()" class="button1">
+            Mineral Processor’s License
+          </button>
+          <button @click="navigateToAMTRDdashboard()" class="button1">
+            Accreditation as Mineral Trader, Retailer, and Dealer
+          </button>
+          <button @click="navigateToMOEPdashboard()" class="button1">
+            Mineral Ore Export Permit
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -58,26 +68,32 @@ export default {
       // Use router.push to navigate to '/newappcontent'
       router.push('/ep');
     },
-    navigateToMPSAdashboard(){
+    navigateToMPSAdashboard() {
       router.push('/mpsa')
     },
-    navigateToISAGdashboard(){
+    navigateToISAGdashboard() {
       router.push('/isag')
     },
-    navigateToMBdashboard(){
+    navigateToMBdashboard() {
       router.push('/mb')
     },
-    navigateToMPLdashboard(){
+    navigateToMPLdashboard() {
       router.push('/mpl')
     },
-    navigateToMPPdashboard(){
+    navigateToMPPdashboard() {
       router.push('/mpp')
     },
-    navigateToOTPdashboard(){
+    navigateToOTPdashboard() {
       router.push('/otp')
     },
-    navigateToSSMCdashboard(){
+    navigateToSSMCdashboard() {
       router.push('/ssmc')
+    },
+    navigateToAMTRDdashboard() {
+      router.push('/amtrd')
+    },
+    navigateToMOEPdashboard() {
+      router.push('/moep')
     },
   }
 };
@@ -93,7 +109,7 @@ export default {
 
 .new-app-content {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 200px;
 }
 
 .new-app-content h1 {
@@ -101,7 +117,16 @@ export default {
   margin-bottom: 1.5rem;
 }
 
-.button-container {
+.button-container1 {
+  display: flex;
+  flex-direction: column;
+  /* Align buttons vertically */
+  align-items: center;
+  /* Align buttons horizontally */
+  margin-right: 50px;
+}
+
+.button-container2 {
   display: flex;
   flex-direction: column;
   /* Align buttons vertically */
@@ -123,6 +148,10 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s;
   font-weight: 400;
+  margin-bottom: 20px;
 }
-
+.button1:hover {
+  background-color: #ffe0b4;
+  color: rgb(90, 89, 89);
+}
 </style>

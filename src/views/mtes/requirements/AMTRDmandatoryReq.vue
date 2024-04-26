@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <headd />
+    </div>
     <div class="title1">
         <h2>MANDATORY REQUIREMENTS</h2>
     </div>
@@ -25,9 +28,9 @@
 
                     <td style="text-align: left;">
                         <label>Remarks:</label><br>
-                        <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+                        <textarea ></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea></textarea>
+                        <textarea style="color: red;" v-model="textInput1"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -41,9 +44,9 @@
 
                     <td style="text-align: left;">
                         <label>Remarks:</label><br>
-                        <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+                        <textarea style="color: red;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea></textarea>
+                        <textarea style="color: red;" v-model="textInput2"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -57,9 +60,9 @@
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+                        <textarea style="color: red;"></textarea>
                         <label>Recommendation:</label><br>
-                        <textarea></textarea>
+                        <textarea style="color: red;" v-model="textInput3"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -78,9 +81,9 @@
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+                        <textarea style="color: red;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea></textarea>
+                        <textarea style="color: red;" v-model="textInput4"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -98,9 +101,9 @@
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea style="color: red;" @input="copyRemarksFromTable1ToTable2"></textarea>
+                        <textarea style="color: red;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea></textarea>
+                        <textarea style="color: red;" v-model="textInput5"></textarea>
                     </td>
                 </tr>
 
@@ -120,8 +123,8 @@
                     </td>
 
                     <td style="text-align: left;width: 1000px;">
-                        <label>Remarks:</label>
-                        <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                        <label>Recommendation or Lacking Submission </label>
+                        <textarea rows="3" style="color: red;" wrap="off">{{ textInput1 }}</textarea>
                         <label>Based on the Status of MTSR:</label>
                         <textarea rows="3" style="color: black;" wrap="off"></textarea>
                         <!-- Disable text wrapping -->
@@ -136,8 +139,8 @@
                     </td>
 
                     <td style="text-align: left;width: 1000px;">
-                        <label>Remarks:</label>
-                        <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                        <label>Recommendation or Lacking Submission </label>
+                        <textarea rows="3" style="color: red;" wrap="off">{{ textInput2 }}</textarea>
                         <label>Based on the Status of MTSR:</label>
                         <textarea rows="3" style="color: black;" wrap="off"></textarea>
                         <!-- Disable text wrapping -->
@@ -153,8 +156,8 @@
                     </td>
 
                     <td style="text-align: left;width: 1000px;">
-                        <label>Remarks:</label>
-                        <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                        <label>Recommendation or Lacking Submission </label>
+                        <textarea rows="3" style="color: red;" wrap="off">{{ textInput3 }}</textarea>
                         <label>Based on the Status of MTSR:</label>
                         <textarea rows="3" style="color: black;" wrap="off"></textarea>
                         <!-- Disable text wrapping -->
@@ -173,8 +176,8 @@
                     </td>
 
                     <td style="text-align: left;width: 1000px;">
-                        <label>Remarks:</label>
-                        <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                        <label>Recommendation or Lacking Submission </label>
+                        <textarea rows="3" style="color: red;" wrap="off">{{ textInput4 }}</textarea>
                         <label>Based on the Status of MTSR:</label>
                         <textarea rows="3" style="color: black;" wrap="off"></textarea>
                         <!-- Disable text wrapping -->
@@ -192,8 +195,8 @@
                     </td>
 
                     <td style="text-align: left;width: 1000px;">
-                        <label>Remarks:</label>
-                        <textarea rows="3" style="color: red;" v-model="table2Remarks" wrap="off"></textarea>
+                        <label>Recommendation or Lacking Submission </label>
+                        <textarea rows="3" style="color: red;" wrap="off">{{ textInput5 }}</textarea>
                         <label>Based on the Status of MTSR:</label>
                         <textarea rows="3" style="color: black;" wrap="off"></textarea>
                         <!-- Disable text wrapping -->
@@ -207,31 +210,22 @@
 
 <script setup>
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import headd from '../../../components/header.vue'
 
-// Function to copy remarks from Table 1 to Table 2 for all rows
-function copyRemarksFromTable1ToTable2() {
-    // Get all the rows in Table 1
-    const table1Rows = document.querySelectorAll('.table1 tbody tr');
 
-    // Loop through each row
-    table1Rows.forEach((row, index) => {
-        // Get the remarks textarea within the current row
-        const table1Remarks = row.querySelector('textarea').value;
-
-        // Find the corresponding row in Table 2 based on the index
-        const table2Row = document.querySelectorAll('.table2 tbody tr')[index];
-
-        // Set the remarks in Table 2 to match those from Table 1
-        table2Row.querySelector('textarea').value = table1Remarks;
-    });
-}
 </script>
 
 <script>
 export default {
-    mounted() {
-        // Call the function to copy remarks when the component is mounted
-        copyRemarksFromTable1ToTable2();
+    name: 'typeapp',
+    data() {
+        return {
+            textInput1: '',
+            textInput2: '',
+            textInput3: '',
+            textInput4: '',
+            textInput5: '',
+        };
     },
     methods: {
         fileSelected() {
@@ -256,16 +250,16 @@ export default {
 
 
 <style scoped>
-.title {
+.title1 {
     display: flex;
     justify-content: center;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 130px;
 }
 
 .requirements {
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: center;
 }
 

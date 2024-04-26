@@ -1,6 +1,6 @@
 <template>
     <div>
-        <headd/>
+        <headd />
     </div>
 
     <div class="title">
@@ -334,7 +334,8 @@
                 </tr>
                 <tr>
                     <td>
-                        7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL Holder/s <br> &nbsp;
+                        7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL Holder/s <br>
+                        &nbsp;
                         <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
                     </td>
 
@@ -366,9 +367,16 @@
                         <textarea rows="3" style="color: black;" wrap="off"></textarea> <!-- Disable text wrapping -->
                     </td>
                 </tr>
-
             </tbody>
         </table>
+        <div style="display: flex;flex-direction: column;justify-content: center;">
+            <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+            <div>
+                <button style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;">
+                    SAVE
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -427,16 +435,16 @@ export default {
     justify-content: center;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 120px;
 }
 
 .requirements {
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
 }
 
 .titlehead {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .reqData {
@@ -451,14 +459,16 @@ export default {
     text-align: left;
     width: 400px;
 }
+
 .td6 {
-  width: 200px;
-  text-align: center;
+    width: 200px;
+    text-align: center;
 }
-.select{
-  text-align: center;
-  padding: 10px;
-  box-shadow: 2px 3px 5px rgb(175, 175, 175)
+
+.select {
+    text-align: center;
+    padding: 10px;
+    box-shadow: 2px 3px 5px rgb(175, 175, 175)
 }
 
 table {

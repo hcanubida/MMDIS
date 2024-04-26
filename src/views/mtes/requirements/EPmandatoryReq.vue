@@ -30,9 +30,9 @@
 
           <td style="text-align: left;">
             <label>Remarks:</label><br>
-            <textarea class="textarea1"></textarea>
+            <textarea class="textarea1" v-model="remarks.textInput1 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput1"></textarea>
           </td>
         </tr>
         <tr>
@@ -46,9 +46,9 @@
 
           <td style="text-align: left;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput2 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput2"> </textarea>
           </td>
         </tr>
         <tr>
@@ -63,9 +63,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput3 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput3"> </textarea>
           </td>
         </tr>
         <tr>
@@ -80,9 +80,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput4 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput4"> </textarea>
           </td>
         </tr>
         <tr>
@@ -99,9 +99,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput5 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;"v-model="recommendation.textInput5"> </textarea>
           </td>
         </tr>
         <tr>
@@ -117,9 +117,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput6 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput6"> </textarea>
           </td>
         </tr>
         <tr>
@@ -136,9 +136,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput7 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput7"></textarea>
           </td>
         </tr>
         <tr>
@@ -155,9 +155,9 @@
 
           <td style="text-align: left; width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="color: red;"  class="textarea1"></textarea>
+            <textarea  class="textarea1" v-model="remarks.textInput8 "></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea1" style="color: red;"></textarea>
+            <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput8"> </textarea>
           </td>
         </tr>
       </tbody>
@@ -189,9 +189,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput9 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput9"> </textarea>
             </td>
           </tr>
           <tr>
@@ -206,9 +206,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput10 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput10"></textarea>
             </td>
           </tr>
 
@@ -224,9 +224,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput11 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;"v-model="recommendation.textInput11" ></textarea>
             </td>
           </tr>
 
@@ -241,10 +241,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea class="textarea1"></textarea>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput12 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput12"></textarea>
             </td>
           </tr>
 
@@ -267,9 +266,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput13 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput13" ></textarea>
             </td>
           </tr>
 
@@ -284,9 +283,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput14 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput14"></textarea>
             </td>
           </tr>
 
@@ -302,9 +301,9 @@
 
             <td style="text-align: left;width: 400px;">
               <label>Remarks:</label><br>
-              <textarea style="color: red;"  class="textarea1"></textarea>
+              <textarea class="textarea1" v-model="remarks.textInput15 "></textarea>
               <label>Recommendation or Lacking Submission :</label><br>
-              <textarea class="textarea1" style="color: red;"></textarea>
+              <textarea class="textarea1" style="color: red;" v-model="recommendation.textInput15"></textarea>
             </td>
           </tr>
         </tbody>
@@ -317,14 +316,14 @@
         <tbody>
           <tr>
 
-            <td>
+            <td style="width: 1000px;">
               1. Application Form (MGB Form No. 5-1)<br> &nbsp;
               <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea rows="3" style="color: red;"  wrap="off" class="textarea1"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea rows="3" style="color: red;" wrap="off" class="textarea1"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea rows="3" style="color: black;" wrap="off" class="textarea1"></textarea>
               <!-- Disable text wrapping -->
@@ -339,8 +338,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -357,8 +356,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -374,8 +373,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -394,8 +393,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -412,8 +411,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -432,7 +431,27 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
+              <!-- Disable text wrapping -->
+              <label>Based on the Status of MTSR:</label>
+              <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
+              <!-- Disable text wrapping -->
+            </td>
+          </tr>
+          <tr>
+
+            <td>
+              8. Proof of financial capability to undertake the implementation of the activities under the work
+              programs:
+              <br>&nbsp;
+              * Latest Audited Financial Statement and/or Annual Report for the preceding Year<br>&nbsp;
+              * Credit lines and/or certification/s of bank guarantee/deposit and/or similar negotiable instruments
+              <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
+            </td>
+
+            <td style="text-align: left;width: 1000px;">
+              <label>Recommendation or Lacking Submission</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
               <label>Based on the Status of MTSR:</label>
@@ -449,15 +468,15 @@
         <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">Other Requirements</h2>
         <tbody>
           <tr>
-            <td>
+            <td style="width: 1000px;">
               1. Certificate Environmental Management and Community Relations Record (CEMCRR) or Certificate of
               Exemption from the CEMCRR; <br> &nbsp;
               <label style="font-size: 20px;font-weight: 600;">STATUS:</label>
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -472,8 +491,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -488,8 +507,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -504,8 +523,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -527,8 +546,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -543,8 +562,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -559,8 +578,8 @@
             </td>
 
             <td style="text-align: left;width: 1000px;">
-              <label>Remarks:</label>
-              <textarea class="textarea1" rows="3" style="color: red;"  wrap="off"></textarea>
+              <label>Recommendation or Lacking Submission</label>
+              <textarea class="textarea1" rows="3" style="color: red;" wrap="off"></textarea>
               <label>Based on the Status of MTSR:</label>
               <textarea class="textarea1" rows="3" style="color: black;" wrap="off"></textarea>
               <!-- Disable text wrapping -->
@@ -570,13 +589,14 @@
         </tbody>
       </table>
 
-      <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-        <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
-        <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;" v-if="!openFax">
-        <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;" v-if="openFax">
-      </div>
-      <div v-if="openFax">
-          <downloadd />
+      <div style="display: flex;flex-direction: column;justify-content: center;">
+        <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+        <div>
+          <button style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;"
+            @click="save">
+            SAVE
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -589,32 +609,47 @@ import headd from '../../../components/MTES/header.vue'
 import downloadd from '../faxsheet/ep-factsheet.vue'
 import { ref } from 'vue';
 
-
-
-// function copyRemarksFromTable1ToTable2() {
-//   // Get all the rows in Table 1
-//   const table1Rows = document.querySelectorAll('.table1 tbody tr');
-
-//   // Loop through each row
-//   table1Rows.forEach((row, index) => {
-//     // Get the remarks textarea within the current row
-//     const table1Remarks = row.querySelector('textarea').value;
-
-//     // Find the corresponding row in Table 2 based on the index
-//     const table2Row = document.querySelectorAll('.table2 tbody tr')[index];
-
-//     // Set the remarks in Table 2 to match those from Table 1
-//     table2Row.querySelector('textarea').value = table1Remarks;
-//   });
-
-// }
 </script>
 
 <script>
 export default {
+  name: 'typeapp',
   data() {
     return {
-      openFax: false
+      remarks: {
+        textInput1: '',
+        textInput2: '',
+        textInput3: '',
+        textInput4: '',
+        textInput5: '',
+        textInput6: '',
+        textInput7: '',
+        textInput8: '',
+        textInput9: '',
+        textInput10: '',
+        textInput11: '',
+        textInput12: '',
+        textInput13: '',
+        textInput14: '',
+        textInput15: '',
+      },
+      recommendation: {
+        textInput1: '',
+        textInput2: '',
+        textInput3: '',
+        textInput4: '',
+        textInput5: '',
+        textInput6: '',
+        textInput7: '',
+        textInput8: '',
+        textInput9: '',
+        textInput10: '',
+        textInput11: '',
+        textInput12: '',
+        textInput13: '',
+        textInput14: '',
+        textInput15: '',
+      }
     };
   },
   methods: {
@@ -632,10 +667,46 @@ export default {
       }
     },
     dude() {
-    this.openFax = true;
+      this.openFax = true;
     },
     close() {
       this.openFax = false;
+    },
+    save() {
+      console.log(this.remarks)
+      const formData = new FormData();
+
+      for (let i = 1; i <= 15; i++) {
+        formData.append(`input${i}`, this.remarks[`textInput${i}`]);
+      }
+      formData.append('id_reference', 30);
+
+      
+
+      // Make a POST request using Axios
+      axios.post('http://localhost:8000/add_remarks', formData)
+        .then(response => {
+          console.log('Response:', response.data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+        console.log(this.recommendation)
+        const formData2 = new FormData();
+        for (let i = 1; i <= 15; i++) {
+        formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
+      }
+      formData2.append('id_reference', 30);
+
+      // Make a POST request using Axios
+      axios.post('http://localhost:8000/add_recommendation', formData2)
+        .then(response => {
+          console.log('Response2:', response.data);
+        })
+        .catch(error => {
+          console.error('Error2:', error);
+        });
     }
   }
 }

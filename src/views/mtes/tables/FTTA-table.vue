@@ -3,7 +3,6 @@
       <div class="flex lg:justify-end mb-5 ">
           <button class="fttabutton" @click="navigateTomodal">Add Application</button>
       </div>
-
       <div class= "ftta_scrollable">
           <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
             <!-- <table> -->

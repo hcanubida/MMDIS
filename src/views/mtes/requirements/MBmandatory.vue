@@ -544,13 +544,13 @@
         </tbody>
       </table>
     </div>
-    <div style="display: flex;flex-wrap: wrap;justify-content: center;">
-        <p style="font-size: 20px; margin-right: 20px">View Faxsheet</p>
-        <img src="../../../assets/MTES/view.png" alt="view faxsheet" @click="dude" style="cursor: pointer;" v-if="!openFax">
-        <img src="../../../assets/MTES/square-x.png" alt="view faxsheet" @click="close" style="cursor: pointer;" v-if="openFax">
-      </div>
-      <div v-if="openFax">
-          <downloadd />
+    <div style="display: flex;flex-direction: column;justify-content: center;">
+        <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+        <div>
+          <button style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;">
+            SAVE
+          </button>
+        </div>
       </div>
   </div>
 </template>

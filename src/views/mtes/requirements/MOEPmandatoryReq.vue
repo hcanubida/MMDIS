@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <headd />
+    </div>
     <div class="title">
         <h2>MANDATORY REQUIREMENTS</h2>
     </div>
@@ -221,12 +224,21 @@
                 </tr>
             </tbody>
         </table>
+        <div style="display: flex;flex-direction: column;justify-content: center;">
+            <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+            <div>
+                <button style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;">
+                    SAVE
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
 
 <script setup>
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
+import headd from '../../../components/header.vue'
 
 // Function to copy remarks from Table 1 to Table 2 for all rows
 function copyRemarksFromTable1ToTable2() {
@@ -277,7 +289,7 @@ export default {
     justify-content: center;
     font-size: 20px;
     font-weight: 500;
-    margin-top: 10px;
+    margin-top: 120px;
 }
 
 .requirements {
