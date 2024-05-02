@@ -8,12 +8,12 @@
                 <span class="select" role="button" @click="selectFiles">Choose</span>
             </span>
             <div v-else class="select">Drop Files here</div>
-            <input name="file" type="file" class="file" ref="fileInput" multiple @change="onFileSelect" />
+            <input name="file" type="file" class="file" ref="fileInput" multiple="multiple" @change="onFileSelect" />
         </div>
         <div class="container-upload">
             <div class="file-info" v-for="(file, index) in files" :key="index">
                 <span class="delete" @click="deleteFile(index)">&times;</span>
-                <span>{{ file.name }}</span>
+                <span class="val" >{{ file.name }}</span>
             </div>
         </div>
     </div>
@@ -162,9 +162,17 @@ export default {
 .card .drag-area.dragover .visible {
     display: none;
 }
-
+.file-info{
+    display: flex;
+    justify-content: center;
+}
 .delete {
     z-index: 999;
     color: red;
+    cursor: pointer;
+}
+
+.val{
+    padding-right: 5px;
 }
 </style>

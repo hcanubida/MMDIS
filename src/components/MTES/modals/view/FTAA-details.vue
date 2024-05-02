@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqFTTA()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqFTTA(detail_id)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqFTTA() {
+        navigateToMandatoryReqFTTA(detail_id) {
+            console.log(detail_id)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqFTTA';
+        window.location.href = `/ReqFTTA/${detail_id}`;
       },
     }
 }

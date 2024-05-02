@@ -10,31 +10,38 @@
                     </button>
                 </div>
                 <div class="appdetails1">
-                    <p>Application Details </p>
+                    <p>Application Details</p>
                 </div>
                 <div class="appdetails2">
                     <div class="appdetails3">
                         <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id1 }}</a></p>
-                        <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number }}</a></p>
-                        <p class="detailss">Status: <a :style="{color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400}">{{ details.status }}</a></p>
-                        <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares }}</a></p>
+                        <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number
+                                }}</a></p>
+                        <p class="detailss">Status: <a
+                                :style="{ color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400 }">{{
+                            details.status }}</a></p>
+                        <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares
+                                }}</a></p>
                         <p class="detailss">Barangay: <a style="font-weight: 400;">{{ details.barangay }}</a></p>
-                        <p class="detailss">City: 
-                            <a style="font-weight: 400;">{{ details.city }}</a></p>
+                        <p class="detailss">City:
+                            <a style="font-weight: 400;">{{ details.city }}</a>
+                        </p>
                         <p class="detailss">Commodity: <a style="font-weight: 400;">{{ details.commodity }}</a></p>
                         <p class="detailss">Date Filed: <a style="font-weight: 400;">{{ details.date_filed }}</a></p>
                     </div>
 
                     <div class="appdetails4">
                         <p class="detailss">Category: <a style="font-weight: 400;">{{ details.category }}</a></p>
-                        <p class="detailss">Authorized <br> Representative: <a style="font-weight: 400;">{{ details.authorized_rep }}</a></p>
-                        <p class="detailss">Contact Number: <a style="font-weight: 400;">{{ details.contact_no }}</a></p>
+                        <p class="detailss">Authorized <br> Representative: <a style="font-weight: 400;">{{
+                            details.authorized_rep }}</a></p>
+                        <p class="detailss">Contact Number: <a style="font-weight: 400;">{{ details.contact_no }}</a>
+                        </p>
                         <p class="detailss">Email: <a style="font-weight: 400;">{{ details.email }}</a></p>
                         <p class="detailss">Others: <a style="font-weight: 400;">{{ details.others }}</a></p>
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqEP()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqEP(detail_id1)">Next</button>
                 </div>
             </div>
         </div>
@@ -45,7 +52,7 @@
 import { viewDetail1 } from '../../../../views/mtes/dashboards/EP-dasboard.vue';
 import axios from 'axios';
 
-export default { 
+export default {
     props: {
         detail_id1: String,
     },
@@ -65,17 +72,18 @@ export default {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/get_details/');
                 this.details = response.data.find(det => det.id === parseInt(this.detail_id1))
-                console.log(this.detail_id)
+                console.log(this.detail_id1)
                 console.log(this.details)
 
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqEP() {
-        // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqEP';
-      },
+        navigateToMandatoryReqEP(detail_id1) {
+
+            console.log(detail_id1)
+            window.location.href = `/ReqEP/${detail_id1}`;
+        },
     }
 }
 
@@ -97,40 +105,41 @@ export default {
     flex-direction: column;
 }
 
-.detailss{
+.detailss {
     margin-bottom: 10px;
 }
+
 .appdetails {
-  background-color: #ffd498;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  width: auto;
-  /* Set a maximum width */
-  height: auto;
-  /* Let the height adjust based on content */
-  padding: 20px;
+    background-color: #ffd498;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    width: auto;
+    /* Set a maximum width */
+    height: auto;
+    /* Let the height adjust based on content */
+    padding: 20px;
 }
 
 .appdetailsbutton1 {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
 }
 
 .butons1 {
-  /* border: 1px solid white; */
-  padding: 5px;
-  width: 60px;
-  border-radius: 10px;
-  background-color: #fafafa;
-  color: rgb(92, 92, 92);
-  width: 300px;
-  height: 50px;
-  font-size: 23px;
+    /* border: 1px solid white; */
+    padding: 5px;
+    width: 60px;
+    border-radius: 10px;
+    background-color: #fafafa;
+    color: rgb(92, 92, 92);
+    width: 300px;
+    height: 50px;
+    font-size: 23px;
 }
 
 .butons:hover1 {
-  background-color: #ececec;
+    background-color: #ececec;
 }
 </style>

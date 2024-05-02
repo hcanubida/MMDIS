@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqMPSA()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqMPSA(detail_id2)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqMPSA() {
-        // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqMPSA';
+        navigateToMandatoryReqMPSA(detail_id2) {
+        
+            console.log(detail_id2)
+        window.location.href = `/ReqMPSA/${detail_id2}`;
       },
     }
 }

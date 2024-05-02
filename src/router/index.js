@@ -119,9 +119,9 @@ const routes = [
     { path: "/moep", component: moepddashboard},
 
     //-----Mandatory Requirements------
-    { path: "/ReqFTTA", component: ReqFTTA },
-    { path: "/ReqEP", component: ReqEP },
-    { path: "/ReqMPSA", component: ReqMPSA },
+    { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
+    { path: "/ReqEP/:detail_id1", component: ReqEP },
+    { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
     { path: "/ReqISAG", component: ReqISAG },
     { path: "/ReqMPP", component: ReqMPP },
     { path: "/ReqMB", component: ReqMB },

@@ -42,7 +42,6 @@
             <input class="inputall" placeholder="Others:" v-model="detailstoadd.others"/>
             <input class="inputall" placeholder="Status:" v-model="detailstoadd.status" />
             <input class="inputall" placeholder="Tenement Number:" v-model="detailstoadd.tenement_number" />
-
           </div>
         </div>
 
