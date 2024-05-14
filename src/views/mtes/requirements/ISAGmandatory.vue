@@ -448,10 +448,112 @@ import downloadd from '../faxsheet/isag-factsheet.vue'
 </script>
 <script>
 export default {
+    props: {
+        detail_id3: String,
+    },
     data() {
         return {
-            openFax: false
+            selectedStatus: '',
+            otherStatus: '',
+            requirements: {
+                reqDetails1: `
+                1. Application Form (MGB Form No. 8-1), notarized;`,
+                reqDetails2: `
+                2. Payment of Filing and Processing Fees`,
+                reqDetails3: `
+                3. Duly Certified Articles of Incorporation/ Partnership/Association, By-Laws and Certificate of Registration duly certified by SEC or authorized Gov’t. agencies concerned, for corporations, partnership, associations or cooperatives; or proof of Filipino citizenship for individual;`,
+                reqDetails4: `
+                4. Location Map/Sketch Plan of the proposed permit area showing its geographic coordinates/meridional block(s) and boundaries in relation to major environmental features and other projects using NAMRIA topographic map in a scale of 1:50,000 duly prepared, signed and sealed by a deputized Geodetic Engineer`,
+                reqDetails5: `
+                5. Area clearance from the Government agencies/LGUs concerned that may be affected by the permit application or written permission from the landowner(s) and surface owner(s) of the area applied for`,
+                reqDetails6: `
+                6. Five (5) -Year Development/ Utilization Work Program (MGB Form No. 6-2), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist`,
+                reqDetails7: `
+                7. An application (MGB Form No. 16-04) for or a Certificate of Environmental Management and Community Relations Record (CEMCRR)`,
+                reqDetails8: `
+                8. Environmental Compliance Certificate`,
+                reqDetails9: `
+                9. Integrated Environmental Protection and Enhancement Program and Final Mine Rehabilitation and/or Decommissioning Plan`,
+                reqDetails10: `
+                10. Proof of technical competence including, among others:
+                Curricula Vitae and track records in mining operations and environmental management of the technical personnel who shall undertake the activities in accordance with the submitted Work Program and EPEP.
+                Sworn commitment/ employment contract/proof of availed services of the technical person(s) who will implement the Work Program`,
+                reqDetails11: `
+                11. Proof of financial capability to undertake the activities pursuant to WP and EPEP, such as the following:
+                For Corporation:
+                Latest audited Financial Statement and/or Annual Report
+                Credit Lines/Bank Guarantees and/ or similar negotiable instruments; and
+                For Individual
+                Sworn statement of assets and liabilities
+                Proof of Bank deposit or credit line Income tax return for the preceding three years`,
+                reqDetails12: `
+                12. Social Development and Management Program`,
+                reqDetails13: `
+                1. Area Status and Clearances (DENR)`,
+                reqDetails14: `
+                2. Proofs that the Notice of Application
+                MGB Regional Office(s)
+                PENRO
+                CENRO
+                Province
+                Municipality`,
+                reqDetails15: `
+                3. Certification of the Panel of Arbitrators concerned as to any claim/protest/opposition`,
+                reqDetails16: `
+                4. NCIP Certification`,
+                reqDetails17: `
+                5. Proof of Consultation with and Prior Approval by the Sangguniang Panlalawigan, Sangguniang Bayan/Panlungsod, and Sangguniang Barangay concerned`,
+                reqDetails18: `
+                6. Surety Bond`,
+            },
+            remarks: {
+                textInput1: '',
+                textInput2: '',
+                textInput3: '',
+                textInput4: '',
+                textInput5: '',
+                textInput6: '',
+                textInput7: '',
+                textInput8: '',
+                textInput9: '',
+                textInput10: '',
+                textInput11: '',
+                textInput12: '',
+                textInput13: '',
+                textInput14: '',
+                textInput15: '',
+                textInput16: '',
+                textInput17: '',
+                textInput18: '',
+            },
+            recommendation: {
+                textInput1: '',
+                textInput2: '',
+                textInput3: '',
+                textInput4: '',
+                textInput5: '',
+                textInput6: '',
+                textInput7: '',
+                textInput8: '',
+                textInput9: '',
+                textInput10: '',
+                textInput11: '',
+                textInput12: '',
+                textInput13: '',
+                textInput14: '',
+                textInput15: '',
+                textInput16: '',
+                textInput17: '',
+                textInput18: '',
+            },
         };
+    },
+    watch: {
+        selectedStatus(newValue) {
+            if (newValue !== 'other') {
+                this.otherStatus = '';
+            }
+        }
     },
     methods: {
         dude() {

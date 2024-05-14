@@ -126,7 +126,7 @@ const routes = [
     { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
     { path: "/ReqEP/:detail_id1", component: ReqEP },
     { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
-    { path: "/ReqISAG", component: ReqISAG },
+    { path: "/ReqISAG/:detail_id3", component: ReqISAG },
     { path: "/ReqMPP/:detail_id5", component: ReqMPP },
     { path: "/ReqMB", component: ReqMB },
     { path: "/ReqAMTRD", component: ReqAMTRD },

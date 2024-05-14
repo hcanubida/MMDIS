@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqISAG()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqISAG(detail_id3)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqISAG() {
+        navigateToMandatoryReqISAG(detail_id3) {
+            console.log(detail_id3)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqISAG';
+        window.location.href = `/ReqISAG/${detail_id3}`;
       },
     }
 }

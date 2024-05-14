@@ -915,12 +915,24 @@ export default {
             try {
                 const requirements = await axios.get('http://localhost:8000/get_recommendation');
                 const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id5);
-               
+
                 this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
                 this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
                 this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
                 this.recommendation.textInput4 = filteredrequirements.input4 !== null ? filteredrequirements.input4 : '';
                 this.recommendation.textInput5 = filteredrequirements.input5 !== null ? filteredrequirements.input5 : '';
+                this.recommendation.textInput6 = filteredrequirements.input6 !== null ? filteredrequirements.input6 : '';
+                this.recommendation.textInput7 = filteredrequirements.input7 !== null ? filteredrequirements.input7 : '';
+                this.recommendation.textInput8 = filteredrequirements.input8 !== null ? filteredrequirements.input8 : '';
+                this.recommendation.textInput9 = filteredrequirements.input9 !== null ? filteredrequirements.input9 : '';
+                this.recommendation.textInput10 = filteredrequirements.input10 !== null ? filteredrequirements.input10 : '';
+                this.recommendation.textInput11 = filteredrequirements.input11 !== null ? filteredrequirements.input11 : '';
+                this.recommendation.textInput12 = filteredrequirements.input12 !== null ? filteredrequirements.input12 : '';
+                this.recommendation.textInput13 = filteredrequirements.input13 !== null ? filteredrequirements.input13 : '';
+                this.recommendation.textInput14 = filteredrequirements.input14 !== null ? filteredrequirements.input14 : '';
+                this.recommendation.textInput15 = filteredrequirements.input15 !== null ? filteredrequirements.input15 : '';
+                this.recommendation.textInput16 = filteredrequirements.input16 !== null ? filteredrequirements.input16 : '';
+                this.recommendation.textInput17 = filteredrequirements.input17 !== null ? filteredrequirements.input17 : '';
             } catch (error) {
                 console.error('Error fetching reco details:', error);
             }
@@ -952,7 +964,7 @@ export default {
             const formData1 = new FormData();
             formData1.append('id_reference', this.$route.params.detail_id5);
 
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 17; i++) {
                 formData1.append(`input${i}`, this.remarks[`textInput${i}`]);
                 console.log(`input${i}`, this.remarks[`textInput${i}`])
             }
@@ -974,7 +986,7 @@ export default {
             formData2.append('id_reference', this.$route.params.detail_id5);
             console.log('id_reference', this.$route.params.detail_id5)
 
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 17; i++) {
                 formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
                 console.log(`input${i}`, this.recommendation[`textInput${i}`])
             }
