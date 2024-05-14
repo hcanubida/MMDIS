@@ -4,7 +4,7 @@
     </div>
 
     <div class="title3">
-        <h2>MANDATORY REQUIREMENTS {{ $route.params.detail_id2 }}</h2>
+        <h2>MANDATORY REQUIREMENTS</h2>
     </div>
 
     <!-- Table -->
@@ -24,7 +24,14 @@
                     </td>
 
                     <td class="inputimg3">
-                        <upload />
+                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                                to upload:</label>
+                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
+                                ref="fileInput"
+                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                        </div>
                     </td>
 
                     <td style="text-align: left;width: 400px;">
@@ -42,7 +49,14 @@
                     </td>
 
                     <td class="inputimg3">
-                        <upload />
+                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                                to upload:</label>
+                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
+                                ref="fileInput"
+                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                        </div>
                     </td>
 
                     <td style="text-align: left;width: 400px;">
@@ -58,7 +72,14 @@
                     </td>
 
                     <td class="inputimg3">
-                        <upload />
+                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                                to upload:</label>
+                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
+                                ref="fileInput"
+                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                        </div>
                     </td>
 
                     <td style="text-align: left;width: 400px;">
@@ -83,7 +104,14 @@
                     </td>
 
                     <td class="inputimg3">
-                        <upload />
+                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                                to upload:</label>
+                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
+                                ref="fileInput"
+                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                        </div>
                     </td>
 
                     <td style="text-align: left;width: 400px;">
@@ -147,10 +175,96 @@
                         v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                            recommendation.textInput4 }}</p>
+            recommendation.textInput4 }}</p>
                     </td>
                 </tr>
             </tbody>
+        </table>
+
+        <!-- table 3 -->
+        <table class="tablee">
+            <thead class="titlehead3">
+                <tr style="text-align: center;">
+                    <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+                    <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td style="text-align: center;font-size: 20px;padding: 20px;">Status of the Application: </td>
+                <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
+                    <select class="inputall" v-model="selectedStatus"
+                        style="background-color: antiquewhite;text-align: center;width: 100%;">
+                        <option value="" disabled>Based of the Status MTSR</option>
+                        <option style="text-align: left;" value="Under Pre-Processing by Mining Tenement Evaluation
+              Section">Under Pre-Processing by Mining Tenement Evaluation
+                            Section</option>
+                        <option style="text-align: left;" value="Under Preliminary Evaluation<">Under Preliminary
+                            Evaluation
+                        </option>
+                        <option style="text-align: left;" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending
+                            Area
+                            Clearance/Status (FMS/EMPAS,LMS)</option>
+                        <option style="text-align: left;" value="Undergoing Publication/Posting/Radio Announcement">
+                            Undergoing
+                            Publication/Posting/Radio Announcement
+                        </option>
+                        <option style="text-align: left;" value="Published/Posted Announcement within 30-days period
+              for possible protest/adverse claim">Published/Posted Announcement within 30-days period
+                            for possible protest/adverse claim</option>
+                        <option style="text-align: left;" value="With mining dispute filed at Panel of Arbitrators">With
+                            mining
+                            dispute filed at Panel of Arbitrators
+                        </option>
+                        <option style="text-align: left;" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">
+                            Appeal to the
+                            Mines Adjudication Board/LSD-CO/OP
+                        </option>
+                        <option style="text-align: left;" value="Pending NCIP Certification/Proof of Consultation from
+              LGU,ECC, etc">Pending NCIP Certification/Proof of Consultation from
+                            LGU,ECC, etc</option>
+                        <option style="text-align: left;" value="Under Final Evaluation by R.O.">Under Final Evaluation
+                            by R.O.
+                        </option>
+                        <option style="text-align: left;" value="Endorsed to Central Office">Endorsed to Central Office
+                        </option>
+                        <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAB but within grace period
+              for Motion for Reconsideration or Appeal">Denied by MGB-RO/COP/PA/MAB but within grace period
+                            for Motion for Reconsideration or Appeal</option>
+                        <option style="text-align: left;" value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
+              Motion for Reconsideration or Appeal">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
+                            Motion for Reconsideration or Appeal</option>
+                        <option style="text-align: left;" value="A. Others (Renewal)">A. Others (Renewal)</option>
+                        <option style="text-align: left;" value="B. Others (With Clearance)">B. Others (With Clearance)
+                        </option>
+                        <option style="text-align: left;" value="Conversion from Other Tenement">Conversion from Other
+                            Tenement
+                        </option>
+                        <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending
+              Appeal at the O.P.">Denied by MGB-RO/COP/PA/MAP/DENR but with pending
+                            Appeal at the O.P.</option>
+                        <option style="text-align: left;" value="other">Other</option>
+                    </select>
+                    <input v-if="selectedStatus === 'other'" class="inputall1" v-model="otherStatus"
+                        style="width: 100%;" placeholder="Enter other Status" />
+                </td>
+            </tbody>
+        </table>
+        <table class="tablee">
+            <thead class="titlehead1">
+                <tr style="text-align: center;">
+                    <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+                    <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+                </tr>
+            <tbody>
+                <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
+                <td style="font-size: 15px;padding: 20px;">Remarks/Status
+                    <textarea
+                        style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
+
+                </td>
+
+            </tbody>
+            </thead>
         </table>
         <div style="display: flex;flex-direction: column;justify-content: center;">
             <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
@@ -179,6 +293,8 @@ export default {
     },
     data() {
         return {
+            selectedStatus: '',
+            otherStatus: '',
             requirements: {
                 reqDetails1: `
                 1. Letter of Intent with Justification of Renewal`,
@@ -213,6 +329,13 @@ export default {
             },
         };
     },
+    watch: {
+        selectedStatus(newValue) {
+            if (newValue !== 'other') {
+                this.otherStatus = '';
+            }
+        }
+    },
     methods: {
         async getDetails() {
             try {
@@ -232,7 +355,7 @@ export default {
                 const requirements = await axios.get('http://localhost:8000/get_recommendation');
                 const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id2);
                 console.log(filteredrequirements)
-                
+
                 this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
                 this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
                 this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
@@ -255,6 +378,27 @@ export default {
             }
         },
         update() {
+            const formData = new FormData();
+            formData.append('id_reference', this.$route.params.detail_id2);
+            // Append category based on selectedCategory
+            if (this.selectedStatus === 'other') {
+                // Append otherCategory if selectedCategory is 'others'
+                formData.append('mtsr', this.otherStatus);
+            } else {
+                // Append selectedCategory directly otherwise
+                formData.append('mtsr', this.selectedStatus);
+            }
+            // Make axios POST request
+            axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id2}`, formData)
+                .then(response => {
+                    // Handle response
+                    console.log('mtsr added: ', response.data);
+                })
+                .catch(error => {
+                    // Handle error
+                    console.error('Error:', error);
+                });
+
             // Prepare the data
             const formData1 = new FormData();
             formData1.append('id_reference', this.$route.params.detail_id2);
@@ -347,12 +491,21 @@ export default {
     text-align: left;
     height: auto;
 }
+
+.tablee {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
 .table4 td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
-  width: 50%;
-  /* Set each column to occupy 50% of the table width */
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+    width: 50%;
+    /* Set each column to occupy 50% of the table width */
 }
 
 .th3,

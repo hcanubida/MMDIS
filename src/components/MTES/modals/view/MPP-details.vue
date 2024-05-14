@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqMPP()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqMPP(detail_id5)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqMPP() {
+        navigateToMandatoryReqMPP(detail_id5) {
+            console.log(detail_id5)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqMPP';
+        window.location.href = `/ReqMPP/${detail_id5}`;
       },
     }
 }

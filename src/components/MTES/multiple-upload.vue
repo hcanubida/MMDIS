@@ -1,31 +1,51 @@
 <template>
     <div class="card">
-        <div class="top">
-        </div>
+        <div class="top"></div>
         <div class="drag-area" @dragover.prevent="onDragOver" @dragleave.prevent="onDragleave" @drop.prevent="onDrop">
             <span v-if="!isDragging">
                 Drag & Drop files here or
                 <span class="select" role="button" @click="selectFiles">Choose</span>
             </span>
             <div v-else class="select">Drop Files here</div>
-            <input name="file" type="file" class="file" ref="fileInput" multiple="multiple" @change="onFileSelect" />
+            <input name="file" type="file" class="file" ref="fileInput" required accept="application/*" multiple
+                @change="onFileSelect" />
         </div>
         <div class="container-upload">
-            <div class="file-info" v-for="(file, index) in files" :key="index">
+            <div class="file-info" v-for="(file, index) in uploadFiles1" :key="index">
                 <span class="delete" @click="deleteFile(index)">&times;</span>
-                <span class="val" >{{ file.name }}</span>
+                <span class="val">{{ file.name }}</span>
             </div>
         </div>
+        <!-- <button class="upload-btn" @click="submitMultiple">Upload</button> -->
+    </div>
+    <div>
+        <!-- <input type="text" placeholder="id" v-model="idRef"> -->
+        <!-- <p>{{ uploadFiles1 }}</p> -->
     </div>
 </template>
+<script setup>
+</script>
 
 <script>
+import { ref } from 'vue';
+import axios from 'axios';
+
 export default {
+    props: {
+        name: String,
+        uploadFiles1: {
+            type: Array,
+            default: () => []
+        }
+    },
     data() {
         return {
-            files: [],
-            isDragging: false
-        }
+            // files: [],
+            isDragging: false,
+        };
+    },
+    created(){
+        console.log(this.uploadFiles1)
     },
     methods: {
         selectFiles() {
@@ -35,35 +55,54 @@ export default {
             const files = event.target.files;
             if (files.length === 0) return;
             for (let i = 0; i < files.length; i++) {
-                if (!this.files.some((e) => e.name === files[i].name)) {
-                    this.files.push(files[i]);
+                if (!this.uploadFiles1.some((e) => e.name === files[i].name)) {
+                    this.uploadFiles1.push(files[i]);
                 }
             }
         },
         deleteFile(index) {
-            this.files.splice(index, 1);
+            this.uploadFiles1.splice(index, 1);
         },
-        onDragOver(event){
+        onDragOver(event) {
             event.preventDefault();
             this.isDragging = true;
-            event.dataTransfer.dropEffect ="copy";
+            event.dataTransfer.dropEffect = "copy";
         },
-        onDragleave(event){
+        onDragleave(event) {
             event.preventDefault();
             this.isDragging = false;
         },
-        onDrop(event){
+        onDrop(event) {
             event.preventDefault();
             this.isDragging = false;
             const files = event.dataTransfer.files;
             for (let i = 0; i < files.length; i++) {
-                if (!this.files.some((e) => e.name === files[i].name)) {
-                    this.files.push(files[i]);
+                if (!this.uploadFiles1.some((e) => e.name === files[i].name)) {
+                    this.uploadFiles1.push(files[i]);
                 }
             }
-        }
-    }
-}
+        },
+        // submitMultiple() {
+        //     const formData = new FormData();
+        //     this.files.forEach(file => {
+        //         formData.append('files[]', file);
+        //     });
+        //     formData.append('id_reference', this.idRef);
+
+        //     // Handle form submission using axios or fetch
+        //     axios.post('http://127.0.0.1:8000/add_uploads', formData)
+        //         .then(response => {
+        //             console.log('Files uploaded successfully');
+        //             // Optionally, you can clear the files array after successful upload
+        //             this.files = [];
+        //         })
+        //         .catch(error => {
+        //             console.error('Error uploading files:', error);
+        //             // Handle error
+        //         });
+        // },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -162,17 +201,19 @@ export default {
 .card .drag-area.dragover .visible {
     display: none;
 }
-.file-info{
+
+.file-info {
     display: flex;
     justify-content: center;
 }
+
 .delete {
     z-index: 999;
     color: red;
     cursor: pointer;
 }
 
-.val{
+.val {
     padding-right: 5px;
 }
 </style>

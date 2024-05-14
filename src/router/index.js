@@ -67,9 +67,13 @@ import FaxOTP from "../views/mtes/faxsheet/otp-factsheet.vue";
 import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
 import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue"
 
+
+import demo from "../components/MTES/modals/uploaad.vue";
+
 const routes = [
 
     { path: "/", component: home },
+    { path: "/demo_upload", component: demo },
 
     //mtss routes
     { path: "/login", component: login },
@@ -123,7 +127,7 @@ const routes = [
     { path: "/ReqEP/:detail_id1", component: ReqEP },
     { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
     { path: "/ReqISAG", component: ReqISAG },
-    { path: "/ReqMPP", component: ReqMPP },
+    { path: "/ReqMPP/:detail_id5", component: ReqMPP },
     { path: "/ReqMB", component: ReqMB },
     { path: "/ReqAMTRD", component: ReqAMTRD },
     { path: "/ReqOTP", component: ReqOTP },

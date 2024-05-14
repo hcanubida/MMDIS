@@ -28,8 +28,18 @@
             (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
           </td>
 
+          <!--    -->
           <td class="inputimg1">
-            <upload />
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                to upload:</label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
+            </div>
           </td>
 
           <td style="text-align: left;width: 400px;">
@@ -38,7 +48,7 @@
               v-model="remarks.textInput1"></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
-               v-model="recommendation.textInput1"></textarea>
+              v-model="recommendation.textInput1"></textarea>
           </td>
         </tr>
         <tr>
@@ -49,7 +59,13 @@
           </td>
 
           <td class="inputimg1">
-            <upload />
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label
+                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                to upload:</label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file2')"
+                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+            </div>
           </td>
 
           <td style="text-align: left;">
@@ -58,7 +74,7 @@
               v-model="remarks.textInput2"></textarea>
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
-               v-model="recommendation.textInput2"></textarea>
+              v-model="recommendation.textInput2"></textarea>
           </td>
         </tr>
         <tr>
@@ -68,7 +84,13 @@
           </td>
 
           <td class="inputimg1">
-            <upload />
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label
+                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                to upload:</label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file3')"
+                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+            </div>
           </td>
 
           <td style="text-align: left;">
@@ -77,7 +99,7 @@
               v-model="remarks.textInput3"></textarea>
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
-               v-model="recommendation.textInput3"></textarea>
+              v-model="recommendation.textInput3"></textarea>
           </td>
         </tr>
         <tr>
@@ -88,7 +110,13 @@
           </td>
 
           <td class="inputimg1">
-            <upload />
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label
+                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                to upload:</label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file4')"
+                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+            </div>
           </td>
 
           <td style="text-align: left;">
@@ -97,7 +125,7 @@
               v-model="remarks.textInput4"></textarea>
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
-               v-model="recommendation.textInput4"></textarea>
+              v-model="recommendation.textInput4"></textarea>
           </td>
         </tr>
         <tr>
@@ -106,7 +134,13 @@
           </td>
 
           <td class="inputimg1">
-            <upload />
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label
+                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
+                to upload:</label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file5')"
+                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+            </div>
           </td>
 
           <td style="text-align: left;">
@@ -115,7 +149,7 @@
               v-model="remarks.textInput5"></textarea>
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
-               v-model="recommendation.textInput5"></textarea>
+              v-model="recommendation.textInput5"></textarea>
           </td>
         </tr>
       </tbody>
@@ -184,6 +218,8 @@
         </tr>
       </tbody>
     </table>
+    
+    <!-- table 3 -->
     <table class="table3">
       <thead class="titlehead1">
         <tr style="text-align: center;">
@@ -192,7 +228,7 @@
         </tr>
       </thead>
       <tbody>
-        <td style="text-align: center;font-size: 20px;padding: 20px;">Status</td>
+        <td style="text-align: center;font-size: 20px;padding: 20px;">Status of the Application: </td>
         <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
           <select class="inputall" v-model="selectedStatus"
             style="background-color: antiquewhite;text-align: center;width: 100%;">
@@ -242,6 +278,22 @@
         </td>
       </tbody>
     </table>
+    <table class="table4">
+          <thead class="titlehead1">
+            <tr style="text-align: center;">
+              <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+              <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+            </tr>
+            <tbody>
+                <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
+                <td style="font-size: 15px;padding: 20px;">Remarks/Status
+                  <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
+
+                </td>
+                
+            </tbody>
+          </thead>
+        </table>
     <div style="display: flex;flex-direction: column;justify-content: center;">
       <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
       <div>
@@ -258,13 +310,16 @@
 <script setup>
 import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
+
 // import { detail_id } from '../dashboards/FTAA-dashboard.vue';
 
 </script>
 <script>
-
 export default {
   name: 'typeapp',
+  components: {
+    upload
+  },
   props: {
     detail_id: String,
   },
@@ -309,6 +364,13 @@ export default {
         textInput4: '',
         textInput5: '',
       },
+      uploadFiles: {
+        file1: [],
+        file2: [],
+        file3: [],
+        file4: [],
+        file5: []
+      },
     };
   },
   watch: {
@@ -319,6 +381,12 @@ export default {
     }
   },
   methods: {
+    handleFileUpload(event) {
+      const files1 = event.target.files;
+
+      this.uploadFiles.file1 = Array.from(files1);
+      console.log(this.uploadFiles.file1)
+    },
     async getDetails() {
       try {
         const remarks = await axios.get('http://localhost:8000/get_remarks');
@@ -337,7 +405,7 @@ export default {
       try {
         const requirements = await axios.get('http://localhost:8000/get_recommendation');
         const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id);
-        console.log(filteredrequirements)
+        // console.log(filteredrequirements)
         this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
         this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
         this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
@@ -346,20 +414,36 @@ export default {
       } catch (error) {
         console.error('Error fetching reco details:', error);
       }
-    },
-    fileSelected() {
-      this.$refs.fileInput.click();
-    },
-    onFileSelect(event) {
-      const files = event.target.files;
-      if (files.length === 0) return;
-      for (let i = 0; i < files.length; i++) {
-        if (file[i].type.split("/")[0] != "image") continue;
-        if (!this.images.some((e) => e.name === files[i].name)) {
-          this.images.push({ name: files[i].name, url: URL.createObjectURL(files[i]) })
-        }
+
+
+      try {
+        const uploadFiles = await axios.get('http://127.0.0.1:8000/get_files');
+        const filteredFiles = uploadFiles.data.filter(req => req.id_reference === this.$route.params.detail_id);
+
+        this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [];
+        this.uploadFiles.file2 = filteredFiles.input2 !== null ? filteredFiles.input2 : [];
+        this.uploadFiles.file3 = filteredFiles.input3 !== null ? filteredFiles.input3 : [];
+        this.uploadFiles.file4 = filteredFiles.input4 !== null ? filteredFiles.input4 : [];
+        this.uploadFiles.file5 = filteredFiles.input5 !== null ? filteredFiles.input5 : [];
+
+
+      } catch (error) {
+        console.error('Error fetching file details:', error);
       }
+
+
     },
+    // fileSelected() {
+    //   this.$refs.fileInput.click();
+    // },
+    // onFileSelect(event) {
+    //   const files = event.target.files;
+    //   if (files.length === 0) return;
+    //   for (let i = 0; i < files.length; i++) {
+    //     if (files[i].type.split("/")[0] !== "image") continue;
+    //     this.uploadFiles1.push(files[i]);
+    //   }
+    // },
     update() {
       const formData = new FormData();
       formData.append('id_reference', this.$route.params.detail_id);
@@ -408,7 +492,6 @@ export default {
       const formData2 = new FormData();
       formData2.append('id_reference', this.$route.params.detail_id);
       // console.log('id_reference', this.$route.params.detail_id)
-
       for (let i = 1; i <= 5; i++) {
         formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
         // console.log(`input${i}`, this.recommendation[`textInput${i}`])
@@ -420,14 +503,68 @@ export default {
       axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id}`, formData2)
         .then(response => {
           console.log('Recommendations updated successfully:', response.data);
-          window.location.reload()
+          // window.location.reload()
         })
         .catch(error => {
           console.error('Error updating recommendations:', error);
           // Handle error...
         });
-    },
 
+
+      // Upload files 
+      // Create FormData object
+      const formData3 = new FormData();
+      // Append reference id
+      formData3.append('id_reference', this.$route.params.detail_id);
+
+      // Iterate over each file and append to FormData
+      for (let i = 1; i <= 5; i++) {
+        const file = this.uploadFiles[`file${i}`];
+        if (file) {
+          formData3.append(`input${i}`, file);
+        }
+      }
+
+      // Send FormData to server using axios
+      axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+        .then(response => {
+          console.log('Record uploaded successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error uploading record:', error);
+        });
+      // formData3.append('files[]', this.uploadFiles.file1);
+      // Handle form submission using axios or fetch
+      // axios.post(`http://localhost:8000/update_uploads/${this.$route.params.detail_id}`, formData3)
+      //   .then(response => {
+      //     console.log('Files uploaded successfully', response.data);
+      //     // Optionally, you can clear the files array after successful upload
+      //   })
+      //   .catch(error => {
+      //     console.error('Error uploading files:', error);
+      //     // Handle error
+      //   });
+    },
+    // submitMultiple() {
+    //   const formData3 = new FormData();
+    //   this.uploadFiles1.forEach(file => {
+    //     formData.append('files[]', file);
+    //   });
+    //   formData3.append('id_reference', this.$route.params.detail_id);
+
+    //   // Handle form submission using axios or fetch
+    //   axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+    //     .then(response => {
+    //       console.log('Files uploaded successfully');
+    //       // Optionally, you can clear the files array after successful upload
+    //       this.files = [];
+    //       console.log(this.files)
+    //     })
+    //     .catch(error => {
+    //       console.error('Error uploading files:', error);
+    //       // Handle error
+    //     });
+    // },
   },
   mounted() {
     this.getDetails();
@@ -486,6 +623,13 @@ export default {
 }
 
 .table3 {
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+  border-collapse: collapse;
+}
+.table4 {
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
