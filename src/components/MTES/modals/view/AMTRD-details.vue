@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqAMTRD()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqAMTRD(detail_id9)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqAMTRD() {
+        navigateToMandatoryReqAMTRD(detail_id9) {
+            console.log(detail_id9)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqAMTRD';
+        window.location.href = `/ReqAMTRD/${detail_id9}`;
       },
     }
 }

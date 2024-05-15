@@ -128,12 +128,12 @@ const routes = [
     { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
     { path: "/ReqISAG/:detail_id3", component: ReqISAG },
     { path: "/ReqMPP/:detail_id5", component: ReqMPP },
-    { path: "/ReqMB", component: ReqMB },
-    { path: "/ReqAMTRD", component: ReqAMTRD },
-    { path: "/ReqOTP", component: ReqOTP },
-    { path: "/ReqMPL", component: ReqMPL },
-    { path: "/ReqSSMC", component: ReqSSMC },
-    { path: "/ReqMOEP", component: ReqMOEP },
+    { path: "/ReqMB/:detail_id4", component: ReqMB },
+    { path: "/ReqAMTRD/:detail_id9", component: ReqAMTRD },
+    { path: "/ReqOTP/:detail_id6", component: ReqOTP },
+    { path: "/ReqMPL/:detail_id8", component: ReqMPL },
+    { path: "/ReqSSMC/:detail_id7", component: ReqSSMC },
+    { path: "/ReqMOEP/:detail_id10", component: ReqMOEP },
 
 
 ];

@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqSSMC()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqSSMC(detail_id7)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqSSMC() {
+        navigateToMandatoryReqSSMC(detail_id7) {
+            console.log(detail_id7)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqSSMC';
+        window.location.href = `/ReqSSMC/${detail_id7}`;
       },
     }
 }

@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqOTP()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqOTP(detail_id6)">Next</button>
                 </div>
             </div>
         </div>
@@ -71,9 +71,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqOTP() {
+        navigateToMandatoryReqOTP(detail_id6) {
+            console.log(detail_id6)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqOTP';
+        window.location.href = `/ReqOTP/${detail_id6}`;
       },
     }
 }

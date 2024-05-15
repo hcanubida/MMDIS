@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqMOEP()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqMOEP(detail_id10)">Next</button>
                 </div>
             </div>
         </div>
@@ -65,16 +65,16 @@ export default {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/get_details/');
                 this.details = response.data.find(det => det.id === parseInt(this.detail_id10))
-                console.log(this.detail_id)
-                console.log(this.details)
+                
 
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqMOEP() {
+        navigateToMandatoryReqMOEP(detail_id10) {
+            console.log(detail_id10)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqMOEP';
+        window.location.href = `/ReqMOEP/${detail_id10}`;
       },
     }
 }

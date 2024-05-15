@@ -14,7 +14,7 @@
                 </div>
                 <div class="appdetails2">
                     <div class="appdetails3">
-                        <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id }}</a></p>
+                        <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id4 }}</a></p>
                         <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number }}</a></p>
                         <p class="detailss">Status: <a :style="{color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400}">{{ details.status }}</a></p>
                         <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares }}</a></p>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqMB()">Next</button>
+                    <button class="butons1" @click="navigateToMandatoryReqMB(detail_id4)">Next</button>
                 </div>
             </div>
         </div>
@@ -72,9 +72,10 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqMB() {
+        navigateToMandatoryReqMB(detail_id4) {
+            console.log(detail_id4)
         // Use router.push to navigate to '/newappcontent'
-        window.location.href = '/ReqMB';
+        window.location.href = `/ReqMB/${detail_id4}`;
       },
     }
 }
