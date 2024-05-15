@@ -24,7 +24,7 @@
 
     <!-- Charts for summary  -->
     <div class="chart1">
-      <Pie class="pie" />
+      <Pie class="pie" :application="application" />
       <BarChart class="bar-table" />
     </div>
 
@@ -63,6 +63,7 @@ const addDetail1 = ref(false)
 const detailToggle1 = () => {
   addDetail1.value = true
 };
+const application = 'ep'
 
 const viewDetail1 = ref(false)
 const viewToggle1 = () => {

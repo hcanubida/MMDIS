@@ -24,7 +24,7 @@
 
     <!-- Charts for summary  -->
     <div class="chart1">
-      <Pie class="pie1" />
+      <Pie class="pie1" :application="application" />
       <BarChart class="bar1" />
     </div>
 
@@ -63,6 +63,7 @@ const addDetail = ref(false)
 const detailToggle = () => {
   addDetail.value = true
 };
+const application = 'ftta'
 
 const viewDetail = ref(false)
 const viewToggle = () => {

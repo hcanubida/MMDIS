@@ -24,7 +24,7 @@
   
       <!-- Charts for summary  -->
       <div class="chart1">
-        <Pie class="pie1" />
+        <Pie class="pie1" :application="application"/>
         <BarChart class="bar1" />
       </div>
   
@@ -63,6 +63,7 @@
   const detailToggle2 = () => {
     addDetail2.value = true
   };
+  const application = 'mpsa'
   
   const viewDetail2 = ref(false)
   const viewToggle2 = () => {

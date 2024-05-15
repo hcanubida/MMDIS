@@ -24,7 +24,7 @@
   
       <!-- Charts for summary  -->
       <div class="chart1">
-        <Pie class="pie1" />
+        <Pie class="pie1" :application="application"/>
         <BarChart class="bar1" />
       </div>
   
@@ -55,6 +55,7 @@
   
   
   </script>
+  
   <script>
   import { ref } from 'vue';
   
@@ -63,7 +64,8 @@
   const detailToggle5 = () => {
     addDetail5.value = true
   };
-  
+  const application = 'mpp'
+
   const viewDetail5 = ref(false)
   const viewToggle5 = () => {
     viewDetail5.value = true

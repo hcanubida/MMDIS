@@ -25,7 +25,7 @@
   
       <!-- Charts for summary  -->
       <div class="chart1">
-        <Pie class="pie1" />
+        <Pie class="pie1" :application="application" />
         <BarChart class="bar1" />
       </div>
   
@@ -64,6 +64,7 @@
   const detailToggle7 = () => {
     addDetail7.value = true
   };
+  const application = 'ssmc'
   
   const viewDetail7 = ref(false)
   const viewToggle7 = () => {

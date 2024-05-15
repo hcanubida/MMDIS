@@ -69,11 +69,13 @@ import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue"
 
 
 import demo from "../components/MTES/modals/uploaad.vue";
+import pie from "../components/MTES/charts/Pie.vue"
 
 const routes = [
 
     { path: "/", component: home },
     { path: "/demo_upload", component: demo },
+    { path: "/pie", component: pie },
 
     //mtss routes
     { path: "/login", component: login },
