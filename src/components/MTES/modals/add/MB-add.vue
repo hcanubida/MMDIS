@@ -17,10 +17,31 @@
             <input class="inputall" placeholder="Name of the Applicant" v-model="detailstoadd.tenement_name" />
             <input class="inputall" placeholder="Area(Hectares)" v-model="detailstoadd.area_hectares" />
             <input class="inputall" v-model="date" readonly placeholder="Date Filed" />
-            <input class="inputall" placeholder="Barangay" v-model="detailstoadd.barangay" />
-            <input class="inputall" placeholder="City" v-model="detailstoadd.city"/>
-            <input class="inputall" placeholder="Province" v-model="detailstoadd.province"/>
-            <input class="inputall" placeholder="Commodity" v-model="detailstoadd.commodity"/>
+            <select name="" id="" class="inputall" @change="handleRegion">
+              <option disabled selected>Select Region</option>
+              <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{
+              region.region_name
+            }}
+              </option>
+            </select>
+            <select name="" id="" class="inputall" @change="handleProvince">
+              <option disabled selected>Select Province</option>
+              <option v-for="province in provinces" :value="province.province_code" :key="province.province_code">
+                {{ province.province_name }}
+              </option>
+            </select>
+            <select name="" id="" @change="handleCity" class="inputall">
+              <option disabled selected>Select City</option>
+              <option v-for="city in cities" :value="city.city_code" :key="city.city_code">{{ city.city_name }}</option>
+            </select>
+            <select name="" id="" @change="barangaysChange" class="inputall">
+              <option disabled selected>Select Barangay</option>
+              <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{
+              barangay.brgy_name
+            }}
+              </option>
+            </select>
+            <input class="inputall" placeholder="Commodity" v-model="detailstoadd.commodity" />
           </div>
 
           <div class="appdetails4">
@@ -35,11 +56,11 @@
             <!-- Conditional input field for 'Other' category -->
             <input v-if="selectedCategory === 'other'" class="inputall cate" v-model="otherCategory"
               placeholder="Enter other category" />
-            <input class="inputall" placeholder="Authorized Representative" v-model="detailstoadd.authorized_rep"/>
+            <input class="inputall" placeholder="Authorized Representative" v-model="detailstoadd.authorized_rep" />
             <input class="inputall" v-model="contactnum" @input="formatContactNum" maxlength="11" required
               placeholder="Contact Number" />
-            <input class="inputall" placeholder="Email Address" v-model="detailstoadd.email"/>
-            <input class="inputall" placeholder="Others:" v-model="detailstoadd.others"/>
+            <input class="inputall" placeholder="Email Address" v-model="detailstoadd.email" />
+            <input class="inputall" placeholder="Others:" v-model="detailstoadd.others" />
             <input class="inputall" placeholder="Status:" v-model="detailstoadd.status" />
             <input class="inputall" placeholder="Tenement Number:" v-model="detailstoadd.tenement_number" />
 
@@ -48,7 +69,7 @@
         <div class="appdetailsbutton">
           <button class="butons" @click="submit">Add</button>
         </div>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +80,7 @@
 
 <script>
 import { addDetail4 } from '../../../../views/mtes/dashboards/MB-dashboard.vue';
-
+import { regions, provinces, cities, barangays } from 'select-philippines-address'
 
 export default {
   data() {
@@ -68,6 +89,14 @@ export default {
       contactnum: '',
       selectedCategory: 'individual',
       otherCategory: '',
+      regions: [],
+      provinces: [],
+      cities: [],
+      barangays: [],
+      region: null,
+      province: null,
+      city: null,
+      barangay: null,
       date: this.getCurrentDate(),
       addDetail4: true,
       detailstoadd: {
@@ -75,9 +104,6 @@ export default {
         tenement_number: '',
         tenement_name: '',
         area_hectares: '',
-        barangay: '',
-        city: '',
-        province: '',
         commodity: '',
         authorized_rep: '',
         email: '',
@@ -93,7 +119,34 @@ export default {
       }
     }
   },
+  created() {
+    regions().then(response => {
+      this.regions = response;
+    });
+  },
   methods: {
+    handleRegion(e) {
+      this.region = e.target.selectedOptions[0].text;
+      provinces(e.target.value).then(response => {
+        this.provinces = response;
+      });
+    },
+    handleProvince(e) {
+      this.province = e.target.selectedOptions[0].text;
+      cities(e.target.value).then(response => {
+        this.cities = response;
+      });
+    },
+    handleCity(e) {
+      this.city = e.target.selectedOptions[0].text;
+      barangays(e.target.value).then(response => {
+        this.barangays = response;
+      });
+    },
+    barangaysChange(e) {
+      this.barangay = e.target.selectedOptions[0].text;
+    },
+
     Exit() {
       addDetail4.value = false
     },
@@ -125,43 +178,43 @@ export default {
       this.contactnum = this.contactnum.slice(0, 11);
     },
     submit() {
-    const formData = new FormData();
-    formData.append('status', this.detailstoadd.status);
-    formData.append('tenement_number', this.detailstoadd.tenement_number);
-    formData.append('tenement_name', this.detailstoadd.tenement_name);
-    formData.append('area_hectares', this.detailstoadd.area_hectares);
-    formData.append('barangay', this.detailstoadd.barangay);
-    formData.append('city', this.detailstoadd.city);
-    formData.append('province', this.detailstoadd.province);
-    formData.append('commodity', this.detailstoadd.commodity);
-    formData.append('authorized_rep', this.detailstoadd.authorized_rep);
-    formData.append('contact_no', this.contactnum);
-    formData.append('email', this.detailstoadd.email);
-    formData.append('others', this.detailstoadd.others);
-    formData.append('application', this.detailstoadd.application);
+      const formData = new FormData();
+      formData.append('status', this.detailstoadd.status);
+      formData.append('tenement_number', this.detailstoadd.tenement_number);
+      formData.append('tenement_name', this.detailstoadd.tenement_name);
+      formData.append('area_hectares', this.detailstoadd.area_hectares);
+      formData.append('barangay', this.barangay);
+      formData.append('city', this.city);
+      formData.append('province', this.province);
+      formData.append('commodity', this.detailstoadd.commodity);
+      formData.append('authorized_rep', this.detailstoadd.authorized_rep);
+      formData.append('contact_no', this.contactnum);
+      formData.append('email', this.detailstoadd.email);
+      formData.append('others', this.detailstoadd.others);
+      formData.append('application', this.detailstoadd.application);
 
-    // Append category based on selectedCategory
-    if (this.selectedCategory === 'other') {
+      // Append category based on selectedCategory
+      if (this.selectedCategory === 'other') {
         // Append otherCategory if selectedCategory is 'others'
         formData.append('category', this.otherCategory);
-    } else {
+      } else {
         // Append selectedCategory directly otherwise
         formData.append('category', this.selectedCategory);
-    }
+      }
 
 
-    // Make axios POST request
-    axios.post('http://127.0.0.1:8000/add_details', formData)
-         .then(response => {
-             // Handle response
-             console.log(response.data);
-             window.location.reload();
-         })
-         .catch(error => {
-             // Handle error
-             console.error('Error:', error);
-         });
-},
+      // Make axios POST request
+      axios.post('http://127.0.0.1:8000/add_details', formData)
+        .then(response => {
+          // Handle response
+          console.log(response.data);
+          window.location.reload();
+        })
+        .catch(error => {
+          // Handle error
+          console.error('Error:', error);
+        });
+    },
 
   }
 }

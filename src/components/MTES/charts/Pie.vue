@@ -1,6 +1,6 @@
 <template>
     <div class="piechart1">
-        <Pie id="my-chart-id" :options="chartOptions" :data="chartData" />
+        <Pie id="my-chart-id" :options="chartOptions" :data="chartData" v-if="chartDataReady"/>
     </div>
 </template>
 
@@ -32,10 +32,12 @@ export default {
             chartOptions: {
                 responsive: true
             },
+            chartDataReady: false,
         }
     },
-    created() {
+    mounted() {
         this.fetchProvinceData();
+        
     },
     methods: {
         fetchProvinceData() {
@@ -48,7 +50,8 @@ export default {
                         'lanao del norte': 0,
                         'camiguin': 0,
                         'cagayan de oro city': 0,
-                        'iligan city': 0
+                        'iligan city': 0,
+
                     };
                     // .filter(pie => pie.application === detail_id)
                     // response.data.filter(pie => pie.application === detail_id)
@@ -63,6 +66,7 @@ export default {
                     });
 
                     this.updateChartData(provinceCounts);
+                    
 
                 })
                 .catch(error => {
@@ -79,6 +83,7 @@ export default {
             data[5] = provinceCounts['cagayan de oro city'];
             data[6] = provinceCounts['iligan city'];
             this.$forceUpdate(); // Force Vue to re-render the chart
+            this.chartDataReady = true;
         }
     }
 }

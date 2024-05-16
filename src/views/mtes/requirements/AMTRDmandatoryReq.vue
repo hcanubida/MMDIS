@@ -413,7 +413,8 @@ export default {
                 }
             }
             console.log(this.images);
-        }, update() {
+        }, 
+        update() {
             const formData = new FormData();
             formData.append('id_reference', this.$route.params.detail_id9);
             // Append category based on selectedCategory

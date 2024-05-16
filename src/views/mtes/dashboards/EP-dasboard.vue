@@ -25,7 +25,7 @@
     <!-- Charts for summary  -->
     <div class="chart1">
       <Pie class="pie" :application="application" />
-      <BarChart class="bar-table" />
+      <BarChart class="bar-table" :application="application" />
     </div>
 
     <!-- Table list -->

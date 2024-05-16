@@ -17,9 +17,30 @@
             <input class="inputall" placeholder="Name of the Applicant" v-model="detailstoadd.tenement_name" />
             <input class="inputall" placeholder="Area(Hectares)" v-model="detailstoadd.area_hectares" />
             <input class="inputall" v-model="date" readonly placeholder="Date Filed" />
-            <input class="inputall" placeholder="Barangay" v-model="detailstoadd.barangay" />
-            <input class="inputall" placeholder="City" v-model="detailstoadd.city" />
-            <input class="inputall" placeholder="Province" v-model="detailstoadd.province" />
+            <select name="" id="" class="inputall" @change="handleRegion">
+              <option disabled selected>Select Region</option>
+              <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{
+              region.region_name
+            }}
+              </option>
+            </select>
+            <select name="" id="" class="inputall" @change="handleProvince">
+              <option disabled selected>Select Province</option>
+              <option v-for="province in provinces" :value="province.province_code" :key="province.province_code">
+                {{ province.province_name }}
+              </option>
+            </select>
+            <select name="" id="" @change="handleCity" class="inputall">
+              <option disabled selected>Select City</option>
+              <option v-for="city in cities" :value="city.city_code" :key="city.city_code">{{ city.city_name }}</option>
+            </select>
+            <select name="" id="" @change="barangaysChange" class="inputall">
+              <option disabled selected>Select Barangay</option>
+              <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{
+              barangay.brgy_name
+            }}
+              </option>
+            </select>
             <input class="inputall" placeholder="Commodity" v-model="detailstoadd.commodity" />
           </div>
 
@@ -61,7 +82,7 @@
 
 <script>
 import { addDetail5 } from '../../../../views/mtes/dashboards/MPP-dashboard.vue';
-
+import { regions, provinces, cities, barangays } from 'select-philippines-address'
 
 export default {
   data() {
@@ -70,6 +91,14 @@ export default {
       contactnum: '',
       selectedCategory: 'individual',
       otherCategory: '',
+      regions: [],
+      provinces: [],
+      cities: [],
+      barangays: [],
+      region: null,
+      province: null,
+      city: null,
+      barangay: null,
       date: this.getCurrentDate(),
       addDetail5: true,
       detailstoadd: {
@@ -77,9 +106,6 @@ export default {
         tenement_number: '',
         tenement_name: '',
         area_hectares: '',
-        barangay: '',
-        city: '',
-        province: '',
         commodity: '',
         authorized_rep: '',
         email: '',
@@ -95,7 +121,34 @@ export default {
       }
     }
   },
+  created() {
+    regions().then(response => {
+      this.regions = response;
+    });
+  },
   methods: {
+    handleRegion(e) {
+      this.region = e.target.selectedOptions[0].text;
+      provinces(e.target.value).then(response => {
+        this.provinces = response;
+      });
+    },
+    handleProvince(e) {
+      this.province = e.target.selectedOptions[0].text;
+      cities(e.target.value).then(response => {
+        this.cities = response;
+      });
+    },
+    handleCity(e) {
+      this.city = e.target.selectedOptions[0].text;
+      barangays(e.target.value).then(response => {
+        this.barangays = response;
+      });
+    },
+    barangaysChange(e) {
+      this.barangay = e.target.selectedOptions[0].text;
+    },
+
     Exit() {
       addDetail5.value = false
     },
@@ -132,9 +185,9 @@ export default {
       formData.append('tenement_number', this.detailstoadd.tenement_number);
       formData.append('tenement_name', this.detailstoadd.tenement_name);
       formData.append('area_hectares', this.detailstoadd.area_hectares);
-      formData.append('barangay', this.detailstoadd.barangay);
-      formData.append('city', this.detailstoadd.city);
-      formData.append('province', this.detailstoadd.province);
+      formData.append('barangay', this.barangay);
+      formData.append('city', this.city);
+      formData.append('province', this.province);
       formData.append('commodity', this.detailstoadd.commodity);
       formData.append('authorized_rep', this.detailstoadd.authorized_rep);
       formData.append('contact_no', this.contactnum);

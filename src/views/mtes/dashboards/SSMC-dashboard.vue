@@ -26,7 +26,7 @@
       <!-- Charts for summary  -->
       <div class="chart1">
         <Pie class="pie1" :application="application" />
-        <BarChart class="bar1" />
+        <BarChart class="bar1" :application="application" />
       </div>
   
       <!-- Table list/ wala pani table -->
