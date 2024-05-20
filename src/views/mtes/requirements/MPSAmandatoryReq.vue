@@ -26,11 +26,15 @@
                     <td class="inputimg3">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file1', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -51,11 +55,15 @@
                     <td class="inputimg3">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file2', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file2" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -74,11 +82,15 @@
                     <td class="inputimg3">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file3', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file3" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -106,11 +118,15 @@
                     <td class="inputimg3">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file4', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -139,7 +155,7 @@
                         v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-            recommendation.textInput1 }}</p>
+                                    recommendation.textInput1 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -151,7 +167,7 @@
                         v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-            recommendation.textInput2 }}</p>
+                                    recommendation.textInput2 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -163,7 +179,7 @@
                         v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-            recommendation.textInput3 }}</p>
+                                    recommendation.textInput3 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -175,7 +191,7 @@
                         v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-            recommendation.textInput4 }}</p>
+                                    recommendation.textInput4 }}</p>
                     </td>
                 </tr>
             </tbody>
@@ -327,6 +343,12 @@ export default {
                 textInput3: '',
                 textInput4: '',
             },
+            uploadFiles: {
+                file1: [],
+                file2: [],
+                file3: [],
+                file4: [],
+            },
         };
     },
     watch: {
@@ -337,6 +359,15 @@ export default {
         }
     },
     methods: {
+        handleFileUpload(fileKey, event) {
+            // Ensure the event target and files exist
+            if (event && event.target && event.target.files) {
+                this.uploadFiles[fileKey] = Array.from(event.target.files);
+                console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+            } else {
+                console.error('No files found on event target:', event);
+            }
+        },
         async getDetails() {
             try {
                 const remarks = await axios.get('http://localhost:8000/get_remarks');
@@ -442,6 +473,34 @@ export default {
                 .catch(error => {
                     console.error('Error updating recommendations:', error);
                     // Handle error...
+                });
+
+
+            // Upload files 
+            const formData3 = new FormData();
+            formData3.append('id_reference', this.$route.params.detail_id2);
+
+            if (this.uploadFiles) {
+                for (const [key, files] of Object.entries(this.uploadFiles)) {
+                    for (let i = 0; i < files.length; i++) {
+                        formData3.append(`${key}[]`, files[i]);
+                    }
+                }
+            }
+
+            if (this.formData3) {
+                for (const [key, value] of Object.entries(this.formData3)) {
+                    formData3.append(key, value);
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+                .then(response => {
+                    console.log('Record uploaded successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error uploading record:', error);
                 });
         },
 

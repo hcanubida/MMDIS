@@ -49,9 +49,10 @@ export default {
                         'misamis occidental': 0,
                         'lanao del norte': 0,
                         'camiguin': 0,
-                        'cagayan de oro city': 0,
+                    };
+                    const cityCounts = {
+                        'cagayan de oro city (capital)': 0,
                         'iligan city': 0,
-
                     };
                     // .filter(pie => pie.application === detail_id)
                     // response.data.filter(pie => pie.application === detail_id)
@@ -59,13 +60,17 @@ export default {
 
                     response.data.filter(pie => pie.application === this.application).forEach(item => {
                         const province = item.province.toLowerCase(); // Convert province name to lowercase
+                        const city = item.city.toLowerCase(); // Convert province name to lowercase
                         if (province in provinceCounts) {
                             provinceCounts[province]++;
+                        }
+                        if (city in cityCounts) {
+                            cityCounts[city]++;
                         }
                         
                     });
 
-                    this.updateChartData(provinceCounts);
+                    this.updateChartData(provinceCounts,cityCounts);
                     
 
                 })
@@ -73,15 +78,15 @@ export default {
                     console.error('Error fetching province data:', error);
                 });
         },
-        updateChartData(provinceCounts) {
+        updateChartData(provinceCounts,cityCounts) {
             const data = this.chartData.datasets[0].data;
             data[0] = provinceCounts['bukidnon'];
             data[1] = provinceCounts['misamis oriental'];
             data[2] = provinceCounts['misamis occidental'];
             data[3] = provinceCounts['lanao del norte'];
             data[4] = provinceCounts['camiguin'];
-            data[5] = provinceCounts['cagayan de oro city'];
-            data[6] = provinceCounts['iligan city'];
+            data[5] = cityCounts['cagayan de oro city (capital)'];
+            data[6] = cityCounts['iligan city'];
             this.$forceUpdate(); // Force Vue to re-render the chart
             this.chartDataReady = true;
         }

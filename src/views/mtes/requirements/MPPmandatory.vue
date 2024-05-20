@@ -26,11 +26,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file1', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -50,11 +54,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file2', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file2" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -74,11 +82,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file3', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file3" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -101,11 +113,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file4', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -125,11 +141,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file5', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file5" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -148,11 +168,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file6', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file6" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -177,11 +201,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file7', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file7" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -205,11 +233,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file8', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file8" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -229,11 +261,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file9', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file9" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -252,11 +288,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file10', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file10" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -275,11 +315,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file11', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file11" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -303,11 +347,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file12', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file12" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -343,11 +391,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file13', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file13" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -366,11 +418,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file14', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file14" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -389,11 +445,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file15', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file15" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -413,11 +473,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file16', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file16" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -437,11 +501,15 @@
                     <td class="inputimg5">
                         <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                             <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                                to upload:</label>
-                            <input type="file" multiple accept="application/*" @change="handleFileUpload"
-                                ref="fileInput"
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files to upload:
+                            </label>
+                            <input type="file" multiple accept="application/*"
+                                @change="handleFileUpload('file17', $event)" ref="fileInput1"
                                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                            <div v-for="(file, index) in uploadFiles.file17" :key="file.name">
+                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                            </div>
                         </div>
                     </td>
 
@@ -467,7 +535,7 @@
                         v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput1 }}</p>
+                                    recommendation.textInput1 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -479,7 +547,7 @@
                         v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput2 }}</p>
+                                    recommendation.textInput2 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -491,7 +559,7 @@
                         v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput3 }}</p>
+                                    recommendation.textInput3 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -503,7 +571,7 @@
                         v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput4 }}</p>
+                                    recommendation.textInput4 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -515,7 +583,7 @@
                         v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput5 }}</p>
+                                    recommendation.textInput5 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -527,7 +595,7 @@
                         v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput6 }}</p>
+                                    recommendation.textInput6 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -539,7 +607,7 @@
                         v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput7 }}</p>
+                                    recommendation.textInput7 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -551,7 +619,7 @@
                         v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput8 }}</p>
+                                    recommendation.textInput8 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -563,7 +631,7 @@
                         v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput9 }}</p>
+                                    recommendation.textInput9 }}</p>
                     </td>
                 </tr>
                 <tr>
@@ -575,7 +643,7 @@
                         v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput10 }}
+                                    recommendation.textInput10 }}
                         </p>
                     </td>
                 </tr>
@@ -588,7 +656,7 @@
                         v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput11 }}
+                                    recommendation.textInput11 }}
                         </p>
                     </td>
                 </tr>
@@ -601,7 +669,7 @@
                         v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput12 }}
+                                    recommendation.textInput12 }}
                         </p>
                     </td>
                 </tr>
@@ -615,7 +683,7 @@
                         v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput13 }}
+                                    recommendation.textInput13 }}
                         </p>
                     </td>
                 </tr>
@@ -628,7 +696,7 @@
                         v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput14 }}
+                                    recommendation.textInput14 }}
                         </p>
                     </td>
                 </tr>
@@ -641,7 +709,7 @@
                         v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput15 }}
+                                    recommendation.textInput15 }}
                         </p>
                     </td>
                 </tr>
@@ -654,7 +722,7 @@
                         v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput16 }}
+                                    recommendation.textInput16 }}
                         </p>
                     </td>
                 </tr>
@@ -667,7 +735,7 @@
                         v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
                         <label>Recommendation or Lacking Submission</label>
                         <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                recommendation.textInput17 }}
+                                    recommendation.textInput17 }}
                         </p>
                     </td>
                 </tr>
@@ -876,6 +944,25 @@ export default {
                 textInput16: '',
                 textInput17: '',
             },
+            uploadFiles: {
+                file1: [],
+                file2: [],
+                file3: [],
+                file4: [],
+                file5: [],
+                file6: [],
+                file7: [],
+                file8: [],
+                file9: [],
+                file10: [],
+                file11: [],
+                file12: [],
+                file13: [],
+                file14: [],
+                file15: [],
+                file16: [],
+                file17: [],
+            }
         };
     },
     watch: {
@@ -886,6 +973,15 @@ export default {
         }
     },
     methods: {
+        handleFileUpload(fileKey, event) {
+            // Ensure the event target and files exist
+            if (event && event.target && event.target.files) {
+                this.uploadFiles[fileKey] = Array.from(event.target.files);
+                console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+            } else {
+                console.error('No files found on event target:', event);
+            }
+        },
         async getDetails() {
             try {
                 const remarks = await axios.get('http://localhost:8000/get_remarks');
@@ -1002,6 +1098,33 @@ export default {
                 .catch(error => {
                     console.error('Error updating recommendations:', error);
                     // Handle error...
+                });
+
+            // Upload files 
+            const formData3 = new FormData();
+            formData3.append('id_reference', this.$route.params.detail_id5);
+
+            if (this.uploadFiles) {
+                for (const [key, files] of Object.entries(this.uploadFiles)) {
+                    for (let i = 0; i < files.length; i++) {
+                        formData3.append(`${key}[]`, files[i]);
+                    }
+                }
+            }
+
+            if (this.formData3) {
+                for (const [key, value] of Object.entries(this.formData3)) {
+                    formData3.append(key, value);
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+                .then(response => {
+                    console.log('Record uploaded successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error uploading record:', error);
                 });
         },
     },

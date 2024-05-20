@@ -32,9 +32,11 @@
           <td class="inputimg1">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
@@ -61,10 +63,15 @@
           <td class="inputimg1">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
               <label
-                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file2')"
+                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
+                ref="fileInput2"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file2" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -84,12 +91,17 @@
           </td>
 
           <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file3')"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file3" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -110,12 +122,17 @@
           </td>
 
           <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file4')"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -134,12 +151,17 @@
           </td>
 
           <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload($event, 'file5')"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file5" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -218,7 +240,7 @@
         </tr>
       </tbody>
     </table>
-    
+
     <!-- table 3 -->
     <table class="table3">
       <thead class="titlehead1">
@@ -279,21 +301,21 @@
       </tbody>
     </table>
     <table class="table4">
-          <thead class="titlehead1">
-            <tr style="text-align: center;">
-              <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
-              <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
-            </tr>
-            <tbody>
-                <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
-                <td style="font-size: 15px;padding: 20px;">Remarks/Status
-                  <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
+      <thead class="titlehead1">
+        <tr style="text-align: center;">
+          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+        </tr>
+      <tbody>
+        <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
+        <td style="font-size: 15px;padding: 20px;">Remarks/Status
+          <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
 
-                </td>
-                
-            </tbody>
-          </thead>
-        </table>
+        </td>
+
+      </tbody>
+      </thead>
+    </table>
     <div style="display: flex;flex-direction: column;justify-content: center;">
       <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
       <div>
@@ -371,6 +393,7 @@ export default {
         file4: [],
         file5: []
       },
+
     };
   },
   watch: {
@@ -381,11 +404,14 @@ export default {
     }
   },
   methods: {
-    handleFileUpload(event) {
-      const files1 = event.target.files;
-
-      this.uploadFiles.file1 = Array.from(files1);
-      console.log(this.uploadFiles.file1)
+    handleFileUpload(fileKey, event) {
+      // Ensure the event target and files exist
+      if (event && event.target && event.target.files) {
+        this.uploadFiles[fileKey] = Array.from(event.target.files);
+        console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+      } else {
+        console.error('No files found on event target:', event);
+      }
     },
     async getDetails() {
       try {
@@ -415,91 +441,80 @@ export default {
         console.error('Error fetching reco details:', error);
       }
 
-
       try {
-        const uploadFiles = await axios.get('http://127.0.0.1:8000/get_files');
-        const filteredFiles = uploadFiles.data.filter(req => req.id_reference === this.$route.params.detail_id);
+        const uploads = await axios.get('http://localhost:8000/get_files');
+        const uploadsrequirements = uploads.data.find(req => req.id_reference == this.$route.params.detail_id);
 
-        this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [];
-        this.uploadFiles.file2 = filteredFiles.input2 !== null ? filteredFiles.input2 : [];
-        this.uploadFiles.file3 = filteredFiles.input3 !== null ? filteredFiles.input3 : [];
-        this.uploadFiles.file4 = filteredFiles.input4 !== null ? filteredFiles.input4 : [];
-        this.uploadFiles.file5 = filteredFiles.input5 !== null ? filteredFiles.input5 : [];
-
-
+        this.uploadFiles.file1 = uploadsrequirements.input1 !== null ? uploadsrequirements.input1 : [];
+        this.uploadFiles.file2 = uploadsrequirements.input2 !== null ? uploadsrequirements.input2 : [];
+        this.uploadFiles.file3 = uploadsrequirements.input3 !== null ? uploadsrequirements.input3 : [];
+        this.uploadFiles.file4 = uploadsrequirements.input4 !== null ? uploadsrequirements.input4 : [];
+        this.uploadFiles.file5 = uploadsrequirements.input5 !== null ? uploadsrequirements.input5 : [];
       } catch (error) {
-        console.error('Error fetching file details:', error);
+        console.error('Error fetching reco details:', error);
       }
+
+      
+
+
+      // try {
+      //   const uploadFiles = await axios.get('http://127.0.0.1:8000/get_files');
+      //   const filteredFiles = uploadFiles.data.filter(req => req.id_reference === this.$route.params.detail_id);
+
+      //   this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [];
+      //   this.uploadFiles.file2 = filteredFiles.input2 !== null ? filteredFiles.input2 : [];
+      //   this.uploadFiles.file3 = filteredFiles.input3 !== null ? filteredFiles.input3 : [];
+      //   this.uploadFiles.file4 = filteredFiles.input4 !== null ? filteredFiles.input4 : [];
+      //   this.uploadFiles.file5 = filteredFiles.input5 !== null ? filteredFiles.input5 : [];
+
+      //   console.log(this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [])
+      // } catch (error) {
+      //   console.error('Error fetching file details:', error);
+      // }
 
 
     },
-    // fileSelected() {
-    //   this.$refs.fileInput.click();
-    // },
-    // onFileSelect(event) {
-    //   const files = event.target.files;
-    //   if (files.length === 0) return;
-    //   for (let i = 0; i < files.length; i++) {
-    //     if (files[i].type.split("/")[0] !== "image") continue;
-    //     this.uploadFiles1.push(files[i]);
-    //   }
-    // },
     update() {
       const formData = new FormData();
       formData.append('id_reference', this.$route.params.detail_id);
-      // Append category based on selectedCategory
+
       if (this.selectedStatus === 'other') {
-        // Append otherCategory if selectedCategory is 'others'
         formData.append('mtsr', this.otherStatus);
       } else {
-        // Append selectedCategory directly otherwise
         formData.append('mtsr', this.selectedStatus);
       }
-      // Make axios POST request
+
       axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id}`, formData)
         .then(response => {
-          // Handle response
           console.log('mtsr added: ', response.data);
         })
         .catch(error => {
-          // Handle error
           console.error('Error:', error);
         });
 
       // Prepare the data
       const formData1 = new FormData();
       formData1.append('id_reference', this.$route.params.detail_id);
-      // console.log('id_reference', this.$route.params.detail_id)
 
       for (let i = 1; i <= 5; i++) {
         formData1.append(`input${i}`, this.remarks[`textInput${i}`]);
-        // console.log(`input${i}`, this.recommendation[`textInput${i}`])
       }
-      // Append other input values here...
 
-      // Make a POST request to update remarks
       axios.post(`http://localhost:8000/update_remarks/${this.$route.params.detail_id}`, formData1)
         .then(response => {
           console.log('Remarks updated successfully:', response.data);
-          // Handle success...
         })
         .catch(error => {
           console.error('Error updating remarks:', error);
-          // Handle error...
         });
 
       // Prepare the data
       const formData2 = new FormData();
       formData2.append('id_reference', this.$route.params.detail_id);
-      // console.log('id_reference', this.$route.params.detail_id)
       for (let i = 1; i <= 5; i++) {
         formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
-        // console.log(`input${i}`, this.recommendation[`textInput${i}`])
       }
 
-      // Append other input values here...
-
-      // Make a POST request to update recommendations
       axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id}`, formData2)
         .then(response => {
           console.log('Recommendations updated successfully:', response.data);
@@ -507,21 +522,24 @@ export default {
         })
         .catch(error => {
           console.error('Error updating recommendations:', error);
-          // Handle error...
         });
 
 
       // Upload files 
-      // Create FormData object
       const formData3 = new FormData();
-      // Append reference id
       formData3.append('id_reference', this.$route.params.detail_id);
 
-      // Iterate over each file and append to FormData
-      for (let i = 1; i <= 5; i++) {
-        const file = this.uploadFiles[`file${i}`];
-        if (file) {
-          formData3.append(`input${i}`, file);
+      if (this.uploadFiles) {
+        for (const [key, files] of Object.entries(this.uploadFiles)) {
+          for (let i = 0; i < files.length; i++) {
+            formData3.append(`${key}[]`, files[i]);
+          }
+        }
+      }
+
+      if (this.formData3) {
+        for (const [key, value] of Object.entries(this.formData3)) {
+          formData3.append(key, value);
         }
       }
 
@@ -533,17 +551,6 @@ export default {
         .catch(error => {
           console.error('Error uploading record:', error);
         });
-      // formData3.append('files[]', this.uploadFiles.file1);
-      // Handle form submission using axios or fetch
-      // axios.post(`http://localhost:8000/update_uploads/${this.$route.params.detail_id}`, formData3)
-      //   .then(response => {
-      //     console.log('Files uploaded successfully', response.data);
-      //     // Optionally, you can clear the files array after successful upload
-      //   })
-      //   .catch(error => {
-      //     console.error('Error uploading files:', error);
-      //     // Handle error
-      //   });
     },
     // submitMultiple() {
     //   const formData3 = new FormData();
@@ -629,6 +636,7 @@ export default {
   text-align: left;
   border-collapse: collapse;
 }
+
 .table4 {
   width: 100%;
   margin-top: 30px;

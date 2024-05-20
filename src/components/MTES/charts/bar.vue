@@ -3,12 +3,12 @@
     <div class="bartable">
       <div class="box">
         <h1>Bukidnon</h1>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData1" v-if="chartDataReady"/>
+        <Bar id="my-chart-id" :options="chartOptions" :data="chartData1" v-if="chartDataReady" />
       </div>
 
       <div class="box">
         <h1>Misamis Oriental</h1>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData2" v-if="chartDataReady"/>
+        <Bar id="my-chart-id" :options="chartOptions" :data="chartData2" v-if="chartDataReady" />
       </div>
 
       <div class="box">
@@ -25,20 +25,20 @@
     <div class="bartable1">
       <div class="box">
         <h1>Camiguin</h1>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData5" v-if="chartDataReady"  />
+        <Bar id="my-chart-id" :options="chartOptions" :data="chartData5" v-if="chartDataReady" />
       </div>
 
       <div class="box">
         <h1>Cagayan de Oro City</h1>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData6"v-if="chartDataReady"  />
+        <Bar id="my-chart-id" :options="chartOptions" :data="chartData6" v-if="chartDataReady" />
       </div>
 
 
       <div class="box">
         <h1>Iligan City</h1>
-        <Bar id="my-chart-id" :options="chartOptions" :data="chartData7"v-if="chartDataReady"  />
+        <Bar id="my-chart-id" :options="chartOptions" :data="chartData7" v-if="chartDataReady" />
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -128,7 +128,16 @@ export default {
         ]
       },
       chartOptions: {
-        responsive: true
+        responsive: true,
+        scales: {
+          y: {
+            min: 0,
+            max: 1,
+            ticks: {
+              stepSize: 1 // Adjust this step size to control the interval between ticks
+            }
+          }
+        }
       },
       chartDataReady: false,
     }
@@ -152,7 +161,7 @@ export default {
             'cabanglasan': 0,
             'impasugong': 0,
             'lantapan': 0,
-            'malaybalay': 0,
+            'city of malaybalay (capital)': 0,
             'san fernando': 0,
           };
           const District3 = {
@@ -168,7 +177,7 @@ export default {
           const District4 = {
             'kalilangan': 0,
             'pangantucan': 0,
-            'valencia': 0,
+            'city of valencia': 0,
           }
           const misorDistrict1 = {
             'gingoog': 0,
@@ -177,11 +186,12 @@ export default {
             'binuangan': 0,
             'kinoguitan': 0,
             'lagonglong': 0,
-            'magsaysay': 0,
+            'magsaysay (linugos)': 0,
             'medina': 0,
             'salay': 0,
             'sugbongcogon': 0,
             'talisayan': 0,
+            
           }
           const misorDistrict2 = {
             'el salvador': 0,
@@ -198,6 +208,7 @@ export default {
             'opol': 0,
             'tagoloan': 0,
             'billanueva': 0,
+            
           }
           const misoccDistrict1 = {
             'misamis occidental': 0,
@@ -255,132 +266,98 @@ export default {
             }
           });
 
-          
-          this.updateChartData(District1,0);
-          this.updateChartData(District2,1);
-          this.updateChartData(District3,2);
-          this.updateChartData(District4,3);
 
-          this.updateChart2Data(misorDistrict1,0);
-          this.updateChart2Data(misorDistrict2,1);
+          this.updateChartData(District1, 0);
+          this.updateChartData(District2, 1);
+          this.updateChartData(District3, 2);
+          this.updateChartData(District4, 3);
 
-          this.updateChart3Data(misoccDistrict1,0);
+          this.updateChart2Data(misorDistrict1, 0);
+          this.updateChart2Data(misorDistrict2, 1);
 
-          this.updateChart4Data(lanaoDistrict1,0);
+          this.updateChart3Data(misoccDistrict1, 0);
 
-          this.updateChart5Data(camsDistrict1,0);
+          this.updateChart4Data(lanaoDistrict1, 0);
 
-          this.updateChart6Data(cgyDistrict1,0);
+          this.updateChart5Data(camsDistrict1, 0);
 
-          this.updateChart7Data(iligDistrict1,0);
+          this.updateChart6Data(cgyDistrict1, 0);
+
+          this.updateChart7Data(iligDistrict1, 0);
         })
         .catch(error => {
           console.error('Error fetching province data:', error);
         });
 
     },
-    updateChartData(District1,indd) {
+    updateChartData(District1, indd) {
       const data = this.chartData1.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
+
       const totalDistrict1Count = Object.values(District1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
+
       data[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
-    }, 
-    updateChart2Data(misorDistrict1,indd) {
+    },
+    updateChart2Data(misorDistrict1, indd) {
       const data2 = this.chartData2.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
+
       const totalDistrict1Count = Object.values(misorDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      data2[indd] = totalDistrict1Count;
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     },
-    updateChart3Data(misoccDistrict1,indd) {
+    updateChart3Data(misoccDistrict1, indd) {
       const data2 = this.chartData3.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
+
       const totalDistrict1Count = Object.values(misoccDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      data2[indd] = totalDistrict1Count;
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     },
-    updateChart4Data(lanaoDistrict1,indd) {
+    updateChart4Data(lanaoDistrict1, indd) {
       const data2 = this.chartData4.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
+
       const totalDistrict1Count = Object.values(lanaoDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      data2[indd] = totalDistrict1Count;
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     },
-    updateChart5Data(camsDistrict1,indd) {
+    updateChart5Data(camsDistrict1, indd) {
       const data2 = this.chartData5.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
+
       const totalDistrict1Count = Object.values(camsDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      data2[indd] = totalDistrict1Count;
+
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     },
-    updateChart6Data(cgyDistrict1,indd) {
+    updateChart6Data(cgyDistrict1, indd) {
       const data2 = this.chartData6.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
-      const totalDistrict1Count = Object.values(cgyDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      const totalDistrict1Count = Object.values(cgyDistrict1).reduce((total, count) => total + count, 0);
+
+      data2[indd] = totalDistrict1Count;
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     },
-    updateChart7Data(iligDistrict1,indd) {
+    updateChart7Data(iligDistrict1, indd) {
       const data2 = this.chartData7.datasets[0].data;
-      // console.log(data)
-      // Sum up the counts of all cities in District 1
-      const totalDistrict1Count = Object.values(iligDistrict1).reduce((total, count) => total + count, 0);
-      // const totalDistrict2Count = Object.values(District2).reduce((total, count) => total + count, 0);
-      // const totalDistrict1Count1 = Object.values(District2).reduce((total, count) => total + count, 0);
-      // Assign the total count to data[0]
-      data2[indd] = totalDistrict1Count;
-      // data[1] = totalDistrict2Count;
 
-      // console.log(data);
+      const totalDistrict1Count = Object.values(iligDistrict1).reduce((total, count) => total + count, 0);
+
+      data2[indd] = totalDistrict1Count;
+
       this.$forceUpdate(); // Force Vue to re-render the chart
       this.chartDataReady = true;
     }

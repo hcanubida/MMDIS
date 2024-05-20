@@ -37,10 +37,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -112,10 +117,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file2" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -176,10 +186,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file3" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -224,10 +239,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -261,10 +281,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file5" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -330,10 +355,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file6', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file6" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -360,10 +390,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file7', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file7" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -399,10 +434,15 @@
           <td class="inputimg6">
             <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                to upload:</label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
+              </label>
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file8', $event)"
+                ref="fileInput1"
                 class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file, index) in uploadFiles.file8" :key="file.name">
+                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+              </div>
             </div>
           </td>
 
@@ -440,10 +480,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file9', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file9" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -464,10 +509,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file10', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file10" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -489,10 +539,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file11', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file11" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -514,10 +569,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file12', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file12" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -546,10 +606,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file13', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file13" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -570,10 +635,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file14', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file14" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -595,10 +665,15 @@
             <td class="inputimg6">
               <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
-                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Files
-                  to upload:</label>
-                <input type="file" multiple accept="application/*" @change="handleFileUpload" ref="fileInput"
+                  class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Files to upload:
+                </label>
+                <input type="file" multiple accept="application/*" @change="handleFileUpload('file15', $event)"
+                  ref="fileInput1"
                   class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                <div v-for="(file, index) in uploadFiles.file15" :key="file.name">
+                  <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                </div>
               </div>
             </td>
 
@@ -1004,6 +1079,23 @@ export default {
         textInput14: '',
         textInput15: '',
       },
+      uploadFiles: {
+        file1: [],
+        file2: [],
+        file3: [],
+        file4: [],
+        file5: [],
+        file6: [],
+        file7: [],
+        file8: [],
+        file9: [],
+        file10: [],
+        file11: [],
+        file12: [],
+        file13: [],
+        file14: [],
+        file15: [],
+      }
     };
   },
   watch: {
@@ -1014,6 +1106,15 @@ export default {
     }
   },
   methods: {
+    handleFileUpload(fileKey, event) {
+      // Ensure the event target and files exist
+      if (event && event.target && event.target.files) {
+        this.uploadFiles[fileKey] = Array.from(event.target.files);
+        console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+      } else {
+        console.error('No files found on event target:', event);
+      }
+    },
     async getDetails() {
       try {
         const remarks = await axios.get('http://localhost:8000/get_remarks');
@@ -1141,6 +1242,32 @@ export default {
         .catch(error => {
           console.error('Error updating recommendations:', error);
           // Handle error...
+        });
+
+      const formData3 = new FormData();
+      formData3.append('id_reference', this.$route.params.detail_id4);
+
+      if (this.uploadFiles) {
+        for (const [key, files] of Object.entries(this.uploadFiles)) {
+          for (let i = 0; i < files.length; i++) {
+            formData3.append(`${key}[]`, files[i]);
+          }
+        }
+      }
+
+      if (this.formData3) {
+        for (const [key, value] of Object.entries(this.formData3)) {
+          formData3.append(key, value);
+        }
+      }
+
+      // Send FormData to server using axios
+      axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+        .then(response => {
+          console.log('Record uploaded successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error uploading record:', error);
         });
     },
   },
