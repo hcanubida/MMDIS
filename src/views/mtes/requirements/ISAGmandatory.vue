@@ -42,6 +42,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput1"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput1"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file1" />
                     </td>
                 </tr>
 
@@ -70,6 +73,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput2"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput2"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file2" />
                     </td>
                 </tr>
                 <tr>
@@ -100,6 +106,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput3"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file3" />
                     </td>
                 </tr>
                 <tr>
@@ -130,6 +139,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput4"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput4"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file4" />
                     </td>
                 </tr>
                 <tr>
@@ -159,6 +171,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput5"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput5"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file5" />
                     </td>
                 </tr>
                 <tr>
@@ -187,6 +202,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput6"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput6"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file6" />
                     </td>
                 </tr>
                 <tr>
@@ -215,6 +233,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput7"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput7"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file7" />
                     </td>
                 </tr>
                 <tr>
@@ -242,6 +263,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput8"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput8"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file8" />
                     </td>
                 </tr>
                 <tr>
@@ -270,6 +294,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput9"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput9"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file9" />
                     </td>
                 </tr>
                 <tr>
@@ -304,6 +331,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput10"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput10"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file10" />
                     </td>
                 </tr>
                 <tr>
@@ -341,6 +371,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput11"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput11"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file11" />
                     </td>
                 </tr>
                 <tr>
@@ -368,6 +401,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput12"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput12"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file12" />
                     </td>
                 </tr>
             </tbody>
@@ -411,6 +447,9 @@
             <textarea class="textarea4" v-model="remarks.textInput13"></textarea>
             <label>Recommendation or Lacking Submission :</label><br>
             <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput13"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file13" />
         </td>
         </tr>
         <tr>
@@ -443,6 +482,9 @@
                 <textarea class="textarea4" v-model="remarks.textInput14"></textarea>
                 <label>Recommendation or Lacking Submission :</label><br>
                 <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput14"></textarea>
+
+                <!-- images upload (based remarks) -->
+                <imagees @images-uploaded="myAction" containerId="file14" />
             </td>
         </tr>
         <tr>
@@ -470,6 +512,9 @@
                 <textarea class="textarea4" v-model="remarks.textInput15"></textarea>
                 <label>Recommendation or Lacking Submission :</label><br>
                 <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput15"></textarea>
+
+                <!-- images upload (based remarks) -->
+                <imagees @images-uploaded="myAction" containerId="file15" />
             </td>
         </tr>
         <tr>
@@ -497,6 +542,9 @@
                 <textarea class="textarea4" v-model="remarks.textInput16"></textarea>
                 <label>Recommendation or Lacking Submission :</label><br>
                 <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput16"></textarea>
+
+                <!-- images upload (based remarks) -->
+                <imagees @images-uploaded="myAction" containerId="file16" />
             </td>
         </tr>
         <tr>
@@ -525,6 +573,9 @@
                 <textarea class="textarea4" v-model="remarks.textInput17"></textarea>
                 <label>Recommendation or Lacking Submission :</label><br>
                 <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput17"></textarea>
+
+                <!-- images upload (based remarks) -->
+                <imagees @images-uploaded="myAction" containerId="file17" />
             </td>
         </tr>
         <tr>
@@ -552,6 +603,9 @@
                 <textarea class="textarea4" v-model="remarks.textInput18"></textarea>
                 <label>Recommendation or Lacking Submission :</label><br>
                 <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput18"></textarea>
+
+                <!-- images upload (based remarks) -->
+                <imagees @images-uploaded="myAction" containerId="file18" />
             </td>
         </tr>
         </tbody>
@@ -597,6 +651,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput19"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput19"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file19" />
                     </td>
                 </tr>
                 <tr>
@@ -624,6 +681,9 @@
                         <textarea class="textarea4" v-model="remarks.textInput20"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput20"></textarea>
+
+                        <!-- images upload (based remarks) -->
+                        <imagees @images-uploaded="myAction" containerId="file20" />
                     </td>
                 </tr>
             </tbody>
@@ -631,13 +691,14 @@
     </div>
 
     <!-- Table 2 -->
-    <table class="table4">
+    <table class="table2">
         <caption style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;" class="caption1">
             Summary
             of Lacking Requirements</caption>
         <tbody>
             <tr>
-                <td v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
                     <p>{{ requirements.reqDetails1 }}</p>
                 </td>
 
@@ -649,7 +710,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
                     {{ requirements.reqDetails2 }}
                 </td>
 
@@ -661,7 +723,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
                     {{ requirements.reqDetails3 }}
                 </td>
 
@@ -673,7 +736,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
                     {{ requirements.reqDetails4 }}
                 </td>
 
@@ -685,7 +749,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
                     {{ requirements.reqDetails5 }}
                 </td>
 
@@ -697,7 +762,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
                     {{ requirements.reqDetails6 }}
                 </td>
 
@@ -709,7 +775,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
                     {{ requirements.reqDetails7 }}
                 </td>
 
@@ -721,7 +788,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
                     {{ requirements.reqDetails8 }}
                 </td>
 
@@ -734,7 +802,8 @@
             </tr>
 
             <tr>
-                <td v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
                     {{ requirements.reqDetails9 }}
                 </td>
 
@@ -746,7 +815,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
                     {{ requirements.reqDetails10 }}
                 </td>
 
@@ -759,7 +829,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
                     {{ requirements.reqDetails11 }}
                 </td>
 
@@ -772,7 +843,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
                     {{ requirements.reqDetails12 }}
                 </td>
 
@@ -787,7 +859,8 @@
             <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements AFTER
                 ACCEPTANCE BUT PRIOR TO THE ISSUANCE OF PERMIT</p>
             <tr>
-                <td v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
                     {{ requirements.reqDetails13 }}
                 </td>
 
@@ -800,7 +873,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
                     {{ requirements.reqDetails14 }}
                 </td>
 
@@ -813,7 +887,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
                     {{ requirements.reqDetails15 }}
                 </td>
 
@@ -826,7 +901,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
                     {{ requirements.reqDetails16 }}
                 </td>
 
@@ -839,7 +915,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
                     {{ requirements.reqDetails17 }}
                 </td>
 
@@ -852,7 +929,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
                     {{ requirements.reqDetails18 }}
                 </td>
 
@@ -866,7 +944,8 @@
             </tr>
             <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements</p>
             <tr>
-                <td v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
                     {{ requirements.reqDetails19 }}
                 </td>
 
@@ -879,7 +958,8 @@
                 </td>
             </tr>
             <tr>
-                <td v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
+                <td style="text-align: left;"
+                    v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
                     {{ requirements.reqDetails20 }}
                 </td>
 
@@ -970,9 +1050,12 @@
             </tr>
         </thead>
         <tbody>
-            <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
-            <td style="font-size: 15px;padding: 20px;">Remarks/Status
-                <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
+            <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
+                Remarks/Status/Reccomendation</td>
+            <td style="font-size: 15px;padding: 20px; width: 50%;">
+                <label>Remarks /Status</label>
+                <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"
+                    v-model="overallStatus"></textarea>
             </td>
         </tbody>
 
@@ -995,6 +1078,9 @@
 import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
 import downloadd from '../faxsheet/isag-factsheet.vue'
+import imagees from '../../../components/MTES/modals/imguploads.vue'
+
+
 </script>
 <script>
 export default {
@@ -1003,6 +1089,7 @@ export default {
     },
     data() {
         return {
+            overallStatus: '',
             selectedStatus: '',
             otherStatus: '',
             requirements: {
@@ -1125,6 +1212,28 @@ export default {
                 file18: [],
                 file19: [],
                 file20: [],
+            },
+            imagesfile: {
+                file1: [],
+                file2: [],
+                file3: [],
+                file4: [],
+                file5: [],
+                file6: [],
+                file7: [],
+                file8: [],
+                file9: [],
+                file10: [],
+                file11: [],
+                file12: [],
+                file13: [],
+                file14: [],
+                file15: [],
+                file16: [],
+                file17: [],
+                file18: [],
+                file19: [],
+                file20: [],
             }
 
         };
@@ -1137,6 +1246,11 @@ export default {
         }
     },
     methods: {
+        myAction(payload) {
+            const { containerId, images } = payload;
+            this.imagesfile[containerId] = images;
+            console.log(`Uploaded images for ${containerId}:`, images);
+        },
         handleFileUpload(fileKey, event) {
             // Ensure the event target and files exist
             if (event && event.target && event.target.files) {
@@ -1211,9 +1325,11 @@ export default {
             if (this.selectedStatus === 'other') {
                 // Append otherCategory if selectedCategory is 'others'
                 formData.append('mtsr', this.otherStatus);
+                formData.append('overallstatus', this.overallStatus);
             } else {
                 // Append selectedCategory directly otherwise
                 formData.append('mtsr', this.selectedStatus);
+                formData.append('overallstatus', this.overallStatus);
             }
             // Make axios POST request
             axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id3}`, formData)
@@ -1297,6 +1413,30 @@ export default {
                 .catch(error => {
                     console.error('Error uploading record:', error);
                 });
+
+            //add images
+            const formData4 = new FormData();
+            formData4.append('id_reference', this.$route.params.detail_id3);
+
+            for (const containerId in this.imagesfile) {
+                if (this.imagesfile.hasOwnProperty(containerId)) {
+                    const fileKey = `images${containerId.replace('file', '')}`;
+
+                    this.imagesfile[containerId].forEach((file, index) => {
+                        formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                    });
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post('http://127.0.0.1:8000/add_images', formData4)
+                .then(response => {
+                    console.log('Images uploaded successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error uploading images:', error);
+                });
+
         },
     },
     mounted() {
@@ -1341,6 +1481,13 @@ export default {
     width: 100%;
     margin-bottom: 20px;
     text-align: left;
+}
+
+.table2 td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 50%;
+    /* Set each column to occupy 50% of the table width */
 }
 
 .tablee {

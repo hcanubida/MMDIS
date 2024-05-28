@@ -288,7 +288,6 @@ export default {
         .catch(error => {
           console.error('Error fetching province data:', error);
         });
-
     },
     updateChartData(District1, indd) {
       const data = this.chartData1.datasets[0].data;

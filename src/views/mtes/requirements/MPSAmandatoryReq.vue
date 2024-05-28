@@ -43,6 +43,8 @@
                         <textarea class="textarea3" v-model="remarks.textInput1"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea3" style="color: red;" v-model="recommendation.textInput1"></textarea>
+
+                        <imagees @images-uploaded="myAction" containerId="file1" />
                     </td>
                 </tr>
 
@@ -72,6 +74,8 @@
                         <textarea class="textarea3" v-model="remarks.textInput2"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea3" style="color: red;" v-model="recommendation.textInput2"></textarea>
+
+                        <imagees @images-uploaded="myAction" containerId="file2" />
                     </td>
                 </tr>
                 <tr>
@@ -99,6 +103,8 @@
                         <textarea class="textarea3" v-model="remarks.textInput3"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea3" style="color: red;" v-model="recommendation.textInput3"></textarea>
+
+                        <imagees @images-uploaded="myAction" containerId="file3" />
                     </td>
                 </tr>
                 <tr>
@@ -135,6 +141,8 @@
                         <textarea class="textarea3" v-model="remarks.textInput4"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
                         <textarea class="textarea3" style="color: red;" v-model="recommendation.textInput4"></textarea>
+
+                        <imagees @images-uploaded="myAction" containerId="file4" />
                     </td>
                 </tr>
             </tbody>
@@ -271,16 +279,18 @@
                     <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
                     <th class="th3" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
                 </tr>
-            <tbody>
-                <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
-                <td style="font-size: 15px;padding: 20px;">Remarks/Status
-                    <textarea
-                        style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
-
-                </td>
-
-            </tbody>
             </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
+                        Remarks/Status/Reccomendation</td>
+                    <td style="font-size: 15px;padding: 20px; width: 50%;">
+                        <label>Remarks /Status</label>
+                        <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"
+                            v-model="overallStatus"></textarea>
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <div style="display: flex;flex-direction: column;justify-content: center;">
             <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
@@ -298,6 +308,7 @@
 <script setup>
 import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
+import imagees from '../../../components/MTES/modals/imguploads.vue'
 
 </script>
 
@@ -309,6 +320,7 @@ export default {
     },
     data() {
         return {
+            overallStatus: '',
             selectedStatus: '',
             otherStatus: '',
             requirements: {
@@ -349,6 +361,12 @@ export default {
                 file3: [],
                 file4: [],
             },
+            imagesfile: {
+                file1: [],
+                file2: [],
+                file3: [],
+                file4: [],
+            }
         };
     },
     watch: {
@@ -359,6 +377,11 @@ export default {
         }
     },
     methods: {
+        myAction(payload) {
+            const { containerId, images } = payload;
+            this.imagesfile[containerId] = images;
+            console.log(`Uploaded images for ${containerId}:`, images);
+        },
         handleFileUpload(fileKey, event) {
             // Ensure the event target and files exist
             if (event && event.target && event.target.files) {
@@ -415,9 +438,11 @@ export default {
             if (this.selectedStatus === 'other') {
                 // Append otherCategory if selectedCategory is 'others'
                 formData.append('mtsr', this.otherStatus);
+                formData.append('overallstatus', this.overallStatus);
             } else {
                 // Append selectedCategory directly otherwise
                 formData.append('mtsr', this.selectedStatus);
+                formData.append('overallstatus', this.overallStatus);
             }
             // Make axios POST request
             axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id2}`, formData)
@@ -502,7 +527,33 @@ export default {
                 .catch(error => {
                     console.error('Error uploading record:', error);
                 });
+
+
+            //add images
+            const formData4 = new FormData();
+            formData4.append('id_reference', this.$route.params.detail_id2);
+
+            for (const containerId in this.imagesfile) {
+                if (this.imagesfile.hasOwnProperty(containerId)) {
+                    const fileKey = `images${containerId.replace('file', '')}`;
+
+                    this.imagesfile[containerId].forEach((file, index) => {
+                        formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                    });
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post('http://127.0.0.1:8000/add_images', formData4)
+                .then(response => {
+                    console.log('Images uploaded successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error uploading images:', error);
+                });
+
         },
+
 
     },
     mounted() {

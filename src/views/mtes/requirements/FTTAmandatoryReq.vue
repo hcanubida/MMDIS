@@ -41,16 +41,23 @@
               <div v-for="(file, index) in uploadFiles.file1" :key="file.name">
                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
               </div>
+              <!-- <div>
+                <p>{{ uploadFiles.file1 }}</p>
+              </div> -->
             </div>
           </td>
 
           <td style="text-align: left;width: 400px;">
             <label>Remarks:</label><br>
-            <textarea style="border: 1px solid #ccc; border-radius: 4px; width: 100% ; "
+            <textarea style="border: 1px solid #ccc; border-radius: 4px; width: 100%;"
               v-model="remarks.textInput1"></textarea>
-            <label>Recommendation or Lacking Submission :</label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
+            <label>Recommendation or Lacking Submission:</label><br>
+            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100%;"
               v-model="recommendation.textInput1"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file1" />
+
           </td>
         </tr>
         <tr>
@@ -82,6 +89,10 @@
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
               v-model="recommendation.textInput2"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file2" />
+
           </td>
         </tr>
         <tr>
@@ -112,6 +123,9 @@
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
               v-model="recommendation.textInput3"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file3" />
           </td>
         </tr>
         <tr>
@@ -133,6 +147,10 @@
               <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
               </div>
+
+              <!-- <div>
+                <p>{{ uploadFiles.file1 }}</p>
+              </div> -->
             </div>
           </td>
 
@@ -143,6 +161,9 @@
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
               v-model="recommendation.textInput4"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file4" />
           </td>
         </tr>
         <tr>
@@ -172,6 +193,9 @@
             <label>Recommendation or Lacking Submission : </label><br>
             <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;"
               v-model="recommendation.textInput5"></textarea>
+
+            <!-- images upload (based remarks) -->
+            <imagees @images-uploaded="myAction" containerId="file5" />
           </td>
         </tr>
       </tbody>
@@ -254,7 +278,7 @@
         <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
           <select class="inputall" v-model="selectedStatus"
             style="background-color: antiquewhite;text-align: center;width: 100%;">
-            <option value="" disabled>Based of the Status MTSR</option>
+            <option value="" disabled>Based on the MTSR Status</option>
             <option style="text-align: left;" value="Under Pre-Processing by Mining Tenement Evaluation
               Section">Under Pre-Processing by Mining Tenement Evaluation
               Section</option>
@@ -306,15 +330,18 @@
           <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
           <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
         </tr>
-      <tbody>
-        <td style="text-align: center;font-size: 20px;padding: 20px;">Overall Remarks/Status/Reccomendation</td>
-        <td style="font-size: 15px;padding: 20px;">Remarks/Status
-          <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"></textarea>
-
-        </td>
-
-      </tbody>
       </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
+            Remarks/Status/Reccomendation</td>
+          <td style="font-size: 15px;padding: 20px; width: 50%;">
+            <label>Remarks /Status</label>
+            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"
+              v-model="overallStatus"></textarea>
+          </td>
+        </tr>
+      </tbody>
     </table>
     <div style="display: flex;flex-direction: column;justify-content: center;">
       <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
@@ -331,7 +358,7 @@
 
 <script setup>
 import headd from '../../../components/MTES/header.vue'
-import upload from '../../../components/MTES/multiple-upload.vue'
+import imagees from '../../../components/MTES/modals/imguploads.vue'
 
 // import { detail_id } from '../dashboards/FTAA-dashboard.vue';
 
@@ -340,13 +367,14 @@ import upload from '../../../components/MTES/multiple-upload.vue'
 export default {
   name: 'typeapp',
   components: {
-    upload
+    imagees
   },
   props: {
     detail_id: String,
   },
   data() {
     return {
+      overallStatus: '',
       selectedStatus: '',
       otherStatus: '',
       requirements: {
@@ -393,6 +421,13 @@ export default {
         file4: [],
         file5: []
       },
+      imagesfile: {
+        file1: [],
+        file2: [],
+        file3: [],
+        file4: [],
+        file5: []
+      },
 
     };
   },
@@ -404,11 +439,17 @@ export default {
     }
   },
   methods: {
+    myAction(payload) {
+      const { containerId, images } = payload;
+      this.imagesfile[containerId] = images;
+      console.log(`Uploaded images for ${containerId}:`, images);
+    },
     handleFileUpload(fileKey, event) {
       // Ensure the event target and files exist
       if (event && event.target && event.target.files) {
         this.uploadFiles[fileKey] = Array.from(event.target.files);
         console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+        console.log('Updated uploadFiles:', this.uploadFiles); // Log the updated state of uploadFiles
       } else {
         console.error('No files found on event target:', event);
       }
@@ -443,8 +484,8 @@ export default {
 
       try {
         const uploads = await axios.get('http://localhost:8000/get_files');
-        const uploadsrequirements = uploads.data.find(req => req.id_reference == this.$route.params.detail_id);
-
+        const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id);
+        console.log(uploadsrequirements)
         this.uploadFiles.file1 = uploadsrequirements.input1 !== null ? uploadsrequirements.input1 : [];
         this.uploadFiles.file2 = uploadsrequirements.input2 !== null ? uploadsrequirements.input2 : [];
         this.uploadFiles.file3 = uploadsrequirements.input3 !== null ? uploadsrequirements.input3 : [];
@@ -454,23 +495,6 @@ export default {
         console.error('Error fetching reco details:', error);
       }
 
-      
-
-
-      // try {
-      //   const uploadFiles = await axios.get('http://127.0.0.1:8000/get_files');
-      //   const filteredFiles = uploadFiles.data.filter(req => req.id_reference === this.$route.params.detail_id);
-
-      //   this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [];
-      //   this.uploadFiles.file2 = filteredFiles.input2 !== null ? filteredFiles.input2 : [];
-      //   this.uploadFiles.file3 = filteredFiles.input3 !== null ? filteredFiles.input3 : [];
-      //   this.uploadFiles.file4 = filteredFiles.input4 !== null ? filteredFiles.input4 : [];
-      //   this.uploadFiles.file5 = filteredFiles.input5 !== null ? filteredFiles.input5 : [];
-
-      //   console.log(this.uploadFiles.file1 = filteredFiles.input1 !== null ? filteredFiles.input1 : [])
-      // } catch (error) {
-      //   console.error('Error fetching file details:', error);
-      // }
 
 
     },
@@ -480,13 +504,15 @@ export default {
 
       if (this.selectedStatus === 'other') {
         formData.append('mtsr', this.otherStatus);
+        formData.append('overallstatus', this.overallStatus);
       } else {
         formData.append('mtsr', this.selectedStatus);
+        formData.append('overallstatus', this.overallStatus);
       }
 
       axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id}`, formData)
         .then(response => {
-          console.log('mtsr added: ', response.data);
+          console.log('mtsr & overstatus added: ', response.data);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -498,6 +524,7 @@ export default {
 
       for (let i = 1; i <= 5; i++) {
         formData1.append(`input${i}`, this.remarks[`textInput${i}`]);
+
       }
 
       axios.post(`http://localhost:8000/update_remarks/${this.$route.params.detail_id}`, formData1)
@@ -511,9 +538,15 @@ export default {
       // Prepare the data
       const formData2 = new FormData();
       formData2.append('id_reference', this.$route.params.detail_id);
+
+      // this.Imagesfile.file1.forEach((file) => {
+      //   formData.append('images1', file);
+      // });
+
       for (let i = 1; i <= 5; i++) {
         formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
       }
+
 
       axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id}`, formData2)
         .then(response => {
@@ -522,6 +555,29 @@ export default {
         })
         .catch(error => {
           console.error('Error updating recommendations:', error);
+        });
+
+      //add images
+      const formData4 = new FormData();
+      formData4.append('id_reference', this.$route.params.detail_id);
+
+      for (const containerId in this.imagesfile) {
+        if (this.imagesfile.hasOwnProperty(containerId)) {
+          const fileKey = `images${containerId.replace('file', '')}`;
+
+          this.imagesfile[containerId].forEach((file, index) => {
+            formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+          });
+        }
+      }
+
+      // Send FormData to server using axios
+      axios.post('http://127.0.0.1:8000/add_images', formData4)
+        .then(response => {
+          console.log('Images uploaded successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error uploading images:', error);
         });
 
 
@@ -537,41 +593,16 @@ export default {
         }
       }
 
-      if (this.formData3) {
-        for (const [key, value] of Object.entries(this.formData3)) {
-          formData3.append(key, value);
-        }
-      }
-
       // Send FormData to server using axios
-      axios.post('http://127.0.0.1:8000/add_uploads', formData3)
+      axios.post(`http://localhost:8000/update_uploads/${this.$route.params.detail_id}`, formData3)
         .then(response => {
           console.log('Record uploaded successfully:', response.data);
         })
         .catch(error => {
           console.error('Error uploading record:', error);
         });
-    },
-    // submitMultiple() {
-    //   const formData3 = new FormData();
-    //   this.uploadFiles1.forEach(file => {
-    //     formData.append('files[]', file);
-    //   });
-    //   formData3.append('id_reference', this.$route.params.detail_id);
 
-    //   // Handle form submission using axios or fetch
-    //   axios.post('http://127.0.0.1:8000/add_uploads', formData3)
-    //     .then(response => {
-    //       console.log('Files uploaded successfully');
-    //       // Optionally, you can clear the files array after successful upload
-    //       this.files = [];
-    //       console.log(this.files)
-    //     })
-    //     .catch(error => {
-    //       console.error('Error uploading files:', error);
-    //       // Handle error
-    //     });
-    // },
+    },
   },
   mounted() {
     this.getDetails();
