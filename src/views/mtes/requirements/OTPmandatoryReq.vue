@@ -36,16 +36,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file1" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;">
                         <label>Remarks:</label><br>
-                        <textarea v-model="remarks.textInput1"></textarea>
+                        <textarea class="textarea5" v-model="remarks.textInput1" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;" v-model="recommendation.textInput1"></textarea>
+                        <textarea class="textarea5" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput1"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file1" />
+                        <div v-for="(file, index) in imagesfile.file1" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
 
                     </td>
                 </tr>
@@ -70,16 +86,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file2" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;">
                         <label>Remarks:</label><br>
-                        <textarea v-model="remarks.textInput2"></textarea>
+                        <textarea class="textarea5" v-model="remarks.textInput2" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;" v-model="recommendation.textInput2"></textarea>
+                        <textarea class="textarea5" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput2"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file2" />
+                        <div v-for="(file, index) in imagesfile.file2" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
 
                     </td>
                 </tr>
@@ -102,16 +134,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file3" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea v-model="remarks.textInput3"></textarea>
+                        <textarea class="textarea5" v-model="remarks.textInput3" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;" v-model="recommendation.textInput3"></textarea>
+                        <textarea class="textarea5" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput3"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file3" />
+                        <div v-for="(file, index) in imagesfile.file3" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
 
                     </td>
                 </tr>
@@ -134,16 +182,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file4" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea v-model="remarks.textInput4"></textarea>
+                        <textarea class="textarea5" v-model="remarks.textInput4" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;" v-model="recommendation.textInput4"></textarea>
+                        <textarea class="textarea5" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput4"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file4" />
+                        <div v-for="(file, index) in imagesfile.file4" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
 
                     </td>
                 </tr>
@@ -166,16 +230,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file5" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left; width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea v-model="remarks.textInput5"></textarea>
+                        <textarea class="textarea5" v-model="remarks.textInput5" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea style="color: red;" v-model="recommendation.textInput5"></textarea>
+                        <textarea class="textarea5" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput5"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file5" />
+                        <div v-for="(file, index) in imagesfile.file5" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
 
                     </td>
                 </tr>
@@ -330,7 +410,7 @@
                         Remarks/Status/Reccomendation</td>
                     <td style="font-size: 15px;padding: 20px; width: 50%;">
                         <label>Remarks /Status</label>
-                        <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"
+                        <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 500px;"
                             v-model="overallStatus"></textarea>
                     </td>
                 </tr>
@@ -345,8 +425,15 @@
                     @click="update">
                     UPDATE
                 </button>
+                <button
+                    style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
+                    @click="view">{{ isVisible ? 'Close' : 'View' }}
+                </button>
             </div>
-        </div>
+            <div class="drop-shadow-2xl bg-stone-100 mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
+                <faxx />
+            </div>
+    </div>
     </div>
 </template>
 
@@ -356,6 +443,7 @@ import headd from '../../../components/MTES/header.vue'
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
 import downloadd from '../faxsheet/otp-factsheet.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
+import faxx from '../faxsheet/otp-factsheet.vue'
 
 
 </script>
@@ -365,6 +453,8 @@ export default {
     data() {
         return {
             overallStatus: '',
+            isVisible: false,
+            showChildComponent: false,
             selectedStatus: '',
             otherStatus: '',
             requirements: {
@@ -427,6 +517,10 @@ export default {
         },
     },
     methods: {
+        view() {
+            // this.isVisible = true;
+            this.isVisible = !this.isVisible;
+        },
         myAction(payload) {
             const { containerId, images } = payload;
             this.imagesfile[containerId] = images;
@@ -442,6 +536,21 @@ export default {
             }
         },
         async getDetails() {
+
+            //MTSR details
+            try {
+                const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id6));
+                const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id6));
+                this.mtsrvalue = filteredmtsr.mtsr
+                this.overallStatus = filteredoverall.overallstatus
+                this.selectedStatus = this.mtsrvalue
+                // console.log(this.selectedStatus)
+
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
             try {
                 const remarks = await axios.get('http://localhost:8000/get_remarks');
                 const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id6);
@@ -469,6 +578,85 @@ export default {
             } catch (error) {
                 console.error('Error fetching reco details:', error);
             }
+
+            try {
+                const uploads = await axios.get('http://localhost:8000/get_files');
+                const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id6);
+                console.log(uploadsrequirements);
+
+                // Clear existing files to avoid duplicates
+                Object.keys(this.uploadFiles).forEach(key => {
+                    this.uploadFiles[key] = [];
+                });
+
+                // Initialize uploadFiles object for file1 to file5
+                for (let i = 1; i <= 5; i++) { //alisdan
+                    const key = `file${i}`;
+                    this.uploadFiles[key] = [];
+                }
+
+                // Assign fetched files to uploadFiles
+                uploadsrequirements.forEach((req) => {
+                    for (let i = 1; i <= 5; i++) {
+                        const key = `file${i}`;
+                        // Check if the file key exists in req and is not null
+                        if (req.hasOwnProperty(key) && req[key] !== null) {
+                            try {
+                                this.uploadFiles[key] = JSON.parse(req[key]);
+                            } catch (e) {
+                                console.error(`Error parsing JSON for ${key}:`, e);
+                                this.uploadFiles[key] = [];
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
+
+
+            //images 1stkuhaon
+            try {
+                const images = await axios.get('http://localhost:8000/get_images');
+                const imagesrequirements = images.data.filter(req => req.id_reference == this.$route.params.detail_id6);
+                console.log(imagesrequirements);
+
+                // Clear existing files to avoid duplicates
+                Object.keys(this.imagesfile).forEach(key => {
+                    this.imagesfile[key] = [];
+                });
+
+                // Initialize uploadFiles object for file1 to file5
+                for (let i = 1; i <= 5; i++) { //<------pila kabuok
+                    const key = `file${i}`;
+                    this.imagesfile[key] = [];
+                }
+
+                // Assign fetched files to uploadFiles
+                imagesrequirements.forEach((req) => {
+                    for (let i = 1; i <= 5; i++) {//<------pila kabuok
+                        const key = `file${i}`;
+
+
+                        // Check if the file key exists in req and is not null
+                        if (req.hasOwnProperty(key) && req[key] !== null) {
+                            try {
+                                this.imagesfile[key] = JSON.parse(req[key]);
+                                console.log(this.imagesfile.file1)
+                            } catch (e) {
+                                console.error(`Error parsing JSON for ${key}:`, e);
+                                this.imagesfile[key] = [];
+                            }
+                        }
+                    }
+                });
+
+
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
+            //diri
+
 
         },
         update() {
@@ -533,62 +721,80 @@ export default {
             axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id6}`, formData2)
                 .then(response => {
                     console.log('Recommendations updated successfully:', response.data);
-                    window.location.reload()
                 })
                 .catch(error => {
                     console.error('Error updating recommendations:', error);
                     // Handle error...
                 });
 
-            // Upload files 
-            const formData3 = new FormData();
-            formData3.append('id_reference', this.$route.params.detail_id6);
-
-            if (this.uploadFiles) {
-                for (const [key, files] of Object.entries(this.uploadFiles)) {
-                    for (let i = 0; i < files.length; i++) {
-                        formData3.append(`${key}[]`, files[i]);
-                    }
-                }
-            }
-
-            if (this.formData3) {
-                for (const [key, value] of Object.entries(this.formData3)) {
-                    formData3.append(key, value);
-                }
-            }
-
-            // Send FormData to server using axios
-            axios.post('http://127.0.0.1:8000/add_uploads', formData3)
-                .then(response => {
-                    console.log('Record uploaded successfully:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error uploading record:', error);
-                });
-
-            //add images
+            //ADD IMAGE/UPDATE //2nd
+            // Add images
             const formData4 = new FormData();
             formData4.append('id_reference', this.$route.params.detail_id6);
 
+            // Iterate over each containerId in this.imagesfile
             for (const containerId in this.imagesfile) {
                 if (this.imagesfile.hasOwnProperty(containerId)) {
-                    const fileKey = `images${containerId.replace('file', '')}`;
+                    // Generate the fileKey based on the containerId
+                    // Ensure the containerId starts with "file" followed by a number (e.g., "file1", "file2", etc.)
+                    const fileKey = `file${containerId.replace('file', '')}`;
 
-                    this.imagesfile[containerId].forEach((file, index) => {
-                        formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                    // Append each file in this.imagesfile[containerId] to formData4 under the correct key
+                    this.imagesfile[containerId].forEach(file => {
+                        if (file.file !== undefined) {
+                            formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                            console.log([...formData4])
+                        }
                     });
                 }
             }
 
             // Send FormData to server using axios
-            axios.post('http://127.0.0.1:8000/add_images', formData4)
+            axios.post(`http://127.0.0.1:8000/update_images/${this.$route.params.detail_id6}`, formData4)
                 .then(response => {
                     console.log('Images uploaded successfully:', response.data);
                 })
                 .catch(error => {
                     console.error('Error uploading images:', error);
                 });
+
+            //dri
+
+
+            // Upload files 
+            const formData3 = new FormData();
+            formData3.append('id_reference', this.$route.params.detail_id6);
+
+            // Check if uploadFiles is defined and not null
+            if (this.uploadFiles) {
+                for (const [key, files] of Object.entries(this.uploadFiles)) {
+                    // Check if files is an array and has a length property
+                    if (Array.isArray(files) && files.length > 0) {
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            const validExtensions = ['pdf', 'doc', 'docx'];
+                            // Check if file has a name and its extension is valid
+                            if (file.name && validExtensions.includes(file.name.split('.').pop().toLowerCase())) {
+                                formData3.append(`${key}[]`, file);
+                            }
+                            // else condition removed to suppress error message
+                        }
+                    }
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post(`http://127.0.0.1:8000/update_uploads/${this.$route.params.detail_id6}`, formData3)
+                .then(response => {
+                    console.log('Record uploaded successfully:', response.data);
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.error('Error uploading record:', error);
+                    window.location.reload()
+                });
+
+
         },
     },
     mounted() {

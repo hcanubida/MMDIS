@@ -35,16 +35,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file1" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput1"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput1" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput1"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput1"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file1" />
+                        <div v-for="(file, index) in imagesfile.file1" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
 
@@ -66,16 +82,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file2" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput2"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput2" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput2"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput2"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file2" />
+                        <div v-for="(file, index) in imagesfile.file2" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -99,16 +131,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file3" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput3"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput3" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput3"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput3"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file3" />
+                        <div v-for="(file, index) in imagesfile.file3" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -132,16 +180,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file4" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput4"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput4" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput4"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput4"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file4" />
+                        <div v-for="(file, index) in imagesfile.file4" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -164,16 +228,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file5" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput5"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput5" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput5"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput5"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file5" />
+                        <div v-for="(file, index) in imagesfile.file5" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -195,16 +275,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file6" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput6"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput6" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput6"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput6"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file6" />
+                        <div v-for="(file, index) in imagesfile.file6" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -226,16 +322,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file7" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput7"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput7" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput7"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput7"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file7" />
+                        <div v-for="(file, index) in imagesfile.file7" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -256,16 +368,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file8" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput8"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput8" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput8"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput8"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file8" />
+                        <div v-for="(file, index) in imagesfile.file8" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -287,16 +415,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file9" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput9"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput9" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput9"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput9"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file9" />
+                        <div v-for="(file, index) in imagesfile.file9" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -324,16 +468,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file10" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput10"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput10" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput10"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput10"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file10" />
+                        <div v-for="(file, index) in imagesfile.file10" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -364,16 +524,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file11" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput11"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput11" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput11"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput11"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file11" />
+                        <div v-for="(file, index) in imagesfile.file11" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -394,16 +570,32 @@
                                 <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                             </div>
                         </div>
+
+                        <div class="mx-10 mb-3 ">
+                            <label
+                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Files uploaded:
+                            </label>
+                            <div v-for="(file, index) in uploadFiles.file12" :key="index">
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </div>
+
                     </td>
 
                     <td style="text-align: left;width: 400px;">
                         <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput12"></textarea>
+                        <textarea class="textarea4" v-model="remarks.textInput12" style="height: 600px;"></textarea>
                         <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput12"></textarea>
+                        <textarea class="textarea4" style="color: red;height: 600px;"
+                            v-model="recommendation.textInput12"></textarea>
 
                         <!-- images upload (based remarks) -->
                         <imagees @images-uploaded="myAction" containerId="file12" />
+                        <div v-for="(file, index) in imagesfile.file12" :key="index">
+                            <!-- Display each file object here -->
+                            <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -428,7 +620,7 @@
                         </td>
 
                         <td class="inputimg4">
-                            <<div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                                 <label
                                     class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                     Files to upload:
@@ -439,638 +631,773 @@
                                 <div v-for="(file, index) in uploadFiles.file13" :key="file.name">
                                     <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
                                 </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file13" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput13" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput13"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file13" />
+                            <div v-for="(file, index) in imagesfile.file13" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            2. Proofs that the Notice of Application <br>
+                            MGB Regional Office(s) <br>
+                            PENRO <br>
+                            CENRO <br>
+                            Province <br>
+                            Municipality
+                        </td>
+
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file14', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file14" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file14" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput14" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput14"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file14" />
+                            <div v-for="(file, index) in imagesfile.file14" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            3. Certification of the Panel of Arbitrators concerned as to any claim/protest/opposition
+                        </td>
+
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file15', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file15" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file15" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput15" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput15"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file15" />
+                            <div v-for="(file, index) in imagesfile.file15" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            4. NCIP Certification
+                        </td>
+
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file16', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file16" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file16" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput16" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput16"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file16" />
+                            <div v-for="(file, index) in imagesfile.file16" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            5. Proof of Consultation with and Prior Approval by the Sangguniang Panlalawigan,
+                            Sangguniang Bayan/Panlungsod, and Sangguniang Barangay concerned
+                        </td>
+
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file17', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file17" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file17" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput17" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput17"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file17" />
+                            <div v-for="(file, index) in imagesfile.file17" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            6. Surety Bond
+                        </td>
+
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file18', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file18" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file18" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
+
+                        </td>
+
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput18" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput18"></textarea>
+
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file18" />
+                            <div v-for="(file, index) in imagesfile.file18" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        </td>
 
-        <td style="text-align: left;width: 400px;">
-            <label>Remarks:</label><br>
-            <textarea class="textarea4" v-model="remarks.textInput13"></textarea>
-            <label>Recommendation or Lacking Submission :</label><br>
-            <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput13"></textarea>
+        <!-- Other Requirements -->
+        <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">OTHER MANDATORY REQUIREMENTS
+        </h2>
+        <div class="requirements4">
+            <table class="table4">
+                <thead class="titlehead4">
+                    <tr style="text-align: center;">
+                        <th class="th4">Requirements</th>
+                        <th class="th4">Upload</th>
+                        <th class="th4">Remarks / Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="reqData4">
+                            1. Secretary’s Certificate attesting to a Board Resolution regarding the authorization of
+                            the company’s authorized signatory (for juridical entity only)
+                        </td>
 
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file13" />
-        </td>
-        </tr>
-        <tr>
-            <td class="reqData4">
-                2. Proofs that the Notice of Application <br>
-                MGB Regional Office(s) <br>
-                PENRO <br>
-                CENRO <br>
-                Province <br>
-                Municipality
-            </td>
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file19', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file19" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
 
-            <td class="inputimg4">
-                <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                    <label
-                        class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Files to upload:
-                    </label>
-                    <input type="file" multiple accept="application/*" @change="handleFileUpload('file14', $event)"
-                        ref="fileInput1"
-                        class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                    <div v-for="(file, index) in uploadFiles.file14" :key="file.name">
-                        <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                    </div>
-                </div>
-            </td>
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file19" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
 
-            <td style="text-align: left;width: 400px;">
-                <label>Remarks:</label><br>
-                <textarea class="textarea4" v-model="remarks.textInput14"></textarea>
-                <label>Recommendation or Lacking Submission :</label><br>
-                <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput14"></textarea>
+                        </td>
 
-                <!-- images upload (based remarks) -->
-                <imagees @images-uploaded="myAction" containerId="file14" />
-            </td>
-        </tr>
-        <tr>
-            <td class="reqData4">
-                3. Certification of the Panel of Arbitrators concerned as to any claim/protest/opposition
-            </td>
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput19" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput19"></textarea>
 
-            <td class="inputimg4">
-                <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                    <label
-                        class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Files to upload:
-                    </label>
-                    <input type="file" multiple accept="application/*" @change="handleFileUpload('file15', $event)"
-                        ref="fileInput1"
-                        class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                    <div v-for="(file, index) in uploadFiles.file15" :key="file.name">
-                        <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                    </div>
-                </div>
-            </td>
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file19" />
+                            <div v-for="(file, index) in imagesfile.file19" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="reqData4">
+                            2. Care and Maintenance Program
+                        </td>
 
-            <td style="text-align: left;width: 400px;">
-                <label>Remarks:</label><br>
-                <textarea class="textarea4" v-model="remarks.textInput15"></textarea>
-                <label>Recommendation or Lacking Submission :</label><br>
-                <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput15"></textarea>
+                        <td class="inputimg4">
+                            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files to upload:
+                                </label>
+                                <input type="file" multiple accept="application/*"
+                                    @change="handleFileUpload('file20', $event)" ref="fileInput1"
+                                    class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                                <div v-for="(file, index) in uploadFiles.file20" :key="file.name">
+                                    <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                                </div>
+                            </div>
 
-                <!-- images upload (based remarks) -->
-                <imagees @images-uploaded="myAction" containerId="file15" />
-            </td>
-        </tr>
-        <tr>
-            <td class="reqData4">
-                4. NCIP Certification
-            </td>
+                            <div class="mx-10 mb-3 ">
+                                <label
+                                    class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                    Files uploaded:
+                                </label>
+                                <div v-for="(file, index) in uploadFiles.file20" :key="index">
+                                    <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                                </div>
+                            </div>
 
-            <td class="inputimg4">
-                <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                    <label
-                        class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Files to upload:
-                    </label>
-                    <input type="file" multiple accept="application/*" @change="handleFileUpload('file16', $event)"
-                        ref="fileInput1"
-                        class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                    <div v-for="(file, index) in uploadFiles.file16" :key="file.name">
-                        <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                    </div>
-                </div>
-            </td>
+                        </td>
 
-            <td style="text-align: left;width: 400px;">
-                <label>Remarks:</label><br>
-                <textarea class="textarea4" v-model="remarks.textInput16"></textarea>
-                <label>Recommendation or Lacking Submission :</label><br>
-                <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput16"></textarea>
+                        <td style="text-align: left;width: 400px;">
+                            <label>Remarks:</label><br>
+                            <textarea class="textarea4" v-model="remarks.textInput20" style="height: 600px;"></textarea>
+                            <label>Recommendation or Lacking Submission :</label><br>
+                            <textarea class="textarea4" style="color: red;height: 600px;"
+                                v-model="recommendation.textInput20"></textarea>
 
-                <!-- images upload (based remarks) -->
-                <imagees @images-uploaded="myAction" containerId="file16" />
-            </td>
-        </tr>
-        <tr>
-            <td class="reqData4">
-                5. Proof of Consultation with and Prior Approval by the Sangguniang Panlalawigan,
-                Sangguniang Bayan/Panlungsod, and Sangguniang Barangay concerned
-            </td>
+                            <!-- images upload (based remarks) -->
+                            <imagees @images-uploaded="myAction" containerId="file20" />
+                            <div v-for="(file, index) in imagesfile.file20" :key="index">
+                                <!-- Display each file object here -->
+                                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <td class="inputimg4">
-                <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                    <label
-                        class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Files to upload:
-                    </label>
-                    <input type="file" multiple accept="application/*" @change="handleFileUpload('file17', $event)"
-                        ref="fileInput1"
-                        class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                    <div v-for="(file, index) in uploadFiles.file17" :key="file.name">
-                        <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                    </div>
-                </div>
-            </td>
-
-            <td style="text-align: left;width: 400px;">
-                <label>Remarks:</label><br>
-                <textarea class="textarea4" v-model="remarks.textInput17"></textarea>
-                <label>Recommendation or Lacking Submission :</label><br>
-                <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput17"></textarea>
-
-                <!-- images upload (based remarks) -->
-                <imagees @images-uploaded="myAction" containerId="file17" />
-            </td>
-        </tr>
-        <tr>
-            <td class="reqData4">
-                6. Surety Bond
-            </td>
-
-            <td class="inputimg4">
-                <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                    <label
-                        class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Files to upload:
-                    </label>
-                    <input type="file" multiple accept="application/*" @change="handleFileUpload('file18', $event)"
-                        ref="fileInput1"
-                        class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                    <div v-for="(file, index) in uploadFiles.file18" :key="file.name">
-                        <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                    </div>
-                </div>
-            </td>
-
-            <td style="text-align: left;width: 400px;">
-                <label>Remarks:</label><br>
-                <textarea class="textarea4" v-model="remarks.textInput18"></textarea>
-                <label>Recommendation or Lacking Submission :</label><br>
-                <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput18"></textarea>
-
-                <!-- images upload (based remarks) -->
-                <imagees @images-uploaded="myAction" containerId="file18" />
-            </td>
-        </tr>
-        </tbody>
-        </table>
-    </div>
-
-    <!-- Other Requirements -->
-    <h2 style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">OTHER MANDATORY REQUIREMENTS
-    </h2>
-    <div class="requirements4">
-        <table class="table4">
-            <thead class="titlehead4">
-                <tr style="text-align: center;">
-                    <th class="th4">Requirements</th>
-                    <th class="th4">Upload</th>
-                    <th class="th4">Remarks / Status</th>
-                </tr>
-            </thead>
+        <!-- Table 2 -->
+        <table class="table2">
+            <caption style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;" class="caption1">
+                Summary
+                of Lacking Requirements</caption>
             <tbody>
                 <tr>
-                    <td class="reqData4">
-                        1. Secretary’s Certificate attesting to a Board Resolution regarding the authorization of
-                        the company’s authorized signatory (for juridical entity only)
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+                        <p>{{ requirements.reqDetails1 }}</p>
                     </td>
 
-                    <td class="inputimg4">
-                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                            <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                                Files to upload:
-                            </label>
-                            <input type="file" multiple accept="application/*"
-                                @change="handleFileUpload('file19', $event)" ref="fileInput1"
-                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                            <div v-for="(file, index) in uploadFiles.file19" :key="file.name">
-                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                            </div>
-                        </div>
-                    </td>
-
-                    <td style="text-align: left;width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput19"></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput19"></textarea>
-
-                        <!-- images upload (based remarks) -->
-                        <imagees @images-uploaded="myAction" containerId="file19" />
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput1 }}</p>
                     </td>
                 </tr>
                 <tr>
-                    <td class="reqData4">
-                        2. Care and Maintenance Program
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+                        {{ requirements.reqDetails2 }}
                     </td>
 
-                    <td class="inputimg4">
-                        <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-                            <label
-                                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                                Files to upload:
-                            </label>
-                            <input type="file" multiple accept="application/*"
-                                @change="handleFileUpload('file20', $event)" ref="fileInput1"
-                                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                            <div v-for="(file, index) in uploadFiles.file20" :key="file.name">
-                                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
-                            </div>
-                        </div>
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput2 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+                        {{ requirements.reqDetails3 }}
                     </td>
 
-                    <td style="text-align: left;width: 400px;">
-                        <label>Remarks:</label><br>
-                        <textarea class="textarea4" v-model="remarks.textInput20"></textarea>
-                        <label>Recommendation or Lacking Submission :</label><br>
-                        <textarea class="textarea4" style="color: red;" v-model="recommendation.textInput20"></textarea>
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput3 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+                        {{ requirements.reqDetails4 }}
+                    </td>
 
-                        <!-- images upload (based remarks) -->
-                        <imagees @images-uploaded="myAction" containerId="file20" />
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput4 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+                        {{ requirements.reqDetails5 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput5 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
+                        {{ requirements.reqDetails6 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput6 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
+                        {{ requirements.reqDetails7 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput7 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
+                        {{ requirements.reqDetails8 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput8 }}</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
+                        {{ requirements.reqDetails9 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput9 }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
+                        {{ requirements.reqDetails10 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput10 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
+                        {{ requirements.reqDetails11 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput11 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
+                        {{ requirements.reqDetails12 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput12 }}
+                        </p>
+                    </td>
+                </tr>
+                <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements AFTER
+                    ACCEPTANCE BUT PRIOR TO THE ISSUANCE OF PERMIT</p>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
+                        {{ requirements.reqDetails13 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput13 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
+                        {{ requirements.reqDetails14 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput14 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
+                        {{ requirements.reqDetails15 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput15 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
+                        {{ requirements.reqDetails16 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput16 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
+                        {{ requirements.reqDetails17 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput17 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
+                        {{ requirements.reqDetails18 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput18 }}
+                        </p>
+                    </td>
+                </tr>
+                <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements</p>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
+                        {{ requirements.reqDetails19 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput19 }}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"
+                        v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
+                        {{ requirements.reqDetails20 }}
+                    </td>
+
+                    <td style="text-align: left;width: 1000px;height: 100px;"
+                        v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
+                        <label>Recommendation or Lacking Submission</label>
+                        <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
+                                    recommendation.textInput20 }}
+                        </p>
                     </td>
                 </tr>
             </tbody>
         </table>
-    </div>
 
-    <!-- Table 2 -->
-    <table class="table2">
-        <caption style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;" class="caption1">
-            Summary
-            of Lacking Requirements</caption>
-        <tbody>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-                    <p>{{ requirements.reqDetails1 }}</p>
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput1 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-                    {{ requirements.reqDetails2 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput2 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-                    {{ requirements.reqDetails3 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput3 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-                    {{ requirements.reqDetails4 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput4 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-                    {{ requirements.reqDetails5 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput5 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
-                    {{ requirements.reqDetails6 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput6 !== 'null' && recommendation.textInput6.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput6 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
-                    {{ requirements.reqDetails7 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput7 !== 'null' && recommendation.textInput7.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput7 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
-                    {{ requirements.reqDetails8 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput8 !== 'null' && recommendation.textInput8.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput8 }}</p>
-                </td>
-            </tr>
-
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
-                    {{ requirements.reqDetails9 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput9 !== 'null' && recommendation.textInput9.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput9 }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
-                    {{ requirements.reqDetails10 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput10 !== 'null' && recommendation.textInput10.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput10 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
-                    {{ requirements.reqDetails11 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput11 !== 'null' && recommendation.textInput11.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput11 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
-                    {{ requirements.reqDetails12 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput12 !== 'null' && recommendation.textInput12.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput12 }}
-                    </p>
-                </td>
-            </tr>
-            <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements AFTER
-                ACCEPTANCE BUT PRIOR TO THE ISSUANCE OF PERMIT</p>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
-                    {{ requirements.reqDetails13 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput13 !== 'null' && recommendation.textInput13.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput13 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
-                    {{ requirements.reqDetails14 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput14 !== 'null' && recommendation.textInput14.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput14 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
-                    {{ requirements.reqDetails15 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput15 !== 'null' && recommendation.textInput15.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput15 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
-                    {{ requirements.reqDetails16 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput16 !== 'null' && recommendation.textInput16.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput16 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
-                    {{ requirements.reqDetails17 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput17 !== 'null' && recommendation.textInput17.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput17 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
-                    {{ requirements.reqDetails18 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput18 !== 'null' && recommendation.textInput18.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput18 }}
-                    </p>
-                </td>
-            </tr>
-            <p style="text-align: left;font-size: 20px;font-weight: 600;">Other Lacking Requirements</p>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
-                    {{ requirements.reqDetails19 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput19 !== 'null' && recommendation.textInput19.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput19 }}
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td style="text-align: left;"
-                    v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
-                    {{ requirements.reqDetails20 }}
-                </td>
-
-                <td style="text-align: left;width: 1000px;height: 100px;"
-                    v-if="recommendation.textInput20 !== 'null' && recommendation.textInput20.trim() !== ''">
-                    <label>Recommendation or Lacking Submission</label>
-                    <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{
-                                    recommendation.textInput20 }}
-                    </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="tablee">
-        <thead class="titlehead4">
-            <tr style="text-align: center;">
-                <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
-                <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <td style="text-align: center;font-size: 20px;padding: 20px;">Status of the Application: </td>
-            <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
-                <select class="inputall" v-model="selectedStatus"
-                    style="background-color: antiquewhite;text-align: center;width: 100%;">
-                    <option value="" disabled>Based of the Status MTSR</option>
-                    <option style="text-align: left;" value="Under Pre-Processing by Mining Tenement Evaluation
+        <table class="tablee">
+            <thead class="titlehead4">
+                <tr style="text-align: center;">
+                    <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+                    <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td style="text-align: center;font-size: 20px;padding: 20px;">Status of the Application: </td>
+                <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
+                    <select class="inputall" v-model="selectedStatus"
+                        style="background-color: antiquewhite;text-align: center;width: 100%;">
+                        <option value="" disabled>Based of the Status MTSR</option>
+                        <option style="text-align: left;" value="Under Pre-Processing by Mining Tenement Evaluation
               Section">Under Pre-Processing by Mining Tenement Evaluation
-                        Section</option>
-                    <option style="text-align: left;" value="Under Preliminary Evaluation<">Under Preliminary
-                        Evaluation
-                    </option>
-                    <option style="text-align: left;" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending
-                        Area
-                        Clearance/Status (FMS/EMPAS,LMS)</option>
-                    <option style="text-align: left;" value="Undergoing Publication/Posting/Radio Announcement">
-                        Undergoing
-                        Publication/Posting/Radio Announcement
-                    </option>
-                    <option style="text-align: left;" value="Published/Posted Announcement within 30-days period
+                            Section</option>
+                        <option style="text-align: left;" value="Under Preliminary Evaluation<">Under Preliminary
+                            Evaluation
+                        </option>
+                        <option style="text-align: left;" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending
+                            Area
+                            Clearance/Status (FMS/EMPAS,LMS)</option>
+                        <option style="text-align: left;" value="Undergoing Publication/Posting/Radio Announcement">
+                            Undergoing
+                            Publication/Posting/Radio Announcement
+                        </option>
+                        <option style="text-align: left;" value="Published/Posted Announcement within 30-days period
               for possible protest/adverse claim">Published/Posted Announcement within 30-days period
-                        for possible protest/adverse claim</option>
-                    <option style="text-align: left;" value="With mining dispute filed at Panel of Arbitrators">With
-                        mining
-                        dispute filed at Panel of Arbitrators
-                    </option>
-                    <option style="text-align: left;" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">
-                        Appeal to the
-                        Mines Adjudication Board/LSD-CO/OP
-                    </option>
-                    <option style="text-align: left;" value="Pending NCIP Certification/Proof of Consultation from
+                            for possible protest/adverse claim</option>
+                        <option style="text-align: left;" value="With mining dispute filed at Panel of Arbitrators">With
+                            mining
+                            dispute filed at Panel of Arbitrators
+                        </option>
+                        <option style="text-align: left;" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">
+                            Appeal to the
+                            Mines Adjudication Board/LSD-CO/OP
+                        </option>
+                        <option style="text-align: left;" value="Pending NCIP Certification/Proof of Consultation from
               LGU,ECC, etc">Pending NCIP Certification/Proof of Consultation from
-                        LGU,ECC, etc</option>
-                    <option style="text-align: left;" value="Under Final Evaluation by R.O.">Under Final Evaluation
-                        by R.O.
-                    </option>
-                    <option style="text-align: left;" value="Endorsed to Central Office">Endorsed to Central Office
-                    </option>
-                    <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAB but within grace period
+                            LGU,ECC, etc</option>
+                        <option style="text-align: left;" value="Under Final Evaluation by R.O.">Under Final Evaluation
+                            by R.O.
+                        </option>
+                        <option style="text-align: left;" value="Endorsed to Central Office">Endorsed to Central Office
+                        </option>
+                        <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAB but within grace period
               for Motion for Reconsideration or Appeal">Denied by MGB-RO/COP/PA/MAB but within grace period
-                        for Motion for Reconsideration or Appeal</option>
-                    <option style="text-align: left;" value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
+                            for Motion for Reconsideration or Appeal</option>
+                        <option style="text-align: left;" value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
               Motion for Reconsideration or Appeal">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
-                        Motion for Reconsideration or Appeal</option>
-                    <option style="text-align: left;" value="A. Others (Renewal)">A. Others (Renewal)</option>
-                    <option style="text-align: left;" value="B. Others (With Clearance)">B. Others (With Clearance)
-                    </option>
-                    <option style="text-align: left;" value="Conversion from Other Tenement">Conversion from Other
-                        Tenement
-                    </option>
-                    <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending
+                            Motion for Reconsideration or Appeal</option>
+                        <option style="text-align: left;" value="A. Others (Renewal)">A. Others (Renewal)</option>
+                        <option style="text-align: left;" value="B. Others (With Clearance)">B. Others (With Clearance)
+                        </option>
+                        <option style="text-align: left;" value="Conversion from Other Tenement">Conversion from Other
+                            Tenement
+                        </option>
+                        <option style="text-align: left;" value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending
               Appeal at the O.P.">Denied by MGB-RO/COP/PA/MAP/DENR but with pending
-                        Appeal at the O.P.</option>
-                    <option style="text-align: left;" value="other">Other</option>
-                </select>
-                <input v-if="selectedStatus === 'other'" class="inputall1" v-model="otherStatus" style="width: 100%;"
-                    placeholder="Enter other Status" />
-            </td>
-        </tbody>
-    </table>
+                            Appeal at the O.P.</option>
+                        <option style="text-align: left;" value="other">Other</option>
+                    </select>
+                    <input v-if="selectedStatus === 'other'" class="inputall1" v-model="otherStatus"
+                        style="width: 100%;" placeholder="Enter other Status" />
+                </td>
+            </tbody>
+        </table>
 
-    <table class="tablee">
-        <thead class="titlehead4">
-            <tr style="text-align: center;">
-                <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
-                <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
-                Remarks/Status/Reccomendation</td>
-            <td style="font-size: 15px;padding: 20px; width: 50%;">
-                <label>Remarks /Status</label>
-                <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 100px;"
-                    v-model="overallStatus"></textarea>
-            </td>
-        </tbody>
+        <table class="tablee">
+            <thead class="titlehead4">
+                <tr style="text-align: center;">
+                    <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
+                    <th class="th4" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
+                    Remarks/Status/Reccomendation</td>
+                <td style="font-size: 15px;padding: 20px; width: 50%;">
+                    <label>Remarks /Status</label>
+                    <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 500px;"
+                        v-model="overallStatus"></textarea>
+                </td>
+            </tbody>
 
-    </table>
+        </table>
 
-    <div style="display: flex;flex-direction: column;justify-content: center;">
-        <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
-        <div>
-            <button
-                style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
-                @click="update">
-                UPDATE
-            </button>
+        <div style="display: flex;flex-direction: column;justify-content: center;">
+            <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
+            <div>
+                <button
+                    style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
+                    @click="update">
+                    UPDATE
+                </button>
+                <button
+                    style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
+                    @click="view">{{ isVisible ? 'Close' : 'View' }}
+                </button>
+            </div>
+            <div class="drop-shadow-2xl bg-stone-100 mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
+                <faxx />
+            </div>
         </div>
-    </div>
     </div>
 </template>
 
@@ -1079,6 +1406,7 @@ import headd from '../../../components/MTES/header.vue'
 import upload from '../../../components/MTES/multiple-upload.vue'
 import downloadd from '../faxsheet/isag-factsheet.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
+import faxx from '../faxsheet/isag-factsheet.vue'
 
 
 </script>
@@ -1090,6 +1418,7 @@ export default {
     data() {
         return {
             overallStatus: '',
+            isVisible: false,
             selectedStatus: '',
             otherStatus: '',
             requirements: {
@@ -1246,6 +1575,10 @@ export default {
         }
     },
     methods: {
+        view() {
+            // this.isVisible = true;
+            this.isVisible = !this.isVisible;
+        },
         myAction(payload) {
             const { containerId, images } = payload;
             this.imagesfile[containerId] = images;
@@ -1261,6 +1594,22 @@ export default {
             }
         },
         async getDetails() {
+
+            //MTSR details
+            try {
+                const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id3));
+                const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id3));
+                this.mtsrvalue = filteredmtsr.mtsr
+                this.overallStatus = filteredoverall.overallstatus
+                this.selectedStatus = this.mtsrvalue
+                // console.log(this.selectedStatus)
+
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
+
             try {
                 const remarks = await axios.get('http://localhost:8000/get_remarks');
                 const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id3);
@@ -1316,6 +1665,84 @@ export default {
             } catch (error) {
                 console.error('Error fetching reco details:', error);
             }
+
+            try {
+                const uploads = await axios.get('http://localhost:8000/get_files');
+                const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id3);
+                console.log(uploadsrequirements);
+
+                // Clear existing files to avoid duplicates
+                Object.keys(this.uploadFiles).forEach(key => {
+                    this.uploadFiles[key] = [];
+                });
+
+                // Initialize uploadFiles object for file1 to file5
+                for (let i = 1; i <= 20; i++) { //alisdan
+                    const key = `file${i}`;
+                    this.uploadFiles[key] = [];
+                }
+
+                // Assign fetched files to uploadFiles
+                uploadsrequirements.forEach((req) => {
+                    for (let i = 1; i <= 20; i++) {
+                        const key = `file${i}`;
+                        // Check if the file key exists in req and is not null
+                        if (req.hasOwnProperty(key) && req[key] !== null) {
+                            try {
+                                this.uploadFiles[key] = JSON.parse(req[key]);
+                            } catch (e) {
+                                console.error(`Error parsing JSON for ${key}:`, e);
+                                this.uploadFiles[key] = [];
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
+
+            //images 1stkuhaon
+            try {
+                const images = await axios.get('http://localhost:8000/get_images');
+                const imagesrequirements = images.data.filter(req => req.id_reference == this.$route.params.detail_id3);
+                console.log(imagesrequirements);
+
+                // Clear existing files to avoid duplicates
+                Object.keys(this.imagesfile).forEach(key => {
+                    this.imagesfile[key] = [];
+                });
+
+                // Initialize uploadFiles object for file1 to file5
+                for (let i = 1; i <= 20; i++) { //<------pila kabuok
+                    const key = `file${i}`;
+                    this.imagesfile[key] = [];
+                }
+
+                // Assign fetched files to uploadFiles
+                imagesrequirements.forEach((req) => {
+                    for (let i = 1; i <= 20; i++) {//<------pila kabuok
+                        const key = `file${i}`;
+
+
+                        // Check if the file key exists in req and is not null
+                        if (req.hasOwnProperty(key) && req[key] !== null) {
+                            try {
+                                this.imagesfile[key] = JSON.parse(req[key]);
+                                console.log(this.imagesfile.file1)
+                            } catch (e) {
+                                console.error(`Error parsing JSON for ${key}:`, e);
+                                this.imagesfile[key] = [];
+                            }
+                        }
+                    }
+                });
+
+
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
+            //diri
+
 
         },
         update() {
@@ -1380,62 +1807,79 @@ export default {
             axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id3}`, formData2)
                 .then(response => {
                     console.log('Recommendations updated successfully:', response.data);
-                    window.location.reload()
                 })
                 .catch(error => {
                     console.error('Error updating recommendations:', error);
                     // Handle error...
                 });
 
-            // Upload files 
-            const formData3 = new FormData();
-            formData3.append('id_reference', this.$route.params.detail_id3);
-
-            if (this.uploadFiles) {
-                for (const [key, files] of Object.entries(this.uploadFiles)) {
-                    for (let i = 0; i < files.length; i++) {
-                        formData3.append(`${key}[]`, files[i]);
-                    }
-                }
-            }
-
-            if (this.formData3) {
-                for (const [key, value] of Object.entries(this.formData3)) {
-                    formData3.append(key, value);
-                }
-            }
-
-            // Send FormData to server using axios
-            axios.post('http://127.0.0.1:8000/add_uploads', formData3)
-                .then(response => {
-                    console.log('Record uploaded successfully:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error uploading record:', error);
-                });
-
-            //add images
+            //ADD IMAGE/UPDATE //2nd
+            // Add images
             const formData4 = new FormData();
             formData4.append('id_reference', this.$route.params.detail_id3);
 
+            // Iterate over each containerId in this.imagesfile
             for (const containerId in this.imagesfile) {
                 if (this.imagesfile.hasOwnProperty(containerId)) {
-                    const fileKey = `images${containerId.replace('file', '')}`;
+                    // Generate the fileKey based on the containerId
+                    // Ensure the containerId starts with "file" followed by a number (e.g., "file1", "file2", etc.)
+                    const fileKey = `file${containerId.replace('file', '')}`;
 
-                    this.imagesfile[containerId].forEach((file, index) => {
-                        formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                    // Append each file in this.imagesfile[containerId] to formData4 under the correct key
+                    this.imagesfile[containerId].forEach(file => {
+                        if (file.file !== undefined) {
+                            formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+                            console.log([...formData4])
+                        }
                     });
                 }
             }
 
             // Send FormData to server using axios
-            axios.post('http://127.0.0.1:8000/add_images', formData4)
+            axios.post(`http://127.0.0.1:8000/update_images/${this.$route.params.detail_id3}`, formData4)
                 .then(response => {
                     console.log('Images uploaded successfully:', response.data);
                 })
                 .catch(error => {
                     console.error('Error uploading images:', error);
                 });
+
+            //dri
+
+            // Upload files 
+            const formData3 = new FormData();
+            formData3.append('id_reference', this.$route.params.detail_id3);
+
+            // Check if uploadFiles is defined and not null
+            if (this.uploadFiles) {
+                for (const [key, files] of Object.entries(this.uploadFiles)) {
+                    // Check if files is an array and has a length property
+                    if (Array.isArray(files) && files.length > 0) {
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            const validExtensions = ['pdf', 'doc', 'docx'];
+                            // Check if file has a name and its extension is valid
+                            if (file.name && validExtensions.includes(file.name.split('.').pop().toLowerCase())) {
+                                formData3.append(`${key}[]`, file);
+                            }
+                            // else condition removed to suppress error message
+                        }
+                    }
+                }
+            }
+
+            // Send FormData to server using axios
+            axios.post(`http://127.0.0.1:8000/update_uploads/${this.$route.params.detail_id3}`, formData3)
+                .then(response => {
+                    console.log('Record uploaded successfully:', response.data);
+                    window.location.reload()
+                })
+                .catch(error => {
+                    console.error('Error uploading record:', error);
+                    window.location.reload()
+                });
+
+
 
         },
     },

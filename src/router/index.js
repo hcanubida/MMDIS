@@ -65,8 +65,10 @@ import FaxMPP from "../views/mtes/faxsheet/mpp-factsheet.vue";
 import FaxMPSA from "../views/mtes/faxsheet/mpsa-factsheet.vue";
 import FaxOTP from "../views/mtes/faxsheet/otp-factsheet.vue";
 import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
-import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue"
-
+import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue";
+import FaxMOEP from "../views/mtes/faxsheet/moep-factsheet.vue";
+import FaxAMTRD from "../views/mtes/faxsheet/amtrd-factsheet.vue";
+import xpsample from "../views/mtes/faxsheet/xpfaxtsheet.vue"
 
 import demo from "../components/MTES/modals/uploaad.vue";
 import pie from "../components/MTES/charts/Pie.vue"
@@ -110,6 +112,8 @@ const routes = [
     { path: "/OTPFax", component: FaxOTP },
     { path: "/SSMCFax", component: FaxSSMC },
     { path: "/MPLFax", component: FaxMPL },
+    { path: "/MOEPFax", component: FaxMOEP },
+    { path: "/AMTRDFax", component: FaxAMTRD },
 
     //-----Dashboards Routes-----
     { path: "/ftta", component: fttadashboard },
@@ -123,6 +127,7 @@ const routes = [
     { path: "/ssmc", component: ssmcdashboard},
     { path: "/amtrd", component: amtrddashboard},
     { path: "/moep", component: moepddashboard},
+    { path: "/xpsample", component: xpsample},
 
     //-----Mandatory Requirements------
     { path: "/ReqFTTA/:detail_id", component: ReqFTTA },

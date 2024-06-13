@@ -16,7 +16,8 @@
           <div class="appdetails3">
             <input class="inputall" placeholder="Name of the Applicant" v-model="detailstoadd.tenement_name" />
             <input class="inputall" placeholder="Area(Hectares)" v-model="detailstoadd.area_hectares" />
-            <input class="inputall" v-model="date" readonly placeholder="Date Filed" />
+            <label style="margin-bottom: -15px;margin-top: 5px; font-weight: 300;">Date Filed:</label>
+            <input class="inputall" style=" " v-model="formattedDate" type="date" />
             <select name="" id="" class="inputall" @change="handleRegion">
               <option disabled selected>Select Region</option>
               <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{
@@ -99,7 +100,6 @@ export default {
       province: null,
       city: null,
       barangay: null,
-      date: this.getCurrentDate(),
       addDetail5: true,
       detailstoadd: {
         status: '',
@@ -152,18 +152,15 @@ export default {
     Exit() {
       addDetail5.value = false
     },
-    getCurrentDate() {
-      const today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1; // January is 0!
-      const yyyy = today.getFullYear();
-      if (dd < 10) {
-        dd = `0${dd}`;
-      }
-      if (mm < 10) {
-        mm = `0${mm}`;
-      }
-      return `${yyyy}-${mm}-${dd}`;
+    formattedDate() {
+      if (!this.detailstoadd.date) return ''; // handle case where date is not set
+      const dateObj = new Date(this.detailstoadd.date);
+      const year = dateObj.getFullYear();
+      let month = (1 + dateObj.getMonth()).toString();
+      month = month.length > 1 ? month : '0' + month; // add leading zero if needed
+      let day = dateObj.getDate().toString();
+      day = day.length > 1 ? day : '0' + day; // add leading zero if needed
+      return `${year}-${month}-${day}`;
     },
 
 
@@ -185,6 +182,7 @@ export default {
       formData.append('tenement_number', this.detailstoadd.tenement_number);
       formData.append('tenement_name', this.detailstoadd.tenement_name);
       formData.append('area_hectares', this.detailstoadd.area_hectares);
+      formData.append('date_filed', this.formattedDate);
       formData.append('barangay', this.barangay);
       formData.append('city', this.city);
       formData.append('province', this.province);

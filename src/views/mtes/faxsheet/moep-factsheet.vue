@@ -144,20 +144,21 @@
                 III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS
             </p>
             <table class="ftablez">
-                <thead> 
+                <thead>
                     <tr style="text-align: center;">
-                        <!-- COPY TTHIS TAMAN SA RECOMMENDATION -->
-                        <th style="width: 40%; font-weight: bold;">Requirement</th> 
-                        <th style="width: 50%; font-weight: bold;">Uploads</th>
-                        <th style="width: 70%; font-weight: bold;">Remarks / Status</th>
-                        <th style="width: 70%; font-weight: bold;">Recommendation</th>
+                        <th style="width: 40%; font-weight: bold;">Requirement</th>
+                        <th style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th style="width: 20%; font-weight: bold;">Remarks / Status</th>
+                        <th style="width: 20%; font-weight: bold;">Recommendation</th>
                     </tr>
                 </thead>
                 <tbody class="fbody">
                     <tr>
                         <td
-                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
-                            1. Letter of Intent with Justification of Renewal
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            1. Original and duly accomplished Mineral Ore Export Permit (MOEP) application form under
+                            DENR
+                            Administrative Order (DAO) No. 2008-20
                         </td>
                         <td
                             style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
@@ -166,19 +167,19 @@
                             </div>
                         </td>
                         <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ remarks.textInput1 }}</p>
                         </td>
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
-                            {{ recommendation.textInput1 }}
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput1 }}</p>
                         </td>
                     </tr>
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            2. Corporate Secretary Certificate attesting to the authority of the person who is filing
-                            the
-                            renewal of Application
+                            2. Original or certified true copy of the pertinent Ore Transport Permit (OTP) or Delivery
+                            Receipts
                         </td>
                         <td
                             style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
@@ -187,18 +188,23 @@
                             </div>
                         </td>
                         <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ remarks.textInput2 }}</p>
                         </td>
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
-                            {{ recommendation.textInput2 }}
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput2 }}</p>
                         </td>
                     </tr>
 
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            3. National Commission on Indigenous Peoples Certification Precondition </td>
+                            3. Original or Certified true copy of the mining permit/contract or Original or
+                            MGB-certified
+                            true copy of the Certificate of Accreditation by the MGB, if the MOEP applicant is engaged
+                            in
+                            mineral trading </td>
                         <td
                             style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
                             <div v-for="(file, index) in uploadFiles.file3" :key="index" class="flex justify-start">
@@ -206,28 +212,20 @@
                             </div>
                         </td>
                         <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ remarks.textInput3 }}</p>
                         </td>
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
-                            {{ recommendation.textInput3 }}
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput3 }}</p>
                         </td>
                     </tr>
 
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            4. Certification of the Regional Office to the compliance with the terms and conditions of
-                            the
-                            MPSA, particularly with regard to:<br>&nbsp;
-                            a. Three-year Devt’Utilization WP<br>&nbsp;
-                            b. Survey Plan<br>&nbsp;
-                            c. ECC<br>&nbsp;
-                            d. EPEP<br>&nbsp;
-                            e. SDMP<br>&nbsp;
-                            f. Implementation of the 3YR WP, EPEP and SDMP<br>&nbsp;
-                            g. Submission of Reports<br>&nbsp;
-                            h. Payment of Fees and Taxes
+                            4. Original or Certified true copy of the sales/purchase/marketing contract or purchase
+                            order
                         </td>
                         <td
                             style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
@@ -236,11 +234,37 @@
                             </div>
                         </td>
                         <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ remarks.textInput4 }}</p>
                         </td>
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
-                            {{ recommendation.textInput4 }}
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput4 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            5. Original or certified true copy of the proof of payment of excise tax or guarantee/surety
+                            bond
+                            [Note: to submit photocopy of the document but shall present the original copy/ certified
+                            true
+                            copy for validation purposes]
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            <div v-for="(file, index) in uploadFiles.file5" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput5 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput5 }}</p>
                         </td>
                     </tr>
                 </tbody>
@@ -263,26 +287,23 @@
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            1. Application Form (MGB Form No. 7-1) to be accpompanied by eight (8)
-                            sets of the FTAA proposal and five (5) sets of the following: <br> &nbsp;
-                            <br> &nbsp;
-                            Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
-                            (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
+                            1. Original and duly accomplished Mineral Ore Export Permit (MOEP) application form under
+                            DENR
+                            Administrative Order (DAO) No. 2008-20
                         </td>
-
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ recommendation.textInput1 }}</p>
                         </td>
                     </tr>
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            2. Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/
-                            boundaries (in tabulated form) with major environmental features/ other projects
-                            (prepared, sealed and signed by a deputized Geodetic Engineer)
+                            2. Original or certified true copy of the pertinent Ore Transport Permit (OTP) or Delivery
+                            Receipts
                         </td>
-
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ recommendation.textInput2 }}</p>
                         </td>
                     </tr>
@@ -290,10 +311,13 @@
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
-                            duly prepared, signed and sealed by a licensed Mining Engineer or Geologist</td>
-
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            3. Original or Certified true copy of the mining permit/contract or Original or
+                            MGB-certified
+                            true copy of the Certificate of Accreditation by the MGB, if the MOEP applicant is engaged
+                            in
+                            mineral trading </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ recommendation.textInput3 }}</p>
                         </td>
                     </tr>
@@ -301,14 +325,27 @@
                     <tr>
                         <td
                             style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
-                            4. Proof of technical competence in the form of:<br> &nbsp;
-                            4.1 Bio-data and track records in mining operations/ enviromental manangement <br> &nbsp;
-                            4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the
-                            Work Programs
+                            4. Original or Certified true copy of the sales/purchase/marketing contract or purchase
+                            order
                         </td>
-
-                        <td style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
                             <p>{{ recommendation.textInput4 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            5. Original or certified true copy of the proof of payment of excise tax or guarantee/surety
+                            bond
+                            [Note: to submit photocopy of the document but shall present the original copy/ certified
+                            true
+                            copy for validation purposes]
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput5 }}</p>
                         </td>
                     </tr>
                 </tbody>
@@ -389,9 +426,8 @@
     <div style="margin-bottom: 1000px;"></div>
 </template>
 
-<script>
 
-//COPY THIS TAMAN SA LAST } THEN CHANGE ANG SA DATA IF PILA KABUOK REQUIREMENTS THEN CHANGE PUD ANG DETAIL_ID NIYA
+<script>
 
 export default {
     props: {
@@ -407,18 +443,21 @@ export default {
                 file2: [],
                 file3: [],
                 file4: [],
+                file5: []
             },
             remarks: {
                 textInput1: '',
                 textInput2: '',
                 textInput3: '',
                 textInput4: '',
+                textInput5: '',
             },
             recommendation: {
                 textInput1: '',
                 textInput2: '',
                 textInput3: '',
                 textInput4: '',
+                textInput5: '',
             },
 
         };
@@ -428,7 +467,7 @@ export default {
             //Details applicants
             try {
                 const response = await axios.get('http://127.0.0.1:8000/get_details/');
-                this.details = response.data.filter(det => det.id == this.$route.params.detail_id2);
+                this.details = response.data.filter(det => det.id == this.$route.params.detail_id10);
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
@@ -436,13 +475,13 @@ export default {
             //Remarks details
             try {
                 const remarks = await axios.get('http://localhost:8000/get_remarks');
-                const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id2);
+                const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id10);
 
                 this.remarks.textInput1 = filteredremarks[0].input1 !== null ? filteredremarks[0].input1 : '';
                 this.remarks.textInput2 = filteredremarks[0].input2 !== null ? filteredremarks[0].input2 : '';
                 this.remarks.textInput3 = filteredremarks[0].input3 !== null ? filteredremarks[0].input3 : '';
                 this.remarks.textInput4 = filteredremarks[0].input4 !== null ? filteredremarks[0].input4 : '';
-
+                this.remarks.textInput5 = filteredremarks[0].input5 !== null ? filteredremarks[0].input5 : '';
 
             } catch (error) {
                 console.error('Error fetching details:', error);
@@ -452,8 +491,8 @@ export default {
             try {
                 const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
                 const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
-                const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id2));
-                const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id2));
+                const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id10));
+                const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id10));
                 this.mtsrvalue = filteredmtsr.mtsr
                 this.overallvalue = filteredoverall.overallstatus
             } catch (error) {
@@ -463,13 +502,13 @@ export default {
             //Recommendation details
             try {
                 const requirements = await axios.get('http://localhost:8000/get_recommendation');
-                const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id2);
+                const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id10);
                 // console.log(filteredrequirements)
                 this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
                 this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
                 this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
                 this.recommendation.textInput4 = filteredrequirements.input4 !== null ? filteredrequirements.input4 : '';
-
+                this.recommendation.textInput5 = filteredrequirements.input5 !== null ? filteredrequirements.input5 : '';
             } catch (error) {
                 console.error('Error fetching reco details:', error);
             }
@@ -477,7 +516,7 @@ export default {
             //details file uploads
             try {
                 const uploads = await axios.get('http://localhost:8000/get_files');
-                const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id2);
+                const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id10);
                 // console.log(uploadsrequirements);
 
                 // Clear existing files to avoid duplicates
@@ -486,14 +525,14 @@ export default {
                 });
 
                 // Initialize uploadFiles object for file1 to file5
-                for (let i = 1; i <= 4; i++) {  //<------CHANGE PILA KABUOK REQUIREMENTS NIYA
+                for (let i = 1; i <= 5; i++) {
                     const key = `file${i}`;
                     this.uploadFiles[key] = [];
                 }
 
                 // Assign fetched files to uploadFiles
                 uploadsrequirements.forEach((req) => {
-                    for (let i = 1; i <= 4; i++) { //<------CHANGE PILA KABUOK REQUIREMENTS NIYA
+                    for (let i = 1; i <= 5; i++) {
                         const key = `file${i}`;
                         // Check if the file key exists in req and is not null
                         if (req.hasOwnProperty(key) && req[key] !== null) {
@@ -516,7 +555,6 @@ export default {
         this.fetchDetails();
     },
 }
-
 
 </script>
 

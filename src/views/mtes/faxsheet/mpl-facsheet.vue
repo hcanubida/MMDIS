@@ -1,843 +1,768 @@
 <template>
-    <div class="containers">
-        <div class="buttonss">
-            <button @click="downloadPDF">Download as PDF</button>
+    <div>
+        <headd />
+    </div>
+
+    <div class="title1">
+
+    </div>
+    <p
+        style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 50px;">
+        FACT SHEET / EVALUATION SHEET
+    </p>
+    <div>
+
+
+        <!--Application table-->
+
+        <p
+            style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 130px; right: 160px;">
+            I.&nbsp;&nbsp;&nbsp;APPLICATION DETAILS
+        </p>
+        <div>
+            <table class="ftable">
+                <tbody class="fbody">
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            NAME OF APPLICANT:
+                        </td>
+                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.tenement_name }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            APPLICATION NUMBER:
+                        </td>
+                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.tenement_number }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            LOCATION:
+                        </td>
+                        <td
+                            style="width: auto; letter-spacing: 2px;font-size: 12px;font-weight: 600; text-align: center;padding-left: 15px;padding-right: 15px;">
+                            {{ detail.barangay }},{{ detail.city }}, {{ detail.province }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            COMMODITY:
+                        </td>
+                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.commodity }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            AREA (HECTARES):
+                        </td>
+                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.area_hectares }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            DATE FILED:
+                        </td>
+                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.date_filed }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Applicant's Table -->
+
+            <p
+                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 100px;right: 160px;">
+                II.&nbsp;&nbsp;&nbsp;APPLICANT'S DETAILS
+            </p>
+            <table class="ftable" style="margin-top: 130px;">
+                <tbody class="fbody">
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            CATEGORY:
+                        </td>
+                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.category }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            AUTHORIZED REPRESENTATIVE:
+                        </td>
+                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.authorized_rep }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            CONTACT NUMBER:
+                        </td>
+                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.contact_no }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            EMAIL ADDRESS:
+                        </td>
+                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.email }}
+                        </td>
+                    </tr>
+                    <tr v-for="(detail, index) in details" :key="index">
+                        <td
+                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                            OTHERS:
+                        </td>
+                        <td
+                            style="padding-left: 15px;padding-right: 15px;width: 350px; letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                            {{ detail.others }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <!--Mandatory Req-->
+
+
+            <p
+                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 160px;">
+                III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS
+            </p>
+            <table class="ftablez">
+                <thead>
+                    <tr style="text-align: center;">
+                        <th style="width: 40%; font-weight: bold;">Requirement</th>
+                        <th style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th style="width: 20%; font-weight: bold;">Remarks / Status</th>
+                        <th style="width: 20%; font-weight: bold;">Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody class="fbody">
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            1. Application Form/Letter Intent
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file1" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput1 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput1 }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            2. Location map/sketch plan of the proposed processing plant using NAMRIA topographic map in
+                            a scale of 1:50,000 or 1:10,000
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file2" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput2 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput2 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            3. Project Description and plant layout/design including cost of project duly prepared and
+                            signed by a Licensed Metallurgical Engineer </td>
+                            <td>
+                            <div v-for="(file, index) in uploadFiles.file3" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput3 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput3 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            4. Small-Scale Miners License of the duly authorized representative
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file4" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput4 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput4 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            5. Proof of Technical Competence
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file5" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput5 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput5 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            6. Proof of Financial Capability such as Latest Audited Financial Statement, Annual Report
+                            for
+                            the Preceding Year, and Credit Line/s and/proof of bank deposit/s, in the amount that shall
+                            not
+                            be less than the cost of project
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file6" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput6 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput6 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL Holder/s
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file7" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput7 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput7 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            8. For individual:
+                            Certified Photocopy of DTI Registration
+                            <br>&nbsp;
+                            <br>&nbsp;
+                            For Association/Cooperative:
+                            Securities and Exchange Commission or other Concerned Agency(ies)-Certified True Copy of the
+                            Certificate of Registration, Articles of Incorporation/Association, and By-Laws or
+                            Certification
+                            from MGB or MGB RO that said documents are duly registered in that Office, with a minimum
+                            authorized capital of PhP10,000,000 and not to exceed PhP200,000,000
+                        </td>
+                        <td>
+                            <div v-for="(file, index) in uploadFiles.file8" :key="index" class="flex justify-start">
+                                <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
+                            </div>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ remarks.textInput8 }}</p>
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput8 }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--Summary of Lacking Req-->
+            <p
+                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 110px;">
+                IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS
+            </p>
+
+            <table class="ftablez">
+                <thead>
+                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
+                        <th style="width: 40%; font-weight: bold;">Requirement</th>
+                        <th style="width: 20%; font-weight: bold;">Recommendation or Lacking Submission</th>
+                    </tr>
+                </thead>
+                <tbody class="fbody">
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            1. Application Form/Letter Intent
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput1 }}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            2. Location map/sketch plan of the proposed processing plant using NAMRIA topographic map in
+                            a
+                            scale of 1:50,000 or 1:10,000
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput2 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            3. Project Description and plant layout/design including cost of project duly prepared and
+                            signed by a Licensed Metallurgical Engineer </td>
+                            <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput3 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            4. Small-Scale Miners License of the duly authorized representative
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput4 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            5. Proof of Technical Competence
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput5 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            6. Proof of Financial Capability such as Latest Audited Financial Statement, Annual Report
+                            for
+                            the Preceding Year, and Credit Line/s and/proof of bank deposit/s, in the amount that shall
+                            not
+                            be less than the cost of project
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput6 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL Holder/s
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput7 }}</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            8. For individual:
+                            Certified Photocopy of DTI Registration
+                            <br>&nbsp;
+                            <br>&nbsp;
+                            For Association/Cooperative:
+                            Securities and Exchange Commission or other Concerned Agency(ies)-Certified True Copy of the
+                            Certificate of Registration, Articles of Incorporation/Association, and By-Laws or
+                            Certification
+                            from MGB or MGB RO that said documents are duly registered in that Office, with a minimum
+                            authorized capital of PhP10,000,000 and not to exceed PhP200,000,000
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                            <p>{{ recommendation.textInput8 }}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <!--Status of Application-->
+            <p
+                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 165px;">
+                V.&nbsp;&nbsp;&nbsp;STATUS OF THE APPLICATION
+            </p>
+            <table class="ftabley">
+                <thead>
+                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
+                        <th style="width: 40%; font-weight: bold;">MANDATORY
+                            REQUIREMENTS</th>
+                        <th style="width: 30%; font-weight: bold;">Remarks / Status</th>
+                    </tr>
+                </thead>
+                <tbody class="fbody">
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            Status
+                        </td>
+
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            <p>
+                                {{ mtsrvalue }}
+                            </p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!--Overall Remark-->
+            <p
+                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 100px;">
+                VI.&nbsp;&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS
+            </p>
+            <table class="ftabley">
+                <thead>
+                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
+                        <th style="width: 40%; font-weight: bold;">MANDATORY
+                            REQUIREMENTS</th>
+                        <th style="width: 30%; font-weight: bold;">Remarks / Status</th>
+                    </tr>
+                </thead>
+                <tbody class="fbody">
+
+                    <tr>
+                        <td
+                            style="padding: 10px; letter-spacing: 3px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                            Overall Remarks/ Status/
+                            Recommendation
+                        </td>
+                        <td
+                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                            <p>{{ overallvalue }}</p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <p
+                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 235px;">
+                VII.&nbsp;&nbsp;&nbsp;CHRONOLOGY
+            </p>
+
+
         </div>
     </div>
-    <div class="foliocontainer" id="pdf-content">
-        <div ref="content" class="foliocontent">
-            <img src="../../../assets/MTES/body.jpg" alt="folio-sized photo" class="foliophoto">
-            <p
-                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 210px;">
-                FACT SHEET / EVALUATION SHEET</p>
-            <p
-                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 250px;right: 160px;">
-                I.&nbsp;&nbsp;&nbsp;APPLICATION DETAILS</p>
-            <div>
-                <table class="ftable">
-                    <tbody class="fbody">
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                NAME OF APPLICANT:</td>
-                            <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">Jhon
-                                Doe D. Doe</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                APPLICATION NUMBER:</td>
-                            <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                                0001-2024</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                LOCATION:</td>
-                            <td
-                                style="width: auto; letter-spacing: 2px;font-size: 12px;font-weight: 600; text-align: center;padding-left: 15px;padding-right: 15px;">
-                                Carmen, Cagayan de Oro City, Misamis Oriental</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                COMMODITY:</td>
-                            <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">N/A
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                AREA (HECTARES):</td>
-                            <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">3.119
-                            </td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700; ">
-                                DATE FILED:</td>
-                            <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">Jhon
-                                Doe D. Doe</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                OTHERS:</td>
-                            <td
-                                style="padding-left: 15px;padding-right: 15px;width: 400px; letter-spacing: 3px;font-size: 12px;font-weight: 600;text-align: center;">
-                                Asperiores facere qui non alias. Unde consequuntur distinctio est sint. Rerum voluptatem
-                                qui voluptates laborum.</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p
-                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 50px;right: 160px;">
-                    II.&nbsp;&nbsp;&nbsp;APPLICANT'S DETAILS</p>
-                <table class="ftable" style="margin-top: 100px;">
-                    <tbody class="fbody">
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                CATEGORY:</td>
-                            <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                                COORPERATE</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                AUTHORIZED REPRESENTATIVE:</td>
-                            <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">john
-                                doe D. doe</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                CONTACT NUMBER:</td>
-                            <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                                09094251053</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                EMAIL ADDRESS:</td>
-                            <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                                admin@admin.admin</td>
-                        </tr>
-                        <tr>
-                            <td
-                                style="padding-right: 10px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                                OTHERS:</td>
-                            <td
-                                style="padding-left: 15px;padding-right: 15px;width: 350px; letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                                Asperiores facere qui non alias. Unde consequuntur distinctio est sint. Rerum voluptatem
-                                qui voluptates laborum.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div ref="content" class="a4content">
-                <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page1">
-                <p
-                    style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 520px;right: 160px;">
-                    III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS</p>
-                <div class="tbl-faxsheet">
-                    <table class="tbl-faxsheet1">
-                        <thead class="thead-faxsheet">
-                            <tr style="text-align: center;">
-                                <th class="th-fax2">Requirements</th>
-                                <th class="th-fax2">Level of Compliance</th>
-                                <th class="th-fax2">Upload</th>
-                                <th class="th-fax2">Remarks / Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="fax-details">
-                                    1. Application Form/Letter Intent</td>
-                                <td class="fax-level">
-                                    *Level</td>
-                                <td class="fax-upload">
-                                    *Upload Requirements</td>
-                                <td class="fax-status">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details">
-                                    2. Location map/sketch plan of the proposed processing plant using NAMRIA
-                                    topographic map in a scale of 1:50,000 or 1:10,000 </td>
-                                <td class="fax-level">
-                                    *Level</td>
-                                <td class="fax-upload">
-                                    *Upload Requirements</td>
-                                <td class="fax-status">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details">
-                                    3. Project Description and plant layout/design including cost of project duly
-                                    prepared and signed by a Licensed Metallurgical Engineer</td>
-                                <td class="fax-level">
-                                    *Level</td>
-                                <td class="fax-upload">
-                                    *Upload Requirements</td>
-                                <td class="fax-status">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details">
-                                    4. Small-Scale Miners License of the duly authorized representative</td>
-                                <td class="fax-level">
-                                    *Level</td>
-                                <td class="fax-upload">
-                                    *Upload Requirements</td>
-                                <td class="fax-status">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fax-details">
-                                    5. Proof of Technical Competence</td>
-                                <td class="fax-level">
-                                    *Level</td>
-                                <td class="fax-upload">
-                                    *Upload Requirements</td>
-                                <td class="fax-status">
-                                    Remarks/Status:&nbsp;
-                                    <br>
-                                    <br>
-                                    Lorem ipsum dolor sit amet consect
-                                    <br>
-                                    <br>
-                                    Recommendation or Lacking Submission:
-                                    <br>
-                                    <span style="color: red;"> Lacking Submission </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div ref="content" class="a4content">
-                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page2">
-                    <div class="tbl-faxsheet">
-                        <table class="tbl-faxsheet2">
-                            <tbody>
-                                <tr>
-                                    <td class="fax-details">
-                                        6. Proof of Financial Capability such as Latest Audited Financial Statement,
-                                        Annual Report for the Preceding Year, and Credit Line/s and/proof of bank
-                                        deposit/s, in the amount that shall not be less than the cost of project</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL
-                                        Holder/s</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        8. For individual: Certified Photocopy of DTI Registration <br>
-                                        <br>
-                                        For Association/Cooperative: Securities and Exchange Commission or other
-                                        Concerned Agency(ies)-Certified True Copy of the Certificate of Registration,
-                                        Articles of Incorporation/Association, and By-Laws or Certification from MGB or
-                                        MGB RO that said documents are duly registered in that Office, with a minimum
-                                        authorized capital of PhP10,000,000 and not to exceed PhP200,000,000
-                                    </td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p
-                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 25px;right: 130px;">
-                            IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS</p>
-                        <table class="tbl-faxsheet3">
-                            <tbody>
-                                <tr>
-                                    <td class="fax-details">
-                                        1. Application Form/Letter Intent</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div ref="content" class="a4content">
-                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page3">
-                    <div class="tbl-faxsheet">
-                        <table class="tbl-faxsheet4">
-                            <tbody>
-                                <tr>
-                                    <td class="fax-details">
-                                        1. Application Form/Letter Intent</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        2. Location map/sketch plan of the proposed processing plant using NAMRIA
-                                        topographic map in a scale of 1:50,000 or 1:10,000</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        3. Project Description and plant layout/design including cost of project duly
-                                        prepared and signed by a Licensed Metallurgical Engineer</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        4. Small-Scale Miners License of the duly authorized representative </td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        5. Proof of Technical Competence <br>
-                                        To mining tenement holder(s)</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div ref="content" class="a4content">
-                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page4">
-                    <div class="tbl-faxsheet">
-                        <table class="tbl-faxsheet5">
-                            <tbody>
-                                <tr>
-                                    <td class="fax-details">
-                                        6. Proof of Financial Capability such as Latest Audited Financial Statement,
-                                        Annual Report for the Preceding Year, and Credit Line/s and/proof of bank
-                                        deposit/s, in the amount that shall not be less than the cost of project</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        7. Supply Contract/Agreement with the Small-Scale Mining Contractor/s or MPL
-                                        Holder/s</td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="fax-details">
-                                        8. For individual: Certified Photocopy of DTI Registration <br>
-                                        <br>
-                                        For Association/Cooperative: Securities and Exchange Commission or other
-                                        Concerned Agency(ies)-Certified True Copy of the Certificate of Registration,
-                                        Articles of Incorporation/Association, and By-Laws or Certification from MGB or
-                                        MGB RO that said documents are duly registered in that Office, with a minimum
-                                        authorized capital of PhP10,000,000 and not to exceed PhP200,000,000
-                                    </td>
-                                    <td class="fax-level">
-                                        *Level</td>
-                                    <td class="fax-upload">
-                                        *Upload Requirements</td>
-                                    <td class="fax-status">
-                                        Remarks/Status:&nbsp;
-                                        <br>
-                                        <br>
-                                        Lorem ipsum dolor sit amet consect
-                                        <br>
-                                        <br>
-                                        Recommendation or Lacking Submission:
-                                        <br>
-                                        <span style="color: red;"> Lacking Submission </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div ref="content" class="a4content">
-                    <img src="../../../assets//MTES//hnf.jpg" alt="A4-sized photo" class="a4photo-page5">
-                    <div class="tbl-faxsheet">
-                        <p
-                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 640px;right: 190px;">
-                            V.&nbsp;&nbsp;STATUS OF THE APPLICATION</p>
-                        <table class="tbl-faxsheet6">
-                            <thead class="thead-faxsheet">
-                                <tr style="text-align:center;">
-                                    <th class="th-fax2">Requirements</th>
-                                    <th class="th-fax2">Upload</th>
-                                    <th class="th-fax2">Remarks / Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="text-align: center; font-size: 15px; width: 270px;">
-                                        Status: </td>
-                                    <td style="text-align: center;width: 200px; font-size: 15px">
-                                        *Upload Requirements</td>
-                                    <td style="text-align: center; font-size: 15px; width: 260px;">
-                                        Based on the Status of MTSR (dropdown)
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p
-                            style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 35px;right: 125px;">
-                            VI.&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS</p>
-                        <table class="tbl-faxsheet7">
-                            <thead class="thead-faxsheet">
-                                <tr style="text-align:center;">
-                                    <th class="th-fax2">Requirements</th>
-                                    <th class="th-fax2">Upload</th>
-                                    <th class="th-fax2">Remarks / Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="text-align: center; font-size: 15px; width: 270px;">
-                                        Status: </td>
-                                    <td style="text-align: center;width: 200px; font-size: 15px">
-                                        *Upload Requirements</td>
-                                    <td style="text-align: center; font-size: 15px; width: 260px;">
-                                        Based on the Status of MTSR (dropdown)
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div style="margin-bottom: 1000px;"></div>
 </template>
 
+
 <script>
-import jsPDF from 'jspdf';
 
 export default {
+    props: {
+        detail_id: String,
+    },
+    data() {
+        return {
+            details: [],
+            mtsrvalue: '',
+            overallvalue: '',
+            uploadFiles: {
+                file1: [],
+                file2: [],
+                file3: [],
+                file4: [],
+                file5: [],
+                file6: [],
+                file7: [],
+                file8: []
+            },
+            remarks: {
+                textInput1: '',
+                textInput2: '',
+                textInput3: '',
+                textInput4: '',
+                textInput5: '',
+                textInput6: '',
+                textInput7: '',
+                textInput8: '',
+            },
+            recommendation: {
+                textInput1: '',
+                textInput2: '',
+                textInput3: '',
+                textInput4: '',
+                textInput5: '',
+                textInput6: '',
+                textInput7: '',
+                textInput8: '',
+            },
+
+        };
+    },
     methods: {
-        downloadPDF() {
-            // Initialize jsPDF with folio size in inches
-            const pdf = new jsPDF('p', 'mm', [215.9, 330.2]); // Custom dimensions [width, height] in inches
+        async fetchDetails() {
+            //Details applicants
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/get_details/');
+                this.details = response.data.filter(det => det.id == this.$route.params.detail_id8);
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
 
-            // Get the HTML content
-            const content = document.getElementById('pdf-content');
+            //Remarks details
+            try {
+                const remarks = await axios.get('http://localhost:8000/get_remarks');
+                const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id8);
 
-            // Add HTML content to PDF
-            pdf.html(content, {
-                // Set width and height of PDF to match the folio size
-                html2canvas: { scale: 0.26 }, // Adjust scale as needed to fit content
-                x: 0,
-                y: 0,
-                callback: () => {
-                    // Download the PDF file
-                    pdf.save('FactSheet-MGBX.pdf');
+                this.remarks.textInput1 = filteredremarks[0].input1 !== null ? filteredremarks[0].input1 : '';
+                this.remarks.textInput2 = filteredremarks[0].input2 !== null ? filteredremarks[0].input2 : '';
+                this.remarks.textInput3 = filteredremarks[0].input3 !== null ? filteredremarks[0].input3 : '';
+                this.remarks.textInput4 = filteredremarks[0].input4 !== null ? filteredremarks[0].input4 : '';
+                this.remarks.textInput5 = filteredremarks[0].input5 !== null ? filteredremarks[0].input5 : '';
+                this.remarks.textInput6 = filteredremarks[0].input6 !== null ? filteredremarks[0].input6 : '';
+                this.remarks.textInput7 = filteredremarks[0].input7 !== null ? filteredremarks[0].input7 : '';
+                this.remarks.textInput8 = filteredremarks[0].input8 !== null ? filteredremarks[0].input8 : '';
+
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
+
+            //MTSR details
+            try {
+                const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id8));
+                const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id8));
+                this.mtsrvalue = filteredmtsr.mtsr
+                this.overallvalue = filteredoverall.overallstatus
+            } catch (error) {
+                console.error('Error fetching details:', error);
+            }
+
+            //Recommendation details
+            try {
+                const requirements = await axios.get('http://localhost:8000/get_recommendation');
+                const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id8);
+                // console.log(filteredrequirements)
+                this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
+                this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
+                this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
+                this.recommendation.textInput4 = filteredrequirements.input4 !== null ? filteredrequirements.input4 : '';
+                this.recommendation.textInput5 = filteredrequirements.input5 !== null ? filteredrequirements.input5 : '';
+                this.recommendation.textInput6 = filteredrequirements.input6 !== null ? filteredrequirements.input6 : '';
+                this.recommendation.textInput7 = filteredrequirements.input7 !== null ? filteredrequirements.input7 : '';
+                this.recommendation.textInput8 = filteredrequirements.input8 !== null ? filteredrequirements.input8 : '';
+
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
+
+            //details file uploads
+            try {
+                const uploads = await axios.get('http://localhost:8000/get_files');
+                const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id8);
+                // console.log(uploadsrequirements);
+
+                // Clear existing files to avoid duplicates
+                Object.keys(this.uploadFiles).forEach(key => {
+                    this.uploadFiles[key] = [];
+                });
+
+                // Initialize uploadFiles object for file1 to file5
+                for (let i = 1; i <= 8; i++) {
+                    const key = `file${i}`;
+                    this.uploadFiles[key] = [];
                 }
-            });
+
+                // Assign fetched files to uploadFiles
+                uploadsrequirements.forEach((req) => {
+                    for (let i = 1; i <= 8; i++) {
+                        const key = `file${i}`;
+                        // Check if the file key exists in req and is not null
+                        if (req.hasOwnProperty(key) && req[key] !== null) {
+                            try {
+                                this.uploadFiles[key] = JSON.parse(req[key]);
+                            } catch (e) {
+                                console.error(`Error parsing JSON for ${key}:`, e);
+                                this.uploadFiles[key] = [];
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching reco details:', error);
+            }
         },
-    }
+
+    },
+    mounted() {
+        this.fetchDetails();
+    },
 }
+
 </script>
 
+
+
+
 <style lang="scss" scoped>
-.containers {
+/* Combined styles from style 1 and style 2 */
+
+/* General styles */
+.title1 {
     display: flex;
     justify-content: center;
-    height: 100%;
-}
-
-.foliocontainer {
-    position: relative;
-    width: 8.5in;
-    height: 13in;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-
-.foliocontent {
-    /* Adjust this height based on your content */
-    height: 13in;
-    /* A4 height minus padding and border */
-}
-
-.foliophoto {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.foliophoto-page2 {
-    position: absolute;
-    bottom: -1100px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.a4photo-page1 {
-    position: absolute;
-    bottom: -1240px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.a4photo-page2 {
-    position: absolute;
-    bottom: -2510px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.a4photo-page3 {
-    position: absolute;
-    bottom: -3780px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.a4photo-page4 {
-    position: absolute;
-    bottom: -5050px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.a4photo-page5 {
-    position: absolute;
-    bottom: -6310px;
-    left: 0;
-    width: 100%;
-    height: 98%;
-    z-index: -1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 100px;
+    margin-bottom: 25px;
 }
 
 .ftable {
     display: flex;
     justify-content: center;
-    margin-top: 280px;
+    margin-top: 150px;
+    /* Adjusted margin-top */
 }
 
-.fax-details {
-    text-align: left;
-    text-align: justify;
-    font-size: 13px;
-    font-weight: 400;
-    width: 350px;
-    letter-spacing: 2px;
+.ftabley {
+    margin: auto;
+    margin-top: 100px;
+    /* Adjusted margin-top */
+    width: 700px;
+    table-layout: fixed;
+    /* Set the table layout to fixed */
+    border-collapse: collapse;
 }
 
-.fax-level {
-    text-align: center;
-    font-size: 12px;
-    width: 100px;
+.ftablez {
+    margin: auto;
+    margin-top: 100px;
+    /* Adjusted margin-top */
+    width: 1000px;
+    table-layout: fixed;
+    /* Set the table layout to fixed */
+    border-collapse: collapse;
 }
 
-.fax-upload {
-    text-align: left;
-    font-size: 12px;
-    width: 150px;
-}
-
-.fax-status {
-    text-align: left;
-    font-size: 13px;
-    width: 200px;
-    padding-right: 0;
-}
-
-.fbody td {
-    padding: 4px;
-    padding-bottom: 10px;
-    border: 1px solid rgb(37, 37, 37);
-    width: auto;
-}
-
-.tbl-faxsheet1 {
-    margin-top: 540px;
-    text-align: center;
-}
-
-.tbl-faxsheet2 {
-    margin-top: 310px;
-    text-align: center;
-}
-
-.tbl-faxsheet3 {
-    margin-top: 50px;
-    text-align: center;
-}
-
-.tbl-faxsheet4 {
-    margin-top: 420px;
-    text-align: center;
-}
-
-.tbl-faxsheet5 {
-    margin-top: 420px;
-    text-align: center;
-}
-.tbl-faxsheet6 {
-    margin-top: 660px;
-    text-align: center;
-    margin-left: 20px;
-}
-.tbl-faxsheet7 {
-    margin-top: 70px;
-    text-align: center;
-    margin-left: 20px;
-}
-
-.thead-faxsheet {
-    font-size: 15px;
-}
-
-.tbl-faxsheet {
-    width: 95%;
-    margin-left: 20px;
-    text-align: left;
-}
-
-.th-fax2 {
-    width: 110px;
-}
-
-.th-fax2,
-td {
-    border: 1px solid rgb(114, 114, 114);
-    padding: 4px;
-    padding-bottom: 10px;
-}
-
-.td-faxsheet {
-    text-align: left;
-    font-size: 13px;
-    font-weight: 400;
-    width: 600px;
-}
-
-.td1mand {
-    text-align: left;
-    width: 150px;
-    padding-right: 10px;
-    padding-left: 10px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.td2mand {
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 50px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-}
-
-.td3mand {
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 100px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: left;
-}
-
-.buttonss {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-    margin-top: 20px;
-    z-index: 9;
-    background-color: aqua;
+.ftablez th,
+.ftablez td {
+    width: 33%;
+    /* Set the fixed width for each column (1/3 of the table width) */
     padding: 10px;
-    width: 200px;
-    border-radius: 5px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid black;
+    word-wrap: break-word;
+    /* Allow word wrap for long text */
+
 }
 
-.buttonss button {
-    cursor: pointer;
+.fbody table {
+    border-collapse: collapse;
+    width: 100%;
+    /* Adjusted width */
+    margin-top: 20px;
+    /* Adjusted margin-top */
+    text-align: center;
+}
+
+.fbody th,
+.fbody td {
+    border: 1px solid rgb(37, 37, 37);
+    padding: 12px;
+    text-align: center;
+}
+
+/* Styles for table headers */
+.ftable th {
+    padding: 10px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* Styles for table data cells */
+.ftable td {
+    padding: 10px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid black;
+    text-align: center;
 }
 </style>
