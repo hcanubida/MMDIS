@@ -17,7 +17,7 @@ import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
 
 //router file MLSS
-import mlssdashboard from "../views/mlss/mlss-dashboard.vue";
+import mlssdashboard from "../views/mlss/mlssdashboard.vue";
 
 
 //router file MTES
@@ -97,6 +97,9 @@ const routes = [
     { path: "/mtss/ep", component: ep },
     { path: "/mtss/mpp", component: mpp },
 
+    //mlss routes
+    { path: "/mlss/mlssdashboard", component: mlssdashboard },
+
     //mtes routes
     { path: "/firstpage", component: firstpage },
     { path: "/signup", component: signup },
@@ -150,6 +153,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-});
+})
+;
 
 export default router;
