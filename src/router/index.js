@@ -16,6 +16,8 @@ import isag from "../views/mtss/isag.vue";
 import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
 
+//router file MLSS
+import mlssdashboard from "../views/mlss/mlss-dashboard.vue";
 
 
 //router file MTES

@@ -126,7 +126,7 @@ const handleLogin = async () => {
                     router.push("/mtss/dashboard");
                     break;
                 case 'mlss':
-                    router.push("/mlss/dashboard");
+                    router.push("/mlss/mlss-dashboard");
                     break;
                 default:
                     // Redirect to a default page if the section is not specified
