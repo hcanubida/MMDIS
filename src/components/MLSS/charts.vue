@@ -1,3 +1,5 @@
+<!-- charts.vue -->
+
 <template>
     <div class="flex w-full">
       <!-- Left Content Section: Area Status Clearance -->
