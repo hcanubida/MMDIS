@@ -61,13 +61,14 @@
   </template>
   
   <script>
+  import axios from 'axios';
   import ApexCharts from 'apexcharts';
   
   export default {
     data() {
       return {
         showModal: false,
-        year: '2023',
+        year: '',
         barDataInput: '',
         pieDataInput: '',
         barChart: null,
@@ -76,12 +77,13 @@
     },
     mounted() {
       this.initCharts();
+      this.fetchLatestChartData(); // Fetch latest chart data on component mount
     },
     methods: {
       initCharts() {
         // Bar chart configuration
         const barChartConfig = {
-          series: [{ name: "Released", data: [4, 26, 21, 19, 31, 18, 9, 20, 16, 15, 19, 19] }],
+          series: [{ name: "Released", data: [] }], // Placeholder, data will be updated dynamically
           chart: {
             type: "bar",
             height: 240,
@@ -96,7 +98,7 @@
   
         // Pie chart configuration
         const pieChartConfig = {
-          series: [102, 23, 2, 41],
+          series: [],
           labels: ['Bukidnon', 'Lanao del Norte', 'Misamis Occidental', 'Misamis Oriental'],
           chart: {
             type: "pie",
@@ -108,21 +110,37 @@
         this.pieChart = new ApexCharts(document.querySelector("#pie-chart"), pieChartConfig);
         this.pieChart.render();
       },
+      fetchLatestChartData() {
+        axios.get('/api/chart-data/fetch-latest')
+          .then(response => {
+            this.year = response.data.year;
+            this.barDataInput = response.data.barData.join(',');
+            this.pieDataInput = response.data.pieData.join(',');
+            this.barChart.updateSeries([{ name: "Released", data: response.data.barData }]);
+            this.pieChart.updateSeries(response.data.pieData);
+          })
+          .catch(error => {
+            console.error('Failed to fetch latest chart data', error);
+            // Optionally handle error feedback
+          });
+      },
       updateCharts() {
-        // Update year text
-        document.getElementById('release-year').textContent = this.year;
-  
-        // Update bar chart data
-        const newBarData = this.barDataInput.split(',').map(Number);
-        this.barChart.updateSeries([{ data: newBarData }]);
-  
-        // Update pie chart data
-        const newPieData = this.pieDataInput.split(',').map(Number);
-        this.pieChart.updateSeries(newPieData);
-  
-        // Close modal
+        const data = {
+          year: this.year,
+          barData: this.barDataInput,
+          pieData: this.pieDataInput,
+        };
+        axios.post('/api/chart-data/update', data)
+          .then(response => {
+            console.log('Charts data updated successfully');
+            this.fetchLatestChartData(); // Fetch the latest data after updating
+          })
+          .catch(error => {
+            console.error('Failed to update chart data', error);
+            // Optionally handle error feedback
+          });
         this.showModal = false;
-      }
-    }
+      },
+    },
   };
   </script>
