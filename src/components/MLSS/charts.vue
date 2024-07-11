@@ -107,8 +107,8 @@ export default {
 
       // Pie chart configuration
       const pieChartConfig = {
-        series: [45, 13, 5, 19],
-        labels: ['Bukidnon', 'Lanao del Norte', 'Misamis Occidental', 'Misamis Oriental'],
+        series: [45, 0, 13, 5, 19],
+        labels: ['Bukidnon','Camiguin', 'Lanao del Norte', 'Misamis Occidental', 'Misamis Oriental'],
         chart: {
           type: "pie",
           width: 500,

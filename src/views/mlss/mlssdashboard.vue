@@ -30,8 +30,7 @@
           <div v-if="isDropdownASC" id="area-status-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
             <a 
               v-for="(item, index) in areaStatusItems" 
-              :key="index" 
-              href="#" 
+              :key="index"  
               @click="openPDF(item.pdfUrl)" 
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
@@ -52,9 +51,9 @@
             <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
           </button>
           <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-orange-200 rounded-lg shadow-lg text-left">
-            <a href="#" @click="AreaStatusClearance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Area Status Clearance</a>
-            <a href="#" @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
-            <a href="#" @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
+            <a @click="AreaStatusClearance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Area Status Clearance</a>
+            <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
+            <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
           </div>
         </div>
       </div>
@@ -72,14 +71,15 @@ export default {
   components: {
     Header,
     UserBtn,
-    Charts
+    Charts,
+
   },
   data() {
     return {
       isDropdownASC: false,
       isDropdownDatabase: false,
       areaStatusItems: [
-        { label: 'C1: New No Conflict', pdfUrl: '../../assets/ASCpdf/CASE 1 - final copy.pdf' },
+        { label: 'C1: New No Conflict', pdfUrl: '/assets/ASCpdf/CASE 1 - final copy.pdf' },
         { label: 'C2: Amendment', pdfUrl: '../../assets/ASCpdf/CASE 2 - final copy.pdf' },
         { label: 'C3.1: CSAG Expansion', pdfUrl: '../../assets/ASCpdf/CASE 3.1 - CSAG copy.pdf' },
         { label: 'C3.1: QUARRY Expansion', pdfUrl: '../../assets/ASCpdf/CASE 3.1 - QUARRY copy.pdf' },
