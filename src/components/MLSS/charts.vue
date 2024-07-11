@@ -30,7 +30,7 @@
   </div>
 
   <div class="flex justify-between p-2 relative shadow-md">
-    <h2 class="flex text-xl font-semibold">The grand total Area Status released for the Year is {{ totalSum }}.</h2>
+    <h2 class="flex text-xl font-semibold">The grand total Area Status Clearance released for this year is {{ totalSum }}.</h2>
     <button @click="showModal = true" class="text-green-600">UPDATE</button>
   </div>
 
