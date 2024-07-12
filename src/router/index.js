@@ -18,7 +18,9 @@ import mpp from "../views/mtss/mpp.vue";
 
 //router file MLSS
 import mlssdashboard from "../views/mlss/mlssdashboard.vue";
-import dbASC from "../views/mlss/dbASC.vue";
+import CSAG from "../views/mlss/CSAG.vue";
+import ISAG from "../views/mlss/ISAG.vue";
+import MQUARRY from "../views/mlss/MQUARRY.vue";
 
 
 //router file MTES
@@ -100,7 +102,9 @@ const routes = [
 
     //mlss routes
     { path: "/mlss/mlssdashboard", component: mlssdashboard },
-    { path: "/mlss/dbASC", component: dbASC },
+    { path: "/mlss/CSAG", component: CSAG },
+    { path: "/mlss/ISAG", component: ISAG },
+    { path: "/mlss/MQUARRY", component: MQUARRY },
 
 
     //mtes routes

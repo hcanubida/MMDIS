@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <!-- Header and User Button Section -->
     <div class="flex">
       <Header />
@@ -20,8 +19,8 @@
         <div>
           <button 
             @click="toggleDropdown('isDropdownASC')" 
-            class="flex justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
-            aria-expanded="isDropdownASC"
+            class="flex items-center justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+            :aria-expanded="isDropdownASC.toString()"
             aria-controls="area-status-dropdown"
           >
             Area Status Clearance
@@ -43,17 +42,50 @@
         <div>
           <button 
             @click="toggleDropdown('isDropdownDatabase')" 
-            class="flex justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
-            aria-expanded="isDropdownDatabase"
+            class="flex justify-center items-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+            :aria-expanded="isDropdownDatabase.toString()"
             aria-controls="database-dropdown"
           >
             Database
             <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
           </button>
           <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-orange-200 rounded-lg shadow-lg text-left">
-            <a @click="AreaStatusClearance" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Area Status Clearance</a>
             <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
             <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
+            
+            <!-- New Dropdown under Area Status Clearance -->
+            <div>
+              <button 
+                @click="toggleDropdown('isDropdownASCNew')" 
+                class="flex justify-between items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                :aria-expanded="isDropdownASCNew.toString()"
+                aria-controls="area-status-new-dropdown"
+              >
+              Area Status Clearance
+                <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
+              </button>
+              <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
+                <a 
+                  @click="navigateTo('CSAG')"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  CSAG
+                </a>
+                <a 
+                  @click="navigateTo('ISAG')"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  ISAG
+                </a>
+                <a 
+                  @click="navigateTo('MQUARRY')"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  MQUARRY
+                </a>
+              </div>
+            </div>
+            <!-- End of New Dropdown -->
           </div>
         </div>
       </div>
@@ -72,12 +104,12 @@ export default {
     Header,
     UserBtn,
     Charts,
-
   },
   data() {
     return {
       isDropdownASC: false,
       isDropdownDatabase: false,
+      isDropdownASCNew: false, // Added for the new dropdown under Area Status Clearance
       areaStatusItems: [
         { label: 'C1: New No Conflict', pdfUrl: 'ASCpdf/CASE 1 - final copy.pdf' },
         { label: 'C2: Amendment', pdfUrl: 'ASCpdf/CASE 2 - final copy.pdf' },
@@ -92,6 +124,11 @@ export default {
         { label: 'C9: Not Conforming along River', pdfUrl: 'ASCpdf/CASE 9 - final copy.pdf' },
         { label: 'C10: Inconsistent Tie Line', pdfUrl: 'ASCpdf/CASE 10 - final copy.pdf' },
         { label: 'C11: Inconsistent Tie Line', pdfUrl: 'ASCpdf/CASE 11 - final copy.pdf' },
+      ],
+      areaStatusNewItems: [
+        { label: 'CSAG', route: '/mlss/CSAG' },
+        { label: 'ISAG', route: '/mlss/ISAG' },
+        { label: 'MQUARRY', route: '/mlss/MQUARRY' },
       ]
     };
   },
@@ -100,11 +137,10 @@ export default {
       this[dropdown] = !this[dropdown];
     },
     openPDF(pdfUrl) {
-      // console.log(pdfUrl)
       window.open(window.location.origin + "/" + pdfUrl, '_blank');
     },
-    AreaStatusClearance() {
-      router.push('/mlss/dbASC');
+    navigateTo(route) {
+      router.push(route);
     },
     MOEPValidation() {
       router.push('/mlss/dbMOEPV');
@@ -115,3 +151,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Add your scoped styles here */
+</style>
