@@ -21,6 +21,8 @@ import mlssdashboard from "../views/mlss/mlssdashboard.vue";
 import CSAG from "../views/mlss/CSAG.vue";
 import ISAG from "../views/mlss/ISAG.vue";
 import MQUARRY from "../views/mlss/MQUARRY.vue";
+import MiningTenementMaps from "../views/mlss/dbMTM.vue";
+import MineralOreExportPermit from "../views/mlss/dbMOEPV.vue";
 
 
 //router file MTES
@@ -105,6 +107,9 @@ const routes = [
     { path: "/mlss/CSAG", component: CSAG },
     { path: "/mlss/ISAG", component: ISAG },
     { path: "/mlss/MQUARRY", component: MQUARRY },
+    { path: "/mlss/MTM", component: MiningTenementMaps },
+    { path: "/mlss/MOEPV", component: MineralOreExportPermit },
+
 
 
     //mtes routes

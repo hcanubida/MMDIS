@@ -143,10 +143,10 @@ export default {
       router.push(route);
     },
     MOEPValidation() {
-      router.push('/mlss/dbMOEPV');
+      router.push('/mlss/MOEPV');
     },
     MiningTenementMaps() {
-      router.push('/mlss/dbMTM');
+      router.push('/mlss/MTM');
     }
   }
 };
