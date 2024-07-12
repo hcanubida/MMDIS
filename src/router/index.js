@@ -18,6 +18,7 @@ import mpp from "../views/mtss/mpp.vue";
 
 //router file MLSS
 import mlssdashboard from "../views/mlss/mlssdashboard.vue";
+import dbASC from "../views/mlss/dbASC.vue";
 
 
 //router file MTES
@@ -99,6 +100,8 @@ const routes = [
 
     //mlss routes
     { path: "/mlss/mlssdashboard", component: mlssdashboard },
+    { path: "/mlss/dbASC", component: dbASC },
+
 
     //mtes routes
     { path: "/firstpage", component: firstpage },

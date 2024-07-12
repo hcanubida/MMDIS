@@ -104,13 +104,13 @@ export default {
       window.open(window.location.origin + "/" + pdfUrl, '_blank');
     },
     AreaStatusClearance() {
-      router.push('/dbASC');
+      router.push('/mlss/dbASC');
     },
     MOEPValidation() {
-      router.push({ name: 'MOEPValidation' });
+      router.push('/mlss/dbMOEPV');
     },
     MiningTenementMaps() {
-      router.push({ name: 'MiningTenementMaps' });
+      router.push('/mlss/dbMTM');
     }
   }
 };
