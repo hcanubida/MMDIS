@@ -104,7 +104,7 @@ export default {
       window.open(window.location.origin + "/" + pdfUrl, '_blank');
     },
     AreaStatusClearance() {
-      router.push({ name: 'AreaStatusClearance' });
+      router.push('/dbASC');
     },
     MOEPValidation() {
       router.push({ name: 'MOEPValidation' });
