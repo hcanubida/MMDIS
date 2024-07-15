@@ -1,18 +1,25 @@
 <template>
-    <!-- Title Section -->
-    <div class="flex flex-col mt-44 justify-center font-bold text-center">
-      <h1 class="text-4xl">Ore Sample Transport Certificate</h1>
-    </div>
+    <div>
+      <!-- Header and User Button Section -->
+      <div class="flex">
+        <Header />
+        <UserBtn />
+      </div>
   
-    <!-- Charts Section -->
-    <div class="mt-24">
-      <Charts />
-    </div>
+      <!-- Title Section -->
+      <div class="flex flex-col mt-44 justify-center font-bold text-center">
+        <h1 class="text-4xl">Ore Sample Transport Certificate</h1>
+      </div>
   
-    <div class="mt-8 w-full rounded-xl bg-white bg-clip-border text-gray-700 shadow-md overflow-hidden">
-      <div class="flex justify-end">
+      <!-- Charts Section -->
+      <div class="mt-24">
+        <Charts />
+      </div>
+  
+      <!-- Search and Add Section -->
+      <div class="flex justify-end mt-8">
         <SearchBar />
-        <AddBtn />
+        <AddBtn @click="showModal = true" />
       </div>
   
       <!-- Table Section -->
@@ -47,7 +54,7 @@
                 </span>
               </th>
               <th scope="col" class="px-6 py-3">MMD Personnel</th>
-              <th scope="col" class="px-6 py-3">Proof of MOV Uploaded</th>
+              <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
             </tr>
           </thead>
           <tbody>
@@ -61,7 +68,9 @@
               <td class="px-6 py-4">{{ entry.sampleInspection }}</td>
               <td class="px-6 py-4">{{ entry.dateIssued }}</td>
               <td class="px-6 py-4">{{ entry.MMDPersonnel }}</td>
-              <td class="px-6 py-4">{{ entry.ProofOfMOV }}</td>
+              <td class="px-6 py-4 text-center">
+                <button @click="openPDF(entry.ProofOfMOV)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -69,8 +78,20 @@
           No results found.
         </div>
       </div>
-      <Header />
-      <UserBtn />
+  
+      <!-- Add New Entry Modal -->
+      <Modal v-if="showModal" @close="showModal = false">
+        <template v-slot:header>
+          <h2>Add New Entry</h2>
+        </template>
+        <template v-slot:body>
+          <!-- Add form fields for new entry here -->
+        </template>
+        <template v-slot:footer>
+          <button @click="addNewEntry">Add</button>
+          <button @click="clearNewEntry">Cancel</button>
+        </template>
+      </Modal>
     </div>
   </template>
   
@@ -84,7 +105,7 @@
   
   export default {
     components: {
-      Header, // Register Header component
+      Header,
       AddBtn,
       UserBtn,
       SearchBar,
@@ -93,18 +114,7 @@
     data() {
       return {
         entries: [
-          {
-            no: 1,
-            client: 'MELITANTE, WILSON D.',
-            certnum: '49,041',
-            dateReceivedByORD: '2024-01-01',
-            dateReceivedByMMD: '2024-01-02',
-            PaymentDate: '2024-02-01',
-            sampleInspection: 'Passed',
-            dateIssued: '2024-02-27',
-            MMDPersonnel: 'John Doe',
-            ProofOfMOV: 'Yes',
-          },
+        //
         ],
         searchQuery: '',
         sortKey: '',
@@ -145,11 +155,7 @@
           const dateA = new Date(a[key]);
           const dateB = new Date(b[key]);
   
-          if (this.sortOrder === 'asc') {
-            return dateA - dateB;
-          } else {
-            return dateB - dateA;
-          }
+          return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
         });
       },
       addNewEntry() {
@@ -171,6 +177,10 @@
         };
         this.showModal = false;
       },
+      openPDF(pdfUrl) {
+        window.open(pdfUrl, '_blank');
+      },
     },
   };
   </script>
+  
