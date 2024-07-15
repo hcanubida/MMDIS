@@ -1,9 +1,9 @@
 <template>
     <Header></Header>
     <UserBtn/>
-    <div class="flex w-full justify-center items-start bg-orange-100">  
+    <div class="flex w-full justify-center items-start">  
         <!-- Accomplishment Reports Section -->
-        <div class="flex flex-col items-center p-8 bg-white mt-40 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-orange-100 mt-40 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/ar.png" alt="MGBLogo" class="flex justify-center w-24">
                 <h1 class="font-bold">Accomplishment Reports</h1>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Databases Section -->
-        <div class="flex flex-col items-center p-8 bg-white mt-40 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-orange-100 mt-40 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/db.png" alt="MGBLogo" class="flex justify-center w-24">
                 <h1 class="font-bold">Databases</h1>
