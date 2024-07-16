@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full">
+  <div class="flex w-full shadow-xl">
     <!-- Left Content Section: Area Status Clearance -->
     <div class="relative flex flex-col bg-white text-gray-700 w-6/12 p-4">
       <div class="flex flex-col md:flex-row md:items-center gap-4">
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div class="flex justify-between p-2 relative shadow-md">
+  <div class="flex bg-white justify-between p-2 relative ">
     <h2 class="flex text-xl font-semibold">The grand total Area Status Clearance released for this year is {{ totalSum }}.</h2>
     <button @click="showModal = true" class="text-green-600">UPDATE</button>
   </div>

@@ -9,10 +9,8 @@
     <!-- Charts Section -->
     <div class="mt-24">
       <Charts />
-    </div>
-
-    <!-- Interactive Buttons and Dropdowns Section -->
-    <div class="flex flex-col items-center p-8 m-4 rounded-3xl w-full">
+      <!-- Interactive Buttons and Dropdowns Section -->
+    <div class="flex flex-col relative bg-white items-center p-8 mt-4 w-full">
       <div class="grid grid-cols-2 gap-8">
         
         <!-- Area Status Clearance Dropdown -->
@@ -90,6 +88,9 @@
         </div>
       </div>
     </div>
+    </div>
+
+    
   </div>
 </template>
 
