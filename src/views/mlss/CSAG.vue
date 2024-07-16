@@ -14,7 +14,7 @@
 
     <!-- Search and Add New Data Section -->
     <div class="flex mt-8 justify-between">
-      <form class="w-1/3 ml-4" @submit.prevent="searchData">
+      <div class="w-1/3 ml-4">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
         <div class="relative">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -22,10 +22,9 @@
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>
           </div>
-          <input v-model="searchQuery" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
-          <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
         </div>
-      </form>
+      </div>
       <div class="content-center">
         <!-- Modal toggle -->
         <button @click="showModal = true" class="mr-4 bg-green-900 p-2 text-white font-bold rounded-lg">Add New Data</button>
@@ -64,23 +63,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr v-for="(csag, index) in filteredCSAG" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="px-6 py-4">{{ index + 1 }}</td>
-            <td class="px-6 py-4">{{ entry.name }}</td>
-            <td class="px-6 py-4">{{ entry.area }}</td>
-            <td class="px-6 py-4">{{ entry.province }}</td>
-            <td class="px-6 py-4">{{ entry.city_municipality }}</td>
-            <td class="px-6 py-4">{{ entry.barangay }}</td>
-            <td class="px-6 py-4">{{ entry.sitio }}</td>
-            <td class="px-6 py-4">{{ entry.river }}</td>
-            <td class="px-6 py-4">{{ entry.received }}</td>
-            <td class="px-6 py-4">{{ entry.released }}</td>
-            <td class="px-6 py-4">{{ entry.status }}</td>
-            <td class="px-6 py-4">{{ entry.remarks }}</td>
+            <td class="px-6 py-4">{{ csag.name }}</td>
+            <td class="px-6 py-4">{{ csag.area }}</td>
+            <td class="px-6 py-4">{{ csag.province }}</td>
+            <td class="px-6 py-4">{{ csag.city_municipality }}</td>
+            <td class="px-6 py-4">{{ csag.barangay }}</td>
+            <td class="px-6 py-4">{{ csag.sitio }}</td>
+            <td class="px-6 py-4">{{ csag.river }}</td>
+            <td class="px-6 py-4">{{ csag.received }}</td>
+            <td class="px-6 py-4">{{ csag.released }}</td>
+            <td class="px-6 py-4">{{ csag.status }}</td>
+            <td class="px-6 py-4">{{ csag.remarks }}</td>
           </tr>
         </tbody>
       </table>
-      <div v-if="filteredEntries.length === 0" class="text-center mt-4 text-gray-600 dark:text-gray-300">
+      <div v-if="filteredCSAG.length === 0" class="text-center mt-4 text-gray-600 dark:text-gray-300">
         No results found.
       </div>
     </div>
@@ -149,12 +148,13 @@
 
           <div class="mb-4">
             <label for="remarks" class="block text-sm font-medium text-gray-700">Remarks</label>
-            <input type="text" id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
           </div>
 
-          <div class="mt-6 flex justify-end">
-            <button type="submit" class="mr-2 bg-green-700 text-white font-bold py-2 px-4 rounded-lg">Save</button>
-            <button @click="clearNewEntry" type="button" class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancel</button>
+          <!-- Buttons -->
+          <div class="flex justify-end">
+            <button type="button" @click="showModal = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Entry</button>
           </div>
         </form>
       </div>
@@ -163,91 +163,20 @@
 </template>
 
 <script>
-  import Header from '../../components/header.vue';
-  import UserBtn from '../../components/user-dbbtn.vue';
-  import router from '../../router';
+import Header from '../../components/header.vue';
+import UserBtn from '../../components/user-dbbtn.vue';
+import axios from 'axios';
 
 export default {
   components: {
     Header,
-    UserBtn,
+    UserBtn
   },
   data() {
     return {
-      entries: [
-      {
-          no: 1,
-          name: 'MELITANTE, WILSON D.',
-          area: '49,041',
-          province: 'Misamis Oriental',
-          city_municipality: 'Gingoog City',
-          barangay: 'Malinao',
-          sitio: '',
-          river: 'Odiongan',
-          received: 'February 27, 2024',
-          released: 'April 1, 2024',
-          status: 'Held in Abeyance',
-          remarks: 'Amended',
-        },
-        {
-          no: 2,
-          name: 'PANCRUDO, RODOLFO L.',
-          area: '15,030',
-          province: 'Bukidnon',
-          city_municipality: 'Manolo Fortich',
-          barangay: 'Minsuro',
-          sitio: '',
-          river: 'Tagoloan',
-          received: 'December 15, 2023',
-          released: 'January 15, 2024',
-          status: 'Approved',
-          remarks: 'New',
-        },
-        {
-          no: 3,
-          name: 'CASIÑO, JOSHUA JEROME',
-          area: '20,464',
-          province: 'Misamis Oriental',
-          city_municipality: 'Tagoloan',
-          barangay: 'Sta Ana',
-          sitio: '',
-          river: 'Tagoloan',
-          received: 'September 12, 2023',
-          released: 'September 27, 2023',
-          status: 'Approved',
-          remarks: 'New',
-        },
-        {
-          no: 4,
-          name: 'ECHAVEZ, JUDY DIANE',
-          area: '18,366',
-          province: 'Lanao del Norte',
-          city_municipality: 'Iligan City',
-          barangay: 'Mainit',
-          sitio: '',
-          river: 'Kapisahan',
-          received: 'February 5, 2024',
-          released: 'February 22, 2024',
-          status: 'Approved',
-          remarks: 'New',
-        },
-        {
-          no: 5,
-          name: 'CANETE, ALFONSO GIAN R.',
-          area: '40,173',
-          province: 'Lanao del Norte',
-          city_municipality: 'Iligan City',
-          barangay: 'Mandulog',
-          sitio: '',
-          river: 'Mandulog',
-          received: 'March 15, 2023',
-          released: 'April 20, 2023',
-          status: 'Held in Abeyance',
-          remarks: 'Amended',
-        },
-      ],
+      csag: [],
       searchQuery: '',
-      sortKey: '',
+      sortBy: '',
       sortOrder: 'asc',
       showModal: false,
       newEntry: {
@@ -266,48 +195,54 @@ export default {
     };
   },
   computed: {
-    filteredEntries() {
+    filteredCSAG() {
       const query = this.searchQuery.toLowerCase();
-      return this.entries.filter(entry =>
-        entry.name.toLowerCase().includes(query) ||
-        entry.area.toLowerCase().includes(query) ||
-        entry.province.toLowerCase().includes(query) ||
-        entry.city_municipality.toLowerCase().includes(query) ||
-        entry.barangay.toLowerCase().includes(query) ||
-        entry.sitio.toLowerCase().includes(query) ||
-        entry.river.toLowerCase().includes(query) ||
-        entry.status.toLowerCase().includes(query) ||
-        entry.remarks.toLowerCase().includes(query)
+      const filtered = this.csag.filter(csag =>
+        csag.name.toLowerCase().includes(query) ||
+        csag.area.toLowerCase().includes(query) ||
+        csag.province.toLowerCase().includes(query) ||
+        csag.city_municipality.toLowerCase().includes(query) ||
+        csag.barangay.toLowerCase().includes(query) ||
+        csag.sitio.toLowerCase().includes(query) ||
+        csag.river.toLowerCase().includes(query) ||
+        csag.status.toLowerCase().includes(query) ||
+        csag.remarks.toLowerCase().includes(query)
       );
+
+      if (this.sortBy) {
+        filtered.sort((a, b) => {
+          if (this.sortOrder === 'asc') {
+            return new Date(a[this.sortBy]) - new Date(b[this.sortBy]);
+          } else {
+            return new Date(b[this.sortBy]) - new Date(a[this.sortBy]);
+          }
+        });
+      }
+
+      return filtered;
     },
   },
   methods: {
-    searchData() {
-      // Implement search functionality if needed
-    },
-    sortByDate(key) {
-      if (this.sortKey === key) {
-        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-      } else {
-        this.sortKey = key;
-        this.sortOrder = 'asc';
-      }
-
-      this.entries.sort((a, b) => {
-        const dateA = new Date(a[key]);
-        const dateB = new Date(b[key]);
-
-        if (this.sortOrder === 'asc') {
-          return dateA - dateB;
-        } else {
-          return dateB - dateA;
-        }
-      });
+    fetchCSAG() {
+      axios.get('http://localhost:8000/api/csag')
+        .then(response => {
+          this.csag = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching CSAG:', error);
+        });
     },
     addNewEntry() {
-      this.entries.push({ ...this.newEntry });
-      this.clearNewEntry();
-      this.showModal = false;
+      console.log('Sending data:', this.newEntry);  // Debug log
+      axios.post('http://localhost:8000/api/csag', this.newEntry)
+        .then(response => {
+          console.log('Data added successfully:', response.data);  // Debug log
+          this.csag.push(response.data);
+          this.clearNewEntry();
+        })
+        .catch(error => {
+          console.error('Error adding entry:', error.response ? error.response.data : error.message);  // Debug log
+        });
     },
     clearNewEntry() {
       this.newEntry = {
@@ -325,10 +260,24 @@ export default {
       };
       this.showModal = false;
     },
+    debouncedSearch: _.debounce(function() {
+      this.searchData();
+    }, 300),
+    searchData() {
+      // Trigger re-computation of filteredCSAG
+      this.filteredCSAG;
+    },
+    sortByDate(key) {
+      if (this.sortBy === key) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortBy = key;
+        this.sortOrder = 'asc';
+      }
+    }
+  },
+  mounted() {
+    this.fetchCSAG();
   },
 };
 </script>
-
-<style scoped>
-/* Your component-specific styles here */
-</style>
