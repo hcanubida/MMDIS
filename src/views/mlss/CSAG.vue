@@ -14,19 +14,20 @@
 
     <!-- Search and Add New Data Section -->
     <div class="flex mt-8 justify-between">
-      <div class="w-1/3 ml-4">
-        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-        <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+      <div class="flex w-2/5">
+        <div class="rounded-l-lg content-center bg-blue-100 items-center pe-3 ml-5 ps-3 pointer-events-none">
+            <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>
+        </div>
+        <div class="w-full">
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+          <div class="">
+            <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
           </div>
-          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
         </div>
       </div>
       <div class="content-center">
-        <!-- Modal toggle -->
         <button @click="showModal = true" class="mr-4 bg-green-900 p-2 text-white font-bold rounded-lg">Add New Data</button>
       </div>
     </div>
@@ -87,48 +88,69 @@
     <!-- Modal -->
     <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
       <div class="bg-white w-1/2 p-6 rounded-lg shadow-lg">
-        <!-- Your form fields for adding new data -->
         <form @submit.prevent="addNewEntry">
-          <!-- Example input fields -->
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" id="name" v-model="newEntry.name" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="name" 
+                   :value="formatInput(newEntry.name)" 
+                   @input="updateEntry('name', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
             <label for="area" class="block text-sm font-medium text-gray-700">Area</label>
-            <input type="text" id="area" v-model="newEntry.area" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="area" 
+                   :value="formatInput(newEntry.area)" 
+                   @input="updateEntry('area', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
             <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
             <select id="province" v-model="newEntry.province" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
-              <option>Bukidnon</option>
-              <option>Camiguin</option>
-              <option>Lanao del Norte</option>
-              <option>Misamis Occidental</option>
-              <option>Misamis Oriental</option>
+              <option>BUKIDNON</option>
+              <option>CAMIGUIN</option>
+              <option>LANAO DEL NORTE</option>
+              <option>MISAMIS OCCIDENTAL</option>
+              <option>MISAMIS ORIENTAL</option>
             </select>
           </div>
 
           <div class="mb-4">
             <label for="city_municipality" class="block text-sm font-medium text-gray-700">City/Municipality</label>
-            <input type="text" id="city_municipality" v-model="newEntry.city_municipality" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="city_municipality" 
+                   :value="formatInput(newEntry.city_municipality)" 
+                   @input="updateEntry('city_municipality', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
             <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
-            <input type="text" id="barangay" v-model="newEntry.barangay" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="barangay" 
+                   :value="formatInput(newEntry.barangay)" 
+                   @input="updateEntry('barangay', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
             <label for="sitio" class="block text-sm font-medium text-gray-700">Sitio</label>
-            <input type="text" id="sitio" v-model="newEntry.sitio" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            <input type="text" id="sitio" 
+                   :value="formatInput(newEntry.sitio)" 
+                   @input="updateEntry('sitio', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
           </div>
 
           <div class="mb-4">
             <label for="river" class="block text-sm font-medium text-gray-700">River</label>
-            <input type="text" id="river" v-model="newEntry.river" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="river" 
+                   :value="formatInput(newEntry.river)" 
+                   @input="updateEntry('river', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
@@ -143,7 +165,11 @@
 
           <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-            <input type="text" id="status" v-model="newEntry.status" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="text" id="status" 
+                   :value="formatInput(newEntry.status)" 
+                   @input="updateEntry('status', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
 
           <div class="mb-4">
@@ -151,7 +177,6 @@
             <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
           </div>
 
-          <!-- Buttons -->
           <div class="flex justify-end">
             <button type="button" @click="showModal = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Entry</button>
@@ -203,6 +228,12 @@ export default {
         status: '',
         remarks: '',
       };
+    },
+    formatInput(value) {
+      return value ? value.toUpperCase() : '';
+    },
+    updateEntry(field, value) {
+      this.newEntry[field] = value.toUpperCase();
     },
     fetchCSAG() {
       axios.get('http://localhost:8000/api/csag')
