@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full shadow-xl">
+  <div class="flex w-full shadow-xl mt-32">
     <!-- Left Content Section: Area Status Clearance -->
     <div class="relative flex flex-col bg-white text-gray-700 w-6/12 p-4">
       <div class="flex flex-col md:flex-row md:items-center gap-4">
