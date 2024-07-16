@@ -166,6 +166,7 @@
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
 import axios from 'axios';
+import debounce from 'lodash/debounce';
 
 export default {
   components: {
@@ -179,73 +180,17 @@ export default {
       sortBy: '',
       sortOrder: 'asc',
       showModal: false,
-      newEntry: {
-        name: '',
-        area: '',
-        province: '',
-        city_municipality: '',
-        barangay: '',
-        sitio: '',
-        river: '',
-        received: '',
-        released: '',
-        status: '',
-        remarks: '',
-      },
+      newEntry: this.getEmptyEntry(),
     };
   },
   computed: {
     filteredCSAG() {
-      const query = this.searchQuery.toLowerCase();
-      const filtered = this.csag.filter(csag =>
-        csag.name.toLowerCase().includes(query) ||
-        csag.area.toLowerCase().includes(query) ||
-        csag.province.toLowerCase().includes(query) ||
-        csag.city_municipality.toLowerCase().includes(query) ||
-        csag.barangay.toLowerCase().includes(query) ||
-        csag.sitio.toLowerCase().includes(query) ||
-        csag.river.toLowerCase().includes(query) ||
-        csag.status.toLowerCase().includes(query) ||
-        csag.remarks.toLowerCase().includes(query)
-      );
-
-      if (this.sortBy) {
-        filtered.sort((a, b) => {
-          if (this.sortOrder === 'asc') {
-            return new Date(a[this.sortBy]) - new Date(b[this.sortBy]);
-          } else {
-            return new Date(b[this.sortBy]) - new Date(a[this.sortBy]);
-          }
-        });
-      }
-
-      return filtered;
+      return this.getFilteredAndSortedData();
     },
   },
   methods: {
-    fetchCSAG() {
-      axios.get('http://localhost:8000/api/csag')
-        .then(response => {
-          this.csag = response.data;
-        })
-        .catch(error => {
-          console.error('Error fetching CSAG:', error);
-        });
-    },
-    addNewEntry() {
-      console.log('Sending data:', this.newEntry);  // Debug log
-      axios.post('http://localhost:8000/api/csag', this.newEntry)
-        .then(response => {
-          console.log('Data added successfully:', response.data);  // Debug log
-          this.csag.push(response.data);
-          this.clearNewEntry();
-        })
-        .catch(error => {
-          console.error('Error adding entry:', error.response ? error.response.data : error.message);  // Debug log
-        });
-    },
-    clearNewEntry() {
-      this.newEntry = {
+    getEmptyEntry() {
+      return {
         name: '',
         area: '',
         province: '',
@@ -258,9 +203,31 @@ export default {
         status: '',
         remarks: '',
       };
+    },
+    fetchCSAG() {
+      axios.get('http://localhost:8000/api/csag')
+        .then(response => {
+          this.csag = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching CSAG:', error);
+        });
+    },
+    addNewEntry() {
+      axios.post('http://localhost:8000/api/csag', this.newEntry)
+        .then(response => {
+          this.csag.push(response.data);
+          this.clearNewEntry();
+        })
+        .catch(error => {
+          console.error('Error adding entry:', error.response ? error.response.data : error.message);
+        });
+    },
+    clearNewEntry() {
+      this.newEntry = this.getEmptyEntry();
       this.showModal = false;
     },
-    debouncedSearch: _.debounce(function() {
+    debouncedSearch: debounce(function() {
       this.searchData();
     }, 300),
     searchData() {
@@ -274,6 +241,24 @@ export default {
         this.sortBy = key;
         this.sortOrder = 'asc';
       }
+    },
+    getFilteredAndSortedData() {
+      const query = this.searchQuery.toLowerCase();
+      const filtered = this.csag.filter(csag =>
+        Object.values(csag).some(val => 
+          String(val).toLowerCase().includes(query)
+        )
+      );
+
+      if (this.sortBy) {
+        filtered.sort((a, b) => {
+          const dateA = new Date(a[this.sortBy]);
+          const dateB = new Date(b[this.sortBy]);
+          return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+      }
+
+      return filtered;
     }
   },
   mounted() {
