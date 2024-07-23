@@ -43,14 +43,14 @@
             <th scope="col" class="px-6 py-3">Permit No.</th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('issued')">
               Date of Issuance
-              <span v-if="sortBy === 'received'" aria-label="Sorted ascending">
+              <span v-if="sortBy === 'issued'" aria-label="Sorted ascending">
                 <template v-if="sortOrder === 'asc'">▲</template>
                 <template v-else>▼</template>
               </span>
             </th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('validated')">
               Date of Validation
-              <span v-if="sortBy === 'released'" aria-label="Sorted ascending">
+              <span v-if="sortBy === 'validated'" aria-label="Sorted ascending">
                 <template v-if="sortOrder === 'asc'">▲</template>
                 <template v-else>▼</template>
               </span>
@@ -66,7 +66,9 @@
             <td class="px-6 py-4">{{ moep.permit_no }}</td>
             <td class="px-6 py-4">{{ moep.issued }}</td>
             <td class="px-6 py-4">{{ moep.validated }}</td>
-            <td class="px-6 py-4"><button @click="openPDF(moep.reportPDF)" class="bg-red-500 text-white px-2 py-1 rounded">View</button></td>
+            <td class="px-6 py-4">
+              <button @click="openPDF(moep.reportPDF)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -184,27 +186,33 @@ export default {
         });
     },
     addNewEntry() {
-      const formData = new FormData();
-      formData.append('applicant', this.newEntry.applicant);
-      formData.append('moep_no', this.newEntry.moep_no);
-      formData.append('permit_no', this.newEntry.permit_no);
-      formData.append('issued', this.newEntry.issued);
-      formData.append('validated', this.newEntry.validated);
-      formData.append('reportPDF', this.$refs.reportPDF.files[0]);
+  const fileInput = this.$refs.reportPDF.files[0];
+  if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+    alert('File size exceeds 5MB.');
+    return;
+  }
 
-      axios.post('http://localhost:8000/api/MOEP', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then(response => {
-        this.moep.push(response.data);
-        this.clearNewEntry();
-      })
-      .catch(error => {
-        console.error('Error adding entry:', error.response ? error.response.data : error.message);
-      });
-    },
+  const formData = new FormData();
+  formData.append('applicant', this.newEntry.applicant);
+  formData.append('moep_no', this.newEntry.moep_no);
+  formData.append('permit_no', this.newEntry.permit_no);
+  formData.append('issued', this.newEntry.issued);
+  formData.append('validated', this.newEntry.validated);
+  formData.append('reportPDF', fileInput);
+
+  axios.post('http://localhost:8000/api/MOEP', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    this.moep.push(response.data);
+    this.clearNewEntry();
+  })
+  .catch(error => {
+    console.error('Error adding entry:', error.response ? error.response.data : error.message);
+  });
+},
     clearNewEntry() {
       this.newEntry = this.getEmptyEntry();
       this.showModal = false;
@@ -241,6 +249,14 @@ export default {
       }
 
       return filtered;
+    },
+    openPDF(pdfPath) {
+      const url = `http://localhost:8000/storage/${pdfPath}`;
+      if (pdfPath) {
+        window.open(url, '_blank');
+      } else {
+        console.error('PDF URL not found');
+      }
     }
   },
   mounted() {
