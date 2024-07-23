@@ -251,7 +251,9 @@ export default {
       return filtered;
     },
     openPDF(pdfPath) {
-      const url = `http://localhost:8000/storage/${pdfPath}`;
+      const index = pdfPath.indexOf('/');
+      const pdfFinalPath = pdfPath.slice(index + 1);
+      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
       if (pdfPath) {
         window.open(url, '_blank');
       } else {
