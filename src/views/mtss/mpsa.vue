@@ -8,7 +8,7 @@
   
       <!-- Title Section -->
       <div class="flex flex-col mt-44 justify-center font-bold text-center">
-        <h1 class="text-4xl">MPSA</h1>
+        <h1 class="text-4xl">Mineral Production Sharing Aggreement</h1>
       </div>
     </div>
 </template>

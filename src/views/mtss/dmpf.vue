@@ -8,7 +8,7 @@
   
       <!-- Title Section -->
       <div class="flex flex-col mt-44 justify-center font-bold text-center">
-        <h1 class="text-4xl">DMPF</h1>
+        <h1 class="text-4xl">Declaration of Mine Project Feasibility</h1>
       </div>
     </div>
 </template>
