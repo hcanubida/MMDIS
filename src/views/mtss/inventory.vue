@@ -17,8 +17,19 @@
     </div>
 
     <!-- Search and Add Section -->
-    <div class="flex justify-end mt-8">
-      <SearchBar v-model="searchQuery" />
+    <div class="flex justify-between mt-8">
+      <!-- Search Input Container -->
+      <div class="flex w-2/5 ml-2">
+        <!-- Search Icon -->
+        <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
+          <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+          </svg>
+        </div>
+        <!-- Search Input Field -->
+        <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
+      </div>
+      <!-- Add Button -->
       <AddBtn @click="showModal = true" />
     </div>
 
@@ -43,8 +54,6 @@
                 <template v-else>▼</template>
               </span>
             </th>
-            <th scope="col" class="px-6 py-3">Payment Date</th>
-            <th scope="col" class="px-6 py-3">Sample Inspection</th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('released_date')">
               Released Date
               <span v-if="sortKey === 'released_date'" aria-label="Sorted ascending">
@@ -108,7 +117,13 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Location:</p>
-                    <input v-model="newEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="newEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>BUKIDNON</option>
+                      <option>CAMUIGUIN</option>
+                      <option>LANAO DEL NORTE</option>
+                      <option>MISAMIS OCCIDENTAL</option>
+                      <option>MISAMIS ORIENTAL</option>
+                    </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Travel Date:</p>
@@ -152,7 +167,6 @@
 
 <script>
 import Header from '../../components/header.vue'; 
-import SearchBar from '../../components/MTSS/search-bar.vue'; 
 import AddBtn from '../../components/MTSS/add-btn.vue'; 
 import UserBtn from '../../components/user-dbbtn.vue'; 
 import Charts from '../../components/MTSS/charts_OSTC.vue';
@@ -164,7 +178,6 @@ export default {
     Header,
     AddBtn,
     UserBtn,
-    SearchBar,
     Charts,
   },
   data() {
@@ -196,7 +209,7 @@ export default {
       };
     },
     fetchInventory() {
-      axios.get('http://localhost:8000/api/inventory')
+      axios.get('http://localhost:8000/api/monitoringInventory')
         .then(response => {
           this.inventory = response.data;
         })
@@ -220,7 +233,7 @@ export default {
       formData.append('mmd_personnel', this.newEntry.mmd_personnel);
       formData.append('MOVpdf', fileInput);
 
-      axios.post('http://localhost:8000/api/inventory', formData, {
+      axios.post('http://localhost:8000/api/monitoringInventory', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

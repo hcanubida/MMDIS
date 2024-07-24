@@ -1,167 +1,297 @@
 <template>
-    
-    <div class="mt-28 w-full rounded-xl bg-white bg-clip-border text-gray-700 shadow-md overflow-hidden">
-
-            <div class="mx-4 mt-2 flex flex-col gap-4 rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none md:flex-row md:items-center">
-                <div class="w-max rounded-lg bg-gray-900 p-5 text-white" >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                >
-                    <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
-                    ></path>
-                </svg>
+    <div>
+      <!-- Header and User Button Section -->
+      <div class="flex">
+        <Header />
+        <UserBtn />
+      </div>
+  
+      <!-- Title Section -->
+      <div class="flex flex-col mt-44 justify-center font-bold text-center">
+        <h1 class="text-4xl">Minahang Bayan Monitoring</h1>
+      </div>
+  
+      <!-- Charts Section -->
+      <div class="mt-24">
+        <Charts />
+      </div>
+  
+      <!-- Search and Add Section -->
+      <div class="flex justify-between mt-8">
+        <!-- Search Input Container -->
+        <div class="flex w-2/5 ml-2">
+          <!-- Search Icon -->
+          <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
+            <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+          </div>
+          <!-- Search Input Field -->
+          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
+        </div>
+        <!-- Add Button -->
+        <AddBtn @click="showModal = true" />
+      </div>
+  
+      <!-- Table Section -->
+      <div class="mt-8">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" class="px-6 py-3">Month</th>
+              <th scope="col" class="px-6 py-3">Petitioner</th>
+              <th scope="col" class="px-6 py-3">Location of Declared Minahang Bayan</th>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
+                Travel Date
+                <span v-if="sortKey === 'travel_date'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('report_date')">
+                Report Date
+                <span v-if="sortKey === 'report_date'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('transmittal_date')">
+                Transmittal Date
+                <span v-if="sortKey === 'transmittal_date'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('released_date')">
+                Released Date
+                <span v-if="sortKey === 'released_date'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3">MMD Personnel</th>
+              <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
+              <th scope="col" class="px-6 py-3 text-center">Map</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="px-6 py-4">{{ entry.month }}</td>
+              <td class="px-6 py-4">{{ entry.petitioner }}</td>
+              <td class="px-6 py-4">{{ entry.location }}</td>
+              <td class="px-6 py-4">{{ entry.travel_date }}</td>
+              <td class="px-6 py-4">{{ entry.report_date }}</td>
+              <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
+              <td class="px-6 py-4">{{ entry.released_date }}</td>
+              <td class="px-6 py-4">{{ entry.mmd_personnel }}</td>
+              <td class="px-6 py-4 text-center">
+                <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+              </td>
+              <td class="px-6 py-4 text-center">
+                <button @click="openJPEG(entry.map)" class="bg-green-500 text-white px-2 py-1 rounded">View</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div v-if="filteredEntries.length === 0" class="text-center mt-4 text-gray-600 dark:text-gray-300">
+          No results found.
+        </div>
+      </div>
+  
+      <!-- Modal -->
+      <div v-if="showModal" class="fixed inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <!-- Background overlay -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+  
+          <!-- Modal content -->
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Month:</p>
+                    <select v-model="newEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Petitioner:</p>
+                    <input v-model="newEntry.petitioner" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Location of Declared Minahang Bayan:</p>
+                    <input v-model="newEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Travel Date:</p>
+                    <input v-model="newEntry.travel_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Report Date:</p>
+                    <input v-model="newEntry.report_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Transmittal Date:</p>
+                    <input v-model="newEntry.transmittal_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Released Date:</p>
+                    <input v-model="newEntry.released_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">MMD Personnel:</p>
+                    <input v-model="newEntry.mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">MOV (.pdf):</p>
+                    <input type="file" ref="MOVpdf" accept=".pdf" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Map (.jpg):</p>
+                    <input type="file" ref="map" accept=".jpg" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
                 </div>
-                <div>
-                <h6 class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                    Annual Statistics for Inventory 
-                </h6>
-                <p class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
-                    Here is the visualization of Inventory.
-                </p>
-                </div>
+              </div>
             </div>
-            <div class="py-6 mt-4 grid place-items-center px-2">
-                <div id="pie-chart"></div>
+            <div class="flex items-center justify-between px-4 py-3 bg-gray-50 text-right sm:px-6">
+              <button @click="showModal = false" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
+              <button @click="submitEntry" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
             </div>
-            <div class="flex justify-end">
-            <SearchBar/>
-            <AddBtn/>
-            </div>
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Month
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Petitioner
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Location of Declared<br>Minahang Bayan
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Travel Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Report Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Transmittal Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Released Date
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                MMD Personnel
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Proof of MOV Uploaded
-                            </th>
-                            <th>
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop PC
-                            </td>
-                            <td class="px-6 py-4">
-                                $1999
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-    <Header/>
-    <UserBtn/>
+          </div>
+        </div>
+      </div>
     </div>
-</template>
+  </template>
 
 <script>
-import Header from '../../components/header.vue'; // Import Header component
-import SearchBar from '../../components/MTSS/search-bar.vue'; // Import Search Bar component
-import AddBtn from '../../components/MTSS/mbm-add-btn.vue'; // Import Add Button component
-import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
-import router from '../../router'; // Import your Vue Router instance
+import Header from '../../components/header.vue'; 
+import AddBtn from '../../components/MTSS/add-btn.vue'; 
+import UserBtn from '../../components/user-dbbtn.vue'; 
+import Charts from '../../components/MTSS/charts_OSTC.vue';
+import axios from 'axios';
+import debounce from 'lodash/debounce';
 
 export default {
-    components: {
-        Header, // Register Header component
-        AddBtn,
-        UserBtn,
-        SearchBar
-    },
-    mounted() {
-        this.renderChart();
-    },
-    methods: {
-        renderChart() {
-            const chartConfig = {
-                series: [44, 55],
-                chart: {
-                    type: "pie",
-                    width: 280,
-                    height: 280,
-                },
-                title: {
-                    show: false,
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                colors: ["#020617", "#ff8f00"],
-                legend: {
-                    show: false,
-                },
-            };
-
-            const chart = new ApexCharts(document.querySelector("#pie-chart"), chartConfig);
-            chart.render();
-        }
+  components: { Header, UserBtn, AddBtn, Charts },
+  data() {
+    return {
+      searchQuery: '',
+      entries: [], // Assuming entries will be fetched from the API
+      showModal: false,
+      newEntry: {
+        month: '',
+        petitioner: '',
+        location: '',
+        travel_date: '',
+        report_date: '',
+        transmittal_date: '',
+        released_date: '',
+        mmd_personnel: '',
+        MOVpdf: null,
+        map: null
+      },
+      sortKey: '',
+      sortOrder: 'asc'
+    };
+  },
+  computed: {
+    filteredEntries() {
+      let entries = this.entries;
+      if (this.searchQuery) {
+        const query = this.searchQuery.toLowerCase();
+        entries = entries.filter(entry => {
+          return Object.values(entry).some(val => val.toLowerCase().includes(query));
+        });
+      }
+      if (this.sortKey) {
+        entries = entries.slice().sort((a, b) => {
+          const valA = new Date(a[this.sortKey]);
+          const valB = new Date(b[this.sortKey]);
+          return this.sortOrder === 'asc' ? valA - valB : valB - valA;
+        });
+      }
+      return entries;
     }
+  },
+  methods: {
+    openPDF(pdfPath) {
+      const index = pdfPath.indexOf('/');
+      const pdfFinalPath = pdfPath.slice(index + 1);
+      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      if (pdfPath) {
+        window.open(url, '_blank');
+      } else {
+        console.error('PDF URL not found');
+      }
+    },
+    openJPEG(jpgPath) {
+      const index = jpgPath.indexOf('/');
+      const jpgFinalPath = jpgPath.slice(index + 1);
+      const url = `http://localhost:8000/storage/${jpgFinalPath}`;
+      if (jpgPath) {
+        window.open(url, '_blank');
+      } else {
+        console.error('JPG URL not found');
+      }
+    },
+    sortByDate(key) {
+      this.sortOrder = this.sortKey === key ? (this.sortOrder === 'asc' ? 'desc' : 'asc') : 'asc';
+      this.sortKey = key;
+    },
+    fetchMB() {
+      axios.get('http://localhost:8000/api/monitoringMB').then(response => {
+        this.entries = response.data;
+      }).catch(error => {
+        console.error('Error fetching data:', error);
+      });
+    },
+    submitEntry() {
+      const formData = new FormData();
+      formData.append('month', this.newEntry.month);
+      formData.append('petitioner', this.newEntry.petitioner);
+      formData.append('location', this.newEntry.location);
+      formData.append('travel_date', this.newEntry.travel_date);
+      formData.append('report_date', this.newEntry.report_date);
+      formData.append('transmittal_date', this.newEntry.transmittal_date);
+      formData.append('released_date', this.newEntry.released_date);
+      formData.append('mmd_personnel', this.newEntry.mmd_personnel);
+      if (this.$refs.MOVpdf.files.length) {
+        formData.append('MOVpdf', this.$refs.MOVpdf.files[0]);
+      }
+      if (this.$refs.map.files.length) {
+        formData.append('map', this.$refs.map.files[0]);
+      }
+
+      axios.post('http://localhost:8000/api/monitoringMB', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      }).then(() => {
+        this.showModal = false;
+        this.fetchMB();
+      }).catch(error => {
+        console.error('Error submitting entry:', error);
+      });
+    },
+    debouncedSearch: debounce(function () {
+      this.fetchMB();
+    }, 300)
+  },
+  mounted() {
+    this.fetchMB();
+  }
 };
 </script>

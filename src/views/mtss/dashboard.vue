@@ -63,13 +63,13 @@ export default {
             router.push('/mtss/investigation');
         },
         redirectToAI() {
-            router.push('/mtss/ai');
+            router.push('/mtss/anti-illegal');
         },
         redirectToDMPF() {
             router.push('/mtss/dmpf');
         },
         redirectToPCMRB() {
-            router.push('/mtss/pcmrb');
+            router.push('/mtss/pcmrbm');
         },
         redirectToMPSA() {
             router.push('/mtss/mpsa');
