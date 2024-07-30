@@ -45,7 +45,7 @@ export default {
                     const dataset = data.datasets[0];
                     const value = dataset.data[i];
                     return {
-                      text: `${label}: ${value} entries`,
+                      text: `${label}: ${value}`,
                       fillStyle: dataset.backgroundColor[i],
                       hidden: isNaN(dataset.data[i]) || chart.getDatasetMeta(0).data[i].hidden,
                       index: i
@@ -61,7 +61,7 @@ export default {
               label: function (context) {
                 let label = context.label || '';
                 if (context.parsed !== null) {
-                  label += ': ' + context.parsed + ' entries';
+                  label += ': ' + context.parsed;
                 }
                 return label;
               },

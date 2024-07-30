@@ -63,7 +63,13 @@
             <th scope="col" class="px-6 py-3">No.</th>
             <th scope="col" class="px-6 py-3">Names</th>
             <th scope="col" class="px-6 py-3">Area</th>
-            <th scope="col" class="px-6 py-3">Province</th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('province')">
+              Province
+              <span v-if="sortBy === 'province'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
             <th scope="col" class="px-6 py-3">City/Municipality</th>
             <th scope="col" class="px-6 py-3">Barangay</th>
             <th scope="col" class="px-6 py-3">Sitio</th>
@@ -116,92 +122,98 @@
             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
             <input type="text" id="name" 
                    :value="formatInput(newEntry.name)" 
-                   @input="updateEntry('name', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
+                   @input="updateEntry('name', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="area" class="block text-sm font-medium text-gray-700">Area</label>
             <input type="text" id="area" 
                    :value="formatInput(newEntry.area)" 
-                   @input="updateEntry('area', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
+                   @input="updateEntry('area', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
-            <select type="text" id="province" 
-                   :value="formatInput(newEntry.province)" 
-                   @input="updateEntry('province', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required>
+            <select id="province" v-model="newEntry.province" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
               <option>BUKIDNON</option>
               <option>CAMIGUIN</option>
               <option>LANAO DEL NORTE</option>
               <option>MISAMIS OCCIDENTAL</option>
-              <option>MISAMIS ORIENTAL</option>                 
+              <option>MISAMIS ORIENTAL</option>
             </select>
           </div>
+
           <div class="mb-4">
             <label for="city_municipality" class="block text-sm font-medium text-gray-700">City/Municipality</label>
             <input type="text" id="city_municipality" 
                    :value="formatInput(newEntry.city_municipality)" 
-                   @input="updateEntry('city_municipality', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
+                   @input="updateEntry('city_municipality', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
             <input type="text" id="barangay" 
                    :value="formatInput(newEntry.barangay)" 
-                   @input="updateEntry('barangay', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
+                   @input="updateEntry('barangay', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="sitio" class="block text-sm font-medium text-gray-700">Sitio</label>
             <input type="text" id="sitio" 
                    :value="formatInput(newEntry.sitio)" 
-                   @input="updateEntry('sitio', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
+                   @input="updateEntry('sitio', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
           </div>
+
           <div class="mb-4">
             <label for="river" class="block text-sm font-medium text-gray-700">River</label>
             <input type="text" id="river" 
                    :value="formatInput(newEntry.river)" 
-                   @input="updateEntry('river', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
+                   @input="updateEntry('river', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="received" class="block text-sm font-medium text-gray-700">Date Received</label>
-            <input type="date" id="received" 
-                   :value="newEntry.received" 
-                   @input="updateEntry('received', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
+            <input type="date" id="received" v-model="newEntry.received" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
           </div>
+
           <div class="mb-4">
             <label for="released" class="block text-sm font-medium text-gray-700">Date Released</label>
-            <input type="date" id="released" 
-                   :value="newEntry.released" 
-                   @input="updateEntry('released', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
+            <input type="date" id="released" v-model="newEntry.released" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
           </div>
+
           <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <input type="text" id="status" 
                    :value="formatInput(newEntry.status)" 
-                   @input="updateEntry('status', $event.target.value)"
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
+                   @input="updateEntry('status', $event.target.value)" 
+                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   required>
           </div>
+
           <div class="mb-4">
             <label for="remarks" class="block text-sm font-medium text-gray-700">Remarks</label>
-            <textarea id="remarks" 
-                      :value="formatInput(newEntry.remarks)" 
-                      @input="updateEntry('remarks', $event.target.value)"
-                      class="mt-1 p-2 w-full border border-gray-300 rounded-lg"></textarea>
+            <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
           </div>
+
           <div class="flex justify-end">
-            <button type="button" @click="showModal = false" class="mr-4 bg-gray-400 p-2 text-white font-bold rounded-lg">Cancel</button>
-            <button type="submit" class="bg-green-900 p-2 text-white font-bold rounded-lg">Add</button>
+            <button type="button" @click="showModal = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Entry</button>
           </div>
         </form>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -289,7 +301,7 @@ export default {
       return value ? value.toUpperCase() : '';
     },
     updateEntry(field, value) {
-      this.$set(this.newEntry, field, value.toUpperCase());
+      this.newEntry[field] = value.toUpperCase();
     },
     fetchCSAG() {
       axios.get('http://localhost:8000/api/csag')
@@ -301,18 +313,14 @@ export default {
         });
     },
     addNewEntry() {
-      if (this.validateEntry(this.newEntry)) {
-        axios.post('http://localhost:8000/api/csag', this.newEntry)
-          .then(response => {
-            this.csag.push(response.data);
-            this.clearNewEntry();
-          })
-          .catch(error => {
-            console.error('Error adding entry:', error.response ? error.response.data : error.message);
-          });
-      } else {
-        console.warn('Invalid entry data');
-      }
+      axios.post('http://localhost:8000/api/csag', this.newEntry)
+        .then(response => {
+          this.csag.push(response.data);
+          this.clearNewEntry();
+        })
+        .catch(error => {
+          console.error('Error adding entry:', error.response ? error.response.data : error.message);
+        });
     },
     clearNewEntry() {
       this.newEntry = this.getEmptyEntry();
@@ -334,23 +342,36 @@ export default {
       }
     },
     getFilteredAndSortedData() {
-      const query = this.searchQuery.toLowerCase();
-      const filtered = this.csag.filter(csag =>
-        Object.values(csag).some(val => 
-          String(val).toLowerCase().includes(query)
-        )
-      );
+  const query = this.searchQuery.toLowerCase();
+  const filtered = this.csag.filter(csag =>
+    Object.values(csag).some(val => 
+      String(val).toLowerCase().includes(query)
+    )
+  );
 
-      if (this.sortBy) {
-        filtered.sort((a, b) => {
-          const aValue = this.sortBy === 'released' ? new Date(a[this.sortBy]) : a[this.sortBy];
-          const bValue = this.sortBy === 'released' ? new Date(b[this.sortBy]) : b[this.sortBy];
-          return this.sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
-        });
+  if (this.sortBy) {
+    filtered.sort((a, b) => {
+      let aValue = a[this.sortBy];
+      let bValue = b[this.sortBy];
+
+      if (this.sortBy === 'released' || this.sortBy === 'received') {
+        aValue = new Date(aValue);
+        bValue = new Date(bValue);
+      } else {
+        aValue = String(aValue).toLowerCase();
+        bValue = String(bValue).toLowerCase();
       }
 
-      return filtered;
-    },
+      if (this.sortOrder === 'asc') {
+        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+      } else {
+        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+      }
+    });
+  }
+
+  return filtered;
+  },
     updateCharts() {
     this.$nextTick(() => {
       this.initCharts();
