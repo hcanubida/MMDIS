@@ -1,5 +1,3 @@
-<!-- CSAG.vue -->
-
 <template>
   <div>
     <!-- Header and User Button Section -->
@@ -13,6 +11,29 @@
       <h1 class="text-4xl">Area Status Clearance</h1>
       <h2 class="text-2xl">Commercial Sand and Gravel</h2>
     </div>
+
+    <div class="flex w-full shadow-xl">
+      <!-- Left Content Section: Area Status Clearance -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="monthlyTotals" />
+        </div>
+      </div>
+
+      <!-- Right Content Section: Pie Chart -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4">
+        <div class="py-6 grid place-items-center">
+          <PieChart :provinceData="provinceData" />
+        </div>
+      </div>
+    </div>
+    <!-- get the total sum of released from the latest year -->
+    <div class="flex bg-white justify-between pl-4">
+      <h2 class="flex text-xl font-semibold">The total sum of Commercial Sand and Gravel released for the {{ year }} year  is {{ totalSum }}.</h2> 
+    </div>
+
+    
 
     <!-- Search and Add New Data Section -->
     <div class="flex mt-8 justify-between">
@@ -76,7 +97,7 @@
             <td class="px-6 py-4">{{ csag.sitio }}</td>
             <td class="px-6 py-4">{{ csag.river }}</td>
             <td class="px-6 py-4">{{ csag.received }}</td>
-            <td class="px-6 py-4">{{ csag.released }}</td>
+            <td class="px-6 py-4">{{ formatDate(csag.released) }}</td>
             <td class="px-6 py-4">{{ csag.status }}</td>
             <td class="px-6 py-4">{{ csag.remarks }}</td>
           </tr>
@@ -95,93 +116,88 @@
             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
             <input type="text" id="name" 
                    :value="formatInput(newEntry.name)" 
-                   @input="updateEntry('name', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('name', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
           </div>
-
           <div class="mb-4">
             <label for="area" class="block text-sm font-medium text-gray-700">Area</label>
             <input type="text" id="area" 
                    :value="formatInput(newEntry.area)" 
-                   @input="updateEntry('area', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('area', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
           </div>
-
           <div class="mb-4">
             <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
-            <select id="province" v-model="newEntry.province" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <select type="text" id="province" 
+                   :value="formatInput(newEntry.province)" 
+                   @input="updateEntry('province', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required>
               <option>BUKIDNON</option>
               <option>CAMIGUIN</option>
               <option>LANAO DEL NORTE</option>
               <option>MISAMIS OCCIDENTAL</option>
-              <option>MISAMIS ORIENTAL</option>
+              <option>MISAMIS ORIENTAL</option>                 
             </select>
           </div>
-
           <div class="mb-4">
             <label for="city_municipality" class="block text-sm font-medium text-gray-700">City/Municipality</label>
             <input type="text" id="city_municipality" 
                    :value="formatInput(newEntry.city_municipality)" 
-                   @input="updateEntry('city_municipality', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('city_municipality', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
           </div>
-
           <div class="mb-4">
             <label for="barangay" class="block text-sm font-medium text-gray-700">Barangay</label>
             <input type="text" id="barangay" 
                    :value="formatInput(newEntry.barangay)" 
-                   @input="updateEntry('barangay', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('barangay', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
           </div>
-
           <div class="mb-4">
             <label for="sitio" class="block text-sm font-medium text-gray-700">Sitio</label>
             <input type="text" id="sitio" 
                    :value="formatInput(newEntry.sitio)" 
-                   @input="updateEntry('sitio', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                   @input="updateEntry('sitio', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
           </div>
-
           <div class="mb-4">
             <label for="river" class="block text-sm font-medium text-gray-700">River</label>
             <input type="text" id="river" 
                    :value="formatInput(newEntry.river)" 
-                   @input="updateEntry('river', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('river', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
           </div>
-
           <div class="mb-4">
             <label for="received" class="block text-sm font-medium text-gray-700">Date Received</label>
-            <input type="date" id="received" v-model="newEntry.received" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="date" id="received" 
+                   :value="newEntry.received" 
+                   @input="updateEntry('received', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" required />
           </div>
-
           <div class="mb-4">
             <label for="released" class="block text-sm font-medium text-gray-700">Date Released</label>
-            <input type="date" id="released" v-model="newEntry.released" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="date" id="released" 
+                   :value="newEntry.released" 
+                   @input="updateEntry('released', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
           </div>
-
           <div class="mb-4">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <input type="text" id="status" 
                    :value="formatInput(newEntry.status)" 
-                   @input="updateEntry('status', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
-                   required>
+                   @input="updateEntry('status', $event.target.value)"
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-lg" />
           </div>
-
           <div class="mb-4">
             <label for="remarks" class="block text-sm font-medium text-gray-700">Remarks</label>
-            <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+            <textarea id="remarks" 
+                      :value="formatInput(newEntry.remarks)" 
+                      @input="updateEntry('remarks', $event.target.value)"
+                      class="mt-1 p-2 w-full border border-gray-300 rounded-lg"></textarea>
           </div>
-
           <div class="flex justify-end">
-            <button type="button" @click="showModal = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Entry</button>
+            <button type="button" @click="showModal = false" class="mr-4 bg-gray-400 p-2 text-white font-bold rounded-lg">Cancel</button>
+            <button type="submit" class="bg-green-900 p-2 text-white font-bold rounded-lg">Add</button>
           </div>
         </form>
       </div>
@@ -192,29 +208,67 @@
 <script>
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
-import axios from 'axios';
+import MonthBarChart from '../../components/MLSS/bymonth-barchart.vue';
+import PieChart from '../../components/MLSS/byprovince-piechart.vue';
 import debounce from 'lodash/debounce';
+import axios from 'axios';
 
 export default {
-  components: {
-    Header,
-    UserBtn
-  },
+  components: { Header, UserBtn, MonthBarChart, PieChart },
   data() {
     return {
-      csag: [],
+      csag: [], 
+      showModal: false,
       searchQuery: '',
       sortBy: '',
       sortOrder: 'asc',
-      showModal: false,
       newEntry: this.getEmptyEntry(),
     };
   },
   computed: {
     filteredCSAG() {
-      return this.getFilteredAndSortedData();
-    },
+    return this.getFilteredAndSortedData();
   },
+  totalSum() {
+    const latestYear = Math.max(...this.csag.map(item => new Date(item.released).getFullYear()));
+    return this.csag
+      .filter(csag => new Date(csag.released).getFullYear() === latestYear)
+      .length;
+  },
+  monthlyTotals() {
+      const latestYear = Math.max(...this.csag.map(item => new Date(item.released).getFullYear()));
+      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+      this.csag.forEach(csag => {
+        const releaseDate = new Date(csag.released);
+        if (releaseDate.getFullYear() === latestYear) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+    return monthlyData;
+  },
+  provinceData() {
+      const latestYear = Math.max(...this.csag.map(item => new Date(item.released).getFullYear()));
+      const provinceTotals = {};
+
+      this.csag.forEach(csag => {
+        const Year = new Date(csag.released);
+        if (Year.getFullYear() === latestYear) {
+          if (!provinceTotals[csag.province]) {
+            provinceTotals[csag.province] = 0;
+          }
+          provinceTotals[csag.province]++;
+        }
+      });
+
+      return provinceTotals;
+  },
+  year() {
+    return new Date().getFullYear();
+  }
+},
   methods: {
     getEmptyEntry() {
       return {
@@ -235,7 +289,7 @@ export default {
       return value ? value.toUpperCase() : '';
     },
     updateEntry(field, value) {
-      this.newEntry[field] = value.toUpperCase();
+      this.$set(this.newEntry, field, value.toUpperCase());
     },
     fetchCSAG() {
       axios.get('http://localhost:8000/api/csag')
@@ -247,14 +301,18 @@ export default {
         });
     },
     addNewEntry() {
-      axios.post('http://localhost:8000/api/csag', this.newEntry)
-        .then(response => {
-          this.csag.push(response.data);
-          this.clearNewEntry();
-        })
-        .catch(error => {
-          console.error('Error adding entry:', error.response ? error.response.data : error.message);
-        });
+      if (this.validateEntry(this.newEntry)) {
+        axios.post('http://localhost:8000/api/csag', this.newEntry)
+          .then(response => {
+            this.csag.push(response.data);
+            this.clearNewEntry();
+          })
+          .catch(error => {
+            console.error('Error adding entry:', error.response ? error.response.data : error.message);
+          });
+      } else {
+        console.warn('Invalid entry data');
+      }
     },
     clearNewEntry() {
       this.newEntry = this.getEmptyEntry();
@@ -285,17 +343,33 @@ export default {
 
       if (this.sortBy) {
         filtered.sort((a, b) => {
-          const dateA = new Date(a[this.sortBy]);
-          const dateB = new Date(b[this.sortBy]);
-          return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+          const aValue = this.sortBy === 'released' ? new Date(a[this.sortBy]) : a[this.sortBy];
+          const bValue = this.sortBy === 'released' ? new Date(b[this.sortBy]) : b[this.sortBy];
+          return this.sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
         });
       }
 
       return filtered;
-    }
+    },
+    updateCharts() {
+    this.$nextTick(() => {
+      this.initCharts();
+    });
+  },
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+  },
+  debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
   },
   mounted() {
     this.fetchCSAG();
-  },
+  }
 };
 </script>
