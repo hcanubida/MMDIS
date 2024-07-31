@@ -33,7 +33,7 @@
     </div>
     <!-- get the total sum of released from the latest year -->
     <div class="flex bg-white justify-between pl-4">
-      <h2 class="flex text-xl font-semibold">The total sum of Industrial Sand and Gravel released for the {{ year }} year  is {{ totalSum }}.</h2> 
+      <h2 class="flex text-xl font-semibold">The total sum of Industrial Sand and Gravel released for the year {{ year }} is {{ totalSum }}.</h2> 
     </div>
 
     <!-- Search and Add New Data Section -->
@@ -221,8 +221,8 @@
 <script>
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
-import MonthBarChart from '../../components/MLSS/bymonth-barchart.vue';
-import PieChart from '../../components/MLSS/byprovince-piechart.vue';
+import MonthBarChart from '../../components/bymonth-barchart.vue';
+import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 

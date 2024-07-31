@@ -11,9 +11,21 @@
       <h1 class="text-4xl">Ore Sample Transport Certificate</h1>
     </div>
 
-    <!-- Charts Section -->
-    <div class="mt-24">
-      <Charts />
+    <!-- Chart Section -->
+    <div class="flex w-full shadow-xl justify-center">
+      <div class="flex flex-col bg-white text-gray-700 w-6/12  p-4 ">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="monthlyTotals" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Sum Section -->
+    <div class="flex bg-white justify-between pl-4 pt-4">
+      <h2 class="flex text-xl font-semibold">
+        The total sum of Ore Sample Transport Certificates released for the year {{ year }} is {{ totalSum }}.
+      </h2>
     </div>
 
     <!-- Search and Add Section -->
@@ -77,7 +89,7 @@
             <td class="px-6 py-4">{{ entry.received_mmd }}</td>
             <td class="px-6 py-4">{{ entry.payment_date }}</td>
             <td class="px-6 py-4">{{ entry.sample_inspection }}</td>
-            <td class="px-6 py-4">{{ entry.issued }}</td>
+            <td class="px-6 py-4">{{ formatDate(entry.issued) }}</td>
             <td class="px-6 py-4">{{ entry.mmd_personnel }}</td>
             <td class="px-6 py-4 text-center">
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
@@ -99,7 +111,7 @@
 
           <!-- Modal content -->
           <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -136,13 +148,12 @@
                     <input v-model="newEntry.mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
-                    <p class="mr-5">Proof of MOV:</p>
+                    <p class="mr-5">Proof of MOV Uploaded:</p>
                     <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Modal footer -->
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                 Close
@@ -155,7 +166,6 @@
           </div>
         </div>
       </div>
-      <!-- End Modal -->
     </div>
   </div>
 </template>
@@ -164,17 +174,12 @@
 import Header from '../../components/header.vue'; // Import Header component
 import AddBtn from '../../components/MTSS/add-btn.vue'; // Import Add Button component
 import UserBtn from '../../components/user-dbbtn.vue'; // Import User Button component
-import Charts from '../../components/MTSS/charts_OSTC.vue';
+import MonthBarChart from '../../components/bymonth-barchart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
 export default {
-  components: {
-    Header,
-    AddBtn,
-    UserBtn,
-    Charts,
-  },
+  components: { Header, UserBtn, AddBtn, MonthBarChart },
   data() {
     return {
       ostc: [],
@@ -189,6 +194,29 @@ export default {
     filteredEntries() {
       return this.getFilteredAndSortedData();
     },
+    totalSum() {
+    const latestYear = Math.max(...this.ostc.map(item => new Date(item.issued).getFullYear()));
+    return this.ostc
+      .filter(ostc => new Date(ostc.issued).getFullYear() === latestYear)
+      .length;
+    },
+    monthlyTotals() {
+      const latestYear = Math.max(...(this.ostc || []).map(item => new Date(item.issued).getFullYear()));
+      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+      (this.ostc || []).forEach(entry => {
+        const releaseDate = new Date(entry.issued);
+        if (releaseDate.getFullYear() === latestYear) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+      return monthlyData;
+    },
+    year() {
+      return new Date().getFullYear();
+    }
   },
   methods: {
     getEmptyEntry() {
@@ -201,12 +229,13 @@ export default {
         sample_inspection: '',
         issued: '',
         mmd_personnel: '',
-        MOVpdf: null,
+        MOVpdf: '',
       };
     },
     fetchOSTC() {
       axios.get('http://localhost:8000/api/monitoringOSTC')
         .then(response => {
+          console.log('Fetched data:', response.data); // Debug log
           this.ostc = response.data;
         })
         .catch(error => {
@@ -244,17 +273,6 @@ export default {
         console.error('Error adding entry:', error.response ? error.response.data : error.message);
       });
     },
-    clearNewEntry() {
-      this.newEntry = this.getEmptyEntry();
-      this.showModal = false;
-    },
-    debouncedSearch: debounce(function() {
-      this.searchData();
-    }, 300),
-    searchData() {
-      // Trigger re-computation of filteredEntries
-      this.filteredEntries;
-    },
     sortByDate(key) {
       if (this.sortKey === key) {
         this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -264,15 +282,23 @@ export default {
       }
     },
     getFilteredAndSortedData() {
-      const query = this.searchQuery.toLowerCase();
-      const filtered = this.ostc.filter(entry =>
-        Object.values(entry).some(val => 
-          String(val).toLowerCase().includes(query)
-        )
-      );
+      let filtered = this.ostc.filter(entry => {
+        const query = this.searchQuery.toLowerCase();
+        return (
+          entry.client.toLowerCase().includes(query) ||
+          entry.certification_no.toLowerCase().includes(query) ||
+          entry.received_ord.toLowerCase().includes(query) ||
+          entry.received_mmd.toLowerCase().includes(query) ||
+          entry.payment_date.toLowerCase().includes(query) ||
+          entry.sample_inspection.toLowerCase().includes(query) ||
+          entry.issued.toLowerCase().includes(query) ||
+          entry.mmd_personnel.toLowerCase().includes(query) ||
+          entry.MOVpdf.toLowerCase().includes(query)
+        );
+      });
 
       if (this.sortKey) {
-        filtered.sort((a, b) => {
+        filtered = filtered.sort((a, b) => {
           const dateA = new Date(a[this.sortKey]);
           const dateB = new Date(b[this.sortKey]);
           return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
@@ -290,10 +316,13 @@ export default {
       } else {
         console.error('PDF URL not found');
       }
-    }
+    },
+    formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString('en-US');
+    },
   },
   mounted() {
     this.fetchOSTC();
-  },
+  }
 };
 </script>

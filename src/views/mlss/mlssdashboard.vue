@@ -26,7 +26,7 @@
     <!-- Display the overall total sum -->
     <div class="flex bg-white justify-between pl-4">
       <h2 class="flex text-xl font-semibold">
-        The total sum of Area Status Clearance released for the {{ year }} year is {{ overallTotalSum }}.
+        The total sum of Area Status Clearance released for the year {{ year }} is {{ overallTotalSum }}.
       </h2>
     </div>
 
@@ -116,8 +116,8 @@
 <script>
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
-import MonthBarChart from '../../components/MLSS/bymonth-barchart.vue';
-import PieChart from '../../components/MLSS/byprovince-piechart.vue';
+import MonthBarChart from '../../components/bymonth-barchart.vue';
+import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
 import router from '../../router';
 

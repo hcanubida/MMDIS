@@ -11,9 +11,29 @@
       <h1 class="text-4xl">Inventory</h1>
     </div>
 
-    <!-- Charts Section -->
-    <div class="mt-24">
-      <Charts />
+    <!-- Chart Section -->
+    <div class="flex w-full shadow-xl">
+      <!-- Left Content Section: Area Status Clearance -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="monthlyTotals" />
+        </div>
+      </div>
+
+      <!-- Right Content Section: Pie Chart -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4">
+        <div class="py-6 grid place-items-center">
+          <PieChart :provinceData="provinceData" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Sum Section -->
+    <div class="flex bg-white justify-between pl-4">
+      <h2 class="flex text-xl font-semibold">
+        The total sum of Inventory Reports released for the year {{ year }} is {{ totalSum }}.
+      </h2>
     </div>
 
     <!-- Search and Add Section -->
@@ -38,8 +58,20 @@
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3">Month</th>
-            <th scope="col" class="px-6 py-3">Location</th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('month')">
+              Month
+              <span v-if="sortKey === 'month'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('location')">
+              Location
+              <span v-if="sortKey === 'location'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
               Travel Date
               <span v-if="sortKey === 'travel_date'" aria-label="Sorted ascending">
@@ -170,6 +202,8 @@ import Header from '../../components/header.vue';
 import AddBtn from '../../components/MTSS/add-btn.vue'; 
 import UserBtn from '../../components/user-dbbtn.vue'; 
 import Charts from '../../components/MTSS/charts_OSTC.vue';
+import MonthBarChart from '../../components/bymonth-barchart.vue';
+import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
@@ -178,7 +212,8 @@ export default {
     Header,
     AddBtn,
     UserBtn,
-    Charts,
+    MonthBarChart,
+    PieChart
   },
   data() {
     return {
@@ -195,6 +230,45 @@ export default {
     filteredEntries() {
       return this.getFilteredAndSortedData();
     },
+    totalSum() {
+    const latestYear = Math.max(...this.inventory.map(item => new Date(item.released_date).getFullYear()));
+    return this.inventory
+      .filter(inventory => new Date(inventory.released_date).getFullYear() === latestYear)
+      .length;
+    },
+    monthlyTotals() {
+      const latestYear = Math.max(...(this.inventory || []).map(item => new Date(item.released_date).getFullYear()));
+      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+      (this.inventory || []).forEach(entry => {
+        const releaseDate = new Date(entry.released_date);
+        if (releaseDate.getFullYear() === latestYear) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+      return monthlyData;
+    },
+    provinceData() {
+      const latestYear = Math.max(...this.inventory.map(item => new Date(item.released_date).getFullYear()));
+      const provinceTotals = {};
+
+      this.inventory.forEach(inventory => {
+        const Year = new Date(inventory.released_date);
+        if (Year.getFullYear() === latestYear) {
+          if (!provinceTotals[inventory.location]) {
+            provinceTotals[inventory.location] = 0;
+          }
+          provinceTotals[inventory.location]++;
+        }
+      });
+
+      return provinceTotals;
+    },
+    year() {
+      return new Date().getFullYear();
+    }
   },
   methods: {
     getEmptyEntry() {
@@ -273,13 +347,26 @@ export default {
         )
       );
 
-      if (this.sortKey) {
-        filtered.sort((a, b) => {
-          const dateA = new Date(a[this.sortKey]);
-          const dateB = new Date(b[this.sortKey]);
-          return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-        });
+    if (this.sortKey) {
+    filtered.sort((a, b) => {
+      let aValue = a[this.sortKey];
+      let bValue = b[this.sortKey];
+
+      if (this.sortKey === 'released' || this.sortKey === 'received') {
+        aValue = new Date(aValue);
+        bValue = new Date(bValue);
+      } else {
+        aValue = String(aValue).toLowerCase();
+        bValue = String(bValue).toLowerCase();
       }
+
+      if (this.sortOrder === 'asc') {
+        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+      } else {
+        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+      }
+    });
+  }
 
       return filtered;
     },
