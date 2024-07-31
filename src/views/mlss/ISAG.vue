@@ -14,6 +14,28 @@
       <h2 class="text-2xl">Industrial Sand and Gravel</h2>
     </div>
 
+    <!-- Chart Section -->
+    <div class="flex w-full shadow-xl">
+      <!-- Left Content Section: Area Status Clearance -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="monthlyTotals" />
+        </div>
+      </div>
+
+      <!-- Right Content Section: Pie Chart -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4">
+        <div class="py-6 grid place-items-center">
+          <PieChart :provinceData="provinceData" />
+        </div>
+      </div>
+    </div>
+    <!-- get the total sum of released from the latest year -->
+    <div class="flex bg-white justify-between pl-4">
+      <h2 class="flex text-xl font-semibold">The total sum of Industrial Sand and Gravel released for the {{ year }} year  is {{ totalSum }}.</h2> 
+    </div>
+
     <!-- Search and Add New Data Section -->
     <div class="flex mt-8 justify-between">
       <div class="flex w-2/5">
@@ -42,7 +64,13 @@
             <th scope="col" class="px-6 py-3">No.</th>
             <th scope="col" class="px-6 py-3">Names</th>
             <th scope="col" class="px-6 py-3">Area</th>
-            <th scope="col" class="px-6 py-3">Province</th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('province')">
+              Province
+              <span v-if="sortBy === 'province'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
             <th scope="col" class="px-6 py-3">City/Municipality</th>
             <th scope="col" class="px-6 py-3">Barangay</th>
             <th scope="col" class="px-6 py-3">Sitio</th>
@@ -76,7 +104,7 @@
             <td class="px-6 py-4">{{ isag.sitio }}</td>
             <td class="px-6 py-4">{{ isag.river }}</td>
             <td class="px-6 py-4">{{ isag.received }}</td>
-            <td class="px-6 py-4">{{ isag.released }}</td>
+            <td class="px-6 py-4">{{ formatDate(isag.released) }}</td>
             <td class="px-6 py-4">{{ isag.status }}</td>
             <td class="px-6 py-4">{{ isag.remarks }}</td>
           </tr>
@@ -193,14 +221,13 @@
 <script>
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
+import MonthBarChart from '../../components/MLSS/bymonth-barchart.vue';
+import PieChart from '../../components/MLSS/byprovince-piechart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
 export default {
-  components: {
-    Header,
-    UserBtn
-  },
+  components: { Header, UserBtn, MonthBarChart, PieChart },
   data() {
     return {
       isag: [],
@@ -215,8 +242,53 @@ export default {
     filteredISAG() {
       return this.getFilteredAndSortedData();
     },
+    totalSum() {
+    const latestYear = Math.max(...this.isag.map(item => new Date(item.released).getFullYear()));
+    return this.isag
+      .filter(isag => new Date(isag.released).getFullYear() === latestYear)
+      .length;
+  },
+  monthlyTotals() {
+      const latestYear = Math.max(...this.isag.map(item => new Date(item.released).getFullYear()));
+      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+      this.isag.forEach(isag => {
+        const releaseDate = new Date(isag.released);
+        if (releaseDate.getFullYear() === latestYear) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+    return monthlyData;
+  },
+  provinceData() {
+      const latestYear = Math.max(...this.isag.map(item => new Date(item.released).getFullYear()));
+      const provinceTotals = {};
+
+      this.isag.forEach(isag => {
+        const Year = new Date(isag.released);
+        if (Year.getFullYear() === latestYear) {
+          if (!provinceTotals[isag.province]) {
+            provinceTotals[isag.province] = 0;
+          }
+          provinceTotals[isag.province]++;
+        }
+      });
+
+      return provinceTotals;
+  },
+  year() {
+    return new Date().getFullYear();
+  }
   },
   methods: {
+
+    formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0];
+    },
+
     getEmptyEntry() {
       return {
         name: '',
@@ -285,12 +357,25 @@ export default {
       );
 
       if (this.sortBy) {
-        filtered.sort((a, b) => {
-          const dateA = new Date(a[this.sortBy]);
-          const dateB = new Date(b[this.sortBy]);
-          return this.sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-        });
-      }
+      filtered.sort((a, b) => {
+        let aValue = a[this.sortBy];
+        let bValue = b[this.sortBy];
+
+        if (this.sortBy === 'released' || this.sortBy === 'received') {
+          aValue = new Date(aValue);
+          bValue = new Date(bValue);
+        } else {
+          aValue = String(aValue).toLowerCase();
+          bValue = String(bValue).toLowerCase();
+        }
+
+        if (this.sortOrder === 'asc') {
+          return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+        } else {
+          return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+        }
+      });
+    }
 
       return filtered;
     }

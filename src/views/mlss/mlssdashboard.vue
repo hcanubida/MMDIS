@@ -6,111 +6,133 @@
       <UserBtn />
     </div>
 
-    <!-- Charts Section -->
-    <div class="mt-24">
-      <Charts />
-      <!-- Interactive Buttons and Dropdowns Section -->
-    <div class="flex flex-col relative bg-white items-center p-8 mt-4 w-full">
-      <div class="grid grid-cols-2 gap-8">
-        
-        <!-- Area Status Clearance Dropdown -->
-        <div>
-          <button 
-            @click="toggleDropdown('isDropdownASC')" 
-            class="flex items-center justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
-            :aria-expanded="isDropdownASC.toString()"
-            aria-controls="area-status-dropdown"
-          >
-            Area Status Clearance
-            <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
-          </button>
-          <div v-if="isDropdownASC" id="area-status-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
-            <a 
-              v-for="(item, index) in areaStatusItems" 
-              :key="index"  
-              @click="openPDF(item.pdfUrl)" 
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              {{ item.label }}
-            </a>
-          </div>
+    <!-- Chart Section -->
+    <div class="flex w-full shadow-xl mt-28">
+      <!-- Left Content Section: Area Status Clearance -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-2">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="combinedMonthlyTotals" />
         </div>
+      </div>
 
-        <!-- Database Dropdown -->
-        <div>
-          <button 
-            @click="toggleDropdown('isDropdownDatabase')" 
-            class="flex justify-center items-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
-            :aria-expanded="isDropdownDatabase.toString()"
-            aria-controls="database-dropdown"
-          >
-            Database
-            <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
-          </button>
-          <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-orange-200 rounded-lg shadow-lg text-left">
-            <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
-            <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
-            
-            <!-- New Dropdown under Area Status Clearance -->
-            <div>
-              <button 
-                @click="toggleDropdown('isDropdownASCNew')" 
-                class="flex justify-between items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                :aria-expanded="isDropdownASCNew.toString()"
-                aria-controls="area-status-new-dropdown"
-              >
+      <!-- Right Content Section: Pie Chart -->
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-2">
+        <div class="py-6 grid place-items-center">
+          <PieChart :provinceData="combinedProvinceData" />
+        </div>
+      </div>
+    </div>
+    <!-- Display the overall total sum -->
+    <div class="flex bg-white justify-between pl-4">
+      <h2 class="flex text-xl font-semibold">
+        The total sum of Area Status Clearance released for the {{ year }} year is {{ overallTotalSum }}.
+      </h2>
+    </div>
+
+    <div class="mt-8">
+      <!-- Interactive Buttons and Dropdowns Section -->
+      <div class="flex flex-col relative bg-white items-center p-8 mt-4 w-full">
+        <div class="grid grid-cols-2 gap-8">
+          <!-- Area Status Clearance Dropdown -->
+          <div>
+            <button
+              @click="toggleDropdown('isDropdownASC')"
+              class="flex items-center justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+              :aria-expanded="isDropdownASC.toString()"
+              aria-controls="area-status-dropdown"
+            >
               Area Status Clearance
-                <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
-              </button>
-              <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
-                <a 
-                  @click="navigateTo('CSAG')"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  CSAG
-                </a>
-                <a 
-                  @click="navigateTo('ISAG')"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  ISAG
-                </a>
-                <a 
-                  @click="navigateTo('MQUARRY')"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  MQUARRY
-                </a>
-              </div>
+              <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
+            </button>
+            <div v-if="isDropdownASC" id="area-status-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
+              <a
+                v-for="(item, index) in areaStatusItems"
+                :key="index"
+                @click="openPDF(item.pdfUrl)"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                {{ item.label }}
+              </a>
             </div>
-            <!-- End of New Dropdown -->
+          </div>
+
+          <!-- Database Dropdown -->
+          <div>
+            <button
+              @click="toggleDropdown('isDropdownDatabase')"
+              class="flex justify-center items-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+              :aria-expanded="isDropdownDatabase.toString()"
+              aria-controls="database-dropdown"
+            >
+              Database
+              <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
+            </button>
+            <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-orange-200 rounded-lg shadow-lg text-left">
+              <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
+              <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
+
+              <!-- New Dropdown under Area Status Clearance -->
+              <div>
+                <button
+                  @click="toggleDropdown('isDropdownASCNew')"
+                  class="flex justify-between items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  :aria-expanded="isDropdownASCNew.toString()"
+                  aria-controls="area-status-new-dropdown"
+                >
+                  Area Status Clearance
+                  <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
+                </button>
+                <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
+                  <a
+                    @click="navigateTo('CSAG')"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    CSAG
+                  </a>
+                  <a
+                    @click="navigateTo('ISAG')"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    ISAG
+                  </a>
+                  <a
+                    @click="navigateTo('MQUARRY')"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    MQUARRY
+                  </a>
+                </div>
+              </div>
+              <!-- End of New Dropdown -->
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-
-    
   </div>
 </template>
 
 <script>
 import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
-import Charts from '../../components/MLSS/charts.vue';
+import MonthBarChart from '../../components/MLSS/bymonth-barchart.vue';
+import PieChart from '../../components/MLSS/byprovince-piechart.vue';
+import axios from 'axios';
 import router from '../../router';
 
 export default {
   components: {
     Header,
     UserBtn,
-    Charts,
+    MonthBarChart,
+    PieChart,
   },
   data() {
     return {
       isDropdownASC: false,
       isDropdownDatabase: false,
-      isDropdownASCNew: false, // Added for the new dropdown under Area Status Clearance
+      isDropdownASCNew: false,
       areaStatusItems: [
         { label: 'C1: New No Conflict', pdfUrl: 'ASCpdf/CASE 1 - final copy.pdf' },
         { label: 'C2: Amendment', pdfUrl: 'ASCpdf/CASE 2 - final copy.pdf' },
@@ -130,10 +152,114 @@ export default {
         { label: 'CSAG', route: '/mlss/CSAG' },
         { label: 'ISAG', route: '/mlss/ISAG' },
         { label: 'MQUARRY', route: '/mlss/MQUARRY' },
-      ]
+      ],
+      csag: [],
+      isag: [],
+      quarry: [],
     };
   },
+  computed: {
+    csagTotals() {
+      return this.calculateTotals(this.csag);
+    },
+    csagTotalSum() {
+      return this.csagTotals.totalSum;
+    },
+    csagMonthlyTotals() {
+      return this.csagTotals.monthlyData;
+    },
+    csagProvinceData() {
+      return this.csagTotals.provinceTotals;
+    },
+
+    isagTotals() {
+      return this.calculateTotals(this.isag);
+    },
+    isagTotalSum() {
+      return this.isagTotals.totalSum;
+    },
+    isagMonthlyTotals() {
+      return this.isagTotals.monthlyData;
+    },
+    isagProvinceData() {
+      return this.isagTotals.provinceTotals;
+    },
+
+    quarryTotals() {
+      return this.calculateTotals(this.quarry);
+    },
+    quarryTotalSum() {
+      return this.quarryTotals.totalSum;
+    },
+    quarryMonthlyTotals() {
+      return this.quarryTotals.monthlyData;
+    },
+    quarryProvinceData() {
+      return this.quarryTotals.provinceTotals;
+    },
+
+    year() {
+      return new Date().getFullYear();
+    },
+
+    overallTotalSum() {
+      return this.csagTotalSum + this.isagTotalSum + this.quarryTotalSum;
+    },
+
+    combinedMonthlyTotals() {
+      const combinedTotals = Array(12).fill(0);
+
+      [this.csagMonthlyTotals, this.isagMonthlyTotals, this.quarryMonthlyTotals].forEach(monthlyTotals => {
+        monthlyTotals.forEach((total, index) => {
+          combinedTotals[index] += total;
+        });
+      });
+
+      return combinedTotals;
+    },
+
+    combinedProvinceData() {
+      const combinedData = {};
+
+      [this.csagProvinceData, this.isagProvinceData, this.quarryProvinceData].forEach(provinceData => {
+        Object.keys(provinceData).forEach(province => {
+          if (!combinedData[province]) {
+            combinedData[province] = 0;
+          }
+          combinedData[province] += provinceData[province];
+        });
+      });
+
+      return combinedData;
+    },
+  },
   methods: {
+    calculateTotals(dataset) {
+      if (!Array.isArray(dataset) || dataset.length === 0) {
+        return { totalSum: 0, monthlyData: Array(12).fill(0), provinceTotals: {} };
+      }
+
+      const latestYear = Math.max(...dataset.map(item => new Date(item.released).getFullYear()));
+      const monthlyData = Array(12).fill(0);
+      const provinceTotals = {};
+      let totalSum = 0;
+
+      dataset.forEach(item => {
+        const releaseDate = new Date(item.released);
+        if (releaseDate.getFullYear() === latestYear) {
+          totalSum++;
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+
+          if (!provinceTotals[item.province]) {
+            provinceTotals[item.province] = 0;
+          }
+          provinceTotals[item.province]++;
+        }
+      });
+
+      return { totalSum, monthlyData, provinceTotals };
+    },
     toggleDropdown(dropdown) {
       this[dropdown] = !this[dropdown];
     },
@@ -148,11 +274,30 @@ export default {
     },
     MiningTenementMaps() {
       router.push('/mlss/MTM');
+    },
+    fetchData(endpoint, variable) {
+      axios.get(`http://localhost:8000/api/${endpoint}`)
+        .then(response => {
+          this[variable] = response.data;
+        })
+        .catch(error => {
+          console.error(`Error fetching ${endpoint.toUpperCase()}:`, error);
+        });
+    },
+    fetchCSAG() {
+      this.fetchData('csag', 'csag');
+    },
+    fetchISAG() {
+      this.fetchData('isag', 'isag');
+    },
+    fetchQUARRY() {
+      this.fetchData('quarry', 'quarry');
     }
-  }
+  },
+  mounted() {
+    this.fetchCSAG();
+    this.fetchISAG();
+    this.fetchQUARRY();
+  },
 };
 </script>
-
-<style scoped>
-/* Add your scoped styles here */
-</style>
