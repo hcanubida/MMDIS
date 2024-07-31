@@ -11,24 +11,25 @@
         <h1 class="text-4xl">Investigation</h1>
       </div>
   
-      <!-- Charts Section -->
-      <div class="mt-24">
-        <Charts />
+      <!-- Chart Section -->
+      <div class="flex w-full shadow-xl justify-center mt-2">
+        <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+          <!-- Bar Chart Section -->
+          <div class="pt-6">
+            <MonthBarChart :monthlyTotals="monthlyTotals" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Sum Section -->
+      <div class="flex bg-white justify-between pl-4 pt-4">
+        <h2 class="flex text-xl font-semibold">
+          The total sum of Investigation Reports released for the year {{ year }} is {{ totalSum }}.
+        </h2>
       </div>
   
       <!-- Search and Add Section -->
-      <div class="flex justify-between mt-8">
-        <!-- Search Input Container -->
-        <div class="flex w-2/5 ml-2">
-          <!-- Search Icon -->
-          <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
-            <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-            </svg>
-          </div>
-          <!-- Search Input Field -->
-          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
-        </div>
+      <div class="flex justify-end mt-8">
         <!-- Add Button -->
         <AddBtn @click="showModal = true" />
       </div>
@@ -151,11 +152,12 @@
               </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button @click="addNewEntry" type="button" class="inline-flex justify-center px-4 py-2 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                Add
+              <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
               </button>
-              <button @click="showModal = false" type="button" class="inline-flex justify-center px-4 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto sm:text-sm">
-                Cancel
+              <!-- Add request button -->
+              <button @click="submitEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Add
               </button>
             </div>
           </div>
@@ -169,7 +171,7 @@
   import Header from '../../components/header.vue'; 
   import AddBtn from '../../components/MTSS/add-btn.vue'; 
   import UserBtn from '../../components/user-dbbtn.vue'; 
-  import Charts from '../../components/MTSS/charts_OSTC.vue';
+  import MonthBarChart from '../../components/bymonth-barchart.vue';
   import axios from 'axios';
   import debounce from 'lodash/debounce';
   
@@ -178,7 +180,7 @@
       Header,
       UserBtn,
       AddBtn,
-      Charts
+      MonthBarChart
     },
     data() {
       return {
@@ -217,7 +219,27 @@
             }
             return 0;
           });
-      }
+      },
+      latestYear() {
+        return Math.max(...this.investigation.map(item => new Date(item.released_date).getFullYear()));
+      },
+      totalSum() {
+        return this.investigation.filter(entry => new Date(entry.released_date).getFullYear() === this.latestYear).length;
+      },
+      monthlyTotals() {
+        const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+        this.investigation.forEach(entry => {
+          const releaseDate = new Date(entry.released_date);
+          if (releaseDate.getFullYear() === this.latestYear) {
+            const month = releaseDate.getMonth(); // 0 = January, 11 = December
+            monthlyData[month]++;
+          }
+        });
+        return monthlyData;
+      },
+      year() {
+        return new Date().getFullYear();
+      },
     },
     methods: {
       fetchInvestigation() {
@@ -227,6 +249,7 @@
           })
           .catch(error => {
             console.error('Error fetching Investigation:', error);
+            alert('Failed to fetch investigation data. Please try again later.');
           });
       },
       addNewEntry() {
@@ -263,6 +286,7 @@
         })
         .catch(error => {
           console.error('Error adding entry:', error.response ? error.response.data : error.message);
+          alert('Failed to add new entry. Please try again later.');
         });
       },
       clearNewEntry() {
@@ -305,6 +329,4 @@
       this.fetchInvestigation();
     }
   };
-  </script>
-  
-  
+</script>

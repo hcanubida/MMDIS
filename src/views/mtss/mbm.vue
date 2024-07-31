@@ -11,10 +11,22 @@
         <h1 class="text-4xl">Minahang Bayan Monitoring</h1>
       </div>
   
-      <!-- Charts Section -->
-      <div class="mt-24">
-        <Charts />
+      <!-- Chart Section -->
+      <div class="flex w-full shadow-xl justify-center mt-2">
+        <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+          <!-- Bar Chart Section -->
+          <div class="pt-6">
+            <MonthBarChart :monthlyTotals="monthlyTotals" />
+          </div>
+        </div>
       </div>
+
+    <!-- Total Sum Section -->
+    <div class="flex bg-white justify-between pl-4 pt-4">
+      <h2 class="flex text-xl font-semibold">
+        The total sum of Minahang Bayan Monitoring Reports released for the year {{ year }} is {{ totalSum }}.
+      </h2>
+    </div>
   
       <!-- Search and Add Section -->
       <div class="flex justify-between mt-8">
@@ -27,7 +39,7 @@
             </svg>
           </div>
           <!-- Search Input Field -->
-          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, river, status or remarks..." required />
+          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search month, petitioner, and location of declared Minahang Bayan ..." required />
         </div>
         <!-- Add Button -->
         <AddBtn @click="showModal = true" />
@@ -38,9 +50,21 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">Month</th>
+              <th scope="col" class="px-6 py-3" @click="sortByDate('month')">
+                Month
+                <span v-if="sortKey === 'month'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+              </th>
               <th scope="col" class="px-6 py-3">Petitioner</th>
-              <th scope="col" class="px-6 py-3">Location of Declared Minahang Bayan</th>
+              <th scope="col" class="px-6 py-3" @click="sortByDate('location')">
+                Location of Declared Minahang Bayan
+                <span v-if="sortKey === 'location'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+              </th>
               <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
                 Travel Date
                 <span v-if="sortKey === 'travel_date'" aria-label="Sorted ascending">
@@ -168,9 +192,14 @@
                 </div>
               </div>
             </div>
-            <div class="flex items-center justify-between px-4 py-3 bg-gray-50 text-right sm:px-6">
-              <button @click="showModal = false" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
-              <button @click="submitEntry" type="button" class="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+              </button>
+              <!-- Add request button -->
+              <button @click="submitEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Add
+              </button>
             </div>
           </div>
         </div>
@@ -182,12 +211,12 @@
 import Header from '../../components/header.vue'; 
 import AddBtn from '../../components/MTSS/add-btn.vue'; 
 import UserBtn from '../../components/user-dbbtn.vue'; 
-import Charts from '../../components/MTSS/charts_OSTC.vue';
+import MonthBarChart from '../../components/bymonth-barchart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 
 export default {
-  components: { Header, UserBtn, AddBtn, Charts },
+  components: { Header, UserBtn, AddBtn, MonthBarChart },
   data() {
     return {
       searchQuery: '',
@@ -211,24 +240,69 @@ export default {
   },
   computed: {
     filteredEntries() {
-      let entries = this.entries;
-      if (this.searchQuery) {
-        const query = this.searchQuery.toLowerCase();
-        entries = entries.filter(entry => {
-          return Object.values(entry).some(val => val.toLowerCase().includes(query));
-        });
+  let entries = this.entries;
+
+  if (this.searchQuery) {
+    const query = this.searchQuery.toLowerCase();
+    entries = entries.filter(entry =>
+      entry.month.toLowerCase().includes(query) ||
+      entry.petitioner.toLowerCase().includes(query) ||
+      entry.location.toLowerCase().includes(query) ||
+      Object.values(entry).some(val => String(val).toLowerCase().includes(query))
+    );
+  }
+
+  if (this.sortKey) {
+    entries = entries.slice().sort((a, b) => {
+      let aValue = a[this.sortKey];
+      let bValue = b[this.sortKey];
+
+      if (this.sortKey === 'released_date' || this.sortKey === 'travel_date' || this.sortKey === 'report_date' || this.sortKey === 'transmittal_date') {
+        aValue = new Date(aValue);
+        bValue = new Date(bValue);
+      } else {
+        aValue = String(aValue).toLowerCase();
+        bValue = String(bValue).toLowerCase();
       }
-      if (this.sortKey) {
-        entries = entries.slice().sort((a, b) => {
-          const valA = new Date(a[this.sortKey]);
-          const valB = new Date(b[this.sortKey]);
-          return this.sortOrder === 'asc' ? valA - valB : valB - valA;
-        });
+
+      if (this.sortOrder === 'asc') {
+        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+      } else {
+        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
       }
-      return entries;
+    });
+  }
+
+  return entries;
+},
+    //
+    //
+    totalSum() {
+    const latestYear = Math.max(...this.entries.map(item => new Date(item.released_date).getFullYear()));
+    return this.entries
+      .filter(entries => new Date(entries.released_date).getFullYear() === latestYear)
+      .length;
+    },
+    monthlyTotals() {
+      const latestYear = Math.max(...(this.entries || []).map(item => new Date(item.released_date).getFullYear()));
+      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+      (this.entries || []).forEach(entry => {
+        const releaseDate = new Date(entry.released_date);
+        if (releaseDate.getFullYear() === latestYear) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+      return monthlyData;
+    },
+    year() {
+      return new Date().getFullYear();
     }
   },
   methods: {
+
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
@@ -250,8 +324,12 @@ export default {
       }
     },
     sortByDate(key) {
-      this.sortOrder = this.sortKey === key ? (this.sortOrder === 'asc' ? 'desc' : 'asc') : 'asc';
-      this.sortKey = key;
+      if (this.sortKey === key) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortKey = key;
+        this.sortOrder = 'asc';
+      }
     },
     fetchMB() {
       axios.get('http://localhost:8000/api/monitoringMB').then(response => {
