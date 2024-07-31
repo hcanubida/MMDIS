@@ -12,9 +12,9 @@
     </div>
 
     <!-- Chart Section -->
-    <div class="flex w-full shadow-xl">
+    <div class="flex w-full shadow-xl mt-2">
       <!-- Left Content Section: Area Status Clearance -->
-      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 pl-8 ">
         <!-- Bar Chart Section -->
         <div class="pt-6">
           <MonthBarChart :monthlyTotals="monthlyTotals" />
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Right Content Section: Pie Chart -->
-      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4">
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 pl-4">
         <div class="py-6 grid place-items-center">
           <PieChart :provinceData="provinceData" />
         </div>

@@ -12,8 +12,8 @@
     </div>
 
     <!-- Chart Section -->
-    <div class="flex w-full shadow-xl justify-center">
-      <div class="flex flex-col bg-white text-gray-700 w-6/12  p-4 ">
+    <div class="flex w-full shadow-xl justify-center mt-2">
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
         <!-- Bar Chart Section -->
         <div class="pt-6">
           <MonthBarChart :monthlyTotals="monthlyTotals" />

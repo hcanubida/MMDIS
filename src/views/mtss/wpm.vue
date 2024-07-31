@@ -11,10 +11,22 @@
         <h1 class="text-4xl">Work Program Monitoring</h1>
       </div>
   
-      <!-- Charts Section -->
-      <div class="mt-24">
-        <Charts />
+      <!-- Chart Section -->
+    <div class="flex w-full shadow-xl justify-center mt-2">
+      <div class="flex flex-col bg-white text-gray-700 w-6/12 p-4 ">
+        <!-- Bar Chart Section -->
+        <div class="pt-6">
+          <MonthBarChart :monthlyTotals="monthlyTotals" />
+        </div>
       </div>
+    </div>
+
+    <!-- Total Sum Section -->
+    <div class="flex bg-white justify-between pl-4 pt-4">
+      <h2 class="flex text-xl font-semibold">
+        The total sum of Work Program Monitoring Reports released for the year {{ year }} is {{ totalSum }}.
+      </h2>
+    </div>
   
       <!-- Search and Add Section -->
       <div class="flex justify-between mt-8">
@@ -136,11 +148,12 @@
               </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button @click="addNewEntry" type="button" class="inline-flex justify-center px-4 py-2 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                Add
+              <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
               </button>
-              <button @click="showModal = false" type="button" class="inline-flex justify-center px-4 py-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto sm:text-sm">
-                Cancel
+              <!-- Add request button -->
+              <button @click="addNewEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Add
               </button>
             </div>
           </div>
@@ -154,7 +167,7 @@
     import Header from '../../components/header.vue'; 
     import AddBtn from '../../components/MTSS/add-btn.vue'; 
     import UserBtn from '../../components/user-dbbtn.vue'; 
-    import Charts from '../../components/MTSS/charts_OSTC.vue';
+    import MonthBarChart from '../../components/bymonth-barchart.vue';
     import axios from 'axios';
     import debounce from 'lodash/debounce';
   
@@ -163,7 +176,7 @@
       Header,
       UserBtn,
       AddBtn,
-      Charts
+      MonthBarChart
     },
     data() {
       return {
@@ -198,6 +211,29 @@
           const bDate = new Date(b[this.sortKey]);
           return this.sortOrder === 'asc' ? aDate - bDate : bDate - aDate;
         });
+      },
+      totalSum() {
+      const latestYear = Math.max(...this.wpm.map(item => new Date(item.released_date).getFullYear()));
+      return this.wpm
+        .filter(wpm => new Date(wpm.released_date).getFullYear() === latestYear)
+        .length;
+      },
+      monthlyTotals() {
+        const latestYear = Math.max(...(this.wpm || []).map(item => new Date(item.released_date).getFullYear()));
+        const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+
+        (this.wpm || []).forEach(entry => {
+          const releaseDate = new Date(entry.released_date);
+          if (releaseDate.getFullYear() === latestYear) {
+            const month = releaseDate.getMonth(); // 0 = January, 11 = December
+            monthlyData[month]++;
+          }
+        });
+
+        return monthlyData;
+      },
+      year() {
+        return new Date().getFullYear();
       }
     },
     methods: {
