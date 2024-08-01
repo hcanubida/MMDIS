@@ -1,10 +1,12 @@
 <template>
-    <div class="panel">
-      <div class="flex justify-center items-center h-screen">
+  <div>
+    <div class="flex">
         <taas />
+        <UserBtn/>
       </div>
+    <div class="panel justify-center items-center h-1/4">
       <div class="permit-content">
-        <h1>PERMIT</h1>
+        <h1 class="flex justify-center" style="font-size: 50px; margin-bottom: 30px;" >PERMIT</h1>
         <div class="button-container">
           <button @click="navigateToFTTAdashboard()" class="button1">
             Financial or Technical Assistance Agreement
@@ -36,10 +38,13 @@
         </div>
       </div>
     </div>
+  </div>
+
   </template>
   
   <script setup>
-  import taas from '../../components/MTES/header.vue'
+  import taas from '../../components/header.vue'
+  import UserBtn from '../../components/user-dbbtn.vue'
   
   </script>
   
@@ -90,7 +95,7 @@
   .button1 {
     padding: 20px;
     margin: 0.5rem;
-    width: 300px;
+    width: 370px;
     /* Fixed width for all buttons */
     height: auto;
     font-size: 1rem;

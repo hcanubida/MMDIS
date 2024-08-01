@@ -7,7 +7,7 @@
     </div>
 
     <!-- Title Section -->
-    <div class="flex flex-col mt-44 justify-center font-bold text-center">
+    <div class="flex flex-col mt-18 justify-center font-bold text-center">
       <h1 class="text-4xl">Area Status Clearance</h1>
       <h2 class="text-2xl">Commercial Sand and Gravel</h2>
     </div>

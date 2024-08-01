@@ -3,7 +3,7 @@
 <template>
 <Header/>    
 <Login/>
-<div class="team-container" style="margin-top: 170px;">
+<div class="team-container" style="margin-top: 30px;">
     <div style="display: flex;text-align: center;width: 100%;align-items: center;flex-direction: column;">
         <p class="text-5xl text-gray-900 dark:text-white">Meet the Team</p>
         <p class="text-xl text-gray-900 dark:text-white mt-4" style="width: 50%;">

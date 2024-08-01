@@ -7,7 +7,7 @@
       </div>
   
       <!-- Title Section -->
-      <div class="flex flex-col mt-44 justify-center font-bold text-center">
+      <div class="flex flex-col mt-18 justify-center font-bold text-center">
         <h1 class="text-4xl">Investigation</h1>
       </div>
   

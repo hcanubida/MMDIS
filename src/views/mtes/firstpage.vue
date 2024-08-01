@@ -1,22 +1,25 @@
 <template>
-  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div class="flex justify-center items-center h-screen">
+  <div>
+    <div class="flex">
       <taas />
-      <UserBtn style="margin-left: 702px"/>
+      <UserBtn/>
     </div>
-    <div class="conta">
+    <div class="justify-center items-center h-screen" style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+      <div class="conta">
       <div class="button-container">
         <button class="button ease-in-out duration-300 " @click="navigateToFirstPage">NEW APPLICATIONS</button>
       </div>
       <div class="button-container">
         <button class="button ease-in-out duration-300 " @click="navigateToSecondPage">PERMIT</button>
       </div>
+      </div>
     </div>
+    
   </div>
 </template>
 
 <script setup>
-import taas from '../../components/MTES/header.vue'
+import taas from '../../components/header.vue'
 import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 

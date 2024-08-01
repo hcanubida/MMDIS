@@ -7,7 +7,7 @@
     </div>
 
     <!-- Chart Section -->
-    <div class="flex w-full shadow-xl mt-28">
+    <div class="flex w-full shadow-xl" style="margin-top: 20px ;">
       <!-- Left Content Section: Area Status Clearance -->
       <div class="flex flex-col bg-white text-gray-700 w-6/12 p-2">
         <!-- Bar Chart Section -->

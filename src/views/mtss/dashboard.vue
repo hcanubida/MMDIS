@@ -1,36 +1,37 @@
 <template>
     <Header></Header>
     <UserBtn/>
+
     <div class="flex w-full justify-center items-start">  
         <!-- Accomplishment Reports Section -->
-        <div class="flex flex-col items-center p-8 bg-orange-100 mt-40 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-orange-100 mt-18 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/ar.png" alt="MGBLogo" class="flex justify-center w-24">
                 <h1 class="font-bold">Accomplishment Reports</h1>
             </div>
             <div class="flex flex-col">
-                <button @click="redirectToOSTC" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">OSTC</button>
-                <button @click="redirectToInventory" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Inventory</button>
-                <button @click="redirectToWPM" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Work Program Monitoring</button>
-                <button @click="redirectToMBM" class="text-lg mb-4 rounded-xl p-3  hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Minahang Bayan Monitoring</button>
-                <button @click="redirectToInvestigation" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Investigation</button>
-                <button @click="redirectToAI" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">Anti-Illegal</button>
-                <button @click="redirectToDMPF" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">DMPF</button>
-                <button @click="redirectToPCMRB" class="text-lg mb-4 rounded-xl p-3 hover:bg-red-200" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">PCMRB Meetings</button>
+                <button @click="redirectToOSTC" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">OSTC</button>
+                <button @click="redirectToInventory" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Inventory</button>
+                <button @click="redirectToWPM" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Work Program Monitoring</button>
+                <button @click="redirectToMBM" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Minahang Bayan Monitoring</button>
+                <button @click="redirectToInvestigation" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Investigation</button>
+                <button @click="redirectToAI" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Anti-Illegal</button>
+                <button @click="redirectToDMPF" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">DMPF</button>
+                <button @click="redirectToPCMRB" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">PCMRB Meetings</button>
             </div>
         </div>
 
         <!-- Databases Section -->
-        <div class="flex flex-col items-center p-8 bg-orange-100 mt-40 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-orange-100 mt-18 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/db.png" alt="MGBLogo" class="flex justify-center w-24">
                 <h1 class="font-bold">Databases</h1>
             </div>
             <div class="flex flex-col">
-                <button @click="redirectToMPSA" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200 w-64" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">MPSA</button>
-                <button @click="redirectToISAG" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200 w-64" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">ISAG</button>
-                <button @click="redirectToEP" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200 w-64" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">EP</button>
-                <button @click="redirectToMPP" class="text-lg mb-4 rounded-xl p-3 cursor-pointer  hover:bg-red-200 w-64" style="background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);">MPP</button>
+                <button @click="redirectToMPSA" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPSA</button>
+                <button @click="redirectToISAG" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">ISAG</button>
+                <button @click="redirectToEP" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">EP</button>
+                <button @click="redirectToMPP" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPP</button>
             </div>
         </div>
     </div>
@@ -44,7 +45,7 @@ import router from '../../router'; // Import your Vue Router instance
 export default {
     components: {
         Header,
-        UserBtn
+        UserBtn,
     },
     methods: {
         redirectToOSTC() {
@@ -86,3 +87,17 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.button-styled {
+    background: linear-gradient(to top, #e6b980, #eacda3, #e6b980);
+    transition: background-color 0.3s ease;
+}
+
+.button-styled:hover {
+    background: white;
+}
+
+
+
+</style>

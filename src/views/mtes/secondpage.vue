@@ -1,11 +1,12 @@
 <template>
-  <div class="panel">
-    <div class="flex justify-center items-center h-screen">
-      <taas />
-      <UserBtn style="margin-left: 321px" />
+  <div>
+    <div class="flex">
+    <taas />
+    <UserBtn/>
     </div>
-    <div class="new-app-content">
-      <h1 style="font-size: 50px;margin-bottom: 30px;margin-top: -150px;">New Applications</h1>
+    <div class="flex justify-center items-center h-1/4">
+      <div class="new-app-content">
+      <h1 style="font-size: 50px; margin-bottom: 30px; margin-top: -150px;">New Applications</h1>
       <div style="display: flex; justify-content: center;">
         <div class="button-container1">
           <button @click="navigateToFTTAdashboard()" class="button1">
@@ -46,11 +47,13 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
+  
 </template>
 
 <script setup>
-import taas from '../../../src/components/MTES/header.vue'
+import taas from '../../components/header.vue'
 import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
@@ -137,7 +140,7 @@ export default {
 .button1 {
   padding: 20px;
   margin: 0.5rem;
-  width: 300px;
+  width: 415px;
   /* Fixed width for all buttons */
   height: auto;
   font-size: 1rem;

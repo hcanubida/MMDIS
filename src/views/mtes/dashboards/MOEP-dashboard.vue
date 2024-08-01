@@ -38,7 +38,7 @@
 <script setup>
 import appdet from "../../../components/MTES/modals/add/MOEP-add.vue"
 import viewdetail from '../../../components/MTES/modals/view/MOEP-details.vue'
-import qwe from '../../../components/MTES/header.vue';
+import qwe from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
 import Tableview from '../../mtes/tables/MOEP-table.vue'

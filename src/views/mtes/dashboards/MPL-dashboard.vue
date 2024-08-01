@@ -38,7 +38,7 @@
   <script setup>
   import appdet from "../../../components/MTES/modals/add/MPL-add.vue"
   import viewdetail2 from '../../../components/MTES/modals/view/MPL-details.vue'
-  import qwe from '../../../components/MTES/header.vue';
+  import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'
   import BarChart from '../../../components/MTES/charts/bar.vue'
   import Tableview from '../../mtes/tables/MPL-table.vue'
