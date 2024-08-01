@@ -31,6 +31,7 @@
     <!-- get the total sum of released from the latest year -->
     <div class="flex bg-white justify-between pl-4">
       <h2 class="flex text-xl font-semibold">The total sum of Commercial Sand and Gravel released for the year {{ year }} is {{ totalSum }}.</h2> 
+      <pdf/>
     </div>
 
     
@@ -222,11 +223,12 @@ import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
 import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
+import pdf from '../../components/pdf-generator.vue';
 import debounce from 'lodash/debounce';
 import axios from 'axios';
 
 export default {
-  components: { Header, UserBtn, MonthBarChart, PieChart },
+  components: { Header, UserBtn, MonthBarChart, PieChart, pdf },
   data() {
     return {
       csag: [], 
