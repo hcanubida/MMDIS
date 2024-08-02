@@ -31,7 +31,6 @@
     <!-- get the total sum of released from the latest year -->
     <div class="flex bg-white justify-between pl-4">
       <h2 class="flex text-xl font-semibold">The total sum of Commercial Sand and Gravel released for the year {{ year }} is {{ totalSum }}.</h2> 
-      <pdf/>
     </div>
 
     
@@ -51,14 +50,14 @@
           </div>
         </div>
       </div>
-      <div class="content-center">
+      <div class="flex content-center">
         <button @click="showModal = true" class="mr-4 bg-green-900 p-2 text-white font-bold rounded-lg">Add New Data</button>
       </div>
     </div>
 
     <!-- Table Section -->
     <div class="mt-8">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table ref="csagTable" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">No.</th>
@@ -223,12 +222,11 @@ import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
 import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
-import pdf from '../../components/pdf-generator.vue';
 import debounce from 'lodash/debounce';
 import axios from 'axios';
 
 export default {
-  components: { Header, UserBtn, MonthBarChart, PieChart, pdf },
+  components: { Header, UserBtn, MonthBarChart, PieChart },
   data() {
     return {
       csag: [], 

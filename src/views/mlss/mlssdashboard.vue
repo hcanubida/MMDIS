@@ -28,6 +28,7 @@
       <h2 class="flex text-xl font-semibold">
         The total sum of Area Status Clearance released for the year {{ year }} is {{ overallTotalSum }}.
       </h2>
+      <pdf/>
     </div>
 
     <div class="mt-8">
@@ -118,6 +119,7 @@ import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
 import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
+import pdf from '../../components/MLSS/pdf-generator-btn.vue';
 import axios from 'axios';
 import router from '../../router';
 
@@ -127,6 +129,7 @@ export default {
     UserBtn,
     MonthBarChart,
     PieChart,
+    pdf
   },
   data() {
     return {

@@ -23,6 +23,7 @@ import ISAG from "../views/mlss/ISAG.vue";
 import MQUARRY from "../views/mlss/MQUARRY.vue";
 import MiningTenementMaps from "../views/mlss/dbMTM.vue";
 import MineralOreExportPermit from "../views/mlss/dbMOEPV.vue";
+import PDFcontent from "../components/MLSS/pdf-content.vue";
 
 
 //router file MTES
@@ -109,6 +110,7 @@ const routes = [
     { path: "/mlss/MQUARRY", component: MQUARRY },
     { path: "/mlss/MTM", component: MiningTenementMaps },
     { path: "/mlss/MOEPV", component: MineralOreExportPermit },
+    { path: "/mlss/pdf-content", component: PDFcontent },
 
 
 
