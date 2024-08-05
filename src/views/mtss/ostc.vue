@@ -195,6 +195,7 @@ import debounce from 'lodash/debounce';
 
 export default {
   components: { Header, UserBtn, AddBtn, MonthBarChart },
+
   data() {
     return {
       ostc: [],
@@ -203,8 +204,10 @@ export default {
       sortOrder: 'asc',
       showModal: false,
       newEntry: this.getEmptyEntry(),
+      debouncedSearch: this.debounce(this.search, 300) // Add debounce method
     };
   },
+
   computed: {
     filteredEntries() {
       return this.getFilteredAndSortedData();
@@ -257,98 +260,78 @@ export default {
           console.error('Error fetching monitoringOSTC:', error);
         });
     },
+
     addNewEntry() {
-  const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+    const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
 
-  if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
-    alert('File size exceeds 5MB.');
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append('client', this.newEntry.client);
-  formData.append('certification_no', this.newEntry.certification_no);
-  formData.append('received_ord', this.newEntry.received_ord);
-  formData.append('received_mmd', this.newEntry.received_mmd);
-  formData.append('payment_date', this.newEntry.payment_date);
-  formData.append('sample_inspection', this.newEntry.sample_inspection);
-  formData.append('issued', this.newEntry.issued);
-  formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-  if (fileInput) {
-    formData.append('MOVpdf', fileInput);
-  }
-
-  axios.post('http://localhost:8000/api/monitoringOSTC', formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
+    if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+      alert('File size exceeds 5MB.');
+      return;
     }
-  })
-  .then(response => {
-    this.ostc.push(response.data);
 
-    // Clear the form data
-    this.newEntry = {
-      client: '',
-      certification_no: '',
-      received_ord: '',
-      received_mmd: '',
-      payment_date: '',
-      sample_inspection: '',
-      issued: '',
-      mmd_personnel: ''
-    };
+    const formData = new FormData();
+    formData.append('client', this.newEntry.client);
+    formData.append('certification_no', this.newEntry.certification_no);
+    formData.append('received_ord', this.newEntry.received_ord);
+    formData.append('received_mmd', this.newEntry.received_mmd);
+    formData.append('payment_date', this.newEntry.payment_date);
+    formData.append('sample_inspection', this.newEntry.sample_inspection);
+    formData.append('issued', this.newEntry.issued);
+    formData.append('mmd_personnel', this.newEntry.mmd_personnel);
+    if (fileInput) {
+      formData.append('MOVpdf', fileInput);
+    }
 
-    // Reset the file input
-    this.$refs.MOVpdf.value = '';
+    axios.post('http://localhost:8000/api/monitoringOSTC', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then(response => {
+      this.ostc.push(response.data);
 
-    // Close the modal
-    this.showModal = false; // Assuming you use a flag to control visibility
+      // Clear the form data
+      this.newEntry = {
+        client: '',
+        certification_no: '',
+        received_ord: '',
+        received_mmd: '',
+        payment_date: '',
+        sample_inspection: '',
+        issued: '',
+        mmd_personnel: ''
+      };
 
-  })
-  .catch(error => {
-    console.error('Error adding entry:', error.response ? error.response.data : error.message);
-  });
-},
-sortByDate(key) {
-  if (this.sortKey === key) {
-    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-  } else {
-    this.sortKey = key;
-    this.sortOrder = 'asc';
-  }
-},
-    //
-    //
-    openEditModal(entry) {
-      this.newEntry = { ...entry }; // Create a copy of the entry for editing
-      this.isEditMode = true; // Set editing mode to true
-      this.showModal = true; // Show the modal
-      this.editIndex = this.ostc.findIndex(e => e === entry); // Find the index of the entry to be edited
+      // Reset the file input
+      this.$refs.MOVpdf.value = '';
+
+      // Close the modal
+      this.showModal = false; // Assuming you use a flag to control visibility
+
+    })
+    .catch(error => {
+      console.error('Error adding entry:', error.response ? error.response.data : error.message);
+    });
+  },
+
+    sortByDate(key) {
+      if (this.sortKey === key) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortKey = key;
+        this.sortOrder = 'asc';
+      }
     },
-    // closeModal() {
-    //   this.showModal = false;
-    //   this.resetNewEntry();
-    //   this.isEditMode = false;
-    //   this.editIndex = -1;
-    // },
-    // resetNewEntry() {
-    //   this.newEntry = this.getEmptyEntry();
-    // },
-    // saveEntry() {
-    //   if (this.isEditMode) {
-    //     // Update existing entry
-    //     this.ostc.splice(this.editIndex, 1, this.newEntry);
-    //   } else {
-    //     // Add new entry
-    //     this.ostc.push(this.newEntry);
-    //   }
-    //   this.closeModal();
-    //   this.calculateTotalSum();
-    //   this.calculateMonthlyTotals();
-    //   this.filterEntries();
-    // },
-    //
-    //
+    debounce(func, delay) {
+      let timer;
+      return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+      };
+    },
+    search() {
+      this.filteredEntries(); // Trigger computation
+    },
     getFilteredAndSortedData() {
       let filtered = this.ostc.filter(entry => {
         const query = this.searchQuery.toLowerCase();
