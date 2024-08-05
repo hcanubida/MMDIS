@@ -165,7 +165,7 @@
               </button>
               <!-- Add request button -->
               <button @click="addNewEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
-                Add
+                Save
               </button>
             </div>
           </div>
@@ -231,10 +231,10 @@ export default {
         received_ord: '',
         received_mmd: '',
         payment_date: '',
-        sample_inspection: '',
+        sample_inspection: ' - -',
         issued: '',
         mmd_personnel: '',
-        MOVpdf: '',
+        MOVpdf: null,
       };
     },
     fetchOSTC() {
@@ -272,7 +272,6 @@ export default {
       })
       .then(response => {
         this.ostc.push(response.data);
-        this.clearNewEntry();
       })
       .catch(error => {
         console.error('Error adding entry:', error.response ? error.response.data : error.message);
@@ -286,6 +285,38 @@ export default {
         this.sortOrder = 'asc';
       }
     },
+    //
+    //
+    // openEditModal(entry) {
+    //   this.newEntry = { ...entry }; // Create a copy of the entry for editing
+    //   this.isEditMode = true; // Set editing mode to true
+    //   this.showModal = true; // Show the modal
+    //   this.editIndex = this.ostc.findIndex(e => e === entry); // Find the index of the entry to be edited
+    // },
+    // closeModal() {
+    //   this.showModal = false;
+    //   this.resetNewEntry();
+    //   this.isEditMode = false;
+    //   this.editIndex = -1;
+    // },
+    // resetNewEntry() {
+    //   this.newEntry = this.getEmptyEntry();
+    // },
+    // saveEntry() {
+    //   if (this.isEditMode) {
+    //     // Update existing entry
+    //     this.ostc.splice(this.editIndex, 1, this.newEntry);
+    //   } else {
+    //     // Add new entry
+    //     this.ostc.push(this.newEntry);
+    //   }
+    //   this.closeModal();
+    //   this.calculateTotalSum();
+    //   this.calculateMonthlyTotals();
+    //   this.filterEntries();
+    // },
+    //
+    //
     getFilteredAndSortedData() {
       let filtered = this.ostc.filter(entry => {
         const query = this.searchQuery.toLowerCase();
