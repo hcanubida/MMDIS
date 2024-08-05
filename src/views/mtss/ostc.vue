@@ -78,6 +78,7 @@
             </th>
             <th scope="col" class="px-6 py-3">MMD Personnel</th>
             <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
+            <th scope="col" class="px-6 py-3 flex justify-center">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -93,6 +94,10 @@
             <td class="px-6 py-4">{{ entry.mmd_personnel }}</td>
             <td class="px-6 py-4 text-center">
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+            </td>
+            <td class="px-6 py-4 flex justify-center">
+              <!-- edit entry -->
+              <button @click="openEditModal(entry)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
             </td>
           </tr>
         </tbody>
