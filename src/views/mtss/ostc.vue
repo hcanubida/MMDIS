@@ -231,7 +231,7 @@ export default {
         received_ord: '',
         received_mmd: '',
         payment_date: '',
-        sample_inspection: ' - -',
+        sample_inspection: '',
         issued: '',
         mmd_personnel: '',
         MOVpdf: null,
@@ -248,43 +248,57 @@ export default {
         });
     },
     addNewEntry() {
-      const fileInput = this.$refs.MOVpdf.files[0];
-      if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
-        alert('File size exceeds 5MB.');
-        return;
-      }
+  const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
 
-      const formData = new FormData();
-      formData.append('client', this.newEntry.client);
-      formData.append('certification_no', this.newEntry.certification_no);
-      formData.append('received_ord', this.newEntry.received_ord);
-      formData.append('received_mmd', this.newEntry.received_mmd);
-      formData.append('payment_date', this.newEntry.payment_date);
-      formData.append('sample_inspection', this.newEntry.sample_inspection);
-      formData.append('issued', this.newEntry.issued);
-      formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-      formData.append('MOVpdf', fileInput);
+  if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+    alert('File size exceeds 5MB.');
+    return;
+  }
 
-      axios.post('http://localhost:8000/api/monitoringOSTC', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      .then(response => {
-        this.ostc.push(response.data);
-      })
-      .catch(error => {
-        console.error('Error adding entry:', error.response ? error.response.data : error.message);
-      });
-    },
-    sortByDate(key) {
-      if (this.sortKey === key) {
-        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-      } else {
-        this.sortKey = key;
-        this.sortOrder = 'asc';
-      }
-    },
+  const formData = new FormData();
+  formData.append('client', this.newEntry.client);
+  formData.append('certification_no', this.newEntry.certification_no);
+  formData.append('received_ord', this.newEntry.received_ord);
+  formData.append('received_mmd', this.newEntry.received_mmd);
+  formData.append('payment_date', this.newEntry.payment_date);
+  formData.append('sample_inspection', this.newEntry.sample_inspection);
+  formData.append('issued', this.newEntry.issued);
+  formData.append('mmd_personnel', this.newEntry.mmd_personnel);
+  if (fileInput) {
+    formData.append('MOVpdf', fileInput);
+  }
+
+  axios.post('http://localhost:8000/api/monitoringOSTC', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    this.ostc.push(response.data);
+
+    // Clear the form data
+    this.newEntry = {
+      client: '',
+      certification_no: '',
+      received_ord: '',
+      received_mmd: '',
+      payment_date: '',
+      sample_inspection: '',
+      issued: '',
+      mmd_personnel: ''
+    };
+
+    // Reset the file input
+    this.$refs.MOVpdf.value = '';
+
+    // Close the modal
+    this.showModal = false; // Assuming you use a flag to control visibility
+
+  })
+  .catch(error => {
+    console.error('Error adding entry:', error.response ? error.response.data : error.message);
+  });
+},
     //
     //
     // openEditModal(entry) {
