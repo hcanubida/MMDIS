@@ -67,8 +67,18 @@
                 <template v-else>▼</template>
               </span>
             </th>
-            <th scope="col" class="px-6 py-3">Payment Date</th>
-            <th scope="col" class="px-6 py-3">Sample Inspection</th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('payment_date')">Payment Date
+              <span v-if="sortKey === 'payment_date'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('sample_inspection')">Sample Inspection
+              <span v-if="sortKey === 'sample_inspection'" aria-label="Sorted ascending">
+                <template v-if="sortOrder === 'asc'">▲</template>
+                <template v-else>▼</template>
+              </span>
+            </th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('issued')">
               Date Issued
               <span v-if="sortKey === 'issued'" aria-label="Sorted ascending">
@@ -142,7 +152,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Sample Inspection:</p>
-                    <input v-model="newEntry.sample_inspection" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="newEntry.sample_inspection" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Date Issued:</p>
@@ -299,14 +309,22 @@ export default {
     console.error('Error adding entry:', error.response ? error.response.data : error.message);
   });
 },
+sortByDate(key) {
+  if (this.sortKey === key) {
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortKey = key;
+    this.sortOrder = 'asc';
+  }
+},
     //
     //
-    // openEditModal(entry) {
-    //   this.newEntry = { ...entry }; // Create a copy of the entry for editing
-    //   this.isEditMode = true; // Set editing mode to true
-    //   this.showModal = true; // Show the modal
-    //   this.editIndex = this.ostc.findIndex(e => e === entry); // Find the index of the entry to be edited
-    // },
+    openEditModal(entry) {
+      this.newEntry = { ...entry }; // Create a copy of the entry for editing
+      this.isEditMode = true; // Set editing mode to true
+      this.showModal = true; // Show the modal
+      this.editIndex = this.ostc.findIndex(e => e === entry); // Find the index of the entry to be edited
+    },
     // closeModal() {
     //   this.showModal = false;
     //   this.resetNewEntry();
