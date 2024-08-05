@@ -239,8 +239,18 @@ export default {
     };
   },
   computed: {
-  filteredEntries() {
-  
+    filteredEntries() {
+  let entries = this.entries;
+
+  if (this.searchQuery) {
+    const query = this.searchQuery.toLowerCase();
+    entries = entries.filter(entry =>
+      entry.month.toLowerCase().includes(query) ||
+      entry.petitioner.toLowerCase().includes(query) ||
+      entry.location.toLowerCase().includes(query) ||
+      Object.values(entry).some(val => String(val).toLowerCase().includes(query))
+    );
+  }
 
   if (this.sortKey) {
     entries = entries.slice().sort((a, b) => {
@@ -267,7 +277,7 @@ export default {
 },
     //
     //
-  totalSum() {
+    totalSum() {
     const latestYear = Math.max(...this.entries.map(item => new Date(item.released_date).getFullYear()));
     return this.entries
       .filter(entries => new Date(entries.released_date).getFullYear() === latestYear)
