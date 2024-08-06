@@ -28,17 +28,36 @@
       </h2>
     </div>
   
-      <!-- Search and Add Section -->
-      <div class="flex justify-end mt-8">
-        <!-- Add Button -->
-        <AddBtn @click="showModal = true" />
+    <!-- Search and Add Section -->
+    <div class="flex justify-between mt-8">
+      <!-- Search Input Container -->
+      <div class="flex w-2/5 ml-2">
+        <!-- Search Icon -->
+        <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
+          <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+          </svg>
+        </div>
+        <!-- Search Input Field -->
+        <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search month, client, or mmd personnel ..." required />
       </div>
+      <!-- Add Button -->
+      <AddBtn @click="showModal = true" />
+    </div>
   
       <!-- Table Section -->
       <div class="mt-8">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('month')">
+                Month
+                <span v-if="sortKey === 'month'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3">No.</th>
               <th scope="col" class="px-6 py-3">Work Program | Term and Conditions | Requirements of: (Field Monitoring)</th>
               <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
                 Travel Date
@@ -70,12 +89,15 @@
               </th>
               <th scope="col" class="px-6 py-3">MMD Personnel</th>
               <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
+              <th scope="col" class="px-6 py-3 flex justify-center">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <td class="px-6 py-4">{{ entry.month }}</td>
+              <td class="px-6 py-4">{{ index + 1 }}</td>
               <td class="px-6 py-4">{{ entry.text_field }}</td>
-              <td class="px-6 py-4">{{ entry.travel_date }}</td>
+              <td class="px-6 py-4">{{ entry.travel_date_from }} to {{ entry.travel_date_to }}</td>
               <td class="px-6 py-4">{{ entry.report_date }}</td>
               <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
               <td class="px-6 py-4">{{ entry.released_date }}</td>
@@ -83,6 +105,10 @@
               <td class="px-6 py-4 text-center">
                 <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
               </td>
+              <td class="px-6 py-4 flex justify-center">
+              <!-- edit entry -->
+              <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
+            </td>
             </tr>
           </tbody>
         </table>
@@ -105,13 +131,32 @@
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Month:</p>
+                    <select v-model="newEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
                   <div class="mt-2 flex flex-col">
                     <label for="text_field" class="text-gray-700">Work Program | Term and Conditions | Requirements of: (Field Monitoring)</label>
                     <textarea v-model="newEntry.text_field" id="text_field" rows="4" class="w-full bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Travel Date:</p>
-                    <input v-model="newEntry.travel_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="newEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <p class="">to</p>
+                    <input v-model="newEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Report Date:</p>
@@ -175,8 +220,10 @@
         sortOrder: 'asc',
         showModal: false,
         newEntry: {
+          month: '',
           text_field: '',
-          travel_date: '',
+          travel_date_from: '',
+          travel_date_to: '',
           report_date: '',
           transmittal_date: '',
           released_date: '',
@@ -189,11 +236,8 @@
       filteredEntries() {
         const query = this.searchQuery.toLowerCase();
         return this.wpm.filter(entry => 
+          entry.month.toLowerCase().includes(query) ||
           entry.text_field.toLowerCase().includes(query) ||
-          entry.travel_date.toLowerCase().includes(query) ||
-          entry.report_date.toLowerCase().includes(query) ||
-          entry.transmittal_date.toLowerCase().includes(query) ||
-          entry.released_date.toLowerCase().includes(query) ||
           entry.mmd_personnel.toLowerCase().includes(query)
         ).sort((a, b) => {
           const aDate = new Date(a[this.sortKey]);
@@ -236,24 +280,25 @@
           });
       },
       addNewEntry() {
-        const fileInput = this.$refs.MOVpdf.files[0];
+        const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+
         if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
           alert('File size exceeds 5MB.');
           return;
         }
-        if (!fileInput) {
-          alert('Please upload a PDF file.');
-          return;
-        }
   
         const formData = new FormData();
+        formData.append('month', this.newEntry.month);
         formData.append('text_field', this.newEntry.text_field);
-        formData.append('travel_date', this.newEntry.travel_date);
+        formData.append('travel_date_from', this.newEntry.travel_date_from);
+        formData.append('travel_date_to', this.newEntry.travel_date_to);
         formData.append('report_date', this.newEntry.report_date);
         formData.append('transmittal_date', this.newEntry.transmittal_date);
         formData.append('released_date', this.newEntry.released_date);
         formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-        formData.append('MOVpdf', fileInput);
+        if (fileInput) {
+          formData.append('MOVpdf', fileInput);
+        }
   
         axios.post('http://localhost:8000/api/monitoringWPM', formData, {
           headers: {
@@ -270,8 +315,10 @@
       },
       clearNewEntry() {
         this.newEntry = {
+          month: '',
           text_field: '',
-          travel_date: '',
+          travel_date_from: '',
+          travel_date_to: '',
           report_date: '',
           transmittal_date: '',
           released_date: '',

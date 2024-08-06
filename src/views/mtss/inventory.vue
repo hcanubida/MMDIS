@@ -65,6 +65,7 @@
                 <template v-else>▼</template>
               </span>
             </th>
+            <th scope="col" class="px-6 py-3">No.</th>
             <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('location')">
               Location
               <span v-if="sortKey === 'location'" aria-label="Sorted ascending">
@@ -72,9 +73,12 @@
                 <template v-else>▼</template>
               </span>
             </th>
-            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
+            <th scope="col" class="px-6 py-3">
               Travel Date
-              <span v-if="sortKey === 'travel_date'" aria-label="Sorted ascending">
+            </th>
+            <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('report_date')">
+              Report Date
+              <span v-if="sortKey === 'report_date'" aria-label="Sorted ascending">
                 <template v-if="sortOrder === 'asc'">▲</template>
                 <template v-else>▼</template>
               </span>
@@ -95,18 +99,25 @@
             </th>
             <th scope="col" class="px-6 py-3">MMD Personnel</th>
             <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
+            <th scope="col" class="px-6 py-3 flex justify-center">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td class="px-6 py-4">{{ entry.month }}</td>
+            <td class="px-6 py-4">{{ index + 1 }}</td>
             <td class="px-6 py-4">{{ entry.location }}</td>
-            <td class="px-6 py-4">{{ entry.travel_date }}</td>
+            <td class="px-6 py-4">{{ entry.travel_date_from }} to {{ entry.travel_date_to }}</td>
+            <td class="px-6 py-4">{{ entry.report_date }}</td>
             <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
             <td class="px-6 py-4">{{ entry.released_date }}</td>
             <td class="px-6 py-4">{{ entry.mmd_personnel }}</td>
             <td class="px-6 py-4 text-center">
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+            </td>
+            <td class="px-6 py-4 flex justify-center">
+              <!-- edit entry -->
+              <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
             </td>
           </tr>
         </tbody>
@@ -155,11 +166,19 @@
                       <option>LANAO DEL NORTE</option>
                       <option>MISAMIS OCCIDENTAL</option>
                       <option>MISAMIS ORIENTAL</option>
+                      <option>CAGAYAN DE ORO CITY</option>
+                      <option>ILIGAN CITY</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Travel Date:</p>
-                    <input v-model="newEntry.travel_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="newEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <p class="">to</p>
+                    <input v-model="newEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Report Date:</p>
+                    <input v-model="newEntry.report_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Transmittal Date:</p>
@@ -201,7 +220,6 @@
 import Header from '../../components/header.vue'; 
 import AddBtn from '../../components/MTSS/add-btn.vue'; 
 import UserBtn from '../../components/user-dbbtn.vue'; 
-import Charts from '../../components/MTSS/charts_OSTC.vue';
 import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
@@ -275,7 +293,9 @@ export default {
       return {
         month: '',
         location: '',
-        travel_date: '',
+        travel_date_from: '',
+        travel_date_to: '',
+        report_date: '',
         transmittal_date: '',
         released_date: '',
         mmd_personnel: '',
@@ -292,7 +312,8 @@ export default {
         });
     },
     addNewEntry() {
-      const fileInput = this.$refs.MOVpdf.files[0];
+      const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+
       if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
         alert('File size exceeds 5MB.');
         return;
@@ -301,11 +322,15 @@ export default {
       const formData = new FormData();
       formData.append('month', this.newEntry.month);
       formData.append('location', this.newEntry.location);
-      formData.append('travel_date', this.newEntry.travel_date);
+      formData.append('travel_date_from', this.newEntry.travel_date_from);
+      formData.append('travel_date_to', this.newEntry.travel_date_to);
+      formData.append('report_date', this.newEntry.report_date);
       formData.append('transmittal_date', this.newEntry.transmittal_date);
       formData.append('released_date', this.newEntry.released_date);
       formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-      formData.append('MOVpdf', fileInput);
+      if (fileInput) {
+        formData.append('MOVpdf', fileInput);
+      }
 
       axios.post('http://localhost:8000/api/monitoringInventory', formData, {
         headers: {
