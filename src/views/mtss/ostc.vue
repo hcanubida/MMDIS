@@ -95,7 +95,7 @@
           <!-- :key="entry.id" -->
           <tr v-for="(entry, index) in filteredEntries" :key="entry.no" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"> 
             <td class="px-6 py-4">{{ index + 1 }}</td>
-            <td class="px-6 py-4">{{ entry.client }}</td>
+            <td class="px-6 py-4" style="width: 300px;">{{ entry.client }}</td>
             <td class="px-6 py-4">{{ entry.certification_no }}</td>
             <td class="px-6 py-4">{{ entry.received_ord }}</td>
             <td class="px-6 py-4">{{ entry.received_mmd }}</td>
@@ -106,7 +106,7 @@
             <td class="px-6 py-4 text-center">
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
             </td>
-            <td class="px-6 py-4 flex justify-center">
+            <td class="px-6 py-4">
               <!-- edit entry -->
               <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
             </td>

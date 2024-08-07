@@ -29,7 +29,18 @@
       </div>
   
       <!-- Search and Add Section -->
-      <div class="flex justify-end mt-8">
+      <div class="flex justify-between mt-8">
+        <!-- Search Input Container -->
+        <div class="flex w-2/5 ml-2">
+          <!-- Search Icon -->
+          <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
+            <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+          </div>
+          <!-- Search Input Field -->
+          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search MGB Mining Related Complaints/Casesacted Upon ..." required />
+        </div>
         <!-- Add Button -->
         <AddBtn @click="showModal = true" />
       </div>
@@ -39,7 +50,15 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" class="px-6 py-3">MGB Mining Related Complaints/Casesacted Upon</th>
+              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('month')">
+                Month
+                <span v-if="sortKey === 'month'" aria-label="Sorted ascending">
+                  <template v-if="sortOrder === 'asc'">▲</template>
+                  <template v-else>▼</template>
+                </span>
+              </th>
+              <th scope="col" class="px-6 py-3">No</th>
+              <th scope="col" class="px-6 py-3" style="width: 330px;">MGB Mining Related Complaints/Casesacted Upon</th>
               <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('complaint_received')">
                 Complaint Received
                 <span v-if="sortKey === 'complaint_received'" aria-label="Sorted ascending">
@@ -74,20 +93,27 @@
               <th scope="col" class="px-6 py-3">MMD Personnel</th>
               <th scope="col" class="px-6 py-3">Remarks</th>
               <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
+              <th scope="col" class="px-6 py-3 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <td class="px-6 py-4">{{ entry.text_field }}</td>
+              <td class="px-6 py-4">{{ entry.month }}</td>
+              <td class="px-6 py-4">{{ index + 1 }}</td>
+              <td class="px-6 py-4" style="word-wrap:break-word;">{{ entry.text_field }}</td>
               <td class="px-6 py-4">{{ entry.complaint_received }}</td>
-              <td class="px-6 py-4">{{ entry.date_acted_from }} to {{ entry.date_acted_to }}</td>
+              <td class="px-6 py-4">{{ entry.date_acted }}</td>
               <td class="px-6 py-4">{{ entry.report_date }}</td>
               <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
               <td class="px-6 py-4">{{ entry.released_date }}</td>
               <td class="px-6 py-4">{{ entry.mmd_personnel }}</td>
-              <td class="px-6 py-4">{{ entry.remarks }}</td>
+              <td class="px-6 py-4" style="width: 150px;">{{ entry.remarks }}</td>
               <td class="px-6 py-4 text-center">
                 <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
+              </td>
+              <td class="px-6 py-4 flex ">
+                <button @click="openMap(entry.coordinates)" class=" pr-2 rounded"><img src="../../assets/icons/map.png" style="width: 30px;"></button>
+                <button @click="editEntry(index)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
               </td>
             </tr>
           </tbody>
@@ -112,6 +138,23 @@
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <div class="mt-2 flex flex-col">
+                    <label for="text_field" class="text-gray-700">Select Month</label>
+                    <select v-model="newEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex flex-col">
                     <label for="text_field" class="text-gray-700">MGB Mining Related Complaints/Casesacted Upon</label>
                     <textarea v-model="newEntry.text_field" id="text_field" rows="4" class="w-full bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
                   </div>
@@ -121,8 +164,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Date Acted:</p>
-                    <input v-model="newEntry.date_acted_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                    <input v-model="newEntry.date_acted_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="newEntry.date_acted" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Report Date:</p>
@@ -148,6 +190,10 @@
                     <p class="mr-5">MOV:</p>
                     <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Enter map url:</p>
+                    <input ref="coordinates" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
                 </div>
               </div>
             </div>
@@ -156,7 +202,7 @@
                 Close
               </button>
               <!-- Add request button -->
-              <button @click="submitEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+              <button @click="addNewEntry" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
                 Add
               </button>
             </div>
@@ -190,56 +236,65 @@
         sortOrder: 'asc',
         showModal: false,
         newEntry: {
+          month: '',
           text_field: '',
           complaint_received: '',
-          date_acted_from: '',
-          date_acted_to: '',
+          date_acted: '',
           report_date: '',
           transmittal_date: '',
           released_date: '',
           mmd_personnel: '',
           remarks: '',
-          MOVpdf: null
+          MOVpdf: null ,
+          coordinates: '',
         },
       };
     },
     computed: {
-      filteredEntries() {
-        const query = this.searchQuery.toLowerCase();
-        return this.investigation
-          .filter(entry => 
-            entry.text_field.toLowerCase().includes(query) ||
-            entry.mmd_personnel.toLowerCase().includes(query)
-          )
-          .sort((a, b) => {
-            if (this.sortKey) {
-              const aDate = new Date(a[this.sortKey]);
-              const bDate = new Date(b[this.sortKey]);
-              return this.sortOrder === 'asc' ? aDate - bDate : bDate - aDate;
-            }
-            return 0;
-          });
-      },
-      latestYear() {
-        return Math.max(...this.investigation.map(item => new Date(item.released_date).getFullYear()));
-      },
-      totalSum() {
-        return this.investigation.filter(entry => new Date(entry.released_date).getFullYear() === this.latestYear).length;
-      },
-      monthlyTotals() {
-        const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
-        this.investigation.forEach(entry => {
-          const releaseDate = new Date(entry.released_date);
-          if (releaseDate.getFullYear() === this.latestYear) {
-            const month = releaseDate.getMonth(); // 0 = January, 11 = December
-            monthlyData[month]++;
-          }
-        });
-        return monthlyData;
-      },
-      year() {
-        return new Date().getFullYear();
-      },
+    filteredEntries() {
+      return this.getFilteredAndSortedData();
+    },
+    // Method to get the total count of entries for the latest year
+    totalSum() {
+      if (!this.investigation.length) return 0; // Check if entries is empty
+      
+      // Find the latest year from the dataset
+      const latestYear = Math.max(...this.investigation.map(item => {
+        const year = new Date(item.released_date).getFullYear();
+        return isNaN(year) ? 0 : year; // Handle invalid dates
+      }));
+      
+      // Filter dataset for the latest year and count the entries
+      const count = this.investigation.filter(investigation => new Date(investigation.released_date).getFullYear() === latestYear).length;
+      console.log('Total Count for Latest Year:', count); // Log the total count
+      
+      return count;
+    },
+
+    monthlyTotals() {
+      // Extract the latest year from the dataset
+      const latestYear = Math.max(...(this.investigation || []).map(item => {
+        const date = new Date(item.released_date);
+        return isNaN(date.getTime()) ? 0 : date.getFullYear(); // Handle invalid dates
+      }));
+
+      // Initialize an array for 12 months
+      const monthlyData = Array(12).fill(0);
+
+      // Populate the monthlyData array
+      (this.investigation || []).forEach(entry => {
+        const releaseDate = new Date(entry.released_date);
+        if (releaseDate.getFullYear() === latestYear && !isNaN(releaseDate.getTime())) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+      return monthlyData;
+    },
+    year() {
+      return new Date().getFullYear();
+    },
     },
     methods: {
       fetchInvestigation() {
@@ -252,28 +307,48 @@
             alert('Failed to fetch investigation data. Please try again later.');
           });
       },
+      getFilteredAndSortedData() {
+      const query = this.searchQuery.toLowerCase();
+      let filteredData = this.investigation.filter(entry =>
+        entry.month.toLowerCase().includes(query) ||
+        entry.released_date.toLowerCase().includes(query) ||
+        entry.mmd_personnel.toLowerCase().includes(query)
+      );
+
+      if (this.sortKey) {
+        filteredData.sort((a, b) => {
+          const valA = a[this.sortKey];
+          const valB = b[this.sortKey];
+          if (valA < valB) return this.sortOrder === 'asc' ? -1 : 1;
+          if (valA > valB) return this.sortOrder === 'asc' ? 1 : -1;
+          return 0;
+        });
+      }
+
+      return filteredData;
+      },
       addNewEntry() {
-        const fileInput = this.$refs.MOVpdf?.files[0];
+        const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+
         if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
           alert('File size exceeds 5MB.');
           return;
         }
-        if (!fileInput) {
-          alert('Please upload a PDF file.');
-          return;
-        }
   
         const formData = new FormData();
+        formData.append('month', this.newEntry.month);
         formData.append('text_field', this.newEntry.text_field);
         formData.append('complaint_received', this.newEntry.complaint_received);
-        formData.append('date_acted_from', this.newEntry.date_acted_from);
-        formData.append('date_acted_to', this.newEntry.date_acted_to);
+        formData.append('date_acted', this.newEntry.date_acted);
         formData.append('report_date', this.newEntry.report_date);
         formData.append('transmittal_date', this.newEntry.transmittal_date);
         formData.append('released_date', this.newEntry.released_date);
         formData.append('mmd_personnel', this.newEntry.mmd_personnel);
         formData.append('remarks', this.newEntry.remarks);
+        if (fileInput) {
         formData.append('MOVpdf', fileInput);
+        }
+        formData.append('coordinates', this.newEntry.coordinates);
   
         axios.post('http://localhost:8000/api/monitoringInvestigation', formData, {
           headers: {
@@ -291,16 +366,17 @@
       },
       clearNewEntry() {
         this.newEntry = {
+          month: '',
           text_field: '',
           complaint_received: '',
-          date_acted_from: '',
-          date_acted_to: '',
+          date_acted: '',
           report_date: '',
           transmittal_date: '',
           released_date: '',
           mmd_personnel: '',
           remarks: '',
-          MOVpdf: null
+          MOVpdf: null,
+          coordinates: '',
         };
         this.showModal = false;
         if (this.$refs.MOVpdf) {

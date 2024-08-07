@@ -96,7 +96,7 @@
             <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td class="px-6 py-4">{{ entry.month }}</td>
               <td class="px-6 py-4">{{ index + 1 }}</td>
-              <td class="px-6 py-4">{{ entry.text_field }}</td>
+              <td class="px-6 py-4" style="width: 300px;">{{ entry.text_field }}</td>
               <td class="px-6 py-4">{{ entry.travel_date_from }} to {{ entry.travel_date_to }}</td>
               <td class="px-6 py-4">{{ entry.report_date }}</td>
               <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
@@ -108,7 +108,7 @@
               <td class="px-6 py-4 flex justify-center">
               <!-- edit entry -->
               <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
-            </td>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -132,7 +132,7 @@
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <div class="mt-2 flex justify-between">
-                    <p class="mr-5">Month:</p>
+                    <p class="mr-5">Select Month:</p>
                     <select v-model="newEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
                       <option>FEBRUARY</option>
@@ -198,161 +198,186 @@
   </template>
   
   <script>
-    import Header from '../../components/header.vue'; 
-    import AddBtn from '../../components/MTSS/add-btn.vue'; 
-    import UserBtn from '../../components/user-dbbtn.vue'; 
-    import MonthBarChart from '../../components/bymonth-barchart.vue';
-    import axios from 'axios';
-    import debounce from 'lodash/debounce';
-  
-  export default {
-    components: {
-      Header,
-      UserBtn,
-      AddBtn,
-      MonthBarChart
+import Header from '../../components/header.vue'; 
+import AddBtn from '../../components/MTSS/add-btn.vue'; 
+import UserBtn from '../../components/user-dbbtn.vue'; 
+import MonthBarChart from '../../components/bymonth-barchart.vue';
+import axios from 'axios';
+import debounce from 'lodash/debounce';
+
+export default {
+  components: { Header, UserBtn, AddBtn, MonthBarChart },
+
+  data() {
+    return {
+      wpm: [],
+      searchQuery: '',
+      sortKey: '',
+      sortOrder: 'asc',
+      showModal: false,
+      newEntry: this.getEmptyEntry(),
+      debouncedSearch: debounce(this.search, 300) // Add debounce method
+    };
+  },
+
+  computed: {
+    filteredEntries() {
+      return this.getFilteredAndSortedData();
     },
-    data() {
+
+    // Method to get the total count of entries for the latest year
+    totalSum() {
+      if (!this.wpm.length) return 0; // Check if wpm is empty
+      
+      // Find the latest year from the dataset
+      const latestYear = Math.max(...this.wpm.map(item => {
+        const year = new Date(item.released_date).getFullYear();
+        return isNaN(year) ? 0 : year; // Handle invalid dates
+      }));
+      
+      // Filter dataset for the latest year and count the entries
+      const count = this.wpm.filter(wpm => new Date(wpm.released_date).getFullYear() === latestYear).length;
+      console.log('Total Count for Latest Year:', count); // Log the total count
+      
+      return count;
+    },
+
+    monthlyTotals() {
+      // Extract the latest year from the dataset
+      const latestYear = Math.max(...(this.wpm || []).map(item => {
+        const date = new Date(item.released_date);
+        return isNaN(date.getTime()) ? 0 : date.getFullYear(); // Handle invalid dates
+      }));
+
+      // Initialize an array for 12 months
+      const monthlyData = Array(12).fill(0);
+
+      // Populate the monthlyData array
+      (this.wpm || []).forEach(entry => {
+        const releaseDate = new Date(entry.released_date);
+        if (releaseDate.getFullYear() === latestYear && !isNaN(releaseDate.getTime())) {
+          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          monthlyData[month]++;
+        }
+      });
+
+      return monthlyData;
+    },
+
+    year() {
+      return new Date().getFullYear();
+    }
+  },
+  methods: {
+    getEmptyEntry() {
       return {
-        wpm: [],
-        searchQuery: '',
-        sortKey: '',
-        sortOrder: 'asc',
-        showModal: false,
-        newEntry: {
-          month: '',
-          text_field: '',
-          travel_date_from: '',
-          travel_date_to: '',
-          report_date: '',
-          transmittal_date: '',
-          released_date: '',
-          mmd_personnel: '',
-          MOVpdf: null
-        },
+        month: '',
+        text_field: '',
+        travel_date_from: '',
+        travel_date_to: '',
+        report_date: '',
+        transmittal_date: '',
+        released_date: '',
+        mmd_personnel: '',
+        MOVpdf: null,
       };
     },
-    computed: {
-      filteredEntries() {
-        const query = this.searchQuery.toLowerCase();
-        return this.wpm.filter(entry => 
-          entry.month.toLowerCase().includes(query) ||
-          entry.text_field.toLowerCase().includes(query) ||
-          entry.mmd_personnel.toLowerCase().includes(query)
-        ).sort((a, b) => {
-          const aDate = new Date(a[this.sortKey]);
-          const bDate = new Date(b[this.sortKey]);
-          return this.sortOrder === 'asc' ? aDate - bDate : bDate - aDate;
-        });
-      },
-      totalSum() {
-      const latestYear = Math.max(...this.wpm.map(item => new Date(item.released_date).getFullYear()));
-      return this.wpm
-        .filter(wpm => new Date(wpm.released_date).getFullYear() === latestYear)
-        .length;
-      },
-      monthlyTotals() {
-        const latestYear = Math.max(...(this.wpm || []).map(item => new Date(item.released_date).getFullYear()));
-        const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
 
-        (this.wpm || []).forEach(entry => {
-          const releaseDate = new Date(entry.released_date);
-          if (releaseDate.getFullYear() === latestYear) {
-            const month = releaseDate.getMonth(); // 0 = January, 11 = December
-            monthlyData[month]++;
-          }
-        });
-
-        return monthlyData;
-      },
-      year() {
-        return new Date().getFullYear();
-      }
-    },
-    methods: {
-      fetchWPM() {
-        axios.get('http://localhost:8000/api/monitoringWPM')
-          .then(response => {
-            this.wpm = response.data;
-          })
-          .catch(error => {
-            console.error('Error fetching WPM:', error);
-          });
-      },
-      addNewEntry() {
-        const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
-
-        if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
-          alert('File size exceeds 5MB.');
-          return;
-        }
-  
-        const formData = new FormData();
-        formData.append('month', this.newEntry.month);
-        formData.append('text_field', this.newEntry.text_field);
-        formData.append('travel_date_from', this.newEntry.travel_date_from);
-        formData.append('travel_date_to', this.newEntry.travel_date_to);
-        formData.append('report_date', this.newEntry.report_date);
-        formData.append('transmittal_date', this.newEntry.transmittal_date);
-        formData.append('released_date', this.newEntry.released_date);
-        formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-        if (fileInput) {
-          formData.append('MOVpdf', fileInput);
-        }
-  
-        axios.post('http://localhost:8000/api/monitoringWPM', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
+    fetchWPM() {
+      axios.get('http://localhost:8000/api/monitoringWPM')
         .then(response => {
-          this.wpm.push(response.data);
-          this.clearNewEntry();
+          this.wpm = response.data;
         })
         .catch(error => {
-          console.error('Error adding entry:', error.response ? error.response.data : error.message);
+          console.error('Error fetching WPM:', error);
         });
-      },
-      clearNewEntry() {
-        this.newEntry = {
-          month: '',
-          text_field: '',
-          travel_date_from: '',
-          travel_date_to: '',
-          report_date: '',
-          transmittal_date: '',
-          released_date: '',
-          mmd_personnel: '',
-          MOVpdf: null
-        };
-        this.showModal = false;
-      },
+    },
 
-      openPDF(pdfPath) {
-      const index = pdfPath.indexOf('/');
-      const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+    addNewEntry() {
+      const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+
+      if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+        alert('File size exceeds 5MB.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('month', this.newEntry.month);
+      formData.append('text_field', this.newEntry.text_field);
+      formData.append('travel_date_from', this.newEntry.travel_date_from);
+      formData.append('travel_date_to', this.newEntry.travel_date_to);
+      formData.append('report_date', this.newEntry.report_date);
+      formData.append('transmittal_date', this.newEntry.transmittal_date);
+      formData.append('released_date', this.newEntry.released_date);
+      formData.append('mmd_personnel', this.newEntry.mmd_personnel);
+      if (fileInput) {
+        formData.append('MOVpdf', fileInput);
+      }
+
+      axios.post('http://localhost:8000/api/monitoringWPM', formData)
+        .then(response => {
+          this.wpm.push(response.data);
+          this.showModal = false;
+          this.newEntry = this.getEmptyEntry();
+          alert('Entry added successfully!');
+        })
+        .catch(error => {
+          console.error('Error adding new entry:', error);
+          alert('Some fields are required!');
+        });
+    },
+
+    openPDF(pdfPath) {
       if (pdfPath) {
+        const url = `http://localhost:8000/storage/${pdfPath.split('/').pop()}`;
         window.open(url, '_blank');
       } else {
         console.error('PDF URL not found');
       }
-      },
-      sortByDate(key) {
-        this.sortKey = key;
-        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-      },
-      debouncedSearch: _.debounce(function() {
-        this.fetchWPM();
-      }, 300)
     },
-    mounted() {
-      this.fetchWPM();
+
+    search() {
+      axios.get(`http://localhost:8000/api/monitoringWPM/search?query=${this.searchQuery}`)
+        .then(response => {
+          this.wpm = response.data;
+        })
+        .catch(error => {
+          console.error('Error searching for monitoringWPM:', error);
+        });
+    },
+
+    getFilteredAndSortedData() {
+      const query = this.searchQuery.toLowerCase();
+      let filteredData = this.wpm.filter(entry =>
+        entry.month.toLowerCase().includes(query) ||
+        entry.text_field.toLowerCase().includes(query) ||
+        entry.mmd_personnel.toLowerCase().includes(query)
+      );
+
+      if (this.sortKey) {
+        filteredData.sort((a, b) => {
+          const valA = a[this.sortKey];
+          const valB = b[this.sortKey];
+          if (valA < valB) return this.sortOrder === 'asc' ? -1 : 1;
+          if (valA > valB) return this.sortOrder === 'asc' ? 1 : -1;
+          return 0;
+        });
+      }
+
+      return filteredData;
+    },
+
+    debounce(func, wait) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
     }
-  };
-  </script>
-  
-  <style scoped>
-  /* Add your styles here */
-  </style>
-  
+  },
+
+  mounted() {
+    this.fetchWPM();
+  }
+};
+</script>

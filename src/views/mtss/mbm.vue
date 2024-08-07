@@ -57,20 +57,19 @@
                 <template v-else>▼</template>
               </span>
               </th>
-              <th scope="col" class="px-6 py-3">Petitioner</th>
-              <th scope="col" class="px-6 py-3" @click="sortByDate('location')">
+              <th scope="col" class="px-6 py-3">
+                No
+              </th>
+              <th scope="col" class="px-6 py-3"  style="width: 330px;">Petitioner</th>
+              <th scope="col" class="px-6 py-3" style="width: 310px;" @click="sortByDate('location')">
                 Location of Declared Minahang Bayan
                 <span v-if="sortKey === 'location'" aria-label="Sorted ascending">
                 <template v-if="sortOrder === 'asc'">▲</template>
                 <template v-else>▼</template>
               </span>
               </th>
-              <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('travel_date')">
+              <th scope="col" class="px-6 py-3">
                 Travel Date
-                <span v-if="sortKey === 'travel_date'" aria-label="Sorted ascending">
-                  <template v-if="sortOrder === 'asc'">▲</template>
-                  <template v-else>▼</template>
-                </span>
               </th>
               <th scope="col" class="px-6 py-3 cursor-pointer" @click="sortByDate('report_date')">
                 Report Date
@@ -95,15 +94,16 @@
               </th>
               <th scope="col" class="px-6 py-3">MMD Personnel</th>
               <th scope="col" class="px-6 py-3 text-center">Proof of MOV Uploaded</th>
-              <th scope="col" class="px-6 py-3 text-center">Map</th>
+              <th scope="col" class="px-6 py-3 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td class="px-6 py-4">{{ entry.month }}</td>
-              <td class="px-6 py-4">{{ entry.petitioner }}</td>
-              <td class="px-6 py-4">{{ entry.location }}</td>
-              <td class="px-6 py-4">{{ entry.travel_date }}</td>
+              <td class="px-6 py-4">{{ index + 1 }}</td>
+              <td class="px-6 py-4" style="word-wrap:break-word;">{{ entry.petitioner }}</td>
+              <td class="px-6 py-4" style="word-wrap:break-word;">{{ entry.location }}</td>
+              <td class="px-6 py-4">{{ entry.travel_date_from }} to {{ entry.travel_date_to }}</td>
               <td class="px-6 py-4">{{ entry.report_date }}</td>
               <td class="px-6 py-4">{{ entry.transmittal_date }}</td>
               <td class="px-6 py-4">{{ entry.released_date }}</td>
@@ -111,8 +111,9 @@
               <td class="px-6 py-4 text-center">
                 <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
               </td>
-              <td class="px-6 py-4 text-center">
-                <button @click="openJPEG(entry.map)" class="bg-green-500 text-white px-2 py-1 rounded">View</button>
+              <td class="px-6 py-4 flex" style="margin-top: 10px;">
+                <button @click="openJPEG(entry.map)" class=" pr-2 rounded"><img src="../../assets/icons/map.png" style="width: 30px;"></button>
+                <button @click="editEntry(index)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
               </td>
             </tr>
           </tbody>
@@ -163,7 +164,9 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Travel Date:</p>
-                    <input v-model="newEntry.travel_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="newEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <p class="">to</p>
+                    <input v-model="newEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Report Date:</p>
@@ -226,7 +229,8 @@ export default {
         month: '',
         petitioner: '',
         location: '',
-        travel_date: '',
+        travel_date_from: '',
+        travel_date_to: '',
         report_date: '',
         transmittal_date: '',
         released_date: '',
@@ -240,56 +244,72 @@ export default {
   },
   computed: {
     filteredEntries() {
-  let entries = this.entries;
+      let entries = this.entries;
 
-  if (this.searchQuery) {
-    const query = this.searchQuery.toLowerCase();
-    entries = entries.filter(entry =>
-      entry.month.toLowerCase().includes(query) ||
-      entry.petitioner.toLowerCase().includes(query) ||
-      entry.location.toLowerCase().includes(query) ||
-      Object.values(entry).some(val => String(val).toLowerCase().includes(query))
-    );
-  }
-
-  if (this.sortKey) {
-    entries = entries.slice().sort((a, b) => {
-      let aValue = a[this.sortKey];
-      let bValue = b[this.sortKey];
-
-      if (this.sortKey === 'released_date' || this.sortKey === 'travel_date' || this.sortKey === 'report_date' || this.sortKey === 'transmittal_date') {
-        aValue = new Date(aValue);
-        bValue = new Date(bValue);
-      } else {
-        aValue = String(aValue).toLowerCase();
-        bValue = String(bValue).toLowerCase();
+      if (this.searchQuery) {
+        const query = this.searchQuery.toLowerCase();
+        entries = entries.filter(entry =>
+          entry.month.toLowerCase().includes(query) ||
+          entry.petitioner.toLowerCase().includes(query) ||
+          entry.location.toLowerCase().includes(query) ||
+          Object.values(entry).some(val => String(val).toLowerCase().includes(query))
+        );
       }
 
-      if (this.sortOrder === 'asc') {
-        return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
-      } else {
-        return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
-      }
-    });
-  }
+      if (this.sortKey) {
+        entries = entries.slice().sort((a, b) => {
+          let aValue = a[this.sortKey];
+          let bValue = b[this.sortKey];
 
-  return entries;
-},
-    //
-    //
-    totalSum() {
-    const latestYear = Math.max(...this.entries.map(item => new Date(item.released_date).getFullYear()));
-    return this.entries
-      .filter(entries => new Date(entries.released_date).getFullYear() === latestYear)
-      .length;
+          if (this.sortKey === 'released_date' || this.sortKey === 'report_date' || this.sortKey === 'transmittal_date') {
+            aValue = new Date(aValue);
+            bValue = new Date(bValue);
+          } else {
+            aValue = String(aValue).toLowerCase();
+            bValue = String(bValue).toLowerCase();
+          }
+
+          if (this.sortOrder === 'asc') {
+            return aValue > bValue ? 1 : aValue < bValue ? -1 : 0;
+          } else {
+            return aValue < bValue ? 1 : aValue > bValue ? -1 : 0;
+          }
+        });
+      }
+
+      return entries;
     },
-    monthlyTotals() {
-      const latestYear = Math.max(...(this.entries || []).map(item => new Date(item.released_date).getFullYear()));
-      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+    // Method to get the total count of entries for the latest year
+    totalSum() {
+      if (!this.entries.length) return 0; // Check if entries is empty
+      
+      // Find the latest year from the dataset
+      const latestYear = Math.max(...this.entries.map(item => {
+        const year = new Date(item.released_date).getFullYear();
+        return isNaN(year) ? 0 : year; // Handle invalid dates
+      }));
+      
+      // Filter dataset for the latest year and count the entries
+      const count = this.entries.filter(entries => new Date(entries.released_date).getFullYear() === latestYear).length;
+      console.log('Total Count for Latest Year:', count); // Log the total count
+      
+      return count;
+    },
 
+    monthlyTotals() {
+      // Extract the latest year from the dataset
+      const latestYear = Math.max(...(this.entries || []).map(item => {
+        const date = new Date(item.released_date);
+        return isNaN(date.getTime()) ? 0 : date.getFullYear(); // Handle invalid dates
+      }));
+
+      // Initialize an array for 12 months
+      const monthlyData = Array(12).fill(0);
+
+      // Populate the monthlyData array
       (this.entries || []).forEach(entry => {
         const releaseDate = new Date(entry.released_date);
-        if (releaseDate.getFullYear() === latestYear) {
+        if (releaseDate.getFullYear() === latestYear && !isNaN(releaseDate.getTime())) {
           const month = releaseDate.getMonth(); // 0 = January, 11 = December
           monthlyData[month]++;
         }
@@ -297,6 +317,7 @@ export default {
 
       return monthlyData;
     },
+
     year() {
       return new Date().getFullYear();
     }
@@ -343,16 +364,28 @@ export default {
       formData.append('month', this.newEntry.month);
       formData.append('petitioner', this.newEntry.petitioner);
       formData.append('location', this.newEntry.location);
-      formData.append('travel_date', this.newEntry.travel_date);
+      formData.append('travel_date_from', this.newEntry.travel_date_from);
+      formData.append('travel_date_to', this.newEntry.travel_date_to);
       formData.append('report_date', this.newEntry.report_date);
       formData.append('transmittal_date', this.newEntry.transmittal_date);
       formData.append('released_date', this.newEntry.released_date);
-      formData.append('mmd_personnel', this.newEntry.mmd_personnel);
-      if (this.$refs.MOVpdf.files.length) {
-        formData.append('MOVpdf', this.$refs.MOVpdf.files[0]);
+      
+      const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+      if (fileInput) {
+        if (fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+          alert('File size exceeds 5MB.');
+          return;
+        }
+        formData.append('MOVpdf', fileInput);
       }
-      if (this.$refs.map.files.length) {
-        formData.append('map', this.$refs.map.files[0]);
+      
+      const jpg = this.$refs.map.files[0] || null; // Use null if no file is selected
+      if (jpg) {
+        if (jpg.size > 5 * 1024 * 1024) { // 5MB limit
+          alert('File size exceeds 5MB.');
+          return;
+        }
+        formData.append('map', jpg);
       }
 
       axios.post('http://localhost:8000/api/monitoringMB', formData, {
