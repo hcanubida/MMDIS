@@ -463,11 +463,6 @@ export default {
       let filteredData = this.ostc.filter(entry =>
         entry.client.toLowerCase().includes(query) ||
         entry.certification_no.toLowerCase().includes(query) ||
-        entry.received_ord.toLowerCase().includes(query) ||
-        entry.received_mmd.toLowerCase().includes(query) ||
-        entry.payment_date.toLowerCase().includes(query) ||
-        entry.sample_inspection.toLowerCase().includes(query) ||
-        entry.issued.toLowerCase().includes(query) ||
         entry.mmd_personnel.toLowerCase().includes(query)
       );
 
