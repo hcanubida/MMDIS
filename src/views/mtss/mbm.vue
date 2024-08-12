@@ -114,7 +114,7 @@
               <td class="px-6 py-4 flex" style="margin-top: 10px;">
                 <button @click="openJPEG(entry.map)" class=" pr-2 rounded"><img src="../../assets/icons/map.png" style="width: 30px;"></button>
                 <button @click="editEntry(index)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
-                <button @click="deleteEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
+                <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
               </td>
             </tr>
           </tbody>
@@ -227,6 +227,7 @@ export default {
       entries: [], // Assuming entries will be fetched from the API
       showModal: false,
       newEntry: {
+        ID: '',
         month: '',
         petitioner: '',
         location: '',
@@ -397,6 +398,21 @@ export default {
       }).catch(error => {
         console.error('Error submitting entry:', error);
       });
+    },
+    deleteEntry(entryID) {
+      // Confirm deletion
+      if (confirm('Are you sure you want to delete this entry?')) {
+        axios.delete(`http://localhost:8000/api/monitoringMB/${entryID}`)
+          .then(response => {
+            // Remove the entry from the local array
+            this.entries = this.entries.filter(entry => entry.ID !== entryID);
+            alert('Entry deleted successfully!');
+          })
+          .catch(error => {
+            console.error('Error deleting entry:', error);
+            alert('Failed to delete the entry.');
+          });
+      }
     },
     debouncedSearch: debounce(function () {
       this.fetchMB();

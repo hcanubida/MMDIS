@@ -103,7 +103,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b">
+          <tr v-for="(entry, index) in filteredEntries" :key="entry.id_no" class="bg-white border-b">
             <td class="px-6 py-4">{{ entry.month }}</td>
             <td class="px-6 py-4">{{ index + 1 }}</td>
             <td class="px-6 py-4">{{ entry.location }}</td>
@@ -118,7 +118,7 @@
             <td class="px-6 py-4 flex justify-center">
               <!-- edit entry -->
               <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
-              <button @click="deleteEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
+              <button @click="deleteEntry(entry.id_no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
             </td>
           </tr>
         </tbody>
@@ -292,6 +292,7 @@ export default {
   methods: {
     getEmptyEntry() {
       return {
+        id_no: '',
         month: '',
         location: '',
         travel_date_from: '',
@@ -405,7 +406,22 @@ export default {
       } else {
         console.error('PDF URL not found');
       }
+    },
+    deleteEntry(entryId) {
+    const confirmDelete = confirm("Are you sure you want to delete this entry?");
+    if (!confirmDelete) {
+      return;
     }
+
+    axios.delete(`http://localhost:8000/api/monitoringInventory/${entryId}`)
+      .then(() => {
+        this.inventory = this.inventory.filter(e => e.id_no !== entryId);
+      })
+      .catch(error => {
+        console.error('Error deleting entry:', error.response ? error.response.data : error.message);
+        alert('There was an error deleting the entry. Please try again.');
+      });
+  },
   },
   mounted() {
     this.fetchInventory();
