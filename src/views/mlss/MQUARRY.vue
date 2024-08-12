@@ -40,14 +40,14 @@
     <div class="flex mt-8 justify-between">
       <div class="flex w-2/5">
         <div class="rounded-l-lg content-center bg-blue-100 items-center pe-3 ml-5 ps-3 pointer-events-none">
-            <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <svg class="w-8 h-8 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
             </svg>
         </div>
         <div class="w-full">
-          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
           <div class="">
-            <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search name, province, city, barangay, lot_no, status or remarks..." required />
+            <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search name, province, city, barangay, lot_no, status or remarks..." required />
           </div>
         </div>
       </div>
@@ -58,8 +58,8 @@
 
     <!-- Table Section -->
     <div class="mt-8">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" class="px-6 py-3">No.</th>
             <th scope="col" class="px-6 py-3">Names</th>
@@ -95,7 +95,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(quarry, index) in filteredQUARRY" :key="index" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <tr v-for="(quarry, index) in filteredQUARRY" :key="index" class="bg-white border-b">
             <td class="px-6 py-4">{{ index + 1 }}</td>
             <td class="px-6 py-4">{{ quarry.name }}</td>
             <td class="px-6 py-4">{{ quarry.area }}</td>
@@ -112,7 +112,7 @@
           </tr>
         </tbody>
       </table>
-      <div v-if="filteredQUARRY.length === 0" class="text-center mt-4 text-gray-600 dark:text-gray-300">
+      <div v-if="filteredQUARRY.length === 0" class="text-center mt-4 text-gray-600">
         No results found.
       </div>
     </div>

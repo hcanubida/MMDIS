@@ -7,7 +7,7 @@ import './assets/tw.css'
 </script>
 
 <template>
-  <main>
+  <main class="">
     <RouterView />
   </main>
 </template>

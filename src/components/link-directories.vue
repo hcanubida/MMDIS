@@ -1,8 +1,8 @@
 <template>
   <!-- drawer init and show -->
-  <div class="text-center mt-32 flex ml-4">
+  <div class="text-center flex ml-4 mt-32 ">
     <button
-      class="fixed text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      class="fixed text-white hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
       type="button"
       style="background-color: #e6b980;"
       @click="toggleDrawer"
@@ -16,19 +16,19 @@
   <div
     id="drawer-navigation"
     :class="{'-translate-x-full': !isDrawerVisible, 'translate-x-0': isDrawerVisible}"
-    class="fixed mt-24 left-0 z-40 w-64 p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800"
+    class="fixed mt-24 left-0 z-40 w-64 p-4 overflow-y-auto transition-transform bg-white"
     style="background-color: #e6b980; height: 370px;"
     tabindex="-1"
     aria-labelledby="drawer-navigation-label"
   >
-    <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">
+    <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase">
       Link Directories
     </h5>
     <button
       type="button"
       @click="toggleDrawer"
       aria-controls="drawer-navigation"
-      class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+      class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center"
     >
       <svg
         aria-hidden="true"
@@ -51,10 +51,10 @@
           <a
             href="http://202.137.117.84:8001/"
             target="_blank"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
             <svg
-              class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -70,10 +70,10 @@
           <a
             href="http://172.31.10.35:8007/rso/"
             target="_blank"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
             <svg
-              class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -89,10 +89,10 @@
           <a
             href="https://www.facebook.com/mgbregionxofficialpage"
             target="_blank"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
             <svg
-              class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -108,10 +108,10 @@
           <a
             href="https://region10.mgb.gov.ph/"
             target="_blank"
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
             <svg
-              class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+              class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"

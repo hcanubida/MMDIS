@@ -1,66 +1,66 @@
 <template>
-    <div class="panel flex justify-center items-center">
-        <div class="flex justify-center items-center h-screen">
-            <taas />
-        </div>
-        <div class="panel1 h-auto flex flex-row justify-center items-center mt-16">
-            <img :src="mgb" class="img123" style="width: 330px;"/>
-            <div class="login -ml-16">
-                <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
-                    <h1 style="font-weight: 700; font-size: 25px;">Welcome Back!</h1>
-                    <p style="font-size: 15px;">Login to access the MGB-X </p>
-                    <p style="font-size: 15px;">MMD Information System:</p>
-                </div>
-                <form>
-                    <div class="inputfield flex flex-col">
-                        <input v-model="form.username" id="username" name="username" type="username"
-                            autocomplete="username" placeholder="Username"
-                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
-                        <input v-model="form.password" id="password" name="password" type="password"
-                            autocomplete="password" placeholder="Password"
-                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
-                        <!--    -->
-                        <div class="error1" v-if="isValid"
-                            style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                            <a class="errormsg1" style="color: red;">
-                                Warning Alert!!
-                            </a>
-                            <a class="errormsg">
-                                Please Fill out the Text Fields
-                            </a>
-                        </div>
-                        <div v-if="isUsername" class="wronge"
-                            style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                            <a class="wronge1" style="color: red;">
-                                Error Alert!!
-                            </a>
-                            <a class="wronge2">
-                                {{ error }}
-                            </a>
-                        </div>
 
-                        <div class="logincorrect" v-else-if="pleaseWait"
-                            style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                            <a class="logincorrect1" style="color: green;">
-                                Login!!
-                            </a>
-                            <a class="logincorrect2">
-                                Please wait for a moment....
-                            </a>
-                        </div>
+        <taas />
+
+        <div class="panel flex justify-center items-center">
+            <div class="panel1 h-auto flex flex-row justify-center items-center mt-32">
+                <img :src="mgb" class="img123" style="width: 330px;"/>
+                <div class="login -ml-16">
+                    <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
+                        <h1 style="font-weight: 700; font-size: 25px;">Welcome Back!</h1>
+                        <p style="font-size: 15px;">Login to access the MGB-X </p>
+                        <p style="font-size: 15px;">MMD Information System:</p>
                     </div>
-                </form>
-                <div class="third flex flex-col items-center">
-                    <button class="buttonlogin  hover:bg-red-200 bg-yellow-600 text-white pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
+                    <form>
+                        <div class="inputfield flex flex-col">
+                            <input v-model="form.username" id="username" name="username" type="username"
+                                autocomplete="username" placeholder="Username"
+                                class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
+                            <input v-model="form.password" id="password" name="password" type="password"
+                                autocomplete="password" placeholder="Password"
+                                class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
+                            <!--    -->
+                            <div class="error1" v-if="isValid"
+                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
+                                <a class="errormsg1" style="color: red;">
+                                    Warning Alert!!
+                                </a>
+                                <a class="errormsg">
+                                    Please Fill out the Text Fields
+                                </a>
+                            </div>
+                            <div v-if="isUsername" class="wronge"
+                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
+                                <a class="wronge1" style="color: red;">
+                                    Error Alert!!
+                                </a>
+                                <a class="wronge2">
+                                    {{ error }}
+                                </a>
+                            </div>
+
+                            <div class="logincorrect" v-else-if="pleaseWait"
+                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
+                                <a class="logincorrect1" style="color: green;">
+                                    Login!!
+                                </a>
+                                <a class="logincorrect2">
+                                    Please wait for a moment....
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="third flex flex-col items-center">
+                        <button class="buttonlogin  hover:bg-red-200 bg-yellow-600 text-white pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 </template>
 
 <script setup>
-import taas from '../../components/MTES/header.vue'
+import taas from '../../components/header.vue'
 import mgb from '../../assets/icons/mgb.png'
 import { ref } from 'vue';
 import axios from 'axios';
