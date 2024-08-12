@@ -114,6 +114,7 @@
               <td class="px-6 py-4 flex" style="margin-top: 10px;">
                 <button @click="openJPEG(entry.map)" class=" pr-2 rounded"><img src="../../assets/icons/map.png" style="width: 30px;"></button>
                 <button @click="editEntry(index)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
+                <button @click="deleteEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
               </td>
             </tr>
           </tbody>
