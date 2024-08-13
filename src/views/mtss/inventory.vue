@@ -103,7 +103,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(entry, index) in filteredEntries" :key="entry.id" class="bg-white border-b">
+          <tr v-for="(entry, index) in filteredEntries" :key="entry.ID" class="bg-white border-b">
             <td class="px-6 py-4">{{ entry.month }}</td>
             <td class="px-6 py-4">{{ index + 1 }}</td>
             <td class="px-6 py-4">{{ entry.location }}</td>
@@ -118,7 +118,7 @@
             <td class="px-6 py-4 flex justify-center">
               <!-- edit entry -->
               <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
-              <button @click="deleteEntry(entry.id)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
+              <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
             </td>
           </tr>
         </tbody>
@@ -305,7 +305,7 @@ export default {
       };
     },
     fetchInventory() {
-      axios.get('http://localhost:8000/api/monitoringInventory')
+      axios.get('http://localhost:8000/api/MonitoringInventory')
         .then(response => {
           this.inventory = response.data;
         })
@@ -334,7 +334,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/monitoringInventory', formData, {
+      axios.post('http://localhost:8000/api/MonitoringInventory', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -415,7 +415,7 @@ export default {
 
     axios.delete(`http://localhost:8000/api/MonitoringInventory/${entryId}`)
       .then(() => {
-        this.inventory = this.inventory.filter(e => e.id !== entryId);
+        this.inventory = this.inventory.filter(e => e.ID !== entryId);
       })
       .catch(error => {
         console.error('Error deleting entry:', error.response ? error.response.data : error.message);

@@ -255,7 +255,7 @@ export default {
       };
     },
     fetchOSTC() {
-      axios.get('http://localhost:8000/api/monitoringOSTC')
+      axios.get('http://localhost:8000/api/MonitoringOSTC')
         .then(response => {
           console.log('Fetched data:', response.data); // Debug log
           this.ostc = response.data;
@@ -286,7 +286,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/monitoringOSTC', formData)
+      axios.post('http://localhost:8000/api/MonitoringOSTC', formData)
         .then(response => {
           this.ostc.push(response.data);
           this.showModal = false;
@@ -303,7 +303,7 @@ export default {
     deleteEntry(entryNo) {
       // Confirm deletion
       if (confirm('Are you sure you want to delete this entry?')) {
-        axios.delete(`http://localhost:8000/api/monitoringOSTC/${entryNo}`)
+        axios.delete(`http://localhost:8000/api/MonitoringOSTC/${entryNo}`)
           .then(response => {
             // Remove the entry from the local array
             this.ostc = this.ostc.filter(entry => entry.no !== entryNo);
