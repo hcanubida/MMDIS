@@ -116,8 +116,7 @@
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
             </td>
             <td class="px-6 py-4 flex justify-center">
-              <!-- edit entry -->
-              <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
+              <button @click="openUpdateModal(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
               <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
             </td>
           </tr>
@@ -214,6 +213,91 @@
         </div>
       </div>
       <!-- End Modal -->
+
+      <!-- This is the modal for update method -->
+      <div v-if="isUpdateModalOpen" class="fixed inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <!-- Background overlay -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- Modal content -->
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <form @submit.prevent="handleUpdate" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Month:</p>
+                    <select v-model="updateEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Location:</p>
+                    <select v-model="updateEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>BUKIDNON</option>
+                      <option>CAMUIGUIN</option>
+                      <option>LANAO DEL NORTE</option>
+                      <option>MISAMIS OCCIDENTAL</option>
+                      <option>MISAMIS ORIENTAL</option>
+                      <option>CAGAYAN DE ORO CITY</option>
+                      <option>ILIGAN CITY</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Travel Date:</p>
+                    <input v-model="updateEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <p class="">to</p>
+                    <input v-model="updateEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Report Date:</p>
+                    <input v-model="updateEntry.report_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Transmittal Date:</p>
+                    <input v-model="updateEntry.transmittal_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Released Date:</p>
+                    <input v-model="updateEntry.released_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">MMD Personnel:</p>
+                    <input v-model="updateEntry.mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Proof of MOV:</p>
+                    <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click="closeModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+              </button>
+              <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End Modal -->
     </div>
 </template>
 
@@ -242,6 +326,8 @@ export default {
       sortOrder: 'asc',
       showModal: false,
       newEntry: this.getEmptyEntry(),
+      isUpdateModalOpen: false, // State to track if the update modal is open
+      updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     };
   },
@@ -422,6 +508,43 @@ export default {
         alert('There was an error deleting the entry. Please try again.');
       });
   },
+    //
+    //
+    // Method to open the update modal
+    openUpdateModal(entryNo) {
+      const entry = this.inventory.find(e => e.ID === entryNo); // Find the entry to be updated by its number
+      if (entry) {
+        this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
+        this.isUpdateModalOpen = true; // Open the update modal
+      }
+    },
+
+    // Method to close the modal
+    closeModal() {
+      this.isUpdateModalOpen = false; // Close the update modal
+      this.updateEntry = this.getEmptyEntry(); // Reset the `updateEntry` object
+    },
+
+    // Method to handle the update process
+    handleUpdate() {
+  const updatedEntry = this.updateEntry;
+
+  axios.put(`http://localhost:8000/api/MonitoringInventory/${updatedEntry.ID}`, updatedEntry)
+    .then(response => {
+      const index = this.inventory.findIndex(entry => entry.ID === updatedEntry.ID);
+      if (index !== -1) {
+        this.inventory[index] = response.data; // Directly assign the updated data to the entry in the array
+      }
+      this.closeModal(); // Close the modal after successful update
+      alert('Entry updated successfully!');
+    })
+    .catch(error => {
+      console.error('Error updating entry:', error);
+      alert('Failed to update the entry.');
+    });
+},
+    // 
+    //
   },
   mounted() {
     this.fetchInventory();

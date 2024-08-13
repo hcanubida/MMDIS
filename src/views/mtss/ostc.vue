@@ -106,8 +106,8 @@
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
             </td>
             <td class="px-6 py-4 flex justify-center">
-              <!-- edit entry -->
-              <button @click="updateEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
+              <!-- this is the button to open the modal for updating entry -->
+              <button @click="openUpdateModal(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
               <button @click="deleteEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
             </td>
           </tr>
@@ -183,6 +183,71 @@
         </div>
       </div>
       <!-- End Modal -->
+
+    <!-- This is the modal for update method -->
+    <div v-if="isUpdateModalOpen" class="fixed inset-0 overflow-y-auto" aria-modal="true" role="dialog">
+      <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        <form @submit.prevent="handleUpdate" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Client:</p>
+                  <input v-model="updateEntry.client" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Certification No.:</p>
+                  <input v-model="updateEntry.certification_no" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Date Received By ORD:</p>
+                  <input v-model="updateEntry.received_ord" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Date Received By MMD:</p>
+                  <input v-model="updateEntry.received_mmd" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Payment Date:</p>
+                  <input v-model="updateEntry.payment_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Sample Inspection:</p>
+                  <input v-model="updateEntry.sample_inspection" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Date Issued:</p>
+                  <input v-model="updateEntry.issued" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">MMD Personnel:</p>
+                  <input v-model="updateEntry.mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Proof of MOV Uploaded:</p>
+                  <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button @click="closeModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+              Close
+            </button>
+            <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End Update Modal -->
     </div>
   </div>
 </template>
@@ -200,14 +265,16 @@ export default {
 
   data() {
     return {
-      ostc: [],
-      searchQuery: '',
-      sortKey: '',
-      sortOrder: 'asc',
-      showModal: false,
-      currentIndex: null,
-      newEntry: this.getEmptyEntry(),
-      debouncedSearch: this.debounce(this.search, 300) // Add debounce method
+      ostc: [], // Array to store fetched entries
+      searchQuery: '', // Search query string
+      sortKey: '', // Key to sort entries by
+      sortOrder: 'asc', // Sorting order (ascending by default)
+      showModal: false, // State for add entry modal
+      currentIndex: null, // Current index for editing entries
+      newEntry: this.getEmptyEntry(), // Template for a new entry
+      isUpdateModalOpen: false, // State to track if the update modal is open
+      updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
+      debouncedSearch: this.debounce(this.search, 300), // Debounced search function
     };
   },
 
@@ -223,12 +290,12 @@ export default {
     },
     monthlyTotals() {
       const latestYear = Math.max(...(this.ostc || []).map(item => new Date(item.issued).getFullYear()));
-      const monthlyData = Array(12).fill(0); // Initialize an array for 12 months
+      const monthlyData = Array(12).fill(0);
 
       (this.ostc || []).forEach(entry => {
         const releaseDate = new Date(entry.issued);
         if (releaseDate.getFullYear() === latestYear) {
-          const month = releaseDate.getMonth(); // 0 = January, 11 = December
+          const month = releaseDate.getMonth();
           monthlyData[month]++;
         }
       });
@@ -257,7 +324,7 @@ export default {
     fetchOSTC() {
       axios.get('http://localhost:8000/api/MonitoringOSTC')
         .then(response => {
-          console.log('Fetched data:', response.data); // Debug log
+          console.log('Fetched data:', response.data);
           this.ostc = response.data;
         })
         .catch(error => {
@@ -266,9 +333,9 @@ export default {
     },
 
     addNewEntry() {
-      const fileInput = this.$refs.MOVpdf.files[0] || null; // Use null if no file is selected
+      const fileInput = this.$refs.MOVpdf.files[0] || null;
 
-      if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
+      if (fileInput && fileInput.size > 5 * 1024 * 1024) {
         alert('File size exceeds 5MB.');
         return;
       }
@@ -282,40 +349,111 @@ export default {
       formData.append('sample_inspection', this.newEntry.sample_inspection);
       formData.append('issued', this.newEntry.issued);
       formData.append('mmd_personnel', this.newEntry.mmd_personnel);
+
       if (fileInput) {
         formData.append('MOVpdf', fileInput);
       }
 
       axios.post('http://localhost:8000/api/MonitoringOSTC', formData)
         .then(response => {
+          console.log('Added new entry:', response.data);
           this.ostc.push(response.data);
-          this.showModal = false;
           this.newEntry = this.getEmptyEntry();
+          this.showModal = false;
           alert('Entry added successfully!');
         })
         .catch(error => {
           console.error('Error adding new entry:', error);
-          alert('Client, Certification No., and Date Issued fields are required!');
-
+          alert('Failed to add a new entry.');
         });
     },
-
-    deleteEntry(entryNo) {
-      // Confirm deletion
-      if (confirm('Are you sure you want to delete this entry?')) {
-        axios.delete(`http://localhost:8000/api/MonitoringOSTC/${entryNo}`)
-          .then(response => {
-            // Remove the entry from the local array
-            this.ostc = this.ostc.filter(entry => entry.no !== entryNo);
-            alert('Entry deleted successfully!');
-          })
-          .catch(error => {
-            console.error('Error deleting entry:', error);
-            alert('Failed to delete the entry.');
-          });
+    // Method to open the update modal
+    openUpdateModal(entryNo) {
+      const entry = this.ostc.find(e => e.no === entryNo); // Find the entry to be updated by its number
+      if (entry) {
+        this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
+        this.isUpdateModalOpen = true; // Open the update modal
       }
     },
 
+    // Method to close the modal
+    closeModal() {
+      this.isUpdateModalOpen = false; // Close the update modal
+      this.updateEntry = this.getEmptyEntry(); // Reset the `updateEntry` object
+    },
+
+    // Method to handle the update process
+    handleUpdate() {
+      const updatedEntry = this.updateEntry;
+
+      axios.put(`http://localhost:8000/api/MonitoringOSTC/${updatedEntry.no}`, updatedEntry)
+        .then(response => {
+          const index = this.ostc.findIndex(entry => entry.no === updatedEntry.no);
+          if (index !== -1) {
+            this.ostc[index] = response.data; // Directly assign the updated data to the entry in the array
+          }
+          this.closeModal(); // Close the modal after successful update
+          alert('Entry updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error updating entry:', error);
+          alert('Failed to update the entry.');
+        });
+    },
+    deleteEntry(no) {
+      if (!confirm('Are you sure you want to delete this entry?')) {
+        return;
+      }
+      axios.delete(`http://localhost:8000/api/MonitoringOSTC/${no}`)
+        .then(response => {
+          this.ostc = this.ostc.filter(entry => entry.no !== no);
+          alert('Entry deleted successfully!');
+        })
+        .catch(error => {
+          console.error('Error deleting entry:', error);
+          alert('Failed to delete the entry.');
+        });
+    },
+
+    search() {
+      // Implement search logic here
+    },
+    sortByDate(key) {
+      if (this.sortKey === key) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortKey = key;
+        this.sortOrder = 'asc';
+      }
+    },
+    getFilteredAndSortedData() {
+      let filteredData = this.ostc;
+
+      if (this.searchQuery) {
+        const lowerCaseQuery = this.searchQuery.toLowerCase();
+        filteredData = filteredData.filter(entry =>
+          Object.values(entry).some(value =>
+            String(value).toLowerCase().includes(lowerCaseQuery)
+          )
+        );
+      }
+
+      if (this.sortKey) {
+        filteredData.sort((a, b) => {
+          const compareA = a[this.sortKey];
+          const compareB = b[this.sortKey];
+          if (compareA < compareB) return this.sortOrder === 'asc' ? -1 : 1;
+          if (compareA > compareB) return this.sortOrder === 'asc' ? 1 : -1;
+          return 0;
+        });
+      }
+
+      return filteredData;
+    },
+
+    debounce(func, wait) {
+      return debounce(func, wait);
+    },
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
@@ -326,45 +464,6 @@ export default {
         console.error('PDF URL not found');
       }
     },
-
-    search() {
-      axios.get(`http://localhost:8000/api/monitoringOSTC/search?query=${this.searchQuery}`)
-        .then(response => {
-          this.ostc = response.data;
-        })
-        .catch(error => {
-          console.error('Error searching for monitoringOSTC:', error);
-        });
-    },
-
-    debounce(func, wait) {
-      let timeout;
-      return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-      };
-    },
-
-    getFilteredAndSortedData() {
-      const query = this.searchQuery.toLowerCase();
-      let filteredData = this.ostc.filter(entry =>
-        entry.client.toLowerCase().includes(query) ||
-        entry.certification_no.toLowerCase().includes(query) ||
-        entry.mmd_personnel.toLowerCase().includes(query)
-      );
-
-      if (this.sortKey) {
-        filteredData.sort((a, b) => {
-          const valA = a[this.sortKey];
-          const valB = b[this.sortKey];
-          if (valA < valB) return this.sortOrder === 'asc' ? -1 : 1;
-          if (valA > valB) return this.sortOrder === 'asc' ? 1 : -1;
-          return 0;
-        });
-      }
-
-      return filteredData;
-    }
   },
 
   mounted() {
