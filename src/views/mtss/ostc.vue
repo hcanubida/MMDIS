@@ -454,24 +454,18 @@ export default {
     debounce(func, wait) {
       return debounce(func, wait);
     },
-    openPDF(pdfPath) {
-      if (typeof pdfPath !== 'string') {
-        console.error('Invalid PDF path:', pdfPath);
-        return;
-      }
+    openPDF(filePath) {
+  if (filePath) {
+    // Construct the full URL for the PDF file
+    const pdfUrl = `http://localhost:8000/storage/${filePath}`;
 
-      const index = pdfPath.indexOf('/');
-      const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
-      
-      if (pdfFinalPath) {
-        window.open(url, '_blank');
-      } else {
-        console.error('PDF URL not found');
-      }
-    },
+    // Open the PDF in a new tab
+    window.open(pdfUrl, '_blank');
+  } else {
+    console.error('PDF file path is not provided');
+  }
+},
   },
-
   mounted() {
     this.fetchOSTC();
   }
