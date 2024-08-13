@@ -455,10 +455,16 @@ export default {
       return debounce(func, wait);
     },
     openPDF(pdfPath) {
+      if (typeof pdfPath !== 'string') {
+        console.error('Invalid PDF path:', pdfPath);
+        return;
+      }
+
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
       const url = `http://localhost:8000/storage/${pdfFinalPath}`;
-      if (pdfPath) {
+      
+      if (pdfFinalPath) {
         window.open(url, '_blank');
       } else {
         console.error('PDF URL not found');
