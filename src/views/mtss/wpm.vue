@@ -285,7 +285,7 @@ export default {
     },
 
     fetchWPM() {
-      axios.get('http://localhost:8000/api/monitoringWPM')
+      axios.get('http://localhost:8000/api/MonitoringWPM')
         .then(response => {
           this.wpm = response.data;
         })
@@ -315,7 +315,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/monitoringWPM', formData)
+      axios.post('http://localhost:8000/api/MonitoringWPM', formData)
         .then(response => {
           this.wpm.push(response.data);
           this.showModal = false;
@@ -338,7 +338,7 @@ export default {
     },
 
     search() {
-      axios.get(`http://localhost:8000/api/monitoringWPM/search?query=${this.searchQuery}`)
+      axios.get(`http://localhost:8000/api/MonitoringWPM/search?query=${this.searchQuery}`)
         .then(response => {
           this.wpm = response.data;
         })

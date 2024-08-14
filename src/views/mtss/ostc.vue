@@ -318,7 +318,7 @@ export default {
         sample_inspection: '',
         issued: '',
         mmd_personnel: '',
-        MOVpdf: null,
+        MOVpdf: '',
       };
     },
     fetchOSTC() {

@@ -299,7 +299,7 @@
     },
     methods: {
       fetchInvestigation() {
-        axios.get('http://localhost:8000/api/monitoringInvestigation')
+        axios.get('http://localhost:8000/api/MonitoringInvestigation')
           .then(response => {
             this.investigation = response.data;
           })
@@ -351,7 +351,7 @@
         }
         formData.append('coordinates', this.newEntry.coordinates);
   
-        axios.post('http://localhost:8000/api/monitoringInvestigation', formData, {
+        axios.post('http://localhost:8000/api/MonitoringInvestigation', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

@@ -493,26 +493,26 @@ export default {
         console.error('PDF URL not found');
       }
     },
-    deleteEntry(entryId) {
-    const confirmDelete = confirm("Are you sure you want to delete this entry?");
-    if (!confirmDelete) {
-      return;
-    }
+    deleteEntry(entryID) {
+      const confirmDelete = confirm("Are you sure you want to delete this entry?");
+      if (!confirmDelete) {
+        return;
+      }
 
-    axios.delete(`http://localhost:8000/api/MonitoringInventory/${entryId}`)
-      .then(() => {
-        this.inventory = this.inventory.filter(e => e.ID !== entryId);
-      })
-      .catch(error => {
-        console.error('Error deleting entry:', error.response ? error.response.data : error.message);
-        alert('There was an error deleting the entry. Please try again.');
-      });
-  },
+      axios.delete(`http://localhost:8000/api/MonitoringInventory/${entryID}`)
+        .then(() => {
+          this.inventory = this.inventory.filter(entry => entry.ID !== entryID);
+        })
+        .catch(error => {
+          console.error('Error deleting entry:', error.response ? error.response.data : error.message);
+          alert('There was an error deleting the entry. Please try again.');
+        });
+    },
     //
     //
     // Method to open the update modal
     openUpdateModal(entryNo) {
-      const entry = this.inventory.find(e => e.ID === entryNo); // Find the entry to be updated by its number
+      const entry = this.inventory.find(entry => entry.ID === entryNo); // Find the entry to be updated by its number
       if (entry) {
         this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
         this.isUpdateModalOpen = true; // Open the update modal
