@@ -455,16 +455,15 @@ export default {
       return debounce(func, wait);
     },
     openPDF(filePath) {
-  if (filePath) {
-    // Construct the full URL for the PDF file
-    const pdfUrl = `http://localhost:8000/storage/${filePath}`;
-
-    // Open the PDF in a new tab
-    window.open(pdfUrl, '_blank');
-  } else {
-    console.error('PDF file path is not provided');
-  }
-},
+          const index = filePath.indexOf('/');
+          const pdfFinalPath = filePath.slice(index + 1);
+          const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+          if (filePath) {
+            window.open(url, '_blank');
+          } else {
+            console.error('PDF URL not found');
+          }
+        },
   },
   mounted() {
     this.fetchOSTC();
