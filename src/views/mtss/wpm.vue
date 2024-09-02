@@ -329,8 +329,10 @@ export default {
     },
 
     openPDF(pdfPath) {
+      const index = pdfPath.indexOf('/');
+      const pdfFinalPath = pdfPath.slice(index + 1);
+      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
       if (pdfPath) {
-        const url = `http://localhost:8000/storage/${pdfPath.split('/').pop()}`;
         window.open(url, '_blank');
       } else {
         console.error('PDF URL not found');

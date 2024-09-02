@@ -270,7 +270,6 @@ export default {
       sortKey: '', // Key to sort entries by
       sortOrder: 'asc', // Sorting order (ascending by default)
       showModal: false, // State for add entry modal
-      currentIndex: null, // Current index for editing entries
       newEntry: this.getEmptyEntry(), // Template for a new entry
       isUpdateModalOpen: false, // State to track if the update modal is open
       updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
@@ -455,15 +454,15 @@ export default {
       return debounce(func, wait);
     },
     openPDF(filePath) {
-          const index = filePath.indexOf('/');
-          const pdfFinalPath = filePath.slice(index + 1);
-          const url = `http://localhost:8000/storage/${pdfFinalPath}`;
-          if (filePath) {
-            window.open(url, '_blank');
-          } else {
-            console.error('PDF URL not found');
-          }
-        },
+      const index = filePath.indexOf('/');
+      const pdfFinalPath = filePath.slice(index + 1);
+      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+        if (filePath) {
+          window.open(url, '_blank');
+        } else {
+          console.error('PDF URL not found');
+        }
+    },
   },
   mounted() {
     this.fetchOSTC();
