@@ -186,11 +186,11 @@ export default {
         });
     },
     addNewEntry() {
-  const fileInput = this.$refs.reportPDF.files[0];
-  if (fileInput && fileInput.size > 5 * 1024 * 1024) { // 5MB limit
-    alert('File size exceeds 5MB.');
-    return;
-  }
+      const fileInput = this.$refs.reportPDF.files[0];
+    if (fileInput && fileInput.size > 10 * 1024 * 1024) { // 10MB limit
+      alert('File size exceeds 10MB.');
+      return;
+    }
 
   const formData = new FormData();
   formData.append('applicant', this.newEntry.applicant);

@@ -103,7 +103,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(entry, index) in filteredEntries" :key="entry.ID" class="bg-white border-b">
+          <tr v-for="(entry, index) in filteredEntries" :key="entry.id" class="bg-white border-b">
             <td class="px-6 py-4">{{ entry.month }}</td>
             <td class="px-6 py-4">{{ index + 1 }}</td>
             <td class="px-6 py-4">{{ entry.location }}</td>
@@ -116,8 +116,8 @@
               <button @click="openPDF(entry.MOVpdf)" class="bg-red-500 text-white px-2 py-1 rounded">View</button>
             </td>
             <td class="px-6 py-4 flex justify-center">
-              <button @click="openUpdateModal(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
-              <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
+              <button @click="openUpdateModal(entry.id)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button>
+              <button @click="deleteEntry(entry.id)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
             </td>
           </tr>
         </tbody>
@@ -143,7 +143,7 @@
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Month:</p>
-                    <select v-model="newEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="newEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
                       <option>FEBRUARY</option>
                       <option>MARCH</option>
@@ -160,7 +160,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Location:</p>
-                    <select v-model="newEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="newEntry.location" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>BUKIDNON</option>
                       <option>CAMUIGUIN</option>
                       <option>LANAO DEL NORTE</option>
@@ -230,7 +230,7 @@
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Month:</p>
-                    <select v-model="updateEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="updateEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
                       <option>FEBRUARY</option>
                       <option>MARCH</option>
@@ -247,7 +247,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Location:</p>
-                    <select v-model="updateEntry.location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="updateEntry.location" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>BUKIDNON</option>
                       <option>CAMUIGUIN</option>
                       <option>LANAO DEL NORTE</option>
@@ -378,7 +378,7 @@ export default {
   methods: {
     getEmptyEntry() {
       return {
-        id_no: '',
+        id: '',
         month: '',
         location: '',
         travel_date_from: '',
@@ -493,58 +493,57 @@ export default {
         console.error('PDF URL not found');
       }
     },
-    deleteEntry(entryID) {
-      const confirmDelete = confirm("Are you sure you want to delete this entry?");
-      if (!confirmDelete) {
+
+    deleteEntry(id) {
+      if (!confirm('Are you sure you want to delete this entry?')) {
         return;
       }
 
-      axios.delete(`http://localhost:8000/api/MonitoringInventory/${entryID}`)
-        .then(() => {
-          this.inventory = this.inventory.filter(entry => entry.ID !== entryID);
+      axios.delete(`http://localhost:8000/api/MonitoringInventory/${id}`)
+        .then(response => {
+          // Filter out the deleted entry from the inventory array
+          this.inventory = this.inventory.filter(entry => entry.id !== id);
+          alert('Entry deleted successfully!');
         })
         .catch(error => {
-          console.error('Error deleting entry:', error.response ? error.response.data : error.message);
-          alert('There was an error deleting the entry. Please try again.');
+          console.error('Error deleting entry:', error);
+          alert('Failed to delete the entry. Please try again.');
         });
     },
-    //
-    //
-    // Method to open the update modal
-    openUpdateModal(entryNo) {
-      const entry = this.inventory.find(entry => entry.ID === entryNo); // Find the entry to be updated by its number
+
+    openUpdateModal(thisID) {
+      const entry = this.inventory.find(entry => entry.id === thisID); // Find the entry to be updated by its number
       if (entry) {
         this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
         this.isUpdateModalOpen = true; // Open the update modal
       }
     },
 
-    // Method to close the modal
     closeModal() {
-      this.isUpdateModalOpen = false; // Close the update modal
-      this.updateEntry = this.getEmptyEntry(); // Reset the `updateEntry` object
+      this.isUpdateModalOpen = false; 
+      this.updateEntry = this.getEmptyEntry();
+    },
+    //
+    //
+    //
+    handleUpdate() {
+      const updatedEntry = this.updateEntry;
+
+      axios.put(`http://localhost:8000/api/MonitoringInventory/${updatedEntry.id}`, updatedEntry)
+        .then(response => {
+          const index = this.inventory.findIndex(entry => entry.id === updatedEntry.id);
+          if (index !== -1) {
+            this.inventory[index] = response.data; // Directly assign the updated data to the entry in the array
+          }
+          this.closeModal(); // Close the modal after successful update
+          alert('Entry updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error updating entry:', error);
+          alert('Failed to update the entry.');
+        });
     },
 
-    // Method to handle the update process
-    handleUpdate() {
-  const updatedEntry = this.updateEntry;
-
-  axios.put(`http://localhost:8000/api/MonitoringInventory/${updatedEntry.ID}`, updatedEntry)
-    .then(response => {
-      const index = this.inventory.findIndex(entry => entry.ID === updatedEntry.ID);
-      if (index !== -1) {
-        this.inventory[index] = response.data; // Directly assign the updated data to the entry in the array
-      }
-      this.closeModal(); // Close the modal after successful update
-      alert('Entry updated successfully!');
-    })
-    .catch(error => {
-      console.error('Error updating entry:', error);
-      alert('Failed to update the entry.');
-    });
-},
-    // 
-    //
   },
   mounted() {
     this.fetchInventory();
