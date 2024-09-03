@@ -93,7 +93,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b">
+            <tr v-for="(entry, index) in filteredEntries" :key="entry.ID" class="bg-white border-b">
               <td class="px-6 py-4">{{ entry.month }}</td>
               <td class="px-6 py-4">{{ index + 1 }}</td>
               <td class="px-6 py-4" style="width: 300px;">{{ entry.text_field }}</td>
@@ -107,8 +107,8 @@
               </td>
               <td class="px-6 py-4 flex justify-center">
               <!-- edit entry -->
-              <button @click="editEntry(index)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
-              <button @click="deleteEntry(entry.no)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
+              <button @click="openUpdateModal(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
+              <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
               </td>
             </tr>
           </tbody>
@@ -134,7 +134,7 @@
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Select Month:</p>
-                    <select v-model="newEntry.month" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select v-model="newEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
                       <option>FEBRUARY</option>
                       <option>MARCH</option>
@@ -194,6 +194,82 @@
           </div>
         </div>
       </div>
+
+      <!-- Update Modal -->
+      <div v-if="isUpdateModalOpen" class="fixed inset-0 overflow-y-auto" aria-modal="true" role="dialog">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <!-- Background overlay -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- Modal content -->
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <form @submit.prevent="handleUpdate" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Select Month:</p>
+                    <select v-model="updateEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex flex-col">
+                    <label for="text_field" class="text-gray-700">Work Program | Term and Conditions | Requirements of: (Field Monitoring)</label>
+                    <textarea v-model="updateEntry.text_field" id="text_field" rows="4" class="w-full bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Travel Date:</p>
+                    <input v-model="updateEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <p>to</p>
+                    <input v-model="updateEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Report Date:</p>
+                    <input v-model="updateEntry.report_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Transmittal Date:</p>
+                    <input v-model="updateEntry.transmittal_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Released Date:</p>
+                    <input v-model="updateEntry.released_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">MMD Personnel:</p>
+                    <input v-model="updateEntry.mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between">
+                    <p class="mr-5">Proof of MOV:</p>
+                    <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click="closeModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+              </button>
+              <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
   
     </div>
   </template>
@@ -217,6 +293,8 @@ export default {
       sortOrder: 'asc',
       showModal: false,
       newEntry: this.getEmptyEntry(),
+      isUpdateModalOpen: false, // State to track if the update modal is open
+      updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
       debouncedSearch: debounce(this.search, 300) // Add debounce method
     };
   },
@@ -376,7 +454,57 @@ export default {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
       };
-    }
+    },
+    //
+    //
+    //
+    deleteEntry(ID) {
+      if (!confirm('Are you sure you want to delete this entry?')) {
+        return;
+      }
+
+      axios.delete(`http://localhost:8000/api/MonitoringWPM/${ID}`)
+        .then(response => {
+          // Filter out the deleted entry from the wpm array
+          this.wpm = this.wpm.filter(entry => entry.ID !== ID);
+          alert('Entry deleted successfully!');
+        })
+        .catch(error => {
+          console.error('Error deleting entry:', error);
+          alert('Failed to delete the entry. Please try again.');
+        });
+    },
+
+    openUpdateModal(thisID) {
+      const entry = this.wpm.find(entry => entry.ID === thisID); // Find the entry to be updated by its number
+      if (entry) {
+        this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
+        this.isUpdateModalOpen = true; // Open the update modal
+      }
+    },
+
+    closeModal() {
+      this.isUpdateModalOpen = false; 
+      this.updateEntry = this.getEmptyEntry();
+    },
+
+    handleUpdate() {
+      const updatedEntry = this.updateEntry;
+
+      axios.put(`http://localhost:8000/api/MonitoringWPM/${updatedEntry.ID}`, updatedEntry)
+        .then(response => {
+          const index = this.wpm.findIndex(entry => entry.ID === updatedEntry.ID);
+          if (index !== -1) {
+            this.wpm[index] = response.data; // Directly assign the updated data to the entry in the array
+          }
+          this.closeModal(); // Close the modal after successful update
+          alert('Entry updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error updating entry:', error);
+          alert('Failed to update the entry.');
+        });
+    },
   },
 
   mounted() {

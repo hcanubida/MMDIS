@@ -98,7 +98,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(entry, index) in filteredEntries" :key="index" class="bg-white border-b">
+            <tr v-for="(entry, index) in filteredEntries" :key="entry.ID" class="bg-white border-b">
               <td class="px-6 py-4">{{ entry.month }}</td>
               <td class="px-6 py-4">{{ index + 1 }}</td>
               <td class="px-6 py-4" style="word-wrap:break-word;">{{ entry.petitioner }}</td>
@@ -113,7 +113,7 @@
               </td>
               <td class="px-6 py-4 flex" style="margin-top: 10px;">
                 <button @click="openJPEG(entry.map)" class=" pr-2 rounded"><img src="../../assets/icons/map.png" style="width: 30px;"></button>
-                <button @click="editEntry(index)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
+                <button @click="openUpdateModal(entry.ID)" class="rounded"><img src="../../assets/icons/edit.png" style="width: 25px;"></button> 
                 <button @click="deleteEntry(entry.ID)" class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../assets/icons/remove.png" style="width: 20px;"></button>
               </td>
             </tr>
@@ -205,9 +205,95 @@
                 Add
               </button>
             </div>
+          
           </div>
         </div>
       </div>
+
+      <!-- Update Modal -->
+      <div v-if="isUpdateModalOpen" class="fixed inset-0 overflow-y-auto" aria-modal="true" role="dialog">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <!-- Background overlay -->
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+
+          <!-- Modal content -->
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <form @submit.prevent="handleUpdate" class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="month" class="mr-5">Month:</label>
+                    <select v-model="updateEntry.month" id="month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option>JANUARY</option>
+                      <option>FEBRUARY</option>
+                      <option>MARCH</option>
+                      <option>APRIL</option>
+                      <option>MAY</option>
+                      <option>JUNE</option>
+                      <option>JULY</option>
+                      <option>AUGUST</option>
+                      <option>SEPTEMBER</option>
+                      <option>OCTOBER</option>
+                      <option>NOVEMBER</option>
+                      <option>DECEMBER</option>
+                    </select>
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="petitioner" class="mr-5">Petitioner:</label>
+                    <input v-model="updateEntry.petitioner" id="petitioner" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="location" class="mr-5">Location of Declared Minahang Bayan:</label>
+                    <input v-model="updateEntry.location" id="location" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label class="mr-5">Travel Date:</label>
+                    <input v-model="updateEntry.travel_date_from" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <span class="mx-2">to</span>
+                    <input v-model="updateEntry.travel_date_to" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="report_date" class="mr-5">Report Date:</label>
+                    <input v-model="updateEntry.report_date" id="report_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="transmittal_date" class="mr-5">Transmittal Date:</label>
+                    <input v-model="updateEntry.transmittal_date" id="transmittal_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="released_date" class="mr-5">Released Date:</label>
+                    <input v-model="updateEntry.released_date" id="released_date" type="date" class="pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="mmd_personnel" class="mr-5">MMD Personnel:</label>
+                    <input v-model="updateEntry.mmd_personnel" id="mmd_personnel" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="MOVpdf" class="mr-5">MOV (.pdf):</label>
+                    <input type="file" ref="MOVpdf" id="MOVpdf" accept=".pdf" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                  <div class="mt-2 flex justify-between items-center">
+                    <label for="map" class="mr-5">Map (.jpg):</label>
+                    <input type="file" ref="map" id="map" accept=".jpg" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click="closeModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Close
+              </button>
+              <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </div>
   </template>
 
@@ -226,22 +312,11 @@ export default {
       searchQuery: '',
       entries: [], // Assuming entries will be fetched from the API
       showModal: false,
-      newEntry: {
-        ID: '',
-        month: '',
-        petitioner: '',
-        location: '',
-        travel_date_from: '',
-        travel_date_to: '',
-        report_date: '',
-        transmittal_date: '',
-        released_date: '',
-        mmd_personnel: '',
-        MOVpdf: null,
-        map: null
-      },
+      newEntry: this.getEmptyEntry(),
       sortKey: '',
-      sortOrder: 'asc'
+      sortOrder: 'asc',
+      isUpdateModalOpen: false, // State to track if the update modal is open
+      updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
     };
   },
   computed: {
@@ -325,6 +400,23 @@ export default {
     }
   },
   methods: {
+
+    getEmptyEntry() {
+      return {
+        ID: '',
+        month: '',
+        petitioner: '',
+        location: '',
+        travel_date_from: '',
+        travel_date_to: '',
+        report_date: '',
+        transmittal_date: '',
+        released_date: '',
+        mmd_personnel: '',
+        MOVpdf: null,
+        map: null
+      };
+    },    
 
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
@@ -414,6 +506,36 @@ export default {
           });
       }
     },
+    openUpdateModal(thisID) {
+      const entry = this.entries.find(entry => entry.ID === thisID); // Find the entry to be updated by its number
+      if (entry) {
+        this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
+        this.isUpdateModalOpen = true; // Open the update modal
+      }
+    },
+
+    closeModal() {
+      this.isUpdateModalOpen = false; 
+      this.updateEntry = this.getEmptyEntry();
+    },
+
+    handleUpdate() {
+      const updatedEntry = this.updateEntry;
+
+      axios.put(`http://localhost:8000/api/MonitoringMB/${updatedEntry.ID}`, updatedEntry)
+        .then(response => {
+          const index = this.entries.findIndex(entry => entry.ID === updatedEntry.ID);
+          if (index !== -1) {
+            this.entries[index] = response.data; // Directly assign the updated data to the entry in the array
+          }
+          this.closeModal(); // Close the modal after successful update
+          alert('Entry updated successfully!');
+        })
+        .catch(error => {
+          console.error('Error updating entry:', error);
+          alert('Failed to update the entry.');
+        });
+    },    
     debouncedSearch: debounce(function () {
       this.fetchMB();
     }, 300)
