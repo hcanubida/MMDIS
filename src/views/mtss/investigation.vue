@@ -138,7 +138,7 @@
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <div class="mt-2 flex flex-col">
+                  <div class="mt-2 flex justify-between">
                     <label for="text_field" class="text-gray-700">Select Month</label>
                     <select v-model="newEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
@@ -225,7 +225,7 @@
             <form @submit.prevent="handleUpdate" class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <div class="mt-2 flex flex-col">
+                  <div class="mt-2 flex justify-between">
                     <label for="text_field" class="text-gray-700">Select Month</label>
                     <select v-model="updateEntry.month" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option>JANUARY</option>
