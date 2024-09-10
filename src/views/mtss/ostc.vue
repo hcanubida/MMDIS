@@ -230,7 +230,7 @@
                 </div>
                 <div class="mt-2 flex justify-between">
                   <p class="mr-5">Proof of MOV Uploaded:</p>
-                  <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <input ref="MOVpdf" type="file" accept="application/pdf" @change="handleFileUpload" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
               </div>
             </div>
@@ -273,6 +273,7 @@ export default {
       isUpdateModalOpen: false, // State to track if the update modal is open
       updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
       debouncedSearch: this.debounce(this.search, 300), // Debounced search function
+      file: null
     };
   },
 
@@ -370,7 +371,11 @@ export default {
       const entry = this.ostc.find(e => e.no === entryNo); // Find the entry to be updated by its number
       if (entry) {
         this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
+        console.log(this.updateEntry)
         this.isUpdateModalOpen = true; // Open the update modal
+      }else {
+      console.error(`Entry with number ${entryNo} not found.`);
+      alert('Entry not found.');
       }
     },
 
@@ -379,14 +384,45 @@ export default {
       this.isUpdateModalOpen = false; // Close the update modal
       this.updateEntry = this.getEmptyEntry(); // Reset the `updateEntry` object
     },
-
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+    },
     // Method to handle the update process
-    handleUpdate() {
-      const updatedEntry = this.updateEntry;
+    async handleUpdate() {
+      console.log(this.file)
 
-      axios.put(`http://localhost:8000/api/MonitoringOSTC/${updatedEntry.no}`, updatedEntry)
+      if (this.file && this.file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB.');
+        return;
+      }
+
+      if (this.file) {
+    // Validate file type
+    if (this.file.type !== 'application/pdf') {
+      alert('Only PDF files are allowed.');
+      return;
+    }}
+
+      // const formData = this.updateEntry;
+      const formData = new FormData();
+      formData.append('client', this.updateEntry.client);
+      formData.append('certification_no', this.updateEntry.certification_no);
+      formData.append('received_ord', this.updateEntry.received_ord);
+      formData.append('received_mmd', this.updateEntry.received_mmd);
+      formData.append('payment_date', this.updateEntry.payment_date);
+      formData.append('sample_inspection', this.updateEntry.sample_inspection);
+      formData.append('issued', this.updateEntry.issued);
+      formData.append('mmd_personnel', this.updateEntry.mmd_personnel);
+
+    // Append file if it exists
+    if (this.file) {
+      formData.append('MOVpdf', this.file);
+      alert(this.file.type);
+    }
+
+    axios.post(`http://localhost:8000/api/MonitoringOSTC/${this.updateEntry.no}`, formData)
         .then(response => {
-          const index = this.ostc.findIndex(entry => entry.no === updatedEntry.no);
+          const index = this.ostc.findIndex(entry => entry.no === this.updateEntry.no);
           if (index !== -1) {
             this.ostc[index] = response.data; // Directly assign the updated data to the entry in the array
           }
@@ -396,6 +432,7 @@ export default {
         .catch(error => {
           console.error('Error updating entry:', error);
           alert('Failed to update the entry.');
+          
         });
     },
     deleteEntry(no) {
