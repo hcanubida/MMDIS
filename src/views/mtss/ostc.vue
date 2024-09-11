@@ -417,7 +417,6 @@ export default {
     // Append file if it exists
     if (this.file) {
       formData.append('MOVpdf', this.file);
-      alert(this.file.type);
     }
 
     axios.post(`http://localhost:8000/api/MonitoringOSTC/${this.updateEntry.no}`, formData)
