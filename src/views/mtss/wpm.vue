@@ -254,7 +254,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Proof of MOV:</p>
-                    <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input ref="MOVpdf" type="file" accept="application/pdf" @change="handleFileUpload" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                 </div>
               </div>
@@ -293,9 +293,12 @@ export default {
       sortOrder: 'asc',
       showModal: false,
       newEntry: this.getEmptyEntry(),
-      isUpdateModalOpen: false, // State to track if the update modal is open
-      updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
-      debouncedSearch: debounce(this.search, 300) // Add debounce method
+      isUpdateModalOpen: false,
+      updateEntry: this.getEmptyEntry(),
+      debouncedSearch: debounce(this.search, 300),
+      //
+      //
+      file: null 
     };
   },
 
@@ -304,17 +307,14 @@ export default {
       return this.getFilteredAndSortedData();
     },
 
-    // Method to get the total count of entries for the latest year
     totalSum() {
-      if (!this.wpm.length) return 0; // Check if wpm is empty
+      if (!this.wpm.length) return 0; 
       
-      // Find the latest year from the dataset
       const latestYear = Math.max(...this.wpm.map(item => {
         const year = new Date(item.released_date).getFullYear();
-        return isNaN(year) ? 0 : year; // Handle invalid dates
+        return isNaN(year) ? 0 : year; 
       }));
       
-      // Filter dataset for the latest year and count the entries
       const count = this.wpm.filter(wpm => new Date(wpm.released_date).getFullYear() === latestYear).length;
       console.log('Total Count for Latest Year:', count); // Log the total count
       
@@ -322,16 +322,13 @@ export default {
     },
 
     monthlyTotals() {
-      // Extract the latest year from the dataset
       const latestYear = Math.max(...(this.wpm || []).map(item => {
         const date = new Date(item.released_date);
         return isNaN(date.getTime()) ? 0 : date.getFullYear(); // Handle invalid dates
       }));
 
-      // Initialize an array for 12 months
       const monthlyData = Array(12).fill(0);
 
-      // Populate the monthlyData array
       (this.wpm || []).forEach(entry => {
         const releaseDate = new Date(entry.released_date);
         if (releaseDate.getFullYear() === latestYear && !isNaN(releaseDate.getTime())) {
@@ -358,7 +355,7 @@ export default {
         transmittal_date: '',
         released_date: '',
         mmd_personnel: '',
-        MOVpdf: null,
+        MOVpdf: '',
       };
     },
 
@@ -455,9 +452,6 @@ export default {
         timeout = setTimeout(() => func.apply(this, args), wait);
       };
     },
-    //
-    //
-    //
     deleteEntry(ID) {
       if (!confirm('Are you sure you want to delete this entry?')) {
         return;
@@ -465,7 +459,6 @@ export default {
 
       axios.delete(`http://localhost:8000/api/MonitoringWPM/${ID}`)
         .then(response => {
-          // Filter out the deleted entry from the wpm array
           this.wpm = this.wpm.filter(entry => entry.ID !== ID);
           alert('Entry deleted successfully!');
         })
@@ -476,10 +469,10 @@ export default {
     },
 
     openUpdateModal(thisID) {
-      const entry = this.wpm.find(entry => entry.ID === thisID); // Find the entry to be updated by its number
+      const entry = this.wpm.find(entry => entry.ID === thisID);
       if (entry) {
-        this.updateEntry = { ...entry }; // Copy the entry data to `updateEntry`
-        this.isUpdateModalOpen = true; // Open the update modal
+        this.updateEntry = { ...entry };
+        this.isUpdateModalOpen = true;
       }
     },
 
@@ -487,24 +480,63 @@ export default {
       this.isUpdateModalOpen = false; 
       this.updateEntry = this.getEmptyEntry();
     },
-
-    handleUpdate() {
-      const updatedEntry = this.updateEntry;
-
-      axios.put(`http://localhost:8000/api/MonitoringWPM/${updatedEntry.ID}`, updatedEntry)
-        .then(response => {
-          const index = this.wpm.findIndex(entry => entry.ID === updatedEntry.ID);
-          if (index !== -1) {
-            this.wpm[index] = response.data; // Directly assign the updated data to the entry in the array
-          }
-          this.closeModal(); // Close the modal after successful update
-          alert('Entry updated successfully!');
-        })
-        .catch(error => {
-          console.error('Error updating entry:', error);
-          alert('Failed to update the entry.');
-        });
+    //
+    //
+    //
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
     },
+
+    async handleUpdate() {
+  console.log(this.file);
+
+  // Validate file size
+  if (this.file && this.file.size > 5 * 1024 * 1024) {
+    alert('File size exceeds 5MB.');
+    return;
+  }
+
+  // Validate file type if a file is uploaded
+  if (this.file && this.file.type !== 'application/pdf') {
+    alert('Only PDF files are allowed.');
+    return;
+  }
+
+  // Prepare form data for the update
+  const formData = new FormData();
+  formData.append('month', this.updateEntry.month);
+  formData.append('text_field', this.updateEntry.text_field);
+  formData.append('travel_date_from', this.updateEntry.travel_date_from);
+  formData.append('travel_date_to', this.updateEntry.travel_date_to);
+  formData.append('report_date', this.updateEntry.report_date);
+  formData.append('transmittal_date', this.updateEntry.transmittal_date);
+  formData.append('released_date', this.updateEntry.released_date);
+  formData.append('mmd_personnel', this.updateEntry.mmd_personnel);
+
+  // Append the file if selected
+  if (this.file) {
+    formData.append('MOVpdf', this.file);
+  }
+
+  // Use PUT request for updating the entry
+  axios.post(`http://localhost:8000/api/MonitoringWPM/${this.updateEntry.ID}`, formData)
+    .then(response => {
+      // Find the index of the entry to be updated
+      const index = this.wpm.findIndex(entry => entry.ID === this.updateEntry.ID);
+
+      if (index !== -1) {
+        this.wpm[index] = response.data;
+      }
+
+      // Close the modal after successful update
+      this.closeModal();
+      alert('Entry updated successfully!');
+    })
+    .catch(error => {
+      console.error('Error updating entry:', error);
+      alert('Failed to update the entry.');
+    });
+},
   },
 
   mounted() {
