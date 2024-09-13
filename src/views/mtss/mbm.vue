@@ -273,11 +273,11 @@
                   </div>
                   <div class="mt-2 flex justify-between items-center">
                     <label for="MOVpdf" class="mr-5">MOV (.pdf):</label>
-                    <input type="file" ref="MOVpdf" id="MOVpdf" accept=".pdf" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input type="file" ref="MOVpdf" id="MOVpdf" accept="application/pdf" @change="handleFileUpload" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between items-center">
                     <label for="map" class="mr-5">Map (.jpg):</label>
-                    <input type="file" ref="map" id="map" accept=".jpg" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input type="file" ref="map" id="map" accept="image/jpeg" @change="handleFileUpload" class="bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                 </div>
               </div>
@@ -317,6 +317,7 @@ export default {
       sortOrder: 'asc',
       isUpdateModalOpen: false, // State to track if the update modal is open
       updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
+      file: null
     };
   },
   computed: {
@@ -413,8 +414,8 @@ export default {
         transmittal_date: '',
         released_date: '',
         mmd_personnel: '',
-        MOVpdf: null,
-        map: null
+        MOVpdf: '',
+        map: ''
       };
     },    
 
@@ -519,23 +520,78 @@ export default {
       this.updateEntry = this.getEmptyEntry();
     },
 
-    handleUpdate() {
-      const updatedEntry = this.updateEntry;
+// Method to handle file upload (assuming separate inputs for PDF and map)
+handleFileUpload(event, fileType) {
+  if (fileType === 'MOVpdf') {
+    this.MOVpdf = event.target.files[0];
+  } else if (fileType === 'map') {
+    this.map = event.target.files[0];
+  }
+},
 
-      axios.put(`http://localhost:8000/api/MonitoringMB/${updatedEntry.ID}`, updatedEntry)
-        .then(response => {
-          const index = this.entries.findIndex(entry => entry.ID === updatedEntry.ID);
-          if (index !== -1) {
-            this.entries[index] = response.data; // Directly assign the updated data to the entry in the array
-          }
-          this.closeModal(); // Close the modal after successful update
-          alert('Entry updated successfully!');
-        })
-        .catch(error => {
-          console.error('Error updating entry:', error);
-          alert('Failed to update the entry.');
-        });
-    },    
+// Method to handle the update process
+async handleUpdate() {
+  console.log(this.MOVpdf, this.map);
+
+  // Check if the PDF file exists and validate it
+  if (this.MOVpdf) {
+    if (this.MOVpdf.size > 5 * 1024 * 1024) {
+      alert('MOVpdf file size exceeds 5MB.');
+      return;
+    }
+    if (this.MOVpdf.type !== 'application/pdf') {
+      alert('Only PDF files are allowed for MOVpdf.');
+      return;
+    }
+  }
+
+  // Check if the map file exists and validate it
+  if (this.map) {
+    if (this.map.size > 5 * 1024 * 1024) {
+      alert('Map file size exceeds 5MB.');
+      return;
+    }
+    if (this.map.type !== 'image/jpeg') {
+      alert('Only JPG files are allowed for the map.');
+      return;
+    }
+  }
+
+  // Prepare form data
+  const formData = new FormData();
+  formData.append('month', this.updateEntry.month);
+  formData.append('petitioner', this.updateEntry.petitioner);
+  formData.append('location', this.updateEntry.location);
+  formData.append('travel_date_from', this.updateEntry.travel_date_from);
+  formData.append('travel_date_to', this.updateEntry.travel_date_to);
+  formData.append('report_date', this.updateEntry.report_date);
+  formData.append('transmittal_date', this.updateEntry.transmittal_date);
+  formData.append('released_date', this.updateEntry.released_date);
+
+  // Append files if they exist
+  if (this.MOVpdfFile) {
+    formData.append('MOVpdf', this.MOVpdfFile);
+  }
+  if (this.mapFile) {
+    formData.append('map', this.mapFile);
+  }
+
+  // Axios POST request
+  axios.post(`http://localhost:8000/api/MonitoringMB/${this.updateEntry.ID}`, formData)
+    .then(response => {
+      const index = this.entries.findIndex(entry => entry.ID === this.updateEntry.ID);
+      if (index !== -1) {
+        this.entries[index] = response.data; // Update the entry with new data
+      }
+      this.closeModal(); // Close the modal after successful update
+      alert('Entry updated successfully!');
+    })
+    .catch(error => {
+      console.error('Error updating entry:', error);
+      alert('Failed to update the entry.');
+    });
+},
+
     debouncedSearch: debounce(function () {
       this.fetchMB();
     }, 300)

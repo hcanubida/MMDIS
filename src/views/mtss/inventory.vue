@@ -281,7 +281,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Proof of MOV:</p>
-                    <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input ref="MOVpdf" type="file" accept="application/pdf" @change="handleFileUpload" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                 </div>
               </div>
@@ -328,7 +328,8 @@ export default {
       newEntry: this.getEmptyEntry(),
       isUpdateModalOpen: false, // State to track if the update modal is open
       updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      file: null
     };
   },
   computed: {
@@ -526,24 +527,55 @@ export default {
     //
     //
     //
-    handleUpdate() {
-      const updatedEntry = this.updateEntry;
-
-      axios.put(`http://localhost:8000/api/MonitoringInventory/${updatedEntry.id}`, updatedEntry)
-        .then(response => {
-          const index = this.inventory.findIndex(entry => entry.id === updatedEntry.id);
-          if (index !== -1) {
-            this.inventory[index] = response.data; // Directly assign the updated data to the entry in the array
-          }
-          this.closeModal(); // Close the modal after successful update
-          alert('Entry updated successfully!');
-        })
-        .catch(error => {
-          console.error('Error updating entry:', error);
-          alert('Failed to update the entry.');
-        });
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
     },
+    // Method to handle the update process
+    async handleUpdate() {
+      console.log(this.file)
 
+      if (this.file && this.file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB.');
+        return;
+      }
+
+      if (this.file) {
+    // Validate file type
+    if (this.file.type !== 'application/pdf') {
+      alert('Only PDF files are allowed.');
+      return;
+    }}
+
+      // const formData = this.updateEntry;
+      const formData = new FormData();
+      formData.append('month', this.updateEntry.month);
+      formData.append('location', this.updateEntry.location);
+      formData.append('travel_date_from', this.updateEntry.travel_date_from);
+      formData.append('travel_date_to', this.updateEntry.travel_date_to);
+      formData.append('report_date', this.updateEntry.report_date);
+      formData.append('transmittal_date', this.updateEntry.transmittal_date);
+      formData.append('released_date', this.updateEntry.released_date);
+      formData.append('mmd_personnel', this.updateEntry.mmd_personnel);
+
+    // Append file if it exists
+    if (this.file) {
+      formData.append('MOVpdf', this.file);
+    }
+
+    axios.post(`http://localhost:8000/api/MonitoringInventory/${this.updateEntry.id}`, formData)
+    .then(response => {
+      const index = this.inventory.findIndex(entry => entry.id === this.updateEntry.id);
+      if (index !== -1) {
+        this.inventory[index] = response.data; // Directly assign the updated data to the entry in the array
+      }
+      this.closeModal(); // Close the modal after successful update
+      alert('Entry updated successfully!');
+    })
+    .catch(error => {
+      console.error('Error updating entry:', error);
+      alert('Failed to update the entry.');
+    });
+    },
   },
   mounted() {
     this.fetchInventory();

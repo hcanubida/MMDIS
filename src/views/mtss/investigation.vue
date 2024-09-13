@@ -276,7 +276,7 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">MOV:</p>
-                    <input ref="MOVpdf" type="file" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input ref="MOVpdf" type="file" accept="application/pdf" @change="handleFileUpload" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Enter map URL:</p>
@@ -325,6 +325,7 @@
         newEntry: this.getEmptyEntry(),
         isUpdateModalOpen: false, // State to track if the update modal is open
         updateEntry: this.getEmptyEntry(), // Object to store the entry being updated
+        file: null
       };
     },
     computed: {
@@ -387,7 +388,7 @@
           released_date: '',
           mmd_personnel: '',
           remarks: '',
-          MOVpdf: null ,
+          MOVpdf: '',
           coordinates: '',
         };
       },  
@@ -470,7 +471,7 @@
           released_date: '',
           mmd_personnel: '',
           remarks: '',
-          MOVpdf: null,
+          MOVpdf: '',
           coordinates: '',
         };
         this.showModal = false;
@@ -492,8 +493,6 @@
         this.sortKey = key;
         this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
       },
-      //
-      //
       deleteEntry(entryID) {
       // Confirm deletion
       if (confirm('Are you sure you want to delete this entry?')) {
@@ -522,12 +521,45 @@
       this.updateEntry = this.getEmptyEntry();
     },
 
-    handleUpdate() {
-      const updatedEntry = this.updateEntry;
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+    },
+    // Method to handle the update process
+    async handleUpdate() {
+      console.log(this.file)
 
-      axios.put(`http://localhost:8000/api/MonitoringInvestigation/${updatedEntry.ID}`, updatedEntry)
+      if (this.file && this.file.size > 5 * 1024 * 1024) {
+        alert('File size exceeds 5MB.');
+        return;
+      }
+
+      if (this.file) {
+    // Validate file type
+    if (this.file.type !== 'application/pdf') {
+      alert('Only PDF files are allowed.');
+      return;
+    }}
+
+      // const formData = this.updateEntry;
+      const formData = new FormData();
+      formData.append('month', this.updateEntry.month);
+      formData.append('text_field', this.updateEntry.text_field);
+      formData.append('complaint_received', this.updateEntry.complaint_received);
+      formData.append('date_acted', this.updateEntry.date_acted);
+      formData.append('report_date', this.updateEntry.report_date);
+      formData.append('transmittal_date', this.updateEntry.transmittal_date);
+      formData.append('released_date', this.updateEntry.released_date);
+      formData.append('mmd_personnel', this.updateEntry.mmd_personnel);
+      formData.append('remarks', this.updateEntry.remarks);
+      // Append file if it exists
+      if (this.file) {
+        formData.append('MOVpdf', this.file);
+      }
+      formData.append('coordinates', this.updateEntry.coordinates);
+
+      axios.post(`http://localhost:8000/api/MonitoringInvestigation/${this.updateEntry.ID}`, formData)
         .then(response => {
-          const index = this.investigation.findIndex(entry => entry.ID === updatedEntry.ID);
+          const index = this.investigation.findIndex(entry => entry.ID === this.updateEntry.ID);
           if (index !== -1) {
             this.investigation[index] = response.data; // Directly assign the updated data to the entry in the array
           }
@@ -539,8 +571,6 @@
           alert('Failed to update the entry.');
         });
     },    
-    //
-    //
       debouncedSearch: debounce(function() {
         this.fetchInvestigation();
       }, 300)
