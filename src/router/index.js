@@ -1,9 +1,10 @@
-// router file MTSS
-
+// Import Vue Router components
 import { createRouter, createWebHistory } from "vue-router";
+
+// MTSS Views
 import home from "../views/home.vue";
 import dashboard from "../views/mtss/dashboard.vue";
-import ostc from "../views/mtss/ostc.vue"; // Import mtss_ostc component
+import ostc from "../views/mtss/ostc.vue";
 import inventory from "../views/mtss/inventory.vue";
 import wpm from "../views/mtss/wpm.vue";
 import mbm from "../views/mtss/mbm.vue";
@@ -16,7 +17,7 @@ import isag from "../views/mtss/isag.vue";
 import ep from "../views/mtss/ep.vue";
 import mpp from "../views/mtss/mpp.vue";
 
-//router file MLSS
+// MLSS Views
 import mlssdashboard from "../views/mlss/mlssdashboard.vue";
 import CSAG from "../views/mlss/CSAG.vue";
 import ISAG from "../views/mlss/ISAG.vue";
@@ -25,46 +26,44 @@ import MiningTenementMaps from "../views/mlss/dbMTM.vue";
 import MineralOreExportPermit from "../views/mlss/dbMOEPV.vue";
 import PDFcontent from "../components/MLSS/pdf-content.vue";
 
-
-//router file MTES
-
+// MTES Views
 import firstpage from "../views/mtes/firstpage.vue";
-import login from "../views/mtes/Login.vue"
-import signup from "../views/mtes/Signup.vue"
-import applicationpage from "../views/mtes/secondpage.vue"
-import permitpage from "../views/mtes/permit.vue"
+import login from "../views/mtes/Login.vue";
+import signup from "../views/mtes/Signup.vue";
+import applicationpage from "../views/mtes/secondpage.vue";
+import permitpage from "../views/mtes/permit.vue";
 
-//---Dashboards
-import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue"
-import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue"
-import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue"
-import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue"
-import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue"
-import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue"
-import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue"
-import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue"
-import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue"
-import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue"
-import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue"
+// MTES Dashboards
+import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
+import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue";
+import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue";
+import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue";
+import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue";
+import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue";
+import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue";
+import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue";
+import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue";
+import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue";
+import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
 
-//---tables in dashboards
-import FTTAtable from "../views/mtes/tables/FTTA-table.vue"
-import EPtable from "../views/mtes/tables/EP-table.vue"
+// MTES Tables
+import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
+import EPtable from "../views/mtes/tables/EP-table.vue";
 
-//--Mandatory Requirements
-import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue"
-import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue"
-import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue"
-import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue"
-import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue"
-import ReqMB from "../views/mtes/requirements/MBmandatory.vue"
+// MTES Mandatory Requirements
+import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue";
+import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue";
+import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue";
+import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue";
+import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue";
+import ReqMB from "../views/mtes/requirements/MBmandatory.vue";
 import ReqAMTRD from "../views/mtes/requirements/AMTRDmandatoryReq.vue";
 import ReqOTP from "../views/mtes/requirements/OTPmandatoryReq.vue";
 import ReqMPL from "../views/mtes/requirements/MPLmandatoryReq.vue";
 import ReqSSMC from "../views/mtes/requirements/SSMCmandatoryReq.vue";
 import ReqMOEP from "@/views/mtes/requirements/MOEPmandatoryReq.vue";
 
-//Fax Sheet
+// MTES Fax Sheets
 import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
 import FaxEP from "../views/mtes/faxsheet/ep-factsheet.vue";
 import FaxISAG from "../views/mtes/faxsheet/isag-factsheet.vue";
@@ -76,98 +75,117 @@ import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
 import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue";
 import FaxMOEP from "../views/mtes/faxsheet/moep-factsheet.vue";
 import FaxAMTRD from "../views/mtes/faxsheet/amtrd-factsheet.vue";
-import xpsample from "../views/mtes/faxsheet/xpfaxtsheet.vue"
+import xpsample from "../views/mtes/faxsheet/xpfaxtsheet.vue";
 
+// Components (modals, charts, etc.)
 import demo from "../components/MTES/modals/uploaad.vue";
-import pie from "../components/MTES/charts/Pie.vue"
+import pie from "../components/MTES/charts/Pie.vue";
 
+// Mock function to check if user is authenticated
+function isAuthenticated() {
+  return !!localStorage.getItem('authToken'); // You can customize this auth method as needed
+}
+
+// Define route configurations
 const routes = [
+  { path: "/", component: home },
+  { path: "/demo_upload", component: demo },
+  { path: "/pie", component: pie },
 
-    { path: "/", component: home },
-    { path: "/demo_upload", component: demo },
-    { path: "/pie", component: pie },
+  //Login Page
+  { path: "/login", component: login },
+  
+  // MTSS routes
+  { path: "/mtss/dashboard", component: dashboard, meta: { requiresAuth: true }},
+  { path: "/mtss/ostc", component: ostc, meta: { requiresAuth: true } },
+  { path: "/mtss/inventory", component: inventory, meta: { requiresAuth: true } },
+  { path: "/mtss/wpm", component: wpm, meta: { requiresAuth: true } },
+  { path: "/mtss/mbm", component: mbm, meta: { requiresAuth: true } },
+  { path: "/mtss/investigation", component: investigation, meta: { requiresAuth: true } },
+  { path: "/mtss/anti-illegal", component: antiillegal, meta: { requiresAuth: true } },
+  { path: "/mtss/dmpf", component: dmpf, meta: { requiresAuth: true } },
+  { path: "/mtss/PCMRBM", component: PCMRBM, meta: { requiresAuth: true } },
+  { path: "/mtss/mpsa", component: mpsa, meta: { requiresAuth: true } },
+  { path: "/mtss/isag", component: isag, meta: { requiresAuth: true } },
+  { path: "/mtss/ep", component: ep, meta: { requiresAuth: true } },
+  { path: "/mtss/mpp", component: mpp, meta: { requiresAuth: true } },
 
-    //mtss routes
-    { path: "/login", component: login },
-    { path: "/mtss/dashboard", component: dashboard },
-    { path: "/mtss/ostc", component: ostc }, // Use mtss_ostc component here
-    { path: "/mtss/inventory", component: inventory },
-    { path: "/mtss/wpm", component: wpm },
-    { path: "/mtss/mbm", component: mbm },
-    { path: "/mtss/investigation", component: investigation },
-    { path: "/mtss/anti-illegal", component: antiillegal },
-    { path: "/mtss/dmpf", component: dmpf },
-    { path: "/mtss/PCMRBM", component: PCMRBM },
-    { path: "/mtss/mpsa", component: mpsa },
-    { path: "/mtss/isag", component: isag },
-    { path: "/mtss/ep", component: ep },
-    { path: "/mtss/mpp", component: mpp },
+  // MLSS routes
+  { path: "/mlss/mlssdashboard", component: mlssdashboard, meta: { requiresAuth: true } },
+  { path: "/mlss/CSAG", component: CSAG, meta: { requiresAuth: true } },
+  { path: "/mlss/ISAG", component: ISAG, meta: { requiresAuth: true } },
+  { path: "/mlss/MQUARRY", component: MQUARRY, meta: { requiresAuth: true } },
+  { path: "/mlss/MTM", component: MiningTenementMaps, meta: { requiresAuth: true } },
+  { path: "/mlss/MOEPV", component: MineralOreExportPermit, meta: { requiresAuth: true } },
+  { path: "/mlss/pdf-content", component: PDFcontent, meta: { requiresAuth: true } },
 
-    //mlss routes
-    { path: "/mlss/mlssdashboard", component: mlssdashboard },
-    { path: "/mlss/CSAG", component: CSAG },
-    { path: "/mlss/ISAG", component: ISAG },
-    { path: "/mlss/MQUARRY", component: MQUARRY },
-    { path: "/mlss/MTM", component: MiningTenementMaps },
-    { path: "/mlss/MOEPV", component: MineralOreExportPermit },
-    { path: "/mlss/pdf-content", component: PDFcontent },
+  // MTES routes
+  { path: "/firstpage", component: firstpage },
+  { path: "/signup", component: signup },
+  { path: "/applicationpage", component: applicationpage },
+  { path: "/permitpage", component: permitpage },
+  { path: "/table", component: FTTAtable },
 
+  // MTES Fax sheets
+  { path: "/FTTAFax", component: FaxFTTA },
+  { path: "/EpFax", component: FaxEP },
+  { path: "/ISAGFax", component: FaxISAG },
+  { path: "/MBFax", component: FaxMB },
+  { path: "/MPPFax", component: FaxMPP },
+  { path: "/MPSAFax", component: FaxMPSA },
+  { path: "/OTPFax", component: FaxOTP },
+  { path: "/SSMCFax", component: FaxSSMC },
+  { path: "/MPLFax", component: FaxMPL },
+  { path: "/MOEPFax", component: FaxMOEP },
+  { path: "/AMTRDFax", component: FaxAMTRD },
 
+  // Dashboards
+  { path: "/ftta", component: fttadashboard },
+  { path: "/ep", component: epdashboard },
+  { path: "/mpsa", component: mpsadashboard },
+  { path: "/isag", component: isagdashboard },
+  { path: "/mb", component: mbdashboard },
+  { path: "/mpl", component: mpldashboard },
+  { path: "/mpp", component: mppdashboard },
+  { path: "/otp", component: otpdashboard },
+  { path: "/ssmc", component: ssmcdashboard },
+  { path: "/amtrd", component: amtrddashboard },
+  { path: "/moep", component: moepddashboard },
+  { path: "/xpsample", component: xpsample },
 
-    //mtes routes
-    { path: "/firstpage", component: firstpage },
-    { path: "/signup", component: signup },
-    { path: "/applicationpage", component: applicationpage },
-    { path: "/permitpage", component: permitpage },
-    { path: "/table", component: FTTAtable },
-
-    //Fax sheets
-    { path: "/FTTAFax", component: FaxFTTA },
-    { path: "/EpFax", component: FaxEP },
-    { path: "/ISAGFax", component: FaxISAG },
-    { path: "/MBFax", component: FaxMB },
-    { path: "/MPPFax", component: FaxMPP },
-    { path: "/MPSAFax", component: FaxMPSA },
-    { path: "/OTPFax", component: FaxOTP },
-    { path: "/SSMCFax", component: FaxSSMC },
-    { path: "/MPLFax", component: FaxMPL },
-    { path: "/MOEPFax", component: FaxMOEP },
-    { path: "/AMTRDFax", component: FaxAMTRD },
-
-    //-----Dashboards Routes-----
-    { path: "/ftta", component: fttadashboard },
-    { path: "/ep", component: epdashboard },
-    { path: "/mpsa", component: mpsadashboard},
-    { path: "/isag", component: isagdashboard},
-    { path: "/mb", component: mbdashboard},
-    { path: "/mpl", component: mpldashboard},
-    { path: "/mpp", component: mppdashboard},
-    { path: "/otp", component: otpdashboard},
-    { path: "/ssmc", component: ssmcdashboard},
-    { path: "/amtrd", component: amtrddashboard},
-    { path: "/moep", component: moepddashboard},
-    { path: "/xpsample", component: xpsample},
-
-    //-----Mandatory Requirements------
-    { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
-    { path: "/ReqEP/:detail_id1", component: ReqEP },
-    { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
-    { path: "/ReqISAG/:detail_id3", component: ReqISAG },
-    { path: "/ReqMPP/:detail_id5", component: ReqMPP },
-    { path: "/ReqMB/:detail_id4", component: ReqMB },
-    { path: "/ReqAMTRD/:detail_id9", component: ReqAMTRD },
-    { path: "/ReqOTP/:detail_id6", component: ReqOTP },
-    { path: "/ReqMPL/:detail_id8", component: ReqMPL },
-    { path: "/ReqSSMC/:detail_id7", component: ReqSSMC },
-    { path: "/ReqMOEP/:detail_id10", component: ReqMOEP },
-
-
+  // Mandatory Requirements
+  { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
+  { path: "/ReqEP/:detail_id1", component: ReqEP },
+  { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
+  { path: "/ReqISAG/:detail_id3", component: ReqISAG },
+  { path: "/ReqMPP/:detail_id5", component: ReqMPP },
+  { path: "/ReqMB/:detail_id4", component: ReqMB },
+  { path: "/ReqAMTRD/:detail_id9", component: ReqAMTRD },
+  { path: "/ReqOTP/:detail_id6", component: ReqOTP },
+  { path: "/ReqMPL/:detail_id8", component: ReqMPL },
+  { path: "/ReqSSMC/:detail_id7", component: ReqSSMC },
+  { path: "/ReqMOEP/:detail_id10", component: ReqMOEP },
 ];
 
+// Create router instance
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-})
-;
+  history: createWebHistory(),
+  routes,
+});
+
+router.beforeEach((to, from, next) => {
+    console.log("Navigating to:", to.path);
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!isAuthenticated()) {
+        console.log("Not authenticated. Redirecting to login.");
+        next('/login'); // Redirect to login if not authenticated
+      } else {
+        console.log("Authenticated. Proceeding to:", to.path);
+        next(); // Proceed to the route
+      }
+    } else {
+      next(); // Proceed to the route
+    }
+  });
 
 export default router;

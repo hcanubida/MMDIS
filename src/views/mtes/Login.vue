@@ -81,59 +81,66 @@ const form = ref({
 const handleLogin = async () => {
     const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
 
-    const response = await axios.get('http://127.0.0.1:8000/get_accounts/');
-
-    const account = response.data.find(acc => acc.username === form.value.username && acc.password === form.value.password);
-
     if (form.value.username === '' && form.value.password === '') {
         isValid.value = true;
-        setTimeout(() => {
-            isValid.value = false;
-        }, 2000);
-    } else if (form.value.username === '') {
-        isUsername.value = true;
-        error.value = 'Input Username'
-        setTimeout(() => {
-            isUsername.value = false;
-        }, 2000);
-    } else if (form.value.password === '') {
-        error.value = 'Input Password'
-        isUsername.value = true;
-        setTimeout(() => {
-            isUsername.value = false;
-        }, 2000);
-    } else if (!account) {
-        isUsername.value = true
-        error.value = 'Account not Found'
-        setTimeout(() => {
-            isUsername.value = false;
-        }, 2000);
-    } else if (account.password !== form.value.password) {
-        error.value = 'Wrong Password'
-        isUsername.value = true;
-        setTimeout(() => {
-            isUsername.value = false;
-        }, 2000);
-    } else {
-        pleaseWait.value = true;
+        setTimeout(() => { isValid.value = false; }, 2000);
+        return;
+    } 
 
-        setTimeout(() => {
-            switch (account.section) {
-                case 'mtes':
-                    router.push("/firstpage");
-                    break;
-                case 'mtss':
-                    router.push("/mtss/dashboard");
-                    break;
-                case 'mlss':
-                    router.push("/mlss/mlssdashboard");
-                    break;
-                default:
-                    // Redirect to a default page if the section is not specified
-                    router.push("/default-page");
-                    break;
-            }
-        }, 2000);
+    if (form.value.username === '') {
+        isUsername.value = true;
+        error.value = 'Input Username';
+        setTimeout(() => { isUsername.value = false; }, 2000);
+        return;
+    }
+
+    if (form.value.password === '') {
+        isUsername.value = true;
+        error.value = 'Input Password';
+        setTimeout(() => { isUsername.value = false; }, 2000);
+        return;
+    }
+
+    pleaseWait.value = true;
+    submitting.value = true;
+
+    try {
+        const response = await axios.get('http://127.0.0.1:8000/get_accounts/');
+        const account = response.data.find(acc => acc.username === form.value.username && acc.password === form.value.password);
+
+        if (!account) {
+            isUsername.value = true;
+            error.value = 'Account not Found';
+            setTimeout(() => { isUsername.value = false; }, 2000);
+            return;
+        }
+
+        // If the account is found, store the token and redirect
+        localStorage.setItem('authToken', 'someGeneratedToken'); // Replace 'someGeneratedToken' with the actual token from your API if available
+
+        pleaseWait.value = false;
+        switch (account.section) {
+            case 'mtes':
+                router.push("/firstpage");
+                break;
+            case 'mtss':
+                router.push("/mtss/dashboard");
+                break;
+            case 'mlss':
+                router.push("/mlss/mlssdashboard");
+                break;
+            default:
+                router.push("/default-page");
+                break;
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        pleaseWait.value = false;
+        isUsername.value = true;
+        error.value = 'An error occurred during login. Please try again.';
+        setTimeout(() => { isUsername.value = false; }, 2000);
+    } finally {
+        submitting.value = false;
     }
 }
 </script>
