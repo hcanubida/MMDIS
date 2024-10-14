@@ -47,6 +47,7 @@
 <script>
 import axios from 'axios';
 import { ref } from 'vue';
+import { API_BASE_URL } from '../../../config';
 
 import { addDetail2, viewDetail2, detailToggle2, detail_id2 } from '../dashboards/MPSA-dashboard.vue';
 
@@ -66,7 +67,7 @@ export default {
   methods: {
       async fetchDetails() {
           try {
-              const response = await axios.get('http://127.0.0.1:8000/get_details/');
+              const response = await axios.get(`${API_BASE_URL}/get_details/`);
               this.details = response.data.filter(det => det.application == 'mpsa');
           } catch (error) {
               console.error('Error fetching details:', error);

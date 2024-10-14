@@ -322,7 +322,7 @@ export default {
       };
     },
     fetchDMPF() {
-      axios.get('http://localhost:8000/api/MonitoringDMPF')
+      axios.get(`${API_BASE_URL}/api/MonitoringDMPF`)
         .then(response => {
           console.log('Fetched data:', response.data);
           this.dmpf = response.data;
@@ -352,7 +352,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringDMPF', formData)
+      axios.post(`${API_BASE_URL}/api/MonitoringDMPF`, formData)
         .then(response => {
           console.log('Added new entry:', response.data);
           this.dmpf.push(response.data);
@@ -384,7 +384,7 @@ export default {
     handleUpdate() {
       const updatedEntry = this.updateEntry;
 
-      axios.put(`http://localhost:8000/api/MonitoringDMPF/${updatedEntry.no}`, updatedEntry)
+      axios.put(`${API_BASE_URL}/api/MonitoringDMPF/${updatedEntry.no}`, updatedEntry)
         .then(response => {
           const index = this.dmpf.findIndex(entry => entry.no === updatedEntry.no);
           if (index !== -1) {
@@ -402,7 +402,7 @@ export default {
       if (!confirm('Are you sure you want to delete this entry?')) {
         return;
       }
-      axios.delete(`http://localhost:8000/api/MonitoringDMPF/${no}`)
+      axios.delete(`${API_BASE_URL}/api/MonitoringDMPF/${no}`)
         .then(response => {
           this.dmpf = this.dmpf.filter(entry => entry.no !== no);
           alert('Entry deleted successfully!');
@@ -455,7 +455,7 @@ export default {
     openPDF(filePath) {
       const index = filePath.indexOf('/');
       const pdfFinalPath = filePath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
         if (filePath) {
           window.open(url, '_blank');
         } else {

@@ -394,7 +394,7 @@
       },  
 
       fetchInvestigation() {
-        axios.get('http://localhost:8000/api/MonitoringInvestigation')
+        axios.get(`${API_BASE_URL}/api/MonitoringInvestigation`)
           .then(response => {
             this.investigation = response.data;
           })
@@ -446,7 +446,7 @@
         }
         formData.append('coordinates', this.newEntry.coordinates);
   
-        axios.post('http://localhost:8000/api/MonitoringInvestigation', formData, {
+        axios.post(`${API_BASE_URL}/api/MonitoringInvestigation`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -482,7 +482,7 @@
       openPDF(pdfPath) {
         const index = pdfPath.indexOf('/');
         const pdfFinalPath = pdfPath.slice(index + 1);
-        const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+        const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
         if (pdfPath) {
           window.open(url, '_blank');
         } else {
@@ -496,7 +496,7 @@
       deleteEntry(entryID) {
       // Confirm deletion
       if (confirm('Are you sure you want to delete this entry?')) {
-        axios.delete(`http://localhost:8000/api/MonitoringInvestigation/${entryID}`)
+        axios.delete(`${API_BASE_URL}/api/MonitoringInvestigation/${entryID}`)
           .then(response => {
             // Remove the entry from the local array
             this.investigation = this.investigation.filter(entry => entry.ID !== entryID);
@@ -557,7 +557,7 @@
       }
       formData.append('coordinates', this.updateEntry.coordinates);
 
-      axios.post(`http://localhost:8000/api/MonitoringInvestigation/${this.updateEntry.ID}`, formData)
+      axios.post(`${API_BASE_URL}/api/MonitoringInvestigation/${this.updateEntry.ID}`, formData)
         .then(response => {
           const index = this.investigation.findIndex(entry => entry.ID === this.updateEntry.ID);
           if (index !== -1) {

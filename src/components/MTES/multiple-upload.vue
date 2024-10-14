@@ -90,7 +90,7 @@ export default {
         //     formData.append('id_reference', this.idRef);
 
         //     // Handle form submission using axios or fetch
-        //     axios.post('http://127.0.0.1:8000/add_uploads', formData)
+        //     axios.post('${API_BASE_URL}/add_uploads', formData)
         //         .then(response => {
         //             console.log('Files uploaded successfully');
         //             // Optionally, you can clear the files array after successful upload

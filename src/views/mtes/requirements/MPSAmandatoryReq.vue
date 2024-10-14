@@ -465,8 +465,8 @@ export default {
         async getDetails() {
             //MTSR details
             try {
-                const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
-                const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const mtsr = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
+                const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
                 const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id2));
                 const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id2));
                 this.mtsrvalue = filteredmtsr.mtsr
@@ -478,7 +478,7 @@ export default {
                 console.error('Error fetching details:', error);
             }
             try {
-                const remarks = await axios.get('http://localhost:8000/get_remarks');
+                const remarks = await axios.get(`${API_BASE_URL}/get_remarks`);
                 const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id2);
 
                 this.remarks.textInput1 = filteredremarks[0].input1 !== null ? filteredremarks[0].input1 : '';
@@ -491,7 +491,7 @@ export default {
             }
 
             try {
-                const requirements = await axios.get('http://localhost:8000/get_recommendation');
+                const requirements = await axios.get(`${API_BASE_URL}/get_recommendation`);
                 const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id2);
                 // console.log(filteredrequirements)
 
@@ -505,7 +505,7 @@ export default {
 
             //2nd
             try {
-                const uploads = await axios.get('http://localhost:8000/get_files');
+                const uploads = await axios.get(`${API_BASE_URL}/get_files`);
                 const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id2);
                 console.log(uploadsrequirements);
 
@@ -542,7 +542,7 @@ export default {
 
             //images 1stkuhaon
             try {
-                const images = await axios.get('http://localhost:8000/get_images');
+                const images = await axios.get(`${API_BASE_URL}/get_images`);
                 const imagesrequirements = images.data.filter(req => req.id_reference == this.$route.params.detail_id2);
                 console.log(imagesrequirements);
 
@@ -599,7 +599,7 @@ export default {
                 formData.append('overallstatus', this.overallStatus);
             }
             // Make axios POST request
-            axios.post(`http://127.0.0.1:8000/update_mtsrstatus/${this.$route.params.detail_id2}`, formData)
+            axios.post(`${API_BASE_URL}/update_mtsrstatus/${this.$route.params.detail_id2}`, formData)
                 .then(response => {
                     // Handle response
                     console.log('mtsr added: ', response.data);
@@ -621,7 +621,7 @@ export default {
             // Append other input values here...
 
             // Make a POST request to update remarks
-            axios.post(`http://localhost:8000/update_remarks/${this.$route.params.detail_id2}`, formData1)
+            axios.post(`${API_BASE_URL}/update_remarks/${this.$route.params.detail_id2}`, formData1)
                 .then(response => {
                     console.log('Remarks updated successfully:', response.data);
                     // Handle success...
@@ -644,7 +644,7 @@ export default {
             // Append other input values here...
 
             // Make a POST request to update recommendations
-            axios.post(`http://localhost:8000/update_recommendation/${this.$route.params.detail_id2}`, formData2)
+            axios.post(`${API_BASE_URL}/update_recommendation/${this.$route.params.detail_id2}`, formData2)
                 .then(response => {
                     console.log('Recommendations updated successfully:', response.data);
                     // window.location.reload()
@@ -678,7 +678,7 @@ export default {
             }
 
             // Send FormData to server using axios
-            axios.post(`http://127.0.0.1:8000/update_images/${this.$route.params.detail_id2}`, formData4)
+            axios.post(`${API_BASE_URL}/update_images/${this.$route.params.detail_id2}`, formData4)
                 .then(response => {
                     console.log('Images uploaded successfully:', response.data);
                 })
@@ -713,7 +713,7 @@ export default {
             }
 
             // Send FormData to server using axios
-            axios.post(`http://127.0.0.1:8000/update_uploads/${this.$route.params.detail_id2}`, formData3)
+            axios.post(`${API_BASE_URL}/update_uploads/${this.$route.params.detail_id2}`, formData3)
                 .then(response => {
                     console.log('Record uploaded successfully:', response.data);
                     window.location.reload()

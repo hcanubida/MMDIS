@@ -48,6 +48,7 @@
 <script>
 import axios from 'axios';
 import { ref } from 'vue';
+import { API_BASE_URL } from '../../../config';
 
 import { addDetail8, viewDetail8, detailToggle8, detail_id8 } from '../dashboards/MPL-dashboard.vue';
 
@@ -67,7 +68,7 @@ export default {
   methods: {
       async fetchDetails() {
           try {
-              const response = await axios.get('http://127.0.0.1:8000/get_details/');
+              const response = await axios.get(`${API_BASE_URL}/get_details/`);
               this.details = response.data.filter(det => det.application == 'mpl');
           } catch (error) {
               console.error('Error fetching details:', error);

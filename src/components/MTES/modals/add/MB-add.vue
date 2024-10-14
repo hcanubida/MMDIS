@@ -202,7 +202,7 @@ export default {
 
 
       // Make axios POST request
-      axios.post('http://127.0.0.1:8000/add_details', formData)
+      axios.post('${API_BASE_URL}/add_details', formData)
         .then(response => {
           // Handle response
           console.log(response.data);

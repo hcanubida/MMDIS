@@ -683,7 +683,7 @@ export default {
         async fetchDetails() {
             //Details applicants
             try {
-                const response = await axios.get('http://127.0.0.1:8000/get_details/');
+                const response = await axios.get(`${API_BASE_URL}/get_details/`);
                 this.details = response.data.filter(det => det.id == this.$route.params.detail_id7);
             } catch (error) {
                 console.error('Error fetching details:', error);
@@ -691,7 +691,7 @@ export default {
 
             //Remarks details
             try {
-                const remarks = await axios.get('http://localhost:8000/get_remarks');
+                const remarks = await axios.get(`${API_BASE_URL}/get_remarks`);
                 const filteredremarks = remarks.data.filter(req => req.id_reference == this.$route.params.detail_id7);
 
                 this.remarks.textInput1 = filteredremarks[0].input1 !== null ? filteredremarks[0].input1 : '';
@@ -712,8 +712,8 @@ export default {
 
             //MTSR details
             try {
-                const mtsr = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
-                const overallstatus = await axios.get('http://127.0.0.1:8000/get_mtsrstatus');
+                const mtsr = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
+                const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
                 const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id7));
                 const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id7));
                 this.mtsrvalue = filteredmtsr.mtsr
@@ -724,7 +724,7 @@ export default {
 
             //Recommendation details
             try {
-                const requirements = await axios.get('http://localhost:8000/get_recommendation');
+                const requirements = await axios.get(`${API_BASE_URL}/get_recommendation`);
                 const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id7);
                 // console.log(filteredrequirements)
                 this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
@@ -745,7 +745,7 @@ export default {
 
             //details file uploads
             try {
-                const uploads = await axios.get('http://localhost:8000/get_files');
+                const uploads = await axios.get(`${API_BASE_URL}/get_files`);
                 const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id7);
                 // console.log(uploadsrequirements);
 

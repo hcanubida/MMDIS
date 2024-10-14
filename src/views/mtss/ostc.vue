@@ -321,7 +321,7 @@ export default {
       };
     },
     fetchOSTC() {
-      axios.get('http://localhost:8000/api/MonitoringOSTC')
+      axios.get(`${API_BASE_URL}/api/MonitoringOSTC`)
         .then(response => {
           console.log('Fetched data:', response.data);
           this.ostc = response.data;
@@ -353,7 +353,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringOSTC', formData)
+      axios.post(`${API_BASE_URL}/api/MonitoringOSTC`, formData)
         .then(response => {
           console.log('Added new entry:', response.data);
           this.ostc.push(response.data);
@@ -419,7 +419,7 @@ export default {
       formData.append('MOVpdf', this.file);
     }
 
-    axios.post(`http://localhost:8000/api/MonitoringOSTC/${this.updateEntry.no}`, formData)
+    axios.post(`${API_BASE_URL}/api/MonitoringOSTC/${this.updateEntry.no}`, formData)
         .then(response => {
           const index = this.ostc.findIndex(entry => entry.no === this.updateEntry.no);
           if (index !== -1) {
@@ -438,7 +438,7 @@ export default {
       if (!confirm('Are you sure you want to delete this entry?')) {
         return;
       }
-      axios.delete(`http://localhost:8000/api/MonitoringOSTC/${no}`)
+      axios.delete(`${API_BASE_URL}/api/MonitoringOSTC/${no}`)
         .then(response => {
           this.ostc = this.ostc.filter(entry => entry.no !== no);
           alert('Entry deleted successfully!');
@@ -491,7 +491,7 @@ export default {
     openPDF(filePath) {
       const index = filePath.indexOf('/');
       const pdfFinalPath = filePath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
         if (filePath) {
           window.open(url, '_blank');
         } else {

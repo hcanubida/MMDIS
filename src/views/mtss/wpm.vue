@@ -360,7 +360,7 @@ export default {
     },
 
     fetchWPM() {
-      axios.get('http://localhost:8000/api/MonitoringWPM')
+      axios.get(`${API_BASE_URL}/api/MonitoringWPM`)
         .then(response => {
           this.wpm = response.data;
         })
@@ -390,7 +390,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringWPM', formData)
+      axios.post(`${API_BASE_URL}/api/MonitoringWPM`, formData)
         .then(response => {
           this.wpm.push(response.data);
           this.showModal = false;
@@ -406,7 +406,7 @@ export default {
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
       if (pdfPath) {
         window.open(url, '_blank');
       } else {
@@ -415,7 +415,7 @@ export default {
     },
 
     search() {
-      axios.get(`http://localhost:8000/api/MonitoringWPM/search?query=${this.searchQuery}`)
+      axios.get(`${API_BASE_URL}/api/MonitoringWPM/search?query=${this.searchQuery}`)
         .then(response => {
           this.wpm = response.data;
         })
@@ -457,7 +457,7 @@ export default {
         return;
       }
 
-      axios.delete(`http://localhost:8000/api/MonitoringWPM/${ID}`)
+      axios.delete(`${API_BASE_URL}/api/MonitoringWPM/${ID}`)
         .then(response => {
           this.wpm = this.wpm.filter(entry => entry.ID !== ID);
           alert('Entry deleted successfully!');
@@ -519,7 +519,7 @@ export default {
   }
 
   // Use PUT request for updating the entry
-  axios.post(`http://localhost:8000/api/MonitoringWPM/${this.updateEntry.ID}`, formData)
+  axios.post(`${API_BASE_URL}/api/MonitoringWPM/${this.updateEntry.ID}`, formData)
     .then(response => {
       // Find the index of the entry to be updated
       const index = this.wpm.findIndex(entry => entry.ID === this.updateEntry.ID);

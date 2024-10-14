@@ -437,7 +437,7 @@ export default {
       return { totalSum, monthlyData, provinceTotals };
     },
     fetchData(endpoint, variable) {
-    axios.get(`http://localhost:8000/api/${endpoint}`)
+    axios.get(`${API_BASE_URL}/api/${endpoint}`)
       .then(response => {
         console.log(`${endpoint.toUpperCase()} data:`, response.data); // Log data
         this[variable] = response.data;

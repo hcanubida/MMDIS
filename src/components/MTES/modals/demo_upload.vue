@@ -48,7 +48,7 @@
   
         // Handle form submission using axios or fetch
         // Example using axios:
-        axios.post('http://127.0.0.1:8000/add_uploads', formData)
+        axios.post('${API_BASE_URL}/add_uploads', formData)
           .then(response => {
             console.log('record ', this.idRef)
           })

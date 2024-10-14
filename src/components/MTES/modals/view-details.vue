@@ -89,7 +89,7 @@ export default {
         },
         async fetchDetails() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/get_details/');
+                const response = await axios.get(`${API_BASE_URL}/get_details/`);
                 this.details = response.data.find(det => det.id === parseInt(this.detail_id))
                 console.log(this.detail_id)
                 console.log(this.details)

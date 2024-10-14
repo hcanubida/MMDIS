@@ -422,7 +422,7 @@ export default {
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
       if (pdfPath) {
         window.open(url, '_blank');
       } else {
@@ -432,7 +432,7 @@ export default {
     openJPEG(jpgPath) {
       const index = jpgPath.indexOf('/');
       const jpgFinalPath = jpgPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${jpgFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${jpgFinalPath}`;
       if (jpgPath) {
         window.open(url, '_blank');
       } else {
@@ -448,7 +448,7 @@ export default {
       }
     },
     fetchMB() {
-      axios.get('http://localhost:8000/api/MonitoringMB').then(response => {
+      axios.get(`${API_BASE_URL}/api/MonitoringMB`).then(response => {
         this.entries = response.data;
       }).catch(error => {
         console.error('Error fetching data:', error);
@@ -483,7 +483,7 @@ export default {
         formData.append('map', jpg);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringMB', formData, {
+      axios.post(`${API_BASE_URL}/api/MonitoringMB`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(() => {
         this.showModal = false;
@@ -495,7 +495,7 @@ export default {
     deleteEntry(entryID) {
       // Confirm deletion
       if (confirm('Are you sure you want to delete this entry?')) {
-        axios.delete(`http://localhost:8000/api/MonitoringMB/${entryID}`)
+        axios.delete(`${API_BASE_URL}/api/MonitoringMB/${entryID}`)
           .then(response => {
             // Remove the entry from the local array
             this.entries = this.entries.filter(entry => entry.ID !== entryID);
@@ -577,7 +577,7 @@ async handleUpdate() {
   }
 
   // Axios POST request
-  axios.post(`http://localhost:8000/api/MonitoringMB/${this.updateEntry.ID}`, formData)
+  axios.post(`${API_BASE_URL}/api/MonitoringMB/${this.updateEntry.ID}`, formData)
     .then(response => {
       const index = this.entries.findIndex(entry => entry.ID === this.updateEntry.ID);
       if (index !== -1) {

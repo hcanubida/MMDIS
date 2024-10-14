@@ -392,7 +392,7 @@ export default {
       };
     },
     fetchInventory() {
-      axios.get('http://localhost:8000/api/MonitoringInventory')
+      axios.get(`${API_BASE_URL}/api/MonitoringInventory`)
         .then(response => {
           this.inventory = response.data;
         })
@@ -421,7 +421,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringInventory', formData, {
+      axios.post(`${API_BASE_URL}/api/MonitoringInventory`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -487,7 +487,7 @@ export default {
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
       if (pdfPath) {
         window.open(url, '_blank');
       } else {
@@ -500,7 +500,7 @@ export default {
         return;
       }
 
-      axios.delete(`http://localhost:8000/api/MonitoringInventory/${id}`)
+      axios.delete(`${API_BASE_URL}/api/MonitoringInventory/${id}`)
         .then(response => {
           // Filter out the deleted entry from the inventory array
           this.inventory = this.inventory.filter(entry => entry.id !== id);
@@ -562,7 +562,7 @@ export default {
       formData.append('MOVpdf', this.file);
     }
 
-    axios.post(`http://localhost:8000/api/MonitoringInventory/${this.updateEntry.id}`, formData)
+    axios.post(`${API_BASE_URL}/api/MonitoringInventory/${this.updateEntry.id}`, formData)
     .then(response => {
       const index = this.inventory.findIndex(entry => entry.id === this.updateEntry.id);
       if (index !== -1) {

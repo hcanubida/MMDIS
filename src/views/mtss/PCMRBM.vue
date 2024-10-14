@@ -271,7 +271,7 @@ export default {
       };
     },
     fetchDMPF() {
-      axios.get('http://localhost:8000/api/MonitoringPCMRBM')
+      axios.get(`${API_BASE_URL}/api/MonitoringPCMRBM`)
         .then(response => {
           console.log('Fetched data:', response.data);
           this.pcmrbm = response.data;
@@ -298,7 +298,7 @@ export default {
         formData.append('MOVpdf', fileInput);
       }
 
-      axios.post('http://localhost:8000/api/MonitoringPCMRBM', formData)
+      axios.post(`${API_BASE_URL}/api/MonitoringPCMRBM`, formData)
         .then(response => {
           console.log('Added new entry:', response.data);
           this.pcmrbm.push(response.data);
@@ -330,7 +330,7 @@ export default {
     handleUpdate() {
       const updatedEntry = this.updateEntry;
 
-      axios.put(`http://localhost:8000/api/MonitoringPCMRBM/${updatedEntry.no}`, updatedEntry)
+      axios.put(`${API_BASE_URL}/api/MonitoringPCMRBM/${updatedEntry.no}`, updatedEntry)
         .then(response => {
           const index = this.pcmrbm.findIndex(entry => entry.no === updatedEntry.no);
           if (index !== -1) {
@@ -348,7 +348,7 @@ export default {
       if (!confirm('Are you sure you want to delete this entry?')) {
         return;
       }
-      axios.delete(`http://localhost:8000/api/MonitoringPCMRBM/${no}`)
+      axios.delete(`${API_BASE_URL}/api/MonitoringPCMRBM/${no}`)
         .then(response => {
           this.pcmrbm = this.pcmrbm.filter(entry => entry.no !== no);
           alert('Entry deleted successfully!');
@@ -401,7 +401,7 @@ export default {
     openPDF(filePath) {
       const index = filePath.indexOf('/');
       const pdfFinalPath = filePath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`;
         if (filePath) {
           window.open(url, '_blank');
         } else {

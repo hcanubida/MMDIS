@@ -48,6 +48,7 @@
   <script>
   import axios from 'axios';
   import { ref } from 'vue';
+  import { API_BASE_URL } from '../../../config';
   
   import { addDetail10, viewDetail10, detailToggle10, detail_id10 } from '../dashboards/MOEP-dashboard.vue';
   
@@ -67,7 +68,7 @@
     methods: {
         async fetchDetails() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/get_details/');
+                const response = await axios.get(`${API_BASE_URL}/get_details/`);
                 this.details = response.data.filter(det => det.application == 'moep');
             } catch (error) {
                 console.error('Error fetching details:', error);

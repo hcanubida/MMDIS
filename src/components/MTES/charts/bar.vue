@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     fetchProvinceData() {
-      axios.get('http://127.0.0.1:8000/get_details/')
+      axios.get(`${API_BASE_URL}/get_details/`)
         .then(response => {
           const District1 = {
             'baungon': 0,

@@ -105,7 +105,7 @@ const handleLogin = async () => {
     submitting.value = true;
 
     try {
-        const response = await axios.get('http://127.0.0.1:8000/get_accounts/');
+        const response = await axios.get(`${API_BASE_URL}/get_accounts/`);
         const account = response.data.find(acc => acc.username === form.value.username && acc.password === form.value.password);
 
         if (!account) {
