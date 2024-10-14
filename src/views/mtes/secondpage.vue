@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="flex">
-    <taas />
-    <UserBtn/>
+      <taas />
+      <UserBtn/>
     </div>
     <div class="flex justify-center items-center h-1/4">
       <div class="new-app-content">
-      <h1 style="font-size: 50px; margin-bottom: 30px; margin-top: -150px;">New Applications</h1>
-      <div style="display: flex; justify-content: center;">
+        <h1 style="font-size: 50px; margin-bottom: 30px; margin-top: -150px;">New Applications</h1>
+        <div style="display: flex; justify-content: center;">
         <div class="button-container1">
           <button @click="navigateToFTTAdashboard()" class="button1">
             Financial or Technical Assistance Agreement
