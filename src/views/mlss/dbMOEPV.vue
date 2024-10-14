@@ -138,6 +138,7 @@ import Header from '../../components/header.vue';
 import UserBtn from '../../components/user-dbbtn.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: {
@@ -177,7 +178,7 @@ export default {
       this.newEntry[field] = value.toUpperCase();
     },
     fetchMOEP() {
-      axios.get('http://localhost:8000/api/MOEP')
+      axios.get(`${API_BASE_URL}/api/MOEP`)
         .then(response => {
           this.moep = response.data;
         })
@@ -200,7 +201,7 @@ export default {
   formData.append('validated', this.newEntry.validated);
   formData.append('reportPDF', fileInput);
 
-  axios.post('http://localhost:8000/api/MOEP', formData, {
+  axios.post(`${API_BASE_URL}/api/MOEP`, formData, { 
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -253,7 +254,7 @@ export default {
     openPDF(pdfPath) {
       const index = pdfPath.indexOf('/');
       const pdfFinalPath = pdfPath.slice(index + 1);
-      const url = `http://localhost:8000/storage/${pdfFinalPath}`;
+      const url = `${API_BASE_URL}/storage/${pdfFinalPath}`; // @@@@@@@@@@@@@@@@@@@@
       if (pdfPath) {
         window.open(url, '_blank');
       } else {

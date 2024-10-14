@@ -17,6 +17,7 @@
   import Header from '../../components/header.vue';
   import UserBtn from '../../components/user-dbbtn.vue';
   import router from '../../router';
+  import { API_BASE_URL } from '../../config'
   
   export default {
     components: {

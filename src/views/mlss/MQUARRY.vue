@@ -235,6 +235,7 @@ import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: { Header, UserBtn, MonthBarChart, PieChart },
@@ -320,7 +321,7 @@ export default {
       this.newEntry[field] = value.toUpperCase();
     },
     fetchQUARRY() {
-      axios.get('http://localhost:8000/api/quarry')
+      axios.get(`${API_BASE_URL}/api/quarry`)
         .then(response => {
           this.quarry = response.data;
         })
@@ -329,7 +330,7 @@ export default {
         });
     },
     addNewEntry() {
-      axios.post('http://localhost:8000/api/quarry', this.newEntry)
+      axios.post(`${API_BASE_URL}/api/quarry`, this.newEntry)
         .then(response => {
           this.quarry.push(response.data);
           this.clearNewEntry();

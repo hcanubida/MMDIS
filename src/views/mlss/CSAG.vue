@@ -224,6 +224,7 @@ import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
 import debounce from 'lodash/debounce';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: { Header, UserBtn, MonthBarChart, PieChart },
@@ -304,7 +305,7 @@ export default {
       this.newEntry[field] = value.toUpperCase();
     },
     fetchCSAG() {
-      axios.get('http://localhost:8000/api/csag')
+      axios.get(`${API_BASE_URL}/api/csag`)
         .then(response => {
           this.csag = response.data;
         })
@@ -313,7 +314,7 @@ export default {
         });
     },
     addNewEntry() {
-      axios.post('http://localhost:8000/api/csag', this.newEntry)
+      axios.post(`${API_BASE_URL}/api/csag`, this.newEntry)
         .then(response => {
           this.csag.push(response.data);
           this.clearNewEntry();

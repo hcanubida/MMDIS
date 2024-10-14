@@ -122,6 +122,7 @@ import PieChart from '../../components/byprovince-piechart.vue';
 import pdf from '../../components/MLSS/pdf-generator-btn.vue';
 import axios from 'axios';
 import router from '../../router';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: {
@@ -279,7 +280,7 @@ export default {
       router.push('/mlss/MTM');
     },
     fetchData(endpoint, variable) {
-      axios.get(`http://localhost:8000/api/${endpoint}`)
+      axios.get(`${API_BASE_URL}/api/${endpoint}`)
         .then(response => {
           this[variable] = response.data;
         })
