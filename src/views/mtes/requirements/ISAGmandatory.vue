@@ -1407,6 +1407,7 @@ import upload from '../../../components/MTES/multiple-upload.vue'
 import downloadd from '../faxsheet/isag-factsheet.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
 import faxx from '../faxsheet/isag-factsheet.vue'
+import { API_BASE_URL } from '../../../config'
 
 
 </script>

@@ -234,6 +234,7 @@ import PieChart from '../../components/byprovince-piechart.vue';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: {

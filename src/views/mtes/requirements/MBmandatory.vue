@@ -1272,6 +1272,7 @@ import headd from '../../../components/MTES/header.vue';
 import upload from '../../../../src/components/MTES/multiple-upload.vue';
 import imagees from '../../../components/MTES/modals/imguploads.vue'
 import faxx from '../faxsheet/mb-factsheet.vue'
+import { API_BASE_URL } from '../../../config'
 </script>
 
 

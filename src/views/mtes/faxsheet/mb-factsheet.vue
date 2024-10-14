@@ -871,6 +871,7 @@
 
 <script setup>
 import headd from '../../../components/MTES/header.vue'
+import { API_BASE_URL } from '../../../config';
 
 </script>
 

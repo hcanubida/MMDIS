@@ -65,6 +65,8 @@ import mgb from '../../assets/icons/mgb.png'
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import { API_BASE_URL } from '../../config'
+
 
 const isValid = ref(false);
 const isUsername = ref(false);

@@ -1072,6 +1072,7 @@ import upload from '../../../components/MTES/multiple-upload.vue'
 import headd from '../../../components/MTES/header.vue'
 import downloadd from '../faxsheet/ep-factsheet.vue'
 import { ref } from 'vue';
+import { API_BASE_URL } from '../../../config'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
 import faxx from '../faxsheet/ep-factsheet.vue'
 

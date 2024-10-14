@@ -309,6 +309,7 @@ import MonthBarChart from '../../components/bymonth-barchart.vue';
 import PieChart from '../../components/byprovince-piechart.vue';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
+import { API_BASE_URL } from '../../config'
 
 export default {
   components: {

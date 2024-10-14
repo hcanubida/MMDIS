@@ -617,6 +617,7 @@
 </template>
 
 <script>
+import { API_BASE_URL } from '../../../config';
 import jsPDF from 'jspdf';
 
 export default {

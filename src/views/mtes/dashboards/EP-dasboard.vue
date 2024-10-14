@@ -44,6 +44,7 @@ import BarChart from '../../../components/MTES/charts/bar.vue'
 import Tableview from '../../mtes/tables/EP-table.vue'
 import userbutton from '../../../components/user-dbbtn.vue'
 import axios from 'axios';
+import { API_BASE_URL } from '../../../config';
 
 import { ref, onMounted } from 'vue'
 

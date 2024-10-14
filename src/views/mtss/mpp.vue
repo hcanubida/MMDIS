@@ -18,6 +18,7 @@
   import UserBtn from '../../components/user-dbbtn.vue'; 
   import axios from 'axios';
   import debounce from 'lodash/debounce';
+  import { API_BASE_URL } from '../../config'
   
   export default {
     components: {

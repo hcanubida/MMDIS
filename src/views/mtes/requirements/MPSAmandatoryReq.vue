@@ -374,6 +374,7 @@
 import headd from '../../../components/MTES/header.vue'
 import faxx from '../faxsheet/mpsa-factsheet.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
+import { API_BASE_URL } from '../../../config'
 
 </script>
 

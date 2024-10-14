@@ -391,6 +391,8 @@
 
 <script>
 
+import { API_BASE_URL } from '../../../config';
+
 //COPY THIS TAMAN SA LAST } THEN CHANGE ANG SA DATA IF PILA KABUOK REQUIREMENTS THEN CHANGE PUD ANG DETAIL_ID NIYA
 
 export default {
