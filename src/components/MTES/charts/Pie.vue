@@ -9,6 +9,7 @@ import { Pie } from 'vue-chartjs'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import axios from 'axios';
 import { detail_id } from '@/views/mtes/dashboards/FTAA-dashboard.vue';
+import { API_BASE_URL } from '../../../config'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
