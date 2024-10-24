@@ -205,7 +205,7 @@ export default {
 
 
       // Make axios POST request
-      axios.post('${API_BASE_URL}/add_details', formData)
+      axios.post(`${API_BASE_URL}/add_details`, formData)
         .then(response => {
           // Handle response
           console.log(response.data);
