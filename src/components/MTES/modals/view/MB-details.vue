@@ -44,6 +44,7 @@
 <script>
 import { viewDetail4 } from '../../../../views/mtes/dashboards/MB-dashboard.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {

@@ -58,6 +58,7 @@ import { viewDetail, addDetail } from '../../../views/mtes/dashboards/FTAA-dashb
 import { viewDetail5, addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
 
 import axios from 'axios';
+import { API_BASE_URL } from '../../../config'
 
 export default {
     props: {

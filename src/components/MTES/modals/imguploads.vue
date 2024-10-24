@@ -17,6 +17,7 @@
 
 <script>
 import { ref } from 'vue';
+import { API_BASE_URL } from '../../../config'
 
 export default {
     name: 'ImageUploads',

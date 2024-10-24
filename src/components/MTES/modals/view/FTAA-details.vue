@@ -44,6 +44,7 @@
 <script>
 import { viewDetail } from '../../../../views/mtes/dashboards/FTAA-dashboard.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {

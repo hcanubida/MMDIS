@@ -44,6 +44,7 @@
 <script>
 import { viewDetail3 } from '../../../../views/mtes/dashboards/ISAG-dashboard.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {

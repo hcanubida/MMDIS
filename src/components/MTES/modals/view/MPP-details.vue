@@ -44,6 +44,7 @@
 <script>
 import { viewDetail5 } from '../../../../views/mtes/dashboards/MPP-dashboard.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {

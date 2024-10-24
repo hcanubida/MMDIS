@@ -44,6 +44,7 @@
 <script>
 import { viewDetail10 } from '../../../../views/mtes/dashboards/MOEP-dashboard.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {

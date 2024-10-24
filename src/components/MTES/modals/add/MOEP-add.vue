@@ -84,7 +84,7 @@
 <script>
 import { addDetail10 } from '../../../../views/mtes/dashboards/MOEP-dashboard.vue';
 import { regions, provinces, cities, barangays } from 'select-philippines-address'
-
+import { API_BASE_URL } from '../../../../config'
 
 export default {
   data() {

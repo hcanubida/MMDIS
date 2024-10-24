@@ -82,6 +82,7 @@
 <script>
 import { addDetail4 } from '../../../../views/mtes/dashboards/MB-dashboard.vue';
 import { regions, provinces, cities, barangays } from 'select-philippines-address'
+import { API_BASE_URL } from '../../../../config'
 
 export default {
   data() {

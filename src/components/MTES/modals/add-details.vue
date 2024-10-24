@@ -65,6 +65,7 @@ import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
 import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
 import { addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
+import { API_BASE_URL } from '../../../config'
 
 export default {
   data() {

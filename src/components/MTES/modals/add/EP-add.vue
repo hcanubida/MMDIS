@@ -84,6 +84,7 @@
 <script>
 import { addDetail1 } from '../../../../views/mtes/dashboards/EP-dasboard.vue';
 import { regions, provinces, cities, barangays } from 'select-philippines-address'
+import { API_BASE_URL } from '../../../../config'
 
 export default {
   data() {
@@ -203,7 +204,7 @@ export default {
 
 
       // Make axios POST request
-      axios.post('${API_BASE_URL}/add_details', formData)
+      axios.post(`${API_BASE_URL}/add_details`, formData)
         .then(response => {
           // Handle response
           console.log(response.data);

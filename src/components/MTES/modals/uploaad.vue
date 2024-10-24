@@ -42,6 +42,8 @@
 
     <script>
 
+    import { API_BASE_URL } from '../../../config'
+
     export default {
         name: "upload-files",
         data() {
