@@ -27,14 +27,14 @@ import MineralOreExportPermit from "../views/mlss/dbMOEPV.vue";
 import PDFcontent from "../components/MLSS/pdf-content.vue";
 
 // MTES Views
-import firstpage from "../views/mtes/firstpage.vue";
+import firstpage from "../views/mtes_2/dashboard.vue"; //////////////////////////////////
 import login from "../views/mtes/Login.vue";
 import signup from "../views/mtes/Signup.vue";
-import applicationpage from "../views/mtes/secondpage.vue";
+import applicationpage from "../views/mtes_2/new-application.vue"; ////////////
 import permitpage from "../views/mtes/permit.vue";
 
 // MTES Dashboards
-import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
+import fttadashboard from "../views/mtes_2/db/ftaa.vue"; /////////////////////////
 import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue";
 import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue";
 import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue";

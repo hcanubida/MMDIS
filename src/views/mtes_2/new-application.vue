@@ -1,59 +1,64 @@
 <template>
   <div>
+    <!-- Header and User Button Section -->
     <div class="flex">
-      <taas />
-      <UserBtn/>
+        <Header />
+        <UserBtn />
     </div>
+
     <div class="flex justify-center items-center h-1/4">
       <div class="new-app-content">
         <h1 style="font-size: 50px; margin-bottom: 30px; margin-top: -150px;">New Applications</h1>
         <div style="display: flex; justify-content: center;">
-        <div class="button-container1">
-          <button @click="navigateToFTTAdashboard()" class="button1">
-            Financial or Technical Assistance Agreement
-          </button>
-          <button @click="navigateToMPSAdashboard()" class="button1">
-            Mineral Production Sharing Agreement
-          </button>
-          <button @click="navigateToEPdashboard()" class="button1">
-            Exploration Permit
-          </button>
-          <button @click="navigateToMPPdashboard()" class="button1">
-            Mineral Processing Permit
-          </button>
-          <button @click="navigateToISAGdashboard()" class="button1">
-            Industrial Sand and Gravel Permit
-          </button>
-          <button @click="navigateToOTPdashboard()" class="button1">
-            Ore Transport Permit
-          </button>
-        </div>
-        <div class="button-container2">
-          <button @click="navigateToMBdashboard()" class="button1">
-            Declaration of Minahang Bayan
-          </button>
-          <button @click="navigateToSSMCdashboard()" class="button1">
-            Small-Scale Mining Contract
-          </button>
-          <button @click="navigateToMPLdashboard()" class="button1">
-            Mineral Processor’s License
-          </button>
-          <button @click="navigateToAMTRDdashboard()" class="button1">
-            Accreditation as Mineral Trader, Retailer, and Dealer
-          </button>
-          <button @click="navigateToMOEPdashboard()" class="button1">
-            Mineral Ore Export Permit
-          </button>
+
+          <div class="button-container1">
+            <button @click="navigateToFTTAdashboard()" class="button1">
+              Financial or Technical Assistance Agreement
+            </button>
+            <button @click="navigateToMPSAdashboard()" class="button1">
+              Mineral Production Sharing Agreement
+            </button>
+            <button @click="navigateToEPdashboard()" class="button1">
+              Exploration Permit
+            </button>
+            <button @click="navigateToMPPdashboard()" class="button1">
+              Mineral Processing Permit
+            </button>
+            <button @click="navigateToISAGdashboard()" class="button1">
+              Industrial Sand and Gravel Permit
+            </button>
+            <button @click="navigateToOTPdashboard()" class="button1">
+              Ore Transport Permit
+            </button>
+          </div>
+
+          <div class="button-container2">
+            <button @click="navigateToMBdashboard()" class="button1">
+              Declaration of Minahang Bayan
+            </button>
+            <button @click="navigateToSSMCdashboard()" class="button1">
+              Small-Scale Mining Contract
+            </button>
+            <button @click="navigateToMPLdashboard()" class="button1">
+              Mineral Processor’s License
+            </button>
+            <button @click="navigateToAMTRDdashboard()" class="button1">
+              Accreditation as Mineral Trader, Retailer, and Dealer
+            </button>
+            <button @click="navigateToMOEPdashboard()" class="button1">
+              Mineral Ore Export Permit
+            </button>
+          </div>
+
         </div>
       </div>
-    </div>
     </div>
   </div>
   
 </template>
 
 <script setup>
-import taas from '../../components/header.vue'
+import Header from '../../components/header.vue'
 import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
