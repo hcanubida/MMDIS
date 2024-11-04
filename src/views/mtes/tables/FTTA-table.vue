@@ -1,8 +1,27 @@
 <template>
     <div class="fttatable">
+      <!-- Search and Add Section -->
+      <div class="flex justify-between mt-8">
+        <!-- Search Input Container -->
+        <div class="h-10 flex w-2/5 ml-6">
+          <!-- Search Icon -->
+          <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
+            <svg class="w-4 h-8 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            </svg>
+          </div>
+          <!-- Search Input Field -->
+          <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Tenement Name or Location of the application ..." required />
+        </div>
+        <!-- Add Button -->
+        <div class="flex lg:justify-end mb-5 ">
+          <button @click="navigateTomodal" class="text-dark bg-orange-200 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center mr-8">New Application<img class="w-4 m-2" src="../../../assets/icons/plus.png"></button>
+        </div>
+      </div>
+
       <div class="ftta_scrollable">
         <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
-          <thead class="sticky top-0 z-50 border-y-50">
+          <thead class="sticky top-0 z-50 border-y-50" style="z-index: 1;">
             <tr style="background-color: #e6cfaf;">
               <th class="fttath">Stages of Processing</th>
               <th class="fttath" @click="sortmethod('status')">
@@ -63,7 +82,6 @@
   import axios from 'axios';
   import { ref } from 'vue';
   import { API_BASE_URL } from '../../../config';
-  
   import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/FTAA-dashboard.vue';
   
   export default {
@@ -157,7 +175,6 @@
     border: 1px solid #888888;
     text-align: center;
     padding: 10px;
-    position: sticky;
   }
   </style>
   

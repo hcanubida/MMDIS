@@ -63,7 +63,7 @@ import UserBtn from '../../components/user-dbbtn.vue'
 </script>
 
 <script>
-import router from '../../../src/router/index';
+import router from '../../router/index';
 
 export default {
 

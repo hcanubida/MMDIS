@@ -372,13 +372,13 @@ export default {
 
 .bartable {
   display: flex;
-  flex-direction: column repeat(auto-fit, minmax(250px, 2fr));
+  flex-direction: column repeat(auto-fit, minmax(200px, 2fr));
 
 }
 
 .bartable1 {
   display: flex;
-  flex-direction: column repeat(auto-fit, minmax(250px, 2fr));
+  flex-direction: column repeat(auto-fit, minmax(200px, 2fr));
 }
 
 .box {
