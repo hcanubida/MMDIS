@@ -224,6 +224,7 @@
         submissionStatus: '',
         detailstoadd: {
           status: '',
+          stage_of_processing: '',
           tenement_number: '',
           tenement_name: '',
           area_hectares: '',

@@ -23,53 +23,53 @@
         <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
           <thead class="sticky top-0 z-50 border-y-50" style="z-index: 1;">
             <tr style="background-color: #e6cfaf;">
-              <th class="fttath">Stages of Processing</th>
-              <th class="fttath" @click="sortmethod('status')">
+              <th class="border text-center p-2">Stages of Processing</th>
+              <th class="border text-center p-2 cursor-pointer" @click="sortmethod('status')">
                 Status
                 <span v-if="sortKey === 'status'" aria-label="Sorted ascending">
                   <template v-if="sortOrder === 'asc'">▲</template>
                   <template v-else>▼</template>
                 </span>
               </th>
-              <th class="fttath">Tenement No.</th>
-              <th class="fttath" @click="sortmethod('tenement_name')">
+              <th class="border text-center p-2">Tenement No.</th>
+              <th class="border text-center p-2 cursor-pointer" @click="sortmethod('tenement_name')">
                 Tenement Name
                 <span v-if="sortKey === 'tenement_name'" aria-label="Sorted ascending">
                   <template v-if="sortOrder === 'asc'">▲</template>
                   <template v-else>▼</template>
                 </span>
               </th>
-              <th class="fttath">Area (HA)</th>
-              <th class="fttath" @click="sortmethod('date_filed')">
+              <th class="border text-center p-2">Area (HA)</th>
+              <th class="border text-center p-2 cursor-pointer" @click="sortmethod('date_filed')">
                 Date Filed
                 <span v-if="sortKey === 'date_filed'" aria-label="Sorted ascending">
                   <template v-if="sortOrder === 'asc'">▲</template>
                   <template v-else>▼</template>
                 </span>
               </th>
-              <th class="fttath">Barangay</th>
-              <th class="fttath">City</th>
-              <th class="fttath">Province</th>
-              <th class="fttath">Commodity</th>
-              <th class="fttath">Action</th>
+              <th class="border text-center p-2">Barangay</th>
+              <th class="border text-center p-2">City</th>
+              <th class="border text-center p-2">Province</th>
+              <th class="border text-center p-2">Commodity</th>
+              <th class="border text-center p-2">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(detail, index) in sortedEntries" :key="index">
-              <td class="fttatd">{{ detail.stage_of_processing }}</td>
-              <td class="fttatd">{{ detail.status }}</td>
-              <td class="fttatd">{{ detail.id }}</td>
-              <td class="fttatd">{{ detail.tenement_name }}</td>
-              <td class="fttatd">{{ detail.area_hectares }}</td>
-              <td class="fttatd">{{ detail.date_filed }}</td>
-              <td class="fttatd">{{ detail.barangay }}</td>
-              <td class="fttatd">{{ detail.city }}</td>
-              <td class="fttatd">{{ detail.province }}</td>
-              <td class="fttatd">{{ detail.commodity }}</td>
-              <td class="fttatd">
-                <button class="text-red-500" @click="navigateTomodalView(detail.id)">
-                  View
-                </button>
+              <td class="border text-center p-2">{{ detail.stage_of_processing }}</td>
+              <td class="border text-center p-2">{{ detail.status }}</td>
+              <td class="border text-center p-2">{{ detail.id }}</td>
+              <td class="border text-center p-2">{{ detail.tenement_name }}</td>
+              <td class="border text-center p-2">{{ detail.area_hectares }}</td>
+              <td class="border text-center p-2">{{ detail.date_filed }}</td>
+              <td class="border text-center p-2">{{ detail.barangay }}</td>
+              <td class="border text-center p-2">{{ detail.city }}</td>
+              <td class="border text-center p-2">{{ detail.province }}</td>
+              <td class="border text-center p-2">{{ detail.commodity }}</td>
+              <td class="border p-2 flex items-center justify-center">
+                <button @click="navigateTomodalView(detail.id)" class=" pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
+                <button class="rounded pl-2 pr-2"><img src="../../../assets/icons/edit.png" style="width: 20px;"></button>
+                <button class="bg-grey-100 text-white px-2 py-1 rounded "><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
               </td>
             </tr>
           </tbody>
@@ -139,9 +139,6 @@
   </script>
   
   <style scoped>
-  .fttath {
-    cursor: pointer; /* Indicates that headers are clickable for sorting */
-  }
   
   .fttabutton {
     text-align: center;
@@ -168,13 +165,6 @@
     box-shadow: 2px 3px 5px rgb(175, 175, 175);
     max-height: 369px;
     overflow-y: auto;
-  }
-  
-  .fttath,
-  .fttatd {
-    border: 1px solid #888888;
-    text-align: center;
-    padding: 10px;
   }
   </style>
   
