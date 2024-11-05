@@ -8,7 +8,7 @@
     <div class="mt-2 text-center">
   <!-- MANDATORY REQUIREMENTS SECTION -->
   <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">III. MANDATORY REQUIREMENTS</p>
-  <table class="w-full text-left border-collapse border border-gray-300">
+  <table class="w-full text-left border-collapse border border-gray-300 border-collapse">
     <thead class="text-xl text-center">
       <tr>
         <th class="bg-orange-200 p-2 text-base border border-gray-300">Requirements</th>
@@ -22,7 +22,7 @@
           <b>1.</b> Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
           <br><br>Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
         </td>
-        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm">
+        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-gray-300">
           <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
                   class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -31,15 +31,24 @@
                 <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
                   ref="fileInput1"
                   class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                <div v-for="(file) in uploadFiles.file1" :key="file.name">
                   <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
                 </div>
+          </div>
+          <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files uploaded:
+              </label>
+              <div v-for="(file, index) in uploadFiles.file1" :key="index">
+                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+              </div>
           </div>
         </td>
         <td class="border border-gray-300 text-center text-sm p-3">
           <div class="flex flex-col items-start">
           Remarks/Status: <textarea class="h-24 w-full border p-2"></textarea>
-          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700"></textarea>
+          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput1"></textarea>
           </div>
         </td>
       </tr>
@@ -47,24 +56,33 @@
         <td class="border border-gray-300 text-justify text-sm font-normal p-3">
           <b>2.</b> Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
         </td>
-        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm">
+        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
           <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
                   class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Files to upload:
                 </label>
                 <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
-                  ref="fileInput1"
+                  ref="fileInput2"
                   class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                <div v-for="(file) in uploadFiles.file2" :key="file.name">
                   <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
                 </div>
+          </div>
+          <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files uploaded:
+              </label>
+              <div v-for="(file, index) in uploadFiles.file2" :key="index">
+                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+              </div>
           </div>
         </td>
         <td class="border border-gray-300 text-center text-sm p-3">
           <div class="flex flex-col items-start">
           Remarks/Status: <textarea class="h-24 w-full border p-2"></textarea>
-          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700"></textarea>
+          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput2"></textarea>
           </div>
         </td>
       </tr>
@@ -72,24 +90,33 @@
         <td class="border border-gray-300 text-justify text-sm font-normal p-3">
           <b>3.</b> Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
         </td>
-        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm">
+        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
           <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
                   class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Files to upload:
                 </label>
                 <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
-                  ref="fileInput1"
+                  ref="fileInput3"
                   class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                <div v-for="(file) in uploadFiles.file3" :key="file.name">
                   <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
                 </div>
+          </div>
+          <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files uploaded:
+              </label>
+              <div v-for="(file, index) in uploadFiles.file3" :key="index">
+                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+              </div>
           </div>
         </td>
         <td class="border border-gray-300 text-center text-sm p-3">
           <div class="flex flex-col items-start">
           Remarks/Status: <textarea class="h-24 w-full border p-2"></textarea>
-          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700"></textarea>
+          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput3"></textarea>
           </div>
         </td>
       </tr>
@@ -99,24 +126,33 @@
           <br> &nbsp; &nbsp; &nbsp;4.1 Bio-data and track records in mining operations/ environmental management 
           <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
         </td>
-        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm">
+        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
           <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
                   class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Files to upload:
                 </label>
                 <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
-                  ref="fileInput1"
+                  ref="fileInput4"
                   class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                <div v-for="(file ) in uploadFiles.file4" :key="file.name">
                   <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
                 </div>
+          </div>
+          <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files uploaded:
+              </label>
+              <div v-for="(file, index) in uploadFiles.file4" :key="index">
+                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+              </div>
           </div>
         </td>
         <td class="border border-gray-300 text-center text-sm p-3">
           <div class="flex flex-col items-start">
           Remarks/Status: <textarea class="h-24 w-full border p-2"></textarea>
-          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700"></textarea>
+          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput4"></textarea>
           </div>
         </td>
       </tr>
@@ -124,24 +160,33 @@
         <td class="border border-gray-300 text-justify text-sm font-normal p-3">
           <b>5.</b> Affidavit of Undertaking (using MGB Form No.99-10)
         </td>
-        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm">
+        <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
           <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
                 <label
                   class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Files to upload:
                 </label>
                 <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
-                  ref="fileInput1"
+                  ref="fileInput5"
                   class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-                <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                <div v-for="(file ) in uploadFiles.file5" :key="file.name">
                   <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
                 </div>
+          </div>
+          <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+              <label
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files uploaded:
+              </label>
+              <div v-for="(file, index) in uploadFiles.file5" :key="index">
+                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
+              </div>
           </div>
         </td>
         <td class="border border-gray-300 text-center text-sm p-3">
           <div class="flex flex-col items-start">
           Remarks/Status: <textarea class="h-24 w-full border p-2"></textarea>
-          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700"></textarea>
+          Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput5"></textarea>
           </div>
         </td>
       </tr>
@@ -308,6 +353,8 @@
   </template>
   
   <script setup>
+  import PizZip from 'pizzip';
+  import Docxtemplater from 'docxtemplater';
   import headd from '../../../components/MTES/header.vue'
   import imagees from '../../../components/MTES/modals/imguploads.vue'
   import faxx from '../faxsheet/ffta-factsheet.vue'
