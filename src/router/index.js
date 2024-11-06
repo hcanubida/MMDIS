@@ -51,7 +51,7 @@ import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
 import EPtable from "../views/mtes/tables/EP-table.vue";
 
 // MTES Mandatory Requirements
-import ReqFTTA2 from "../views/mtes/requirements/2FTTA.vue"; //
+// import ReqFTTA2 from "../views/mtes/requirements/2FTTA.vue";
 import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue";
 import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue";
 import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue";
@@ -155,7 +155,7 @@ const routes = [
   { path: "/xpsample", component: xpsample, meta: { requiresAuth: true } },
 
   // Mandatory Requirements
-  { path: "/ReqFTTA/:detail_id", component: ReqFTTA2 }, //
+  // { path: "/ReqFTTA/:detail_id", component: ReqFTTA2 },
   { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
   { path: "/ReqEP/:detail_id1", component: ReqEP },
   { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },

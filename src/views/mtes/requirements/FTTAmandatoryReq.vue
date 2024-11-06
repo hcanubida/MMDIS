@@ -1,415 +1,338 @@
 <template>
-  <div>
-    <headd />
-  </div>
-  <!-- {{ $route.params.detail_id }} -->
-  <div class="title1">
-    <h2>MANDATORY REQUIREMENTS</h2>
+  <div class="flex">
+    <Header />
+    <UserBtn />
   </div>
 
-
-  <!-- Table 1 -->
-  <div class="requirements1">
-    <table class="table1">
-      <thead class="titlehead1">
-        <tr style="text-align: center;">
-          <th class="th1">Requirements</th>
-          <th class="th1">Upload</th>
-          <th class="th1">Remarks / Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="reqData1">
-            1. Application Form (MGB Form No. 7-1) to be accpompanied by eight (8)
-            sets of the FTAA proposal and five (5) sets of the following: <br> &nbsp;
-            <br> &nbsp;
-            Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
-            (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
-          </td>
-
-          <!--    -->
-          <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+<!-- Table Section -->
+<div class="flex justify-center">
+  <div class="mt-2 text-center">
+<!-- MANDATORY REQUIREMENTS SECTION -->
+<p class="text-left text-xl font-semibold p-5">MANDATORY REQUIREMENTS</p>
+<table class="w-full text-left border-collapse border border-gray-300">
+  <thead class="text-xl text-center">
+    <tr>
+      <th class="bg-orange-200 p-2 text-base border border-gray-300">Requirements</th>
+      <th class="bg-orange-200 p-2 text-base border border-gray-300" style="width: 300px;">Upload Requirements<br>(PDF, Word, or any file)</th>
+      <th class="bg-orange-200 p-2 text-base border border-gray-300">Remarks/Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-gray-300 text-justify text-sm font-normal p-3" style="width: 750px;">
+        <b>1.</b> Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
+        <br><br>Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
+      </td>
+      <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-gray-300">
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Files to upload:
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
                 ref="fileInput1"
-                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file ) in uploadFiles.file1" :key="file.name">
+                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file) in uploadFiles.file1" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
-            </div>
-            <div class="mx-10 mb-3 ">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files uploaded:
-              </label>
-              <div v-for="(file, index) in uploadFiles.file1" :key="index">
-                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-              </div>
-            </div>
-          </td>
-
-          <td style="text-align: left;width: 400px;">
-            <label>Remarks:</label><br>
-            <textarea style="border: 1px solid #ccc; border-radius: 4px; width: 100%;height: 600px;"
-              v-model="remarks.textInput1"></textarea>
-            <label>Recommendation or Lacking Submission:</label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100%;height: 600px;"
-              v-model="recommendation.textInput1"></textarea>
-
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file1" />
-
-            <!-- 3rd buhaton -->
-            <div v-for="(file, index) in imagesfile.file1" :key="index">
-              <!-- Display each file object here -->
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+            <label
+              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Files uploaded:
+            </label>
+            <div v-for="(file, index) in uploadFiles.file1" :key="index">
               <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
             </div>
-
-          </td>
-        </tr>
-        <tr>
-          <td class="reqData1">
-            2. Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/
-            boundaries (in tabulated form) with major environmental features/ other projects
-            (prepared, sealed and signed by a deputized Geodetic Engineer)
-          </td>
-
-          <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 justify-center">
+        </div>
+      </td>
+      <td class="border border-gray-300 text-center text-sm p-3">
+        <div class="flex flex-col items-start">
+        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput1"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput1"></textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 text-justify text-sm font-normal p-3">
+        <b>2.</b> Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
+      </td>
+      <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
-                class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Files to upload:
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
                 ref="fileInput2"
-                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file, index) in uploadFiles.file2" :key="file.name">
-                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file) in uploadFiles.file2" :key="file.name">
+                <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
-            </div>
-            <div class="mx-10 mb-3">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files uploaded:
-              </label>
-              <div v-for="(file, index) in uploadFiles.file2" :key="index">
-                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-              </div>
-            </div>
-          </td>
-
-          <td style="text-align: left;">
-            <label>Remarks:</label><br>
-            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="remarks.textInput2"></textarea>
-            <label>Recommendation or Lacking Submission : </label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="recommendation.textInput2"></textarea>
-
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file2" />
-
-            <div v-for="(file, index) in imagesfile.file2" :key="index">
-              <!-- Display each file object here -->
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+            <label
+              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Files uploaded:
+            </label>
+            <div v-for="(file, index) in uploadFiles.file2" :key="index">
               <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
             </div>
-
-          </td>
-        </tr>
-        <tr>
-          <td class="reqData1">
-            3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
-            duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
-          </td>
-
-          <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+        </div>
+      </td>
+      <td class="border border-gray-300 text-center text-sm p-3">
+        <div class="flex flex-col items-start">
+        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput2"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput2"></textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 text-justify text-sm font-normal p-3">
+        <b>3.</b> Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
+      </td>
+      <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Files to upload:
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
-                ref="fileInput1"
-                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file, index) in uploadFiles.file3" :key="file.name">
-                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                ref="fileInput3"
+                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file) in uploadFiles.file3" :key="file.name">
+                <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
-            </div>
-            <div class="mx-10 mb-3">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files uploaded:
-              </label>
-              <div v-for="(file, index) in uploadFiles.file3" :key="index">
-                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-              </div>
-            </div>
-          </td>
-
-          <td style="text-align: left;">
-            <label>Remarks:</label><br>
-            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="remarks.textInput3"></textarea>
-            <label>Recommendation or Lacking Submission : </label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="recommendation.textInput3"></textarea>
-
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file3" />
-            <div v-for="(file, index) in imagesfile.file3" :key="index">
-              <!-- Display each file object here -->
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+            <label
+              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Files uploaded:
+            </label>
+            <div v-for="(file, index) in uploadFiles.file3" :key="index">
               <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="reqData1">
-            4. Proof of technical competence in the form of:<br> &nbsp;
-            4.1 Bio-data and track records in mining operations/ enviromental manangement <br> &nbsp;
-            4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
-          </td>
-
-          <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+        </div>
+      </td>
+      <td class="border border-gray-300 text-center text-sm p-3">
+        <div class="flex flex-col items-start">
+        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput3"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput3"></textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 text-justify text-sm font-normal p-3">
+        <b>4.</b> Proof of technical competence in the form of:
+        <br> &nbsp; &nbsp; &nbsp;4.1 Bio-data and track records in mining operations/ environmental management 
+        <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
+      </td>
+      <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Files to upload:
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
-                ref="fileInput1"
-                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file, index) in uploadFiles.file4" :key="file.name">
-                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                ref="fileInput4"
+                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file ) in uploadFiles.file4" :key="file.name">
+                <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
-            </div>
-            <div class="mx-10 mb-3">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files uploaded:
-              </label>
-              <div v-for="(file, index) in uploadFiles.file4" :key="index">
-                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-              </div>
-            </div>
-          </td>
-
-          <td style="text-align: left;">
-            <label>Remarks:</label><br>
-            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="remarks.textInput4"></textarea>
-            <label>Recommendation or Lacking Submission : </label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="recommendation.textInput4"></textarea>
-
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file4" />
-            <div v-for="(file, index) in imagesfile.file4" :key="index">
-              <!-- Display each file object here -->
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+            <label
+              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Files uploaded:
+            </label>
+            <div v-for="(file, index) in uploadFiles.file4" :key="index">
               <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="reqData1">
-            5. Affidavit of Undertaking (using MGB Form No.99-10)
-          </td>
-
-          <td class="inputimg1">
-            <div class="grid w-full max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
+        </div>
+      </td>
+      <td class="border border-gray-300 text-center text-sm p-3">
+        <div class="flex flex-col items-start">
+        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput4"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput4"></textarea>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 text-justify text-sm font-normal p-3">
+        <b>5.</b> Affidavit of Undertaking (using MGB Form No.99-10)
+      </td>
+      <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Files to upload:
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
-                ref="fileInput1"
-                class="flex h-10 w-full rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file, index) in uploadFiles.file5" :key="file.name">
-                <span class="text-sm text-gray-500 ml-3">{{ file.name }}</span>
+                ref="fileInput5"
+                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+              <div v-for="(file ) in uploadFiles.file5" :key="file.name">
+                <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
-            </div>
-            <div class="mx-10 mb-3">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files uploaded:
-              </label>
-              <div v-for="(file, index) in uploadFiles.file5" :key="index">
-                <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-              </div>
-            </div>
-          </td>
-
-          <td style="text-align: left;">
-            <label>Remarks:</label><br>
-            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="remarks.textInput5"></textarea>
-            <label>Recommendation or Lacking Submission : </label><br>
-            <textarea style="color: red; border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 600px;"
-              v-model="recommendation.textInput5"></textarea>
-
-            <!-- images upload (based remarks) -->
-            <imagees @images-uploaded="myAction" containerId="file5" />
-            <div v-for="(file, index) in imagesfile.file5" :key="index">
-              <!-- Display each file object here -->
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
+            <label
+              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Files uploaded:
+            </label>
+            <div v-for="(file, index) in uploadFiles.file5" :key="index">
               <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        </div>
+      </td>
+      <td class="border border-gray-300 text-center text-sm p-3">
+        <div class="flex flex-col items-start">
+        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput5"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput5"></textarea>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
-    <!-- Table 2 -->
-    <table class="table2">
-      <p style="text-align: left;font-size: 20px;font-weight: 600; padding-top: 20px;">Summary of
-        Lacking Requirements</p>
-      <tbody>
-        <tr>
-          <td v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-            <p>{{ requirements.reqDetails1 }}</p>
-          </td>
-
-          <td style="text-align: left;width: 1000px;height: 100px;"
-            v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-            <label>Recommendation or Lacking Submission</label>
-            <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{ recommendation.textInput1 }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-            {{ requirements.reqDetails2 }}
-          </td>
-
-          <td style="text-align: left;width: 1000px;height: 100px;"
-            v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-            <label>Recommendation or Lacking Submission</label>
-            <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{ recommendation.textInput2 }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-            {{ requirements.reqDetails3 }}
-          </td>
-
-          <td style="text-align: left;width: 1000px;height: 100px;"
-            v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-            <label>Recommendation or Lacking Submission</label>
-            <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{ recommendation.textInput3 }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-            {{ requirements.reqDetails4 }}
-          </td>
-
-          <td style="text-align: left;width: 1000px;height: 100px;"
-            v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-            <label>Recommendation or Lacking Submission</label>
-            <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{ recommendation.textInput4 }}</p>
-          </td>
-        </tr>
-        <tr>
-          <td v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-            {{ requirements.reqDetails5 }}
-          </td>
-
-          <td style="text-align: left;width: 1000px;height: 100px;"
-            v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-            <label>Recommendation or Lacking Submission</label>
-            <p style="color: red; border-radius: 4px; width: 100%  ;height: auto;">{{ recommendation.textInput5 }}</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- table 3 -->
-    <table class="table3">
-      <thead class="titlehead1">
+    <!-- Summary of Lacking Requirements -->
+    <p class="text-left text-xl font-semibold p-5">SUMMARY OF LACKING REQUIREMENTS</p>
+    <table class="w-full mb-5 text-left p-2 border border-collapse">
+        <thead class="w-full">
         <tr style="text-align: center;">
-          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
-          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <td style="text-align: center;font-size: 20px;padding: 20px;">Status of the Application: </td>
-        <td style="text-align: center;font-size: 20px;padding-bottom: 20px;">
-          <select class="inputall" v-model="selectedStatus"
-            style="background-color: antiquewhite;text-align: center;width: 100%;">
-            <option value="" disabled>Based on the MTSR Status</option>
-            <option style="text-align: left;" value="Under Pre-Processing by Mining Tenement Evaluation Section">Under
-              Pre-Processing by Mining Tenement Evaluation
-              Section</option>
-            <option style="text-align: left;" value="Under Preliminary Evaluation<">Under Preliminary Evaluation
-            </option>
-            <option style="text-align: left;" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending Area
-              Clearance/Status (FMS/EMPAS,LMS)</option>
-            <option style="text-align: left;" value="Undergoing Publication/Posting/Radio Announcement">Undergoing
-              Publication/Posting/Radio Announcement
-            </option>
-            <option style="text-align: left;"
-              value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">
-              Published/Posted Announcement within 30-days period
-              for possible protest/adverse claim</option>
-            <option style="text-align: left;" value="With mining dispute filed at Panel of Arbitrators">With mining
-              dispute filed at Panel of Arbitrators
-            </option>
-            <option style="text-align: left;" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">Appeal to the
-              Mines Adjudication Board/LSD-CO/OP
-            </option>
-            <option style="text-align: left;"
-              value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc">Pending NCIP
-              Certification/Proof of Consultation from
-              LGU,ECC, etc</option>
-            <option style="text-align: left;" value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.
-            </option>
-            <option style="text-align: left;" value="Endorsed to Central Office">Endorsed to Central Office</option>
-            <option style="text-align: left;"
-              value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">
-              Denied by MGB-RO/COP/PA/MAB but within grace period
-              for Motion for Reconsideration or Appeal</option>
-            <option style="text-align: left;"
-              value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">
-              Denied/Rejected by MGB-RO/COP/PA/MAB but with pending
-              Motion for Reconsideration or Appeal</option>
-            <option style="text-align: left;" value="A. Others (Renewal)">A. Others (Renewal)</option>
-            <option style="text-align: left;" value="B. Others (With Clearance)">B. Others (With Clearance)</option>
-            <option style="text-align: left;" value="Conversion from Other Tenement">Conversion from Other Tenement
-            </option>
-            <option style="text-align: left;"
-              value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">Denied by
-              MGB-RO/COP/PA/MAP/DENR but with pending
-              Appeal at the O.P.</option>
-            <option style="text-align: left;" value="other">Other</option>
-          </select>
-          <input v-if="selectedStatus === 'other'" class="inputall1" v-model="otherStatus" style="width: 100%;"
-            placeholder="Enter other Status" />
-        </td>
-      </tbody>
-    </table>
-    <table class="table4">
-      <thead class="titlehead1">
-        <tr style="text-align: center;">
-          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Mandatory Requirement</th>
-          <th class="th2" style="font-size: 20px; font-weight: 600;width: 50%;">Remarks / Status</th>
+          <th class="w-6/12 bg-orange-200 p-2 border text-base">Requirements</th>
+          <th class="bg-orange-200 p-2 border text-base">Remarks or Status</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="text-align: center;font-size: 20px;padding: 20px;">Overall
-            Remarks/Status/Reccomendation</td>
-          <td style="font-size: 15px;padding: 20px; width: 50%;">
-            <label>Remarks /Status</label>
-            <textarea style=" border: 1px solid #ccc; border-radius: 4px; width: 100% ;height: 500px;"
-              v-model="overallStatus" ></textarea>
+          <td class="border text-xs px-2" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+            <b>1.</b> &nbsp; Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
+            <br>&nbsp; &nbsp; Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
+          </td>
+
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+            <br><label>Remarks/Status: <p>{{ remarks.textInput1 }}</p></label>
+            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput1 }}</p></label>   
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="border text-xs px-2" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+            <b>2.</b> &nbsp; Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
+          </td>
+
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+            <br><label>Remarks/Status: <p>{{ remarks.textInput2 }}</p></label>
+            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
+          </td>
+        </tr>
+
+        <tr>
+          <td class="border text-xs px-2" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+            <b>3.</b> &nbsp; Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
+          </td>
+
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+            <br><label>Remarks/Status: <p>{{ remarks.textInput3 }}</p></label>
+            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
+          </td>
+        </tr>
+
+        <tr>
+          <td class="border text-xs px-2" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+            <b>4.</b> &nbsp; Proof of technical competence in the form of:
+            <br> &nbsp; &nbsp; &nbsp;4.1 Bio-data and track records in mining operations/ environmental management 
+            <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
+          </td>
+
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+            <br><label>Remarks/Status: <p>{{ remarks.textInput4 }}</p></label>
+            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput4 }}</p></label>  
+          </td>
+        </tr>
+
+        <tr>
+          <td class="border text-xs px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+            <b>5.</b> &nbsp; Affidavit of Undertaking (using MGB Form No.99-10)
+          </td>
+
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+            <br><label>Remarks/Status: <p>{{ remarks.textInput5 }}</p></label>
+            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput5 }}</p></label>  
           </td>
         </tr>
       </tbody>
     </table>
-    <div style="display: flex;flex-direction: column;justify-content: center;">
+
+    <!-- Status of Application -->
+    <p class="text-left text-xl font-semibold p-5">STATUS OF THE APPLICATION</p>
+    <table class="w-full border-collapse">
+      <tbody>
+        <tr>
+          <td class="text-left text-base p-2 bg-orange-200 border">Stage of Processing:</td>
+          <td class="text-left text-base p-2 border flex items-center justify-left">
+            <select class="w-full bg-white text-center" v-model="selectedStatus">
+              <option value="" disabled>Based on the MTSR Status</option>
+              <option class="text-left" value="Under Pre-Processing by Mining Tenement Evaluation Section">
+                Under Pre-Processing by Mining Tenement Evaluation Section
+              </option>
+              <option class="text-left" value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
+              <option class="text-left" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">
+                Pending Area Clearance/Status (FMS/EMPAS,LMS)
+              </option>
+              <option class="text-left" value="Undergoing Publication/Posting/Radio Announcement">
+                Undergoing Publication/Posting/Radio Announcement
+              </option>
+              <option class="text-left" value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">
+                Published/Posted Announcement within 30-days period for possible protest/adverse claim
+              </option>
+              <option class="text-left" value="With mining dispute filed at Panel of Arbitrators">
+                With mining dispute filed at Panel of Arbitrators
+              </option>
+              <option class="text-left" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">
+                Appeal to the Mines Adjudication Board/LSD-CO/OP
+              </option>
+              <option class="text-left" value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc">
+                Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc
+              </option>
+              <option class="text-left" value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.</option>
+              <option class="text-left" value="Endorsed to Central Office">Endorsed to Central Office</option>
+              <option class="text-left" value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">
+                Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal
+              </option>
+              <option class="text-left" value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">
+                Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal
+              </option>
+              <option class="text-left" value="A. Others (Renewal)">A. Others (Renewal)</option>
+              <option class="text-left" value="B. Others (With Clearance)">B. Others (With Clearance)</option>
+              <option class="text-left" value="Conversion from Other Tenement">Conversion from Other Tenement</option>
+              <option class="text-left" value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">
+                Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.
+              </option>
+              <option class="text-left" value="other">Other</option>
+            </select>
+            <input
+              v-if="selectedStatus === 'other'"
+              class="w-full mt-2"
+              v-model="otherStatus"
+              placeholder="Enter other Status"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Overall Remarks/Status/Recommendations -->
+    <p class="text-left text-xl font-semibold p-5">OVERALL REMARKS/ RECOMMENDATIONS</p>
+    <textarea class="rounded w-full p-2 border" style="height: 300px;" v-model="overallStatus"></textarea>
+
+    <div class="flex flex-col justify-center">
       <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
       <div>
         <button
@@ -422,15 +345,17 @@
           @click="view">{{ isVisible ? 'Close' : 'View' }}
         </button>
       </div>
-      <div class="drop-shadow-2xl mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
+      <div class="drop-shadow-2xl mt-10 place-self-center" v-if="isVisible">
         <faxx />
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script setup>
-import headd from '../../../components/MTES/header.vue'
+import Header from '../../../components/header.vue'
+import UserBtn from '../../../components/user-dbbtn.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
 import faxx from '../faxsheet/ffta-factsheet.vue'
 import { API_BASE_URL } from '../../../config'
@@ -454,29 +379,6 @@ export default {
       showChildComponent: false,
       selectedStatus: '',
       otherStatus: '',
-      requirements: {
-        reqDetails1: `
-        1. Application Form (MGB Form No. 7-1) to be accompanied by eight (8)
-            sets of the FTAA proposal and five (5) sets of the following:
-            
-            Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
-            (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).`,
-        reqDetails2: `
-        2. Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/
-            boundaries (in tabulated form) with major environmental features/ other projects
-            (prepared, sealed and signed by a deputized Geodetic Engineer) `,
-        reqDetails3: `
-        3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
-            duly prepared, signed and sealed by a licensed Mining Engineer or Geologist `,
-        reqDetails4: `
-        4. Proof of technical competence in the form of:
-            4.1 Bio-data and track records in mining operations/ enviromental manangement 
-            4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs`,
-        reqDetails5: `
-        5. Affidavit of Undertaking (using MGB Form No.99-10)
-            5.1. Brief Description of Business
-            5.2. Proof of lot ownership/ consent of stockyard;`,
-      },
       remarks: {
         textInput1: '',
         textInput2: '',
@@ -795,48 +697,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.title1 {
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 120px;
-}
-
-.requirements1 {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.titlehead1 {
-  font-size: 20px;
-}
-
 .inputall {
   display: flex;
-  width: 300px;
   height: 40px;
   background-color: rgb(235, 234, 234);
   color: black;
   margin-left: 1px;
   padding-left: 4px;
   margin-top: 20px;
-  font-weight: 20;
   margin-bottom: 10px;
-}
-
-.inputall1::placeholder {
   background-color: #ffffff;
   color: black;
-  opacity: 50%;
-}
-
-.reqData1 {
-  text-align: left;
-  text-align: justify;
-  font-size: 15px;
-  font-weight: 400;
-  width: 600px;
 }
 
 .inputimg1 {
@@ -868,35 +739,11 @@ export default {
   border-collapse: collapse;
 }
 
-.th1,
-td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-}
-
-.th1 {
-  background-color: #e0b983;
-}
-
-.th2,
-td {
-  border: 1px solid #dddddd;
-  padding: 1px;
-}
-
 .th2 {
   background-color: #e0b983;
 }
 
-/* Table 2 styles */
-.table2 {
-  width: 100%;
-  margin-bottom: 20px;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-.table2 td {
+.td {
   border: 1px solid #dddddd;
   padding: 8px;
   width: 50%;
@@ -918,3 +765,4 @@ td {
   resize: vertical;
 }
 </style>
+

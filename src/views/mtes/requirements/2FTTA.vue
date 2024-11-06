@@ -192,82 +192,80 @@
       </tr>
     </tbody>
   </table>
-  
-  
-      <!-- Summary of Lacking Requirements -->
-      <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">SUMMARY OF LACKING REQUIREMENTS</p>
-      <table class="table2">
-          <thead class="titlehead1">
-          <tr style="text-align: center;">
-            <th class="bg-orange-200 p-2 border text-base">Requirements</th>
-            <th class="bg-orange-200 p-2 border text-base">Remarks or Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''" style="font-size: 13px;">
-              <b>1.</b> Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
-              <br>&nbsp; &nbsp; Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
-            </td>
-  
-            <td style="text-align: left; height: 100px; font-size: 13px; width: 100%;" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-              <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96">
-              <br><label>Remarks/Status: <p></p></label>
-              <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput1 }}</p></label>   
-            </td>
-          </tr>
-          
-          <tr>
-            <td v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''" style="font-size: 13px;">
-              <b>2.</b> Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
-            </td>
-  
-            <td style="text-align: left; height: 100px; font-size: 13px; width: 100%;" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-              <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96">
-              <br><label>Remarks/Status: <p></p></label>
-              <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
-            </td>
-          </tr>
-  
-          <tr>
-            <td v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''" style="font-size: 13px;">
-              <b>3.</b> Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
-            </td>
-  
-            <td style="text-align: left; height: 100px; font-size: 13px; width: 100%;" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-              <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96">
-              <br><label>Remarks/Status: <p></p></label>
-              <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
-            </td>
-          </tr>
-  
-          <tr>
-            <td v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''" style="font-size: 13px;">
-              <b>4.</b> Proof of technical competence in the form of:
-              <br> &nbsp; &nbsp; &nbsp;4.1 Bio-data and track records in mining operations/ environmental management 
-              <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
-            </td>
-  
-            <td style="text-align: left; height: 100px; font-size: 13px; width: 100%;" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-              <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96">
-              <br><label>Remarks/Status: <p></p></label>
-              <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput4 }}</p></label>  
-            </td>
-          </tr>
-  
-          <tr>
-            <td v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''" style="font-size: 13px;">
-              <b>5.</b> Affidavit of Undertaking (using MGB Form No.99-10)
-            </td>
-  
-            <td style="text-align: left; height: 100px; font-size: 13px; width: 100%;" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-              <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96">
-              <br><label>Remarks/Status: <p></p></label>
-              <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput5 }}</p></label>  
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<!-- Summary of Lacking Requirements -->
+<p class="text-left text-xl font-semibold p-5">SUMMARY OF LACKING REQUIREMENTS</p>
+<table class="table-auto w-full border-collapse">
+  <thead class="bg-orange-200 text-base">
+    <tr class="text-center">
+      <th class="p-2 border">Requirements</th>
+      <th class="p-2 border">Remarks or Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+      <td class="text-sm">
+        <b>1.</b> Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
+        <br>&nbsp;&nbsp; Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
+      </td>
+      <td class="text-left h-24 text-sm w-full">
+        <label class="block">List of Lacking Documents:</label>
+        <input type="text" class="ml-2 p-2 bg-zinc-100 rounded border w-96">
+        <br><label class="block">Remarks/Status:</label>
+        <label class="block">Recommendation or Lacking Submission: <span class="text-red-600">{{ recommendation.textInput1 }}</span></label>
+      </td>
+    </tr>
+
+    <tr v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+      <td class="text-sm">
+        <b>2.</b> Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
+      </td>
+      <td class="text-left h-24 text-sm w-full">
+        <label class="block">List of Lacking Documents:</label>
+        <input type="text" class="ml-2 p-2 bg-zinc-100 rounded border w-96">
+        <br><label class="block">Remarks/Status:</label>
+        <label class="block">Recommendation or Lacking Submission: <span class="text-red-600">{{ recommendation.textInput2 }}</span></label>
+      </td>
+    </tr>
+
+    <tr v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+      <td class="text-sm">
+        <b>3.</b> Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
+      </td>
+      <td class="text-left h-24 text-sm w-full">
+        <label class="block">List of Lacking Documents:</label>
+        <input type="text" class="ml-2 p-2 bg-zinc-100 rounded border w-96">
+        <br><label class="block">Remarks/Status:</label>
+        <label class="block">Recommendation or Lacking Submission: <span class="text-red-600">{{ recommendation.textInput3 }}</span></label>
+      </td>
+    </tr>
+
+    <tr v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+      <td class="text-sm">
+        <b>4.</b> Proof of technical competence in the form of:
+        <br>&nbsp;&nbsp;&nbsp; 4.1 Bio-data and track records in mining operations/ environmental management
+        <br>&nbsp;&nbsp;&nbsp; 4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
+      </td>
+      <td class="text-left h-24 text-sm w-full">
+        <label class="block">List of Lacking Documents:</label>
+        <input type="text" class="ml-2 p-2 bg-zinc-100 rounded border w-96">
+        <br><label class="block">Remarks/Status:</label>
+        <label class="block">Recommendation or Lacking Submission: <span class="text-red-600">{{ recommendation.textInput4 }}</span></label>
+      </td>
+    </tr>
+
+    <tr v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+      <td class="text-sm">
+        <b>5.</b> Affidavit of Undertaking (using MGB Form No.99-10)
+      </td>
+      <td class="text-left h-24 text-sm w-full">
+        <label class="block">List of Lacking Documents:</label>
+        <input type="text" class="ml-2 p-2 bg-zinc-100 rounded border w-96">
+        <br><label class="block">Remarks/Status:</label>
+        <label class="block">Recommendation or Lacking Submission: <span class="text-red-600">{{ recommendation.textInput5 }}</span></label>
+      </td>
+    </tr>
+  </tbody>
+</table>
   
   <!-- Status of Application -->
   <p class="text-left font-semibold p-5" style=" font-size: 20px;">STATUS OF THE APPLICATION</p>

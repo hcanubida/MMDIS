@@ -28,19 +28,14 @@
                     <p class="mr-5">Location:</p>
                     <select @change="handleRegion" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select an Region - - - -</option>
-                        <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{
-                        region.region_name
-                        }}
-                        </option>
+                        <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{region.region_name}}</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5"></p>
                     <select @change="handleProvince" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"  >
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select Province - - - -</option>
-                        <option v-for="province in provinces" :value="province.province_code" :key="province.province_code" >
-                            {{ province.province_name }}
-                        </option>
+                        <option v-for="province in provinces" :value="province.province_code" :key="province.province_code" >{{ province.province_name }}</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
@@ -54,9 +49,7 @@
                     <p class="mr-5"></p>
                     <select class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="barangaysChange" >
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select Barangay - - - -</option>
-                        <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{
-                        barangay.brgy_name
-                        }}
+                        <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{barangay.brgy_name}}
                         </option>
                     </select>
                   </div>
@@ -75,33 +68,26 @@
                 <div class="mt-2 flex justify-between">
                     <p class="mr-5">Others:</p>
                     <input v-model="detailstoadd.others" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                  </div>
-                  <h3 class="flex justify-center text-base leading-6 font-medium text-gray-900 p-4">Applicant's Details</h3>
-                  <div class="mt-2 flex flex-col space-y-2">
-  <div class="flex justify-between">
-    <p class="mr-5">Category:</p>
-    <select
-      v-model="selectedCategory"
-      class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-    >
-      <option value="" disabled selected class="text-center text-gray-100">
-        - - - - Select an option - - - -
-      </option>
-      <option value="Individual">Individual</option>
-      <option value="Corporation">Corporation</option>
-      <option value="Cooperative">Cooperative</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
+                </div>
 
-  <!-- Conditional input field for 'Other' category -->
-  <input
-    v-if="selectedCategory === 'Other'"
-    v-model="otherCategory"
-    class="ml-52 mt-2 pl-1 pr-1 border rounded-md w-72"
-    placeholder="Enter other category"
-  />
-</div>
+                <h3 class="flex justify-center text-base leading-6 font-medium text-gray-900 p-4">Applicant's Details</h3>
+                <div class="mt-2 flex flex-col space-y-2">
+                  <div class="flex justify-between">
+                    <p class="mr-5">Category:</p>
+                    <select
+                      v-model="selectedCategory"
+                      class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+                      <option value="Individual">Individual</option>
+                      <option value="Corporation">Corporation</option>
+                      <option value="Cooperative">Cooperative</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <!-- Conditional input field for 'Other' category -->
+                  <input v-if="selectedCategory === 'Other'" v-model="otherCategory" class="ml-52 mt-2 pl-1 pr-1 border rounded-md w-72" placeholder="Enter other category"/>
+                </div>
+
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Authorized Representative:</p>
                     <input v-model="detailstoadd.authorized_rep" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
@@ -122,35 +108,17 @@
 
     <div class="flex justify-center mt-4 border-t">
       <label class="inline-flex items-center m-2">
-        <input 
-          v-model="selectedStageOfProcessing"
-          type="radio" 
-          name="options" 
-          value="On-going Process" 
-          class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-        />
+        <input v-model="selectedStageOfProcessing" type="radio" name="options" value="On-going Process" class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"/>
         <span class="ml-2">On-going Process</span>
       </label>
 
       <label class="inline-flex items-center m-2">
-        <input 
-          v-model="selectedStageOfProcessing"
-          type="radio" 
-          name="options" 
-          value="Denied with Order of Finality" 
-          class="form-radio h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500"
-        />
+        <input v-model="selectedStageOfProcessing" type="radio" name="options" value="Denied with Order of Finality" class="form-radio h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500"/>
         <span class="ml-2">Denied with Order of Finality</span>
       </label>
 
       <label class="inline-flex items-center m-2">
-        <input 
-          v-model="selectedStageOfProcessing"
-          type="radio" 
-          name="options" 
-          value="Issued" 
-          class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
-        />
+        <input v-model="selectedStageOfProcessing"type="radio" name="options" value="Issued" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
         <span class="ml-2">Issued</span>
       </label>
     </div>
@@ -158,12 +126,8 @@
     <!-- Conditional dropdown for "On-going Process" -->
     <div class="flex justify-between border-t" v-if="selectedStageOfProcessing === 'On-going Process'">
       <p class="mr-5 mt-4">Stage of Processing:</p>
-      <select 
-        class="mt-4 w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-      >
-        <option value="" disabled selected class="text-center text-gray-100">
-          - - - - Select an option - - - -
-        </option>
+      <select class="mt-4 w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
         <option value="1">Under Pre-Processing by Mining Tenement Evaluation Section</option>
         <option value="2">Under Preliminary Evaluation</option>
         <option value="3">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
@@ -311,8 +275,3 @@
     }
   };
   </script>
-  
-  <style scoped>
-  /* Add styling for inputs, errors, and modal layout */
-  </style>
-  

@@ -1,4 +1,5 @@
 <template>
+
 <div id="page-001" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
     <img src="../../../assets/icons/Header.png" class="">
     <p class="mt-8 text-xl font-bold text-center" style="letter-spacing: 3px;">
