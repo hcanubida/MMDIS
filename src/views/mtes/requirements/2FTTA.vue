@@ -1,13 +1,13 @@
 <template>
     <div>
-      <headd />
+      <Header />
     </div>
   
   <!-- Table Section -->
   <div class="flex justify-center mt-32">
     <div class="mt-2 text-center">
   <!-- MANDATORY REQUIREMENTS SECTION -->
-  <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">III. MANDATORY REQUIREMENTS</p>
+  <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">MANDATORY REQUIREMENTS</p>
   <table class="w-full text-left border-collapse border border-gray-300 border-collapse">
     <thead class="text-xl text-center">
       <tr>
@@ -195,7 +195,7 @@
   
   
       <!-- Summary of Lacking Requirements -->
-      <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">IV. SUMMARY OF LACKING REQUIREMENTS</p>
+      <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">SUMMARY OF LACKING REQUIREMENTS</p>
       <table class="table2">
           <thead class="titlehead1">
           <tr style="text-align: center;">
@@ -270,7 +270,7 @@
       </table>
   
   <!-- Status of Application -->
-  <p class="text-left font-semibold p-5" style=" font-size: 20px;">V. STATUS OF THE APPLICATION</p>
+  <p class="text-left font-semibold p-5" style=" font-size: 20px;">STATUS OF THE APPLICATION</p>
   <table class="w-full border-collapse">
     <tbody>
       <tr>
@@ -328,7 +328,7 @@
   </table>
   
       <!-- Overall Remarks/Status/Recommendations -->
-      <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">VI. OVERALL REMARKS/ RECOMMENDATIONS</p>
+      <p style="text-align: left; font-size: 20px; font-weight: 600; padding: 20px;">OVERALL REMARKS/ RECOMMENDATIONS</p>
       <textarea style="border: 1px solid #ccc; border-radius: 4px; width: 100%;height: 300px; padding: 10px;"></textarea>
   
       <div style="display: flex;flex-direction: column;justify-content: center;">
@@ -344,7 +344,7 @@
             @click="view">{{ isVisible ? 'Close' : 'View' }}
           </button>
         </div>
-        <div class="drop-shadow-2xl bg-stone-100 mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
+        <div class="drop-shadow-2xl mt-10 place-self-center" v-if="isVisible">
           <faxx />
         </div>
       </div>
@@ -353,9 +353,7 @@
   </template>
   
   <script setup>
-  import PizZip from 'pizzip';
-  import Docxtemplater from 'docxtemplater';
-  import headd from '../../../components/MTES/header.vue'
+  import Header from '../../../components/MTES/header.vue'
   import imagees from '../../../components/MTES/modals/imguploads.vue'
   import faxx from '../faxsheet/ffta-factsheet.vue'
   import { API_BASE_URL } from '../../../config'

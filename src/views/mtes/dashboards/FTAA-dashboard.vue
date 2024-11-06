@@ -27,12 +27,7 @@
       <BarChart class="ml-8" :application="application" />
     </div>
 
-    <!-- Status Section  -->
-    <div class="flex justify-center">
-      <p class="m-8 bg-orange-300 p-2 rounded-lg">On-going Process: {{ totalSum }}</p>
-      <p class="m-8 bg-red-300 p-2 rounded-lg">Denied with Order of Finality: {{ totalSum }}</p>
-      <p class="m-8 bg-emerald-300 p-2 rounded-lg">Issued: {{ totalSum }}</p>
-    </div>
+
 
     <!-- Table list -->
     <div class="w-screen"> 

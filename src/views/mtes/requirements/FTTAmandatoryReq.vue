@@ -422,7 +422,7 @@
           @click="view">{{ isVisible ? 'Close' : 'View' }}
         </button>
       </div>
-      <div class="drop-shadow-2xl bg-stone-100 mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
+      <div class="drop-shadow-2xl mt-10 place-self-center" style="width: 1400px;" v-if="isVisible">
         <faxx />
       </div>
     </div>

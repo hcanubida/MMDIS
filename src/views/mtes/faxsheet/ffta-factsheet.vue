@@ -1,378 +1,360 @@
 <template>
-
-
-
-
-    <div class="title1">
-
-    </div>
-    <p
-        style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 50px;">
+<div id="page-001" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+    <img src="../../../assets/icons/Header.png" class="">
+    <p class="mt-8 text-xl font-bold text-center" style="letter-spacing: 3px;">
         FACT SHEET / EVALUATION SHEET
     </p>
-    <div>
-
-
-        <!--Application table-->
-
-        <p
-            style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 130px; right: 160px;">
+    <div class="flex items-left flex-col ml-16">
+        <!--Application Details' Table--> 
+        <div class="">
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
             I.&nbsp;&nbsp;&nbsp;APPLICATION DETAILS
-        </p>
-        <div>
-            <table class="ftable">
-                <tbody class="fbody">
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            NAME OF APPLICANT:
-                        </td>
-                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                            {{ detail.tenement_name }}
-                        </td>
+            </p>
+            <table class="w-11/12 border border-gray-300">
+                <tbody class="w-full">
+                    <tr v-for="(detail, index) in details" :key="`name-${index}`">
+                    <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        NAME OF APPLICANT:
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.tenement_name }}
+                    </td>
                     </tr>
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            APPLICATION NUMBER:
-                        </td>
-                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                            {{ detail.tenement_number }}
-                        </td>
+
+                    <tr v-for="(detail, index) in details" :key="`number-${index}`">
+                    <td class="px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        APPLICATION NUMBER:
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.tenement_number }}
+                    </td>
                     </tr>
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            LOCATION:
-                        </td>
-                        <td
-                            style="width: auto; letter-spacing: 2px;font-size: 12px;font-weight: 600; text-align: center;padding-left: 15px;padding-right: 15px;">
-                            {{ detail.barangay }},{{ detail.city }}, {{ detail.province }}
-                        </td>
+
+                    <tr v-for="(detail, index) in details" :key="`location-${index}`">
+                    <td class="px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        LOCATION:
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.barangay }}, {{ detail.city }}, {{ detail.province }}
+                    </td>
                     </tr>
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            COMMODITY:
-                        </td>
-                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                            {{ detail.commodity }}
-                        </td>
+
+                    <tr v-for="(detail, index) in details" :key="`commodity-${index}`">
+                    <td class="px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        COMMODITY:
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.commodity }}
+                    </td>
                     </tr>
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            AREA (HECTARES):
-                        </td>
-                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                            {{ detail.area_hectares }}
-                        </td>
+
+                    <tr v-for="(detail, index) in details" :key="`area-${index}`">
+                    <td class="px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        AREA (HECTARES):
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.area_hectares }}
+                    </td>
                     </tr>
-                    <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
-                            DATE FILED:
-                        </td>
-                        <td style=" letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
-                            {{ detail.date_filed }}
-                        </td>
+
+                    <tr v-for="(detail, index) in details" :key="`date-${index}`">
+                    <td class="px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
+                        DATE FILED:
+                    </td>
+                    <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
+                        {{ detail.date_filed }}
+                    </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
 
-            <!-- Applicant's Table -->
-
-            <p
-                style="font-size: medium;font-weight: 700;letter-spacing: 3px;text-align: center;position: relative;top: 100px;right: 160px;">
-                II.&nbsp;&nbsp;&nbsp;APPLICANT'S DETAILS
+        <!-- Applicant's Details Table -->
+        <div class="">
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
+            II.&nbsp;&nbsp;&nbsp;APPLICANT'S DETAILS
             </p>
-            <table class="ftable" style="margin-top: 130px;">
-                <tbody class="fbody">
+
+            <table class="w-11/12 border border-gray-300">
+                <tbody class="w-full">
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                        <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
                             CATEGORY:
                         </td>
-                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                        <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
                             {{ detail.category }}
                         </td>
                     </tr>
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                        <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
                             AUTHORIZED REPRESENTATIVE:
                         </td>
-                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                        <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
                             {{ detail.authorized_rep }}
                         </td>
                     </tr>
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                        <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
                             CONTACT NUMBER:
                         </td>
-                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                        <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
                             {{ detail.contact_no }}
                         </td>
                     </tr>
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                        <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
                             EMAIL ADDRESS:
                         </td>
-                        <td style="letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                        <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
                             {{ detail.email }}
                         </td>
                     </tr>
                     <tr v-for="(detail, index) in details" :key="index">
-                        <td
-                            style="padding-right: 30px;padding-left: 10px; letter-spacing: 3px;font-size: 12px;font-weight: 700;">
+                        <td class="w-72 px-2 py-2 text-xs font-bold tracking-wider border border-gray-300 text-left">
                             OTHERS:
                         </td>
-                        <td
-                            style="padding-left: 15px;padding-right: 15px;width: 350px; letter-spacing: 3px;font-size: 12px;font-weight: 600; text-align: center;">
+                        <td class="text-xs font-semibold tracking-wider border border-gray-300 text-left px-2">
                             {{ detail.others }}
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
 
-
-
-            <!--Mandatory Req-->
-
-
-            <p
-                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 260px;">
+        <!-- Mandatory Requirements' Table -->
+        <div>
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
                 III.&nbsp;&nbsp;&nbsp;MANDATORY REQUIREMENTS
             </p>
-            <table class="ftablez">
+
+            <table class="w-11/12 border border-gray-300">
                 <thead>
                     <tr style="text-align: center;">
-                        <th style="width: 40%; font-weight: bold;">Requirement</th>
-                        <th style="width: 40%; font-weight: bold;">Uploads</th>
-                        <th style="width: 70%; font-weight: bold;">Remarks / Status</th>
-                        <th style="width: 70%; font-weight: bold;">Recommendation</th>
+                        <th class="border text-xs pb-4" style="width: 30%; font-weight: bold;">Requirement</th>
+                        <th class="border text-xs pb-4" style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Recommendation</th>
                     </tr>
                 </thead>
-                <tbody class="fbody">
+                <tbody class="w-full">
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             1. Application Form (MGB Form No. 7-1) to be accpompanied by eight (8)
                             sets of the FTAA proposal and five (5) sets of the following: <br> &nbsp;
                             <br> &nbsp;
                             Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
                             (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
                         </td>
-                        <td>
+                        <td class="w-72 tracking-wider border border-gray-300">
                             <div v-for="(file, index) in uploadFiles.file1" :key="index" class="flex justify-start">
                                 <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
                             </div>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ remarks.textInput1 }}</p>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput1 }}</p>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="flex justify-center">
+    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    </div>
+</div>
+
+<div id="page-002" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+    <img src="../../../assets/icons/Header.png" class="">
+
+    <div class="flex items-left flex-col ml-16 mt-8">
+        <!-- Mandatory Requirements' Table -->
+        <div>
+            <table class="w-11/12 border border-gray-300">
+                <thead>
+                    <tr style="text-align: center;">
+                        <th class="border text-xs pb-4" style="width: 30%; font-weight: bold;">Requirement</th>
+                        <th class="border text-xs pb-4" style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody class="w-full">
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             2. Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/
                             boundaries (in tabulated form) with major environmental features/ other projects
                             (prepared, sealed and signed by a deputized Geodetic Engineer)
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 tracking-wider border border-gray-300">
                             <div v-for="(file, index) in uploadFiles.file2" :key="index" class="flex justify-start">
                                 <p class="text-xs text-gray-600 ml-6 ">*{{ file }}</p>
                             </div>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ remarks.textInput2 }}</p>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput2 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
                             duly prepared, signed and sealed by a licensed Mining Engineer or Geologist</td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 tracking-wider border border-gray-300">
                             <div v-for="(file, index) in uploadFiles.file3" :key="index" class="flex justify-start">
                                 <p class="text-xs text-gray-600 ml-3 ">*{{ file }}</p>
                             </div>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ remarks.textInput3 }}</p>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput3 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             4. Proof of technical competence in the form of:<br> &nbsp;
                             4.1 Bio-data and track records in mining operations/ enviromental manangement <br> &nbsp;
                             4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the
                             Work Programs
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 tracking-wider border border-gray-300">
                             <div v-for="(file, index) in uploadFiles.file4" :key="index" class="flex justify-start">
                                 <p class="text-xs text-gray-600 ml-6 ">*{{ file }}</p>
                             </div>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ remarks.textInput4 }}</p>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput4 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             5. Affidavit of Undertaking (using MGB Form No.99-10)
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 tracking-wider border border-gray-300">
                             <div v-for="(file, index) in uploadFiles.file5" :key="index" class="flex justify-start">
                                 <p class="text-xs text-gray-600 ml-6 ">*{{ file }}</p>
                             </div>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ remarks.textInput5 }}</p>
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput5 }}</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="flex justify-center">
+    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    </div>
+</div>
+<div id="page-003" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+    <img src="../../../assets/icons/Header.png" class="">
 
-            <!--Summary of Lacking Req-->
-            <p
-                style="font-size: medium; font-weight: 700; letter-spacing: 0px; text-align: center; position: relative; top: 80px; right: 260px;">
+    <div class="flex items-left flex-col ml-16">
+        <!--Summary of Lacking Requirements' Table-->
+        <div>
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
                 IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS
             </p>
 
-            <table class="ftablez">
+            <table class="w-11/12 border border-gray-300">
                 <thead>
-                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th style="width: 40%; font-weight: bold;">Requirement</th>
-                        <th style="width: 20%; font-weight: bold;">Recommendation or Lacking Submission</th>
+                    <tr style="text-align: center;">
+                        <th class="border text-xs pb-4" style="width: 40%; font-weight: bold;">Requirement</th>
+                        <th class="border text-xs pb-4" style="width: 60%; font-weight: bold;">Recommendation or Lacking Submission</th>
                     </tr>
                 </thead>
-                <tbody class="fbody">
+                <tbody class="w-full">
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             1. Application Form (MGB Form No. 7-1) to be accpompanied by eight (8)
                             sets of the FTAA proposal and five (5) sets of the following: <br> &nbsp;
                             <br> &nbsp;
                             Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
                             (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput1 }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             2. Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/
                             boundaries (in tabulated form) with major environmental features/ other projects
                             (prepared, sealed and signed by a deputized Geodetic Engineer)
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput2 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
                             duly prepared, signed and sealed by a licensed Mining Engineer or Geologist</td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput3 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             4. Proof of technical competence in the form of:<br> &nbsp;
                             4.1 Bio-data and track records in mining operations/ enviromental manangement <br> &nbsp;
                             4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the
                             Work Programs
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput4 }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: left; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             5. Affidavit of Undertaking (using MGB Form No.99-10)
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
                             <p>{{ recommendation.textInput5 }}</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
 
-
-
-            <!--Status of Application-->
-            <p
-                style="font-size: medium; font-weight: 700; letter-spacing: 0px; text-align: center; position: relative; top: 80px; right: 165px;">
+        <!--Status of Application Table-->
+        <div>
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
                 V.&nbsp;&nbsp;&nbsp;STATUS OF THE APPLICATION
             </p>
-            <table class="ftabley">
+            <table class="w-11/12 border border-gray-300">
                 <thead>
                     <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th style="width: 40%; font-weight: bold;">MANDATORY
-                            REQUIREMENTS</th>
-                        <th style="width: 30%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border text-xs pb-4"  style="width: 30%; font-weight: bold;">Mandatory Requirements</th>
+                        <th class="border text-xs pb-4"  style="width: 70%; font-weight: bold;">Remarks / Status</th>
                     </tr>
                 </thead>
-                <tbody class="fbody">
+                <tbody class="w-full">
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             Status
                         </td>
 
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>
                                 {{ mtsrvalue }}
                             </p>
@@ -381,54 +363,65 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="flex justify-center">
+    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    </div>
+</div>
+<div id="page-004" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+    <img src="../../../assets/icons/Header.png" class="">
 
-
-            <!--Overall Remark-->
-            <p
-                style="font-size: medium; font-weight: 700; letter-spacing: 0px; text-align: center; position: relative; top: 80px; right: 100px;">
+    <div class="flex items-left flex-col ml-16">
+        <!--Overall Remarks/Recommendations' Table-->
+        <div>
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
                 VI.&nbsp;&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS
             </p>
-            <table class="ftabley">
+            <table class="w-11/12 border border-gray-300">
                 <thead>
                     <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th style="width: 40%; font-weight: bold;">MANDATORY
-                            REQUIREMENTS</th>
-                        <th style="width: 30%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border text-xs pb-4" style="width: 40%; font-weight: bold;">Mandatory Requirements</th>
+                        <th class="border text-xs pb-4" style="width: 60%; font-weight: bold;">Remarks / Status</th>
                     </tr>
                 </thead>
-                <tbody class="fbody">
+                <tbody class="w-full">
 
                     <tr>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: center; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             Overall Remarks/ Status/
                             Recommendation
                         </td>
-                        <td
-                            style="padding: 10px; letter-spacing: 0px; font-size: 12px; font-weight: 600; text-align: justify; border: 1px solid black;">
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>{{ overallvalue }}</p>
                         </td>
 
                     </tr>
                 </tbody>
             </table>
-
-            <p
-                style="font-size: medium; font-weight: 700; letter-spacing: 3px; text-align: center; position: relative; top: 80px; right: 235px;">
+        </div>
+        <!-- <div>
+            <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
                 VII.&nbsp;&nbsp;&nbsp;CHRONOLOGY
             </p>
-
-
-        </div>
+        </div> -->
     </div>
-    <div style="margin-bottom: 1000px;"></div>
+    <div class="flex justify-center">
+    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    </div>
+</div>
+<!-- Button to trigger the download of all folios as PDFs -->
+<button @click="downloadAllPDFs" class="bg-green-500 rounded-lg border m-4 p-2">Download</button>
 </template>
 
 
 
 
 <script>
-
+import html2pdf from 'html2pdf.js';
+import jsPDF from 'jspdf';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 import { API_BASE_URL } from '../../../config';
 
 export default {
@@ -465,6 +458,44 @@ export default {
         };
     },
     methods: {
+        downloadAllPDFs() {
+            const folioIds = ['page-001', 'page-002', 'page-003', 'page-004'];
+            const zip = new JSZip(); // Create a new ZIP instance
+
+            // Create a promise array for each PDF generation
+            const pdfPromises = folioIds.map(folioId => {
+                return new Promise((resolve, reject) => {
+                    const element = document.getElementById(folioId);
+                    const options = {
+                        filename: `${folioId}.pdf`,  // Set the filename
+                        html2canvas: { scale: 2 },   // Improve the quality of the PDF
+                        jsPDF: { 
+                            unit: 'mm', 
+                            format: [216, 356],  // Set to legal size (216 x 356 mm)
+                            orientation: 'portrait' // Set paper orientation to portrait
+                        },
+                    };
+                    
+                    // Generate the PDF and save it to a Blob
+                    html2pdf().from(element).set(options).outputPdf('blob').then((pdfBlob) => {
+                        // Add the PDF Blob to the ZIP file
+                        zip.file(`${folioId}.pdf`, pdfBlob);
+                        resolve();
+                    }).catch(reject);
+                });
+            });
+
+            // After all PDFs are generated, create and download the ZIP file
+            Promise.all(pdfPromises).then(() => {
+                zip.generateAsync({ type: 'blob' }).then((content) => {
+                    // Save the ZIP file
+                    saveAs(content, 'evaluation-sheet.zip');
+                });
+            }).catch((error) => {
+                console.error("Error generating PDFs:", error);
+            });
+        },
+
         async fetchDetails() {
             //Details applicants
             try {
@@ -559,98 +590,3 @@ export default {
 }
 
 </script>
-
-
-
-
-<style lang="scss" scoped>
-/* Combined styles from style 1 and style 2 */
-
-/* General styles */
-.title1 {
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 100px;
-    margin-bottom: 25px;
-}
-
-.ftable {
-    display: flex;
-    justify-content: center;
-    margin-top: 150px;
-    /* Adjusted margin-top */
-}
-
-.ftabley {
-    margin: auto;
-    margin-top: 100px;
-    /* Adjusted margin-top */
-    width: 700px;
-    table-layout: fixed;
-    /* Set the table layout to fixed */
-    border-collapse: collapse;
-}
-
-.ftablez {
-    margin: auto;
-    margin-top: 100px;
-    /* Adjusted margin-top */
-    width: 1000px;
-    table-layout: fixed;
-    /* Set the table layout to fixed */
-    border-collapse: collapse;
-}
-
-.ftablez th,
-.ftablez td {
-    width: 33%;
-    /* Set the fixed width for each column (1/3 of the table width) */
-    padding: 10px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    border: 1px solid black;
-    word-wrap: break-word;
-    /* Allow word wrap for long text */
-
-}
-
-.fbody table {
-    border-collapse: collapse;
-    width: 100%;
-    /* Adjusted width */
-    margin-top: 20px;
-    /* Adjusted margin-top */
-    text-align: center;
-}
-
-.fbody th,
-.fbody td {
-    border: 1px solid rgb(37, 37, 37);
-    padding: 12px;
-    text-align: center;
-}
-
-/* Styles for table headers */
-.ftable th {
-    padding: 10px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 700;
-    border: 1px solid black;
-    text-align: center;
-}
-
-/* Styles for table data cells */
-.ftable td {
-    padding: 10px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    font-weight: 600;
-    border: 1px solid black;
-    text-align: center;
-}
-</style>
