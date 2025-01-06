@@ -2,7 +2,7 @@
   <div class="fixed h-24 mr-2 top-0 flex fixed w-full justify-end">
     <div class="flex justify-end mr-3 items-center">
       <button @click="toggleDropdown" class="text-dark bg-orange-200 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center">
-        My Account  
+        {{ username }}  
         <img class="w-2 m-2" src="../assets/icons/drop-down.png" alt="Dropdown Icon">
       </button>
       <!-- Dropdown Content -->
@@ -19,7 +19,8 @@ import router from '../router/index.js';
 export default {
   data() {
     return {
-      isDropdownOpen: false
+      isDropdownOpen: false,
+      username: localStorage.getItem('username'),
     };
   },
   methods: {

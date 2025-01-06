@@ -118,7 +118,8 @@ const handleLogin = async () => {
         }
 
         // If the account is found, store the token and redirect
-        localStorage.setItem('authToken', 'someGeneratedToken'); // Replace 'someGeneratedToken' with the actual token from your API if available
+        localStorage.setItem('authToken', 'someGeneratedToken'); // Replace 'someGeneratedToken' with the actual token from your API if available.
+        localStorage.setItem('username', form.value.username);
 
         pleaseWait.value = false;
         switch (account.section) {
