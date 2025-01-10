@@ -2,7 +2,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // MTSS Views
-import home from "../views/home.vue";
+// import home from "../views/home.vue";
+import home from "../views/mtes/Login.vue";
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue";
 import inventory from "../views/mtss/inventory.vue";
