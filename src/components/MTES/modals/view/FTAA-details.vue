@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <td class="border font-bold py-2 px-4 bg-orange-200 w-60">Stage of Processing:</td>
-                            <td class="border py-2 px-4"></td>
+                            <td class="border py-2 px-4">{{ details.stage_of_processing }}</td>
                         </tr>
                         <tr>
                             <td class="border font-bold py-2 px-4 bg-orange-200 w-60">Status:</td>
