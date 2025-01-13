@@ -63,7 +63,7 @@
                 </div>
                 <div class="mt-2 flex justify-between">
                   <p class="mr-5">Date Filed:</p>
-                  <input v-model="detailstoadd.date" type="date" class="text-center w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <input v-model="detailstoadd.date_filed" type="date" class="text-center w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
                 <div class="mt-2 flex justify-between">
                     <p class="mr-5">Others:</p>
@@ -85,7 +85,7 @@
                     </select>
                   </div>
                   <!-- Conditional input field for 'Other' category -->
-                  <input v-if="selectedCategory === 'Other'" v-model="otherCategory" class="ml-52 mt-2 pl-1 pr-1 border rounded-md w-72" placeholder="Enter other category"/>
+                  <input v-if="selectedCategory === 'Other'" v-model="otherCategory" class="ml-56 mt-2 pl-1 pr-1 border rounded-md w-72" placeholder="Enter other category"/>
                 </div>
 
                   <div class="mt-2 flex justify-between">
@@ -100,50 +100,63 @@
                     <p class="mr-5">Email Address:</p>
                     <input v-model="detailstoadd.email" type="text" @input="formatContactNum" maxlength="11" required class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
-                  
-                  <div class="mt-2 flex justify-between">
-                    <p class="mr-5">Others:</p>
-                    <input v-model="detailstoadd.status" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                  </div>
 
     <div class="flex justify-center mt-4 border-t">
       <label class="inline-flex items-center m-2">
-        <input v-model="selectedStageOfProcessing" type="radio" name="options" value="On-going Process" class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"/>
+        <input v-model="detailstoadd.status" type="radio" name="options" value="On-going Process" class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"/>
         <span class="ml-2">On-going Process</span>
       </label>
 
       <label class="inline-flex items-center m-2">
-        <input v-model="selectedStageOfProcessing" type="radio" name="options" value="Denied with Order of Finality" class="form-radio h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500"/>
-        <span class="ml-2">Denied with Order of Finality</span>
+        <input v-model="detailstoadd.status"type="radio" name="options" value="Issued" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+        <span class="ml-2">Issued</span>
       </label>
 
       <label class="inline-flex items-center m-2">
-        <input v-model="selectedStageOfProcessing"type="radio" name="options" value="Issued" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
-        <span class="ml-2">Issued</span>
+        <input v-model="detailstoadd.status" type="radio" name="options" value="Denied" class="form-radio h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500"/>
+        <span class="ml-2">Denied</span>
+      </label>
+    </div>
+
+    <div class="flex justify-center mt-4 border-t">
+      <label class="inline-flex items-center m-2">
+        <input v-model="detailstoadd.status"type="radio" name="options" value="With Order of Finality" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+        <span class="ml-2">With Order of Finality</span>
+      </label>
+
+      <label class="inline-flex items-center m-2">
+        <input v-model="detailstoadd.status"type="radio" name="options" value="Endorsed to MGB CO for Clearance" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+        <span class="ml-2">Endorsed to MGB CO for Clearance</span>
+      </label>
+
+      <label class="inline-flex items-center m-2">
+        <input v-model="detailstoadd.status" type="radio" name="options" value="Endorsed to MGB CO for Approval" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+        <span class="ml-2">Endorsed to MGB CO for Approval</span>
       </label>
     </div>
 
     <!-- Conditional dropdown for "On-going Process" -->
-    <div class="flex justify-between border-t" v-if="selectedStageOfProcessing === 'On-going Process'">
+    <div class="flex justify-between border-t" v-if="detailstoadd.status === 'On-going Process'">
       <p class="mr-5 mt-4">Stage of Processing:</p>
-      <select class="mt-4 w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <select v-model="selectedOngoingProcessing" class="mt-4 w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
-        <option value="1">Under Pre-Processing by Mining Tenement Evaluation Section</option>
-        <option value="2">Under Preliminary Evaluation</option>
-        <option value="3">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
-        <option value="4">Undergoing Publication/Posting/Radio Announcement</option>
-        <option value="5">Published/Posted Announcement within 30-days period for possible protest/adverse claim</option>
-        <option value="6">With mining dispute filed at Panel of Arbitrators</option>
-        <option value="7">Appeal to the Mines Adjudication Board/LSD-CO/OP</option>
-        <option value="8">Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.</option>
-        <option value="9">Under Final Evaluation by R.O.</option>
-        <option value="10">Endorsed to Central Office</option>
-        <option value="11">Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal</option>
-        <option value="12">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal</option>
-        <option value="13">A. Others (Renewal)</option>
-        <option value="14">B. Others (With Clearance)</option>
-        <option value="15">Conversion from Other Tenement</option>
-        <option value="16">Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.</option>
+        <option value="Under Pre-Processing by Mining Tenement Evaluation Section">Under Pre-Processing by Mining Tenement Evaluation Section</option>
+        <option value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
+        <option value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
+        <option value="Undergoing Publication/Posting/Radio Announcement">Undergoing Publication/Posting/Radio Announcement</option>
+        <option value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">Published/Posted Announcement within 30-days period for possible protest/adverse claim</option>
+        <option value="With mining dispute filed at Panel of Arbitrators">With mining dispute filed at Panel of Arbitrators</option>
+        <option value="Appeal to the Mines Adjudication Board/LSD-CO/OP">Appeal to the Mines Adjudication Board/LSD-CO/OP</option>
+        <option value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.">Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.</option>
+        <option value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.</option>
+        <option value="Endorsed to Central Office">Endorsed to Central Office</option>
+        <option value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal</option>
+        <option value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal</option>
+        <option value="A. Others (Renewal)">A. Others (Renewal)</option>
+        <option value="B. Others (With Clearance)">B. Others (With Clearance)</option>
+        <option value="Conversion from Other Tenement">Conversion from Other Tenement</option>
+        <option value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.</option>
+        <option value="- - -">- - -</option>
       </select>
     </div>
               </div>
@@ -173,7 +186,7 @@
       return {
         details: [],
         contactnum: '',
-        selectedStageOfProcessing: '',
+        selectedOngoingProcessing: '',
         selectedCategory: '',
         otherCategory: '',
         regions: [],
@@ -188,23 +201,23 @@
         submissionStatus: '',
         detailstoadd: {
           status: '',
-          stage_of_processing: '',
+          stage_of_processing: '-',
           tenement_number: '',
           tenement_name: '',
           area_hectares: '',
-          date: '',
+          date_filed: '',
           commodity: '',
           authorized_rep: '',
           email: '',
           others: '',
           application: 'ftta'
-        }
+        },
       };
     },
     computed: {
       formattedDate() {
-        if (!this.detailstoadd.date) return '';
-        const dateObj = new Date(this.detailstoadd.date);
+        if (!this.detailstoadd.date_filed) return '';
+        const dateObj = new Date(this.detailstoadd.date_filed);
         const year = dateObj.getFullYear();
         const month = String(dateObj.getMonth() + 1).padStart(2, '0');
         const day = String(dateObj.getDate()).padStart(2, '0');
@@ -252,26 +265,47 @@
         }
       },
       submit() {
-        const formData = new FormData();
-        for (const [key, value] of Object.entries(this.detailstoadd)) {
-          formData.append(key, value);
-        }
-        formData.append('category', this.selectedCategory === 'other' ? this.otherCategory : this.selectedCategory);
-        formData.append('contact_no', this.contactnum);
-        formData.append('barangay', this.barangay);
-        formData.append('city', this.city);
-        formData.append('province', this.province);
-  
-        axios.post(`${API_BASE_URL}/add_details`, formData)
-          .then(response => {
-            this.submissionStatus = 'Success!';
-            this.showModal = false;
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            this.submissionStatus = 'Submission failed. Please try again.';
-          });
-      }
+  const formData = new FormData();
+
+  // Append all fields from detailstoadd
+  for (const [key, value] of Object.entries(this.detailstoadd)) {
+    formData.append(key, value);
+  }
+
+  // Append category and additional details
+  formData.append('category', this.selectedCategory === 'Other' ? this.otherCategory : this.selectedCategory);
+  formData.append('contact_no', this.contactnum);
+  formData.append('barangay', this.barangay);
+  formData.append('city', this.city);
+  formData.append('province', this.province);
+
+  // Update stage_of_processing based on status
+  if (this.detailstoadd.status === 'On-going Process') {
+    formData.append('stage_of_processing', this.selectedOngoingProcessing);
+    this.detailstoadd.stage_of_processing = this.selectedOngoingProcessing; // Ensure it's reflected in the object
+  } else {
+    formData.append('stage_of_processing', '-');
+    this.detailstoadd.stage_of_processing = '-';
+  }
+
+  // Simulate backend submission
+  axios.post(`${API_BASE_URL}/add_details`, formData)
+    .then(response => {
+      // Push new data to `details` array for display
+      this.details.push({
+        ...this.detailstoadd,
+      });
+
+      // Update status and close modal
+      this.submissionStatus = 'Success!';
+      this.showModal = false;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      this.submissionStatus = 'Submission failed.';
+    });
+}
+
     }
   };
   </script>

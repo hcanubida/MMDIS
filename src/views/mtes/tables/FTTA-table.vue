@@ -2,12 +2,12 @@
   <div class="fttatable">
     <!-- Status Section  -->
     <div class="flex justify-center">
-      <!-- get total detail.status for all 'On-going Process' value, then if none display zero -->
-      <p class="m-8 bg-orange-300 p-2 rounded-lg">On-going Process: {{ totalSum1 }}</p> 
-      <!-- get total detail.status for all 'Denied with Order of Finality' value, then if none display zero -->
-      <p class="m-8 bg-red-300 p-2 rounded-lg">Denied with Order of Finality: {{ totalSum2 }}</p>
-      <!-- get total detail.status for all 'Issued' process value, then if none display zero -->
-      <p class="m-8 bg-emerald-300 p-2 rounded-lg">Issued: {{ totalSum3 }}</p>
+      <p class="m-8 bg-orange-300 p-2">On-going Process: {{ statusCount('On-going Process') }}</p>
+      <p class="m-8 bg-red-300 p-2">Denied: {{ statusCount('Denied') }}</p>
+      <p class="m-8 bg-emerald-300 p-2">With Order of Finality: {{ statusCount('With Order of Finality') }}</p>
+      <p class="m-8 bg-emerald-300 p-2">Issued: {{ statusCount('Issued') }}</p>
+      <p class="m-8 bg-emerald-300 p-2">Endorsed to MGB CO for Clearance: {{ statusCount('Endorsed to MGB CO for Clearance') }}</p>
+      <p class="m-8 bg-emerald-300 p-2">Endorsed to MGB CO for Approval: {{ statusCount('Endorsed to MGB CO for Approval') }}</p>
     </div>
 
     <!-- Search and Add Section -->
@@ -68,7 +68,7 @@
           <tr v-for="(detail, index) in filteredEntries" :key="index">
             <td class="border text-center p-2">{{ detail.stage_of_processing }}</td>
             <td class="border text-center p-2">{{ detail.status }}</td>
-            <td class="border text-center p-2">{{ detail.id }}</td>
+            <td class="border text-center p-2">{{ detail.tenement_number }}</td>
             <td class="border text-center p-2">{{ detail.tenement_name }}</td>
             <td class="border text-center p-2">{{ detail.area_hectares }}</td>
             <td class="border text-center p-2">{{ detail.date_filed }}</td>
@@ -104,7 +104,26 @@ export default {
       detail_id: null,
       sortKey: '',
       sortOrder: 'asc',
+      optionTexts: [
+        "Under Pre-Processing by Mining Tenement Evaluation Section",
+        "Under Preliminary Evaluation",
+        "Pending Area Clearance/Status (FMS/EMPAS,LMS)",
+        "Undergoing Publication/Posting/Radio Announcement",
+        "Published/Posted Announcement within 30-days period for possible protest/adverse claim",
+        "With mining dispute filed at Panel of Arbitrators",
+        "Appeal to the Mines Adjudication Board/LSD-CO/OP",
+        "Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.",
+        "Under Final Evaluation by R.O.",
+        "Endorsed to Central Office",
+        "Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal",
+        "Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal",
+        "A. Others (Renewal)",
+        "B. Others (With Clearance)",
+        "Conversion from Other Tenement",
+        "Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P."
+      ],
     };
+
   },
   computed: {
     sortedEntries() {
@@ -132,15 +151,9 @@ export default {
         );
       });
     },
-    totalSum1() {
-      return this.details.filter(detail => detail.status === 'On-going Process').length || 0;
-    },
-    totalSum2() {
-      return this.details.filter(detail => detail.status === 'Denied with Order of Finality').length || 0;
-    },
-    totalSum3() {
-      return this.details.filter(detail => detail.status === 'Issued').length || 0;
-    },
+    statusCount() {
+    return (status) => this.details.filter(detail => detail.status === status).length || 0;
+  },
   },
   mounted() {
     this.fetchDetails();

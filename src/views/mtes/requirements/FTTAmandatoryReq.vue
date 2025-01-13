@@ -6,7 +6,7 @@
 
 <!-- Table Section -->
 <div class="flex justify-center">
-  <div class="mt-2 text-center">
+  <div class="mt-2 text-center w-11/12">
 <!-- MANDATORY REQUIREMENTS SECTION -->
 <p class="text-left text-xl font-semibold p-5">MANDATORY REQUIREMENTS</p>
 <table class="w-full text-left border-collapse border border-gray-300">
@@ -443,7 +443,7 @@ export default {
         const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
         const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
         const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
-        this.mtsrvalue = filteredmtsr.mtsr
+        this.mtsrvalue = filteredmtsr.mtsr ? filteredmtsr.mtsr : ''
         this.overallStatus = filteredoverall.overallstatus
         this.selectedStatus = this.mtsrvalue
         this.otherStatus = this.selectedStatus
