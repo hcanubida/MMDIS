@@ -194,7 +194,6 @@
   </tbody>
 </table>
 
-
     <!-- Summary of Lacking Requirements -->
     <p class="text-left text-xl font-semibold p-5">SUMMARY OF LACKING REQUIREMENTS</p>
     <table class="w-full mb-5 text-left p-2 border border-collapse">
@@ -212,7 +211,6 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
-            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
             <br><label>Remarks/Status: <p>{{ remarks.textInput1 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput1 }}</p></label>   
           </td>
@@ -224,7 +222,6 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
-            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
             <br><label>Remarks/Status: <p>{{ remarks.textInput2 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
           </td>
@@ -236,7 +233,6 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
-            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
             <br><label>Remarks/Status: <p>{{ remarks.textInput3 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
           </td>
@@ -250,7 +246,6 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
-            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
             <br><label>Remarks/Status: <p>{{ remarks.textInput4 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput4 }}</p></label>  
           </td>
@@ -261,8 +256,7 @@
             <b>5.</b> &nbsp; Affidavit of Undertaking (using MGB Form No.99-10)
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
-            <!-- <label>List of Lacking Documents:</label><input type="text" class="ml-2 pl-2 bg-zinc-100 rounded border w-96"> -->
+          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">  
             <br><label>Remarks/Status: <p>{{ remarks.textInput5 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput5 }}</p></label>  
           </td>
@@ -270,63 +264,82 @@
       </tbody>
     </table>
 
-    <!-- Status of Application -->
-    <p class="text-left text-xl font-semibold p-5">STATUS OF THE APPLICATION</p>
-    <table class="w-full border-collapse">
-      <tbody>
-        <tr>
-          <td class="text-left text-base p-2 bg-orange-200 border">Stage of Processing:</td>
-          <td class="text-left text-base p-2 border flex items-center justify-left">
-            <select class="w-full bg-white text-center" v-model="selectedStatus">
-              <option value="" disabled>Based on the MTSR Status</option>
-              <option class="text-left" value="Under Pre-Processing by Mining Tenement Evaluation Section">
-                Under Pre-Processing by Mining Tenement Evaluation Section
-              </option>
-              <option class="text-left" value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
-              <option class="text-left" value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">
-                Pending Area Clearance/Status (FMS/EMPAS,LMS)
-              </option>
-              <option class="text-left" value="Undergoing Publication/Posting/Radio Announcement">
-                Undergoing Publication/Posting/Radio Announcement
-              </option>
-              <option class="text-left" value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">
-                Published/Posted Announcement within 30-days period for possible protest/adverse claim
-              </option>
-              <option class="text-left" value="With mining dispute filed at Panel of Arbitrators">
-                With mining dispute filed at Panel of Arbitrators
-              </option>
-              <option class="text-left" value="Appeal to the Mines Adjudication Board/LSD-CO/OP">
-                Appeal to the Mines Adjudication Board/LSD-CO/OP
-              </option>
-              <option class="text-left" value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc">
-                Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc
-              </option>
-              <option class="text-left" value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.</option>
-              <option class="text-left" value="Endorsed to Central Office">Endorsed to Central Office</option>
-              <option class="text-left" value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">
-                Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal
-              </option>
-              <option class="text-left" value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">
-                Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal
-              </option>
-              <option class="text-left" value="A. Others (Renewal)">A. Others (Renewal)</option>
-              <option class="text-left" value="B. Others (With Clearance)">B. Others (With Clearance)</option>
-              <option class="text-left" value="Conversion from Other Tenement">Conversion from Other Tenement</option>
-              <option class="text-left" value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">
-                Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.
-              </option>
-              <option class="text-left" value="other">Other</option>
-            </select>
-            <input
-              v-if="selectedStatus === 'other'"
-              class="w-full mt-2"
-              v-model="otherStatus"
-              placeholder="Enter other Status"
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<!-- Status of Application -->
+<p class="text-left text-xl font-semibold p-5 flex items-center">
+  STATUS OF THE APPLICATION
+  <span class="px-2 text-xs text-blue-600 cursor-pointer" @click="openEditModal">edit</span>
+</p>
+<table class="w-full border-collapse">
+  <tbody>
+    <tr>
+      <td class="text-left text-base p-2 border w-2/4">Status: </td>
+      <td class="text-left text-base p-2 border w-2/4">{{ details.status }}</td>
+    </tr>
+    <tr>
+      <td class="text-left text-base p-2 border w-2/4">Stage of Processing: </td>
+      <td class="text-left text-base p-2 border w-2/4">{{ details.stage_of_processing }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal Section -->
+<div v-if="EditModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeEditModal">
+  <div class="bg-white rounded-lg w-1/4" style="max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
+    <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
+      <h2 class="text-lg font-bold">Edit</h2>
+    </div>
+    <div class="mt-2 flex flex-col space-y-2">
+      <div class="flex justify-between p-2">
+        <p class="mr-5">Status:</p>
+        <select
+          v-model="selectedCategory"
+          class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+          <option value="On-going Process">On-going Process</option>
+          <option value="Issued">Issued</option>
+          <option value="Denied">Denied</option>
+          <option value="With Order of Finality">With Order of Finality</option>
+          <option value="Endorsed to MGB CO for Clearance">Endorsed to MGB CO for Clearance</option>
+          <option value="Endorsed to MGB CO for Approval">Endorsed to MGB CO for Approval</option>
+        </select>
+      </div>
+
+      <!-- Conditionally render this select input when "On-going Process" is selected -->
+      <div v-if="selectedCategory === 'On-going Process'" class="flex justify-between p-2 mt-4">
+        <p class="mr-5">Stage of Processing:</p>
+        <select v-model="selectedOngoingProcessing" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+          <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+          <option value="Under Pre-Processing by Mining Tenement Evaluation Section">Under Pre-Processing by Mining Tenement Evaluation Section</option>
+          <option value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
+          <option value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
+          <option value="Undergoing Publication/Posting/Radio Announcement">Undergoing Publication/Posting/Radio Announcement</option>
+          <option value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">Published/Posted Announcement within 30-days period for possible protest/adverse claim</option>
+          <option value="With mining dispute filed at Panel of Arbitrators">With mining dispute filed at Panel of Arbitrators</option>
+          <option value="Appeal to the Mines Adjudication Board/LSD-CO/OP">Appeal to the Mines Adjudication Board/LSD-CO/OP</option>
+          <option value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.">Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.</option>
+          <option value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.</option>
+          <option value="Endorsed to Central Office">Endorsed to Central Office</option>
+          <option value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal</option>
+          <option value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal</option>
+          <option value="A. Others (Renewal)">A. Others (Renewal)</option>
+          <option value="B. Others (With Clearance)">B. Others (With Clearance)</option>
+          <option value="Conversion from Other Tenement">Conversion from Other Tenement</option>
+          <option value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.</option>
+          <option value="- - -">- - -</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
+      <!-- Save Button -->
+      <button @click="saveChanges" class="py-1 px-2 mx-2 rounded cursor-pointer bg-[#e6cfaf] hover:bg-[#d6bf9f]">Save</button>
+      <!-- Close Button -->
+      <button @click="closeEditModal" class="py-1 px-2 mx-2 rounded cursor-pointer bg-[#e6cfaf] hover:bg-[#d6bf9f]">Close</button>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Overall Remarks/Status/Recommendations -->
     <p class="text-left text-xl font-semibold p-5">OVERALL REMARKS/ RECOMMENDATIONS</p>
@@ -374,11 +387,18 @@ export default {
   },
   data() {
     return {
+      EditModal: false,
+      selectedCategory: "",
+      selectedOngoingProcessing: "",
       overallStatus: '',
       isVisible: false,
       showChildComponent: false,
       selectedStatus: '',
       otherStatus: '',
+      details: {
+        status: '',
+        stage_of_processing: ''
+      },
       remarks: {
         textInput1: '',
         textInput2: '',
@@ -407,8 +427,12 @@ export default {
         file4: [],
         file5: []
       },
+      created() {
+        this.fetchDetails(this.id);
+  },
 
     };
+    
   },
   watch: {
     selectedStatus(newValue) {
@@ -418,6 +442,27 @@ export default {
     }
   },
   methods: {
+    openEditModal() {
+    this.EditModal = true;
+  },
+  closeEditModal() {
+    this.EditModal = false;
+  },
+    async fetchDetails(id) {
+  try {
+    // Replace 'your-api-endpoint' with the actual endpoint and use the dynamic ID
+    const response = await axios.get(`${API_BASE_URL}/get_details/${id}`);
+    this.details = response.data;
+  } catch (error) {
+    console.error('Error fetching details:', error);
+    // Ensure `this.details` is available before accessing `status`
+    if (this.details) {
+      console.log(this.details.status);
+    } else {
+      console.log('No details available');
+    }
+  }
+},
     view() {
       // this.isVisible = true;
       this.isVisible = !this.isVisible;
@@ -436,19 +481,22 @@ export default {
         console.error('No files found on event target:', event);
       }
     },
-    async getDetails() {
-      //MTSR details
-      try {
-        const mtsr = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
-        const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
-        const filteredmtsr = mtsr.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
-        const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
-        this.mtsrvalue = filteredmtsr.mtsr ? filteredmtsr.mtsr : ''
-        this.overallStatus = filteredoverall.overallstatus
-        this.selectedStatus = this.mtsrvalue
-        this.otherStatus = this.selectedStatus
-        // console.log(this.selectedStatus)
 
+    async fetchDetails(id) {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/get_details/${id}`);
+        this.details = response.data;
+      } catch (error) {
+        console.error('Error fetching details:', error);
+        // Optional: handle failure, e.g. show an error message
+      }
+    },
+    async getDetails() {
+      try {
+        const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
+        const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
+        
+        this.overallStatus = filteredoverall.overallstatus
       } catch (error) {
         console.error('Error fetching details:', error);
       }
@@ -470,12 +518,13 @@ export default {
       try {
         const requirements = await axios.get(`${API_BASE_URL}/get_recommendation`);
         const filteredrequirements = requirements.data.find(req => req.id_reference == this.$route.params.detail_id);
-        // console.log(filteredrequirements)
+
         this.recommendation.textInput1 = filteredrequirements.input1 !== null ? filteredrequirements.input1 : '';
         this.recommendation.textInput2 = filteredrequirements.input2 !== null ? filteredrequirements.input2 : '';
         this.recommendation.textInput3 = filteredrequirements.input3 !== null ? filteredrequirements.input3 : '';
         this.recommendation.textInput4 = filteredrequirements.input4 !== null ? filteredrequirements.input4 : '';
         this.recommendation.textInput5 = filteredrequirements.input5 !== null ? filteredrequirements.input5 : '';
+      
       } catch (error) {
         console.error('Error fetching reco details:', error);
       }
@@ -692,6 +741,7 @@ export default {
   },
   mounted() {
     this.getDetails();
+    this.fetchDetails(this.detail_id);
   },
 }
 </script>

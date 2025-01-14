@@ -12,20 +12,31 @@
 
     <!-- Search and Add Section -->
     <div class="flex justify-between mt-8">
-      <!-- Search Input Container -->
       <div class="h-10 flex w-2/5 ml-6">
-        <!-- Search Icon -->
         <div class="flex items-center bg-blue-100 rounded-l-lg px-3 pointer-events-none">
           <svg class="w-4 h-8 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
           </svg>
         </div>
-        <!-- Search Input Field -->
         <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Tenement Name or Location of the application ..." required />
       </div>
-      <!-- Add Button -->
       <div class="flex lg:justify-end mb-5">
         <button @click="navigateTomodal" class="text-dark bg-orange-200 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center mr-8">New Application<img class="w-4 m-2" src="../../../assets/icons/plus.png"></button>
+      </div>
+    </div>
+
+    <!-- Modal Section -->
+    <div v-if="viewComment" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeComment">
+      <div class="bg-white rounded-lg" style="width: 400px; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
+        <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
+          <h2 class="text-lg font-bold">Comments</h2>
+        </div>
+        <div class="p-4">
+          <p>{{ selectedDetail?.comments || 'No comments available' }}</p>
+        </div>
+        <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
+          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer  bg-[#e6cfaf] hover:bg-[#d6bf9f]">Close</button>
+        </div>
       </div>
     </div>
 
@@ -77,8 +88,12 @@
             <td class="border text-center p-2">{{ detail.province }}</td>
             <td class="border text-center p-2">{{ detail.commodity }}</td>
             <td class="border p-2 flex items-center justify-center">
-              <button @click="navigateTomodalView(detail.id)" class=" pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
-              <button class="bg-grey-100 text-white px-2 py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
+              <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
+              <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
+                <img src="../../../assets/icons/comment.png" style="width: 20px;">
+                <span v-if="detail.hasComment" class="red-dot"></span>
+              </button>
+              <button class="bg-grey-100 text-white py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
             </td>
           </tr>
         </tbody>
@@ -98,32 +113,15 @@ export default {
   data() {
     return {
       details: [],
+      selectedDetail: null,
+      viewComment: false,
       searchQuery: '',
       addDetail: false,
       viewDetail: false,
       detail_id: null,
       sortKey: '',
       sortOrder: 'asc',
-      optionTexts: [
-        "Under Pre-Processing by Mining Tenement Evaluation Section",
-        "Under Preliminary Evaluation",
-        "Pending Area Clearance/Status (FMS/EMPAS,LMS)",
-        "Undergoing Publication/Posting/Radio Announcement",
-        "Published/Posted Announcement within 30-days period for possible protest/adverse claim",
-        "With mining dispute filed at Panel of Arbitrators",
-        "Appeal to the Mines Adjudication Board/LSD-CO/OP",
-        "Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.",
-        "Under Final Evaluation by R.O.",
-        "Endorsed to Central Office",
-        "Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal",
-        "Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal",
-        "A. Others (Renewal)",
-        "B. Others (With Clearance)",
-        "Conversion from Other Tenement",
-        "Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P."
-      ],
     };
-
   },
   computed: {
     sortedEntries() {
@@ -136,24 +134,21 @@ export default {
       });
     },
     filteredEntries() {
+      // Filter the sorted entries based on the search query
+      const query = this.searchQuery.toLowerCase();
       return this.sortedEntries.filter((detail) => {
-        const query = this.searchQuery.toLowerCase();
         return (
           (detail.tenement_name && detail.tenement_name.toLowerCase().includes(query)) ||
-          (
-            detail.province && 
-            detail.city && 
-            detail.barangay && 
-            (detail.province.toLowerCase().includes(query) || 
-            detail.city.toLowerCase().includes(query) || 
-            detail.barangay.toLowerCase().includes(query))
-          )
+          (detail.province && detail.province.toLowerCase().includes(query)) ||
+          (detail.city && detail.city.toLowerCase().includes(query)) ||
+          (detail.barangay && detail.barangay.toLowerCase().includes(query))
         );
       });
     },
     statusCount() {
-    return (status) => this.details.filter(detail => detail.status === status).length || 0;
-  },
+      // Return the count of entries with a specific status
+      return (status) => this.details.filter((detail) => detail.status === status).length;
+    },
   },
   mounted() {
     this.fetchDetails();
@@ -162,17 +157,25 @@ export default {
     async fetchDetails() {
       try {
         const response = await axios.get(`${API_BASE_URL}/get_details/`);
-        this.details = response.data.filter((det) => det.application == 'ftta');
+        this.details = response.data;
       } catch (error) {
         console.error('Error fetching details:', error);
       }
     },
     navigateTomodal() {
-      addDetail.value = true; // Define your navigation logic here
+      addDetail.value = true;
     },
     navigateTomodalView(id) {
       detail_id.value = id;
       viewDetail.value = true; // Define your navigation logic here
+    },
+    showComment(detail) {
+      this.selectedDetail = detail;
+      this.viewComment = true;
+    },
+    closeComment() {
+      this.viewComment = false;
+      this.selectedDetail = null;
     },
     sortmethod(key) {
       if (this.sortKey === key) {
@@ -185,40 +188,53 @@ export default {
     debouncedSearch() {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = setTimeout(() => {
-        // Trigger any logic needed after debounce, e.g. update a variable or API request
+        // Handle debounce logic
       }, 300);
     },
   },
 };
 </script>
 
-  <style scoped>
+<style scoped>
+.fttatable {
+  flex: auto;
+  flex-direction: column;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ftta_scrollable {
+  margin: 15px;
+  box-shadow: 2px 3px 5px rgb(175, 175, 175);
+  max-height: 369px;
+  overflow-y: auto;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btn-close {
   
-  .fttabutton {
-    text-align: center;
-    padding: 10px;
-    margin: 1rem;
-    width: 250px;
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #eacda3;
-    color: white;
-    cursor: pointer;
+  border: none;
+  
+  padding: 8px 16px;
+  
+}
+
+.btn-close:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .fttatable {
-    flex: auto;
-    flex-direction: column;
-    border-collapse: collapse;
-    width: 100%;
+  to {
+    opacity: 1;
   }
-  
-  .ftta_scrollable {
-    margin: 15px;
-    box-shadow: 2px 3px 5px rgb(175, 175, 175);
-    max-height: 369px;
-    overflow-y: auto;
-  }
-  </style>
-  
+}
+</style>

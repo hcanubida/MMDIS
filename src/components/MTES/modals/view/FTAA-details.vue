@@ -95,6 +95,9 @@ export default {
     },
     mounted() {
         this.fetchDetails();
+        this.details.forEach((detail, index) => {
+            this.checkForComment(detail.id, index);
+        });
     },
     methods: {
         Exit() {
@@ -108,6 +111,15 @@ export default {
                 console.log(this.details)
             } catch (error) {
                 console.error('Error fetching details:', error);
+            }
+        },
+        async checkForComment(id, index) {
+            try {
+                const response = await fetch(`/comments/has/${id}`);
+                const data = await response.json();
+                this.details[index].hasComment = data.hasComment;
+            } catch (error) {
+                console.error('Error fetching comment status:', error);
             }
         },
         navigateToMandatoryReqFTTA(detail_id) {
