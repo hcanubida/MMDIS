@@ -442,6 +442,20 @@ export default {
     }
   },
   methods: {
+    saveChanges() {
+    axios.post(`${API_BASE_URL}/update_details/${this.details.id}`, {
+        status: this.selectedCategory,
+        stage_of_processing: this.selectedOngoingProcessing,
+    })
+    .then(response => {
+        alert('Record updated successfully');
+        this.closeEditModal();
+        // Optionally, refresh or update the view
+    })
+    .catch(error => {
+        alert('There was an error updating the record');
+    });
+},
     openEditModal() {
     this.EditModal = true;
   },
