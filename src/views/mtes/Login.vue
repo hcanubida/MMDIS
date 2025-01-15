@@ -12,45 +12,16 @@
                         <p style="font-size: 15px;" class="text-white">MMD Information System:</p>
                     </div>
                     <form>
-                        <div class="inputfield flex flex-col ">
+                        <div class="inputfield flex flex-col">
                             <input v-model="form.username" id="username" name="username" type="username"
                                 autocomplete="username" placeholder="Username"
                                 class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
                             <input v-model="form.password" id="password" name="password" type="password"
                                 autocomplete="password" placeholder="Password"
                                 class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
-                            <!--    -->
-                            <div class="error1" v-if="isValid"
-                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                                <a class="errormsg1" style="color: red;">
-                                    Warning Alert!!
-                                </a>
-                                <a class="errormsg">
-                                    Please Fill out the Text Fields
-                                </a>
-                            </div>
-                            <div v-if="isUsername" class="wronge"
-                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                                <a class="wronge1" style="color: red;">
-                                    Error Alert!!
-                                </a>
-                                <a class="wronge2">
-                                    {{ error }}
-                                </a>
-                            </div>
-
-                            <div class="logincorrect" v-else-if="pleaseWait"
-                                style="display: flex;flex-direction: column; margin-left: 45px;padding-bottom: 20px;margin-bottom: 10px;">
-                                <a class="logincorrect1" style="color: green;">
-                                    Login!!
-                                </a>
-                                <a class="logincorrect2">
-                                    Please wait for a moment....
-                                </a>
-                            </div>
                         </div>
                     </form>
-                    <div class="third flex flex-col items-center">
+                    <div class="third flex flex-col items-center pt-16">
                         <button class="buttonlogin text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
                     </div>
                 </div>
@@ -66,7 +37,6 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { API_BASE_URL } from '../../config'
-
 
 const isValid = ref(false);
 const isUsername = ref(false);
@@ -84,22 +54,17 @@ const handleLogin = async () => {
     const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
 
     if (form.value.username === '' && form.value.password === '') {
-        isValid.value = true;
-        setTimeout(() => { isValid.value = false; }, 2000);
+        alert('Both username and password are required');
         return;
     } 
 
     if (form.value.username === '') {
-        isUsername.value = true;
-        error.value = 'Input Username';
-        setTimeout(() => { isUsername.value = false; }, 2000);
+        alert('Input Username');
         return;
     }
 
     if (form.value.password === '') {
-        isUsername.value = true;
-        error.value = 'Input Password';
-        setTimeout(() => { isUsername.value = false; }, 2000);
+        alert('Input Password');
         return;
     }
 
@@ -111,9 +76,7 @@ const handleLogin = async () => {
         const account = response.data.find(acc => acc.username === form.value.username && acc.password === form.value.password);
 
         if (!account) {
-            isUsername.value = true;
-            error.value = 'Account not Found';
-            setTimeout(() => { isUsername.value = false; }, 2000);
+            alert('The email or password you entered did not match our records. Please double-check and try again.');
             return;
         }
 
@@ -139,14 +102,13 @@ const handleLogin = async () => {
     } catch (error) {
         console.error('Login error:', error);
         pleaseWait.value = false;
-        isUsername.value = true;
-        error.value = 'An error occurred during login. Please try again.';
-        setTimeout(() => { isUsername.value = false; }, 2000);
+        alert('Login error, please try again!');
     } finally {
         submitting.value = false;
     }
 }
 </script>
+
 
 <style scoped>
 .panel1 {
