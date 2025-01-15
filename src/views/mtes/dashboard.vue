@@ -52,13 +52,11 @@
     padding: 0.5rem 1rem;
     width: 1000px;
     border: none;
-    background-color: #e0b983;
     flex: 1 2 8rem;
   
   }
   
   .button:hover {
-    background-color: #e7d1b1;
     transition: 0.3s;
   }
   </style>
