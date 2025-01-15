@@ -2,17 +2,17 @@
 
         <taas />
 
-        <div class="panel flex justify-center items-center">
+        <div class="panel flex justify-center items-center ">
             <div class="panel1 h-auto flex flex-row justify-center items-center mt-32">
                 <img :src="mgb" class="img123" style="width: 330px;"/>
-                <div class="login -ml-16">
+                <div class="login -ml-16 bg-green-800">
                     <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
-                        <h1 style="font-weight: 700; font-size: 25px;">Welcome Back!</h1>
-                        <p style="font-size: 15px;">Login to access the MGB-X </p>
-                        <p style="font-size: 15px;">MMD Information System:</p>
+                        <h1 style="font-weight: 700; font-size: 25px;" class="text-white">Welcome Back!</h1>
+                        <p style="font-size: 15px;" class="text-white">Login to access the MGB-X </p>
+                        <p style="font-size: 15px;" class="text-white">MMD Information System:</p>
                     </div>
                     <form>
-                        <div class="inputfield flex flex-col">
+                        <div class="inputfield flex flex-col ">
                             <input v-model="form.username" id="username" name="username" type="username"
                                 autocomplete="username" placeholder="Username"
                                 class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
@@ -51,7 +51,7 @@
                         </div>
                     </form>
                     <div class="third flex flex-col items-center">
-                        <button class="buttonlogin  hover:bg-red-200 bg-yellow-600 text-white pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
+                        <button class="buttonlogin text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,6 @@ const handleLogin = async () => {
     width: 500px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: #eacda3;
     height: 450px;
 }
 

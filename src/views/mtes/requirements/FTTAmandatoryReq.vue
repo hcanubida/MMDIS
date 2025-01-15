@@ -11,10 +11,10 @@
 <p class="text-left text-xl font-semibold p-5">MANDATORY REQUIREMENTS</p>
 <table class="w-full text-left border-collapse border border-gray-300">
   <thead class="text-xl text-center">
-    <tr>
-      <th class="bg-orange-200 p-2 text-base border border-gray-300">Requirements</th>
-      <th class="bg-orange-200 p-2 text-base border border-gray-300" style="width: 300px;">Upload Requirements<br>(PDF, Word, or any file)</th>
-      <th class="bg-orange-200 p-2 text-base border border-gray-300">Remarks/Status</th>
+    <tr class="bg-green-800 text-white">
+      <th class="p-2 text-base border border-gray-300">Requirements</th>
+      <th class="p-2 text-base border border-gray-300" style="width: 300px;">Upload Requirements<br>(PDF, Word, or any file)</th>
+      <th class="p-2 text-base border border-gray-300">Remarks/Status</th>
     </tr>
   </thead>
   <tbody>
@@ -198,65 +198,65 @@
     <p class="text-left text-xl font-semibold p-5">SUMMARY OF LACKING REQUIREMENTS</p>
     <table class="w-full mb-5 text-left p-2 border border-collapse">
         <thead class="w-full">
-        <tr style="text-align: center;">
-          <th class="w-6/12 bg-orange-200 p-2 border text-base">Requirements</th>
-          <th class="bg-orange-200 p-2 border text-base">Remarks or Status</th>
+        <tr class="bg-green-800 text-white" style="text-align: center;">
+          <th class="w-6/12 p-2 border text-base">Requirements</th>
+          <th class="p-2 border text-base">Remarks or Status | Recommendation or Lacking Submission</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="border text-xs px-2" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+          <td class="border text-xs px-2">
             <b>1.</b> &nbsp; Application Form (MGB Form No. 7-1) to be accompanied by eight (8) sets of the FTAA proposal and five (5) sets of the following:
             <br>&nbsp; &nbsp; Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput1 !== 'null' && recommendation.textInput1.trim() !== ''">
+          <td class="text-left h-24 text-xs w-full border px-2">
             <br><label>Remarks/Status: <p>{{ remarks.textInput1 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput1 }}</p></label>   
           </td>
         </tr>
         
         <tr>
-          <td class="border text-xs px-2" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+          <td class="border text-xs px-2">
             <b>2.</b> &nbsp; Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput2 !== 'null' && recommendation.textInput2.trim() !== ''">
+          <td class="text-left h-24 text-xs w-full border px-2">
             <br><label>Remarks/Status: <p>{{ remarks.textInput2 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
           </td>
         </tr>
 
         <tr>
-          <td class="border text-xs px-2" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+          <td class="border text-xs px-2">
             <b>3.</b> &nbsp; Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput3 !== 'null' && recommendation.textInput3.trim() !== ''">
+          <td class="text-left h-24 text-xs w-full border px-2">
             <br><label>Remarks/Status: <p>{{ remarks.textInput3 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
           </td>
         </tr>
 
         <tr>
-          <td class="border text-xs px-2" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+          <td class="border text-xs px-2">
             <b>4.</b> &nbsp; Proof of technical competence in the form of:
             <br> &nbsp; &nbsp; &nbsp;4.1 Bio-data and track records in mining operations/ environmental management 
             <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput4 !== 'null' && recommendation.textInput4.trim() !== ''">
+          <td class="text-left h-24 text-xs w-full border px-2">
             <br><label>Remarks/Status: <p>{{ remarks.textInput4 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput4 }}</p></label>  
           </td>
         </tr>
 
         <tr>
-          <td class="border text-xs px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">
+          <td class="border text-xs px-2">
             <b>5.</b> &nbsp; Affidavit of Undertaking (using MGB Form No.99-10)
           </td>
 
-          <td class="text-left h-24 text-xs w-full border px-2" v-if="recommendation.textInput5 !== 'null' && recommendation.textInput5.trim() !== ''">  
+          <td class="text-left h-24 text-xs w-full border px-2">  
             <br><label>Remarks/Status: <p>{{ remarks.textInput5 }}</p></label>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput5 }}</p></label>  
           </td>
@@ -294,7 +294,7 @@
         <select
           v-model="selectedCategory"
           class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-          <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+          <option value="" disabled selected class="text-center text-gray-100"></option>
           <option value="On-going Process">On-going Process</option>
           <option value="Issued">Issued</option>
           <option value="Denied">Denied</option>
@@ -308,7 +308,7 @@
       <div v-if="selectedCategory === 'On-going Process'" class="flex justify-between p-2 mt-4">
         <p class="mr-5">Stage of Processing:</p>
         <select v-model="selectedOngoingProcessing" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-          <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+          <option value="" disabled selected class="text-center text-gray-100"></option>
           <option value="Under Pre-Processing by Mining Tenement Evaluation Section">Under Pre-Processing by Mining Tenement Evaluation Section</option>
           <option value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
           <option value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
@@ -332,7 +332,7 @@
 
     <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
       <!-- Save Button -->
-      <button @click="saveChanges" class="py-1 px-2 mx-2 rounded cursor-pointer bg-[#e6cfaf] hover:bg-[#d6bf9f]">Save</button>
+      <button @click="saveChanges" class="py-1 px-2 mx-2 rounded cursor-pointer text-white hover:text-gray-950 bg-green-800 hover:bg-green-100">Save</button>
       <!-- Close Button -->
       <button @click="closeEditModal" class="py-1 px-2 mx-2 rounded cursor-pointer bg-[#e6cfaf] hover:bg-[#d6bf9f]">Close</button>
     </div>
@@ -344,24 +344,29 @@
     <!-- Overall Remarks/Status/Recommendations -->
     <p class="text-left text-xl font-semibold p-5">OVERALL REMARKS/ RECOMMENDATIONS</p>
     <textarea class="rounded w-full p-2 border" style="height: 300px;" v-model="overallStatus"></textarea>
+<!-- --- -->
+<div class="flex flex-col justify-center m-4">
+  <div>
+    <button
+      class=" text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 w-36 h-10 rounded-md ml-2 hover:scale-105 transition-all duration-300"
+      @click="update">
+      UPDATE
+    </button>
+    <button
+      class=" text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 w-36 h-10 rounded-md ml-2 hover:scale-105 transition-all duration-300"
+      @click="toggleModal">
+      {{ isVisible ? 'Close' : 'View' }}
+    </button>
+  </div>
 
-    <div class="flex flex-col justify-center">
-      <p style="font-size: 20px; margin-bottom: 5px;">View Faxsheet</p>
-      <div>
-        <button
-          style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
-          @click="update">
-          UPDATE
-        </button>
-        <button
-          style="background-color: bisque;color: black;width: 150px;height:40px;border-radius: 5px;margin-left: 10px;"
-          @click="view">{{ isVisible ? 'Close' : 'View' }}
-        </button>
-      </div>
-      <div class="drop-shadow-2xl mt-10 place-self-center" v-if="isVisible">
-        <faxx />
-      </div>
+  <!-- Modal Overlay -->
+  <div v-if="isVisible" class="fixed top-0 left-0 w-full h-full flex justify-center items-center" style="background: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="toggleModal">
+    <div class="bg-white rounded-lg w-4/5 relative" style="max-width: 800px;">
+      <faxx/>
     </div>
+  </div>
+</div>
+
   </div>
 </div>
 </template>
@@ -372,10 +377,9 @@ import UserBtn from '../../../components/user-dbbtn.vue'
 import imagees from '../../../components/MTES/modals/imguploads.vue'
 import faxx from '../faxsheet/ffta-factsheet.vue'
 import { API_BASE_URL } from '../../../config'
-
 // import { detail_id } from '../dashboards/FTAA-dashboard.vue';
-
 </script>
+
 <script>
 export default {
   name: 'typeapp',
@@ -387,7 +391,15 @@ export default {
   },
   data() {
     return {
+      currentPage: 1, // Track the current page number
+      totalPages: 5,  // Set the total number of pages (this can be dynamic based on the content)
       EditModal: false,
+      selectedCategory: '',
+      selectedOngoingProcessing: '',
+      details: {
+        status: '',
+        stage_of_processing: '',
+      },
       selectedCategory: "",
       selectedOngoingProcessing: "",
       overallStatus: '',
@@ -395,10 +407,6 @@ export default {
       showChildComponent: false,
       selectedStatus: '',
       otherStatus: '',
-      details: {
-        status: '',
-        stage_of_processing: ''
-      },
       remarks: {
         textInput1: '',
         textInput2: '',
@@ -442,50 +450,54 @@ export default {
     }
   },
   methods: {
-    saveChanges() {
-    axios.post(`${API_BASE_URL}/update_details/${this.details.id}`, {
+
+  ///
+    openEditModal() {
+      this.EditModal = true;
+    },
+    closeEditModal() {
+      this.EditModal = false;
+      this.resetSelections();
+    },
+    resetSelections() {
+      this.selectedCategory = '';
+      this.selectedOngoingProcessing = '';
+    },
+    async fetchDetails() {
+      try {
+        const response = await axios.get(`/api/details/${this.detail_id}`);
+        this.details = response.data || {};
+      } catch (error) {
+        console.error('Error fetching details:', error);
+      }
+    },
+    async saveChanges() {
+      const payload = {
         status: this.selectedCategory,
         stage_of_processing: this.selectedOngoingProcessing,
-    })
-    .then(response => {
-        alert('Record updated successfully');
+      };
+
+      try {
+        await axios.post(`/api/details/${this.details.id}`, payload);
+        alert('Details updated successfully');
+        this.fetchDetails(); // Refresh details
         this.closeEditModal();
-        // Optionally, refresh or update the view
-    })
-    .catch(error => {
-        alert('There was an error updating the record');
-    });
-},
-    openEditModal() {
-    this.EditModal = true;
-  },
-  closeEditModal() {
-    this.EditModal = false;
-  },
-    async fetchDetails(id) {
-  try {
-    // Replace 'your-api-endpoint' with the actual endpoint and use the dynamic ID
-    const response = await axios.get(`${API_BASE_URL}/get_details/${id}`);
-    this.details = response.data;
-  } catch (error) {
-    console.error('Error fetching details:', error);
-    // Ensure `this.details` is available before accessing `status`
-    if (this.details) {
-      console.log(this.details.status);
-    } else {
-      console.log('No details available');
-    }
-  }
-},
-    view() {
-      // this.isVisible = true;
+      } catch (error) {
+        console.error('Error saving changes:', error);
+        alert('Failed to update details.');
+      }
+    },
+
+    toggleModal() {
       this.isVisible = !this.isVisible;
     },
+
     myAction(payload) {
       const { containerId, images } = payload;
       this.imagesfile[containerId] = images;
       console.log(`Uploaded images for ${containerId}:`, images);
     },
+
     handleFileUpload(fileKey, event) {
       if (event && event.target && event.target.files) {
         this.uploadFiles[fileKey] = Array.from(event.target.files);
@@ -496,15 +508,6 @@ export default {
       }
     },
 
-    async fetchDetails(id) {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/get_details/${id}`);
-        this.details = response.data;
-      } catch (error) {
-        console.error('Error fetching details:', error);
-        // Optional: handle failure, e.g. show an error message
-      }
-    },
     async getDetails() {
       try {
         const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
@@ -548,22 +551,19 @@ export default {
         const uploadsrequirements = uploads.data.filter(req => req.id_reference == this.$route.params.detail_id);
         console.log(uploadsrequirements);
 
-        // Clear existing files to avoid duplicates
         Object.keys(this.uploadFiles).forEach(key => {
           this.uploadFiles[key] = [];
         });
 
-        // Initialize uploadFiles object for file1 to file5
         for (let i = 1; i <= 5; i++) {
           const key = `file${i}`;
           this.uploadFiles[key] = [];
         }
 
-        // Assign fetched files to uploadFiles
         uploadsrequirements.forEach((req) => {
           for (let i = 1; i <= 5; i++) {
             const key = `file${i}`;
-            // Check if the file key exists in req and is not null
+            
             if (req.hasOwnProperty(key) && req[key] !== null) {
               try {
                 this.uploadFiles[key] = JSON.parse(req[key]);
@@ -578,34 +578,27 @@ export default {
         console.error('Error fetching reco details:', error);
       }
 
-      //images 1stkuhaon
       try {
         const images = await axios.get(`${API_BASE_URL}/get_images`);
         const imagesrequirements = images.data.filter(req => req.id_reference == this.$route.params.detail_id);
         console.log(imagesrequirements);
 
-        // Clear existing files to avoid duplicates
         Object.keys(this.imagesfile).forEach(key => {
           this.imagesfile[key] = [];
         });
 
-        // Initialize uploadFiles object for file1 to file5
-        for (let i = 1; i <= 5; i++) { //<------pila kabuok
+        for (let i = 1; i <= 5; i++) {
           const key = `file${i}`;
           this.imagesfile[key] = [];
         }
 
-        // Assign fetched files to uploadFiles
         imagesrequirements.forEach((req) => {
-          for (let i = 1; i <= 5; i++) {//<------pila kabuok
+          for (let i = 1; i <= 5; i++) {
             const key = `file${i}`;
 
-
-            // Check if the file key exists in req and is not null
             if (req.hasOwnProperty(key) && req[key] !== null) {
               try {
                 this.imagesfile[key] = JSON.parse(req[key]);
-                // console.log(this.imagesfile.file1)
               } catch (e) {
                 console.error(`Error parsing JSON for ${key}:`, e);
                 this.imagesfile[key] = [];
@@ -618,38 +611,26 @@ export default {
       } catch (error) {
         console.error('Error fetching reco details:', error);
       }
-      //diri
-
-
 
     },
     update() {
       const formData = new FormData();
       formData.append('id_reference', this.$route.params.detail_id);
-
-      if (this.selectedStatus === 'other') {
-        formData.append('mtsr', this.otherStatus);
-        formData.append('overallstatus', this.overallStatus);
-      } else {
-        formData.append('mtsr', this.selectedStatus);
-        formData.append('overallstatus', this.overallStatus);
-      }
+      formData.append('overallstatus', this.overallStatus);
 
       axios.post(`${API_BASE_URL}/update_mtsrstatus/${this.$route.params.detail_id}`, formData)
         .then(response => {
-          console.log('mtsr & overstatus added: ', response.data);
+          console.log('overallstatus added: ', response.data);
         })
         .catch(error => {
           console.error('Error:', error);
         });
 
-      // Prepare the data
       const formData1 = new FormData();
       formData1.append('id_reference', this.$route.params.detail_id);
 
       for (let i = 1; i <= 5; i++) {
         formData1.append(`input${i}`, this.remarks[`textInput${i}`]);
-
       }
 
       axios.post(`${API_BASE_URL}/update_remarks/${this.$route.params.detail_id}`, formData1)
@@ -660,7 +641,6 @@ export default {
           console.error('Error updating remarks:', error);
         });
 
-      // Prepare the data
       const formData2 = new FormData();
       formData2.append('id_reference', this.$route.params.detail_id);
 
@@ -678,30 +658,23 @@ export default {
           console.error('Error updating recommendations:', error);
         });
 
-
-      //ADD IMAGE/UPDATE //2nd
-      // Add images
       const formData4 = new FormData();
       formData4.append('id_reference', this.$route.params.detail_id);
 
-      // Iterate over each containerId in this.imagesfile
       for (const containerId in this.imagesfile) {
         if (this.imagesfile.hasOwnProperty(containerId)) {
-          // Generate the fileKey based on the containerId
-          // Ensure the containerId starts with "file" followed by a number (e.g., "file1", "file2", etc.)
+
           const fileKey = `file${containerId.replace('file', '')}`;
 
-          // Append each file in this.imagesfile[containerId] to formData4 under the correct key
           this.imagesfile[containerId].forEach(file => {
             if (file.file !== undefined) {
-              formData4.append(`${fileKey}[]`, file.file); // Append each file under the correct key
+              formData4.append(`${fileKey}[]`, file.file); 
               console.log([...formData4])
             }
           });
         }
       }
 
-      // Send FormData to server using axios
       axios.post(`${API_BASE_URL}/update_images/${this.$route.params.detail_id}`, formData4)
         .then(response => {
           console.log('Images uploaded successfully:', response.data);
@@ -710,32 +683,23 @@ export default {
           console.error('Error uploading images:', error);
         });
 
-      //dri
-
-
-      //upload files
       const formData3 = new FormData();
       formData3.append('id_reference', this.$route.params.detail_id);
 
-      // Check if uploadFiles is defined and not null
       if (this.uploadFiles) {
         for (const [key, files] of Object.entries(this.uploadFiles)) {
-          // Check if files is an array and has a length property
           if (Array.isArray(files) && files.length > 0) {
             for (let i = 0; i < files.length; i++) {
               const file = files[i];
               const validExtensions = ['pdf', 'doc', 'docx'];
-              // Check if file has a name and its extension is valid
               if (file.name && validExtensions.includes(file.name.split('.').pop().toLowerCase())) {
                 formData3.append(`${key}[]`, file);
               }
-              // else condition removed to suppress error message
             }
           }
         }
       }
 
-      // Send FormData to server using axios
       axios.post(`${API_BASE_URL}/update_uploads/${this.$route.params.detail_id}`, formData3)
         .then(response => {
           console.log('Record uploaded successfully:', response.data);
@@ -745,88 +709,12 @@ export default {
           console.error('Error uploading record:', error);
           window.location.reload()
         });
-        
-        
-          
-        
-        
-
     },
   },
   mounted() {
     this.getDetails();
-    this.fetchDetails(this.detail_id);
+    this.fetchDetails();
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.inputall {
-  display: flex;
-  height: 40px;
-  background-color: rgb(235, 234, 234);
-  color: black;
-  margin-left: 1px;
-  padding-left: 4px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  background-color: #ffffff;
-  color: black;
-}
-
-.inputimg1 {
-  text-align: left;
-  width: 400px;
-}
-
-.table3 {
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-.table4 {
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-/* Table 1 styles */
-.table1 {
-  width: 100%;
-  margin-bottom: 20px;
-  text-align: left;
-  border-collapse: collapse;
-}
-
-.th2 {
-  background-color: #e0b983;
-}
-
-.td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  width: 50%;
-  /* Set each column to occupy 50% of the table width */
-}
-
-.caption1 {
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
-  caption-side: top;
-}
-
-.textarea1 {
-  width: 100%;
-  padding: 6px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-</style>
 

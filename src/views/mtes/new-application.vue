@@ -12,40 +12,40 @@
         <div style="display: flex; justify-content: center;">
 
           <div class="button-container1">
-            <button @click="navigateToFTTAdashboard()" class="button1">
+            <button @click="navigateToFTTAdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Financial or Technical Assistance Agreement
             </button>
-            <button @click="navigateToMPSAdashboard()" class="button1">
+            <button @click="navigateToMPSAdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Mineral Production Sharing Agreement
             </button>
-            <button @click="navigateToEPdashboard()" class="button1">
+            <button @click="navigateToEPdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Exploration Permit
             </button>
-            <button @click="navigateToMPPdashboard()" class="button1">
+            <button @click="navigateToMPPdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Mineral Processing Permit
             </button>
-            <button @click="navigateToISAGdashboard()" class="button1">
+            <button @click="navigateToISAGdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Industrial Sand and Gravel Permit
             </button>
-            <button @click="navigateToOTPdashboard()" class="button1">
+            <button @click="navigateToOTPdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Ore Transport Permit
             </button>
           </div>
 
           <div class="button-container2">
-            <button @click="navigateToMBdashboard()" class="button1">
+            <button @click="navigateToMBdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Declaration of Minahang Bayan
             </button>
-            <button @click="navigateToSSMCdashboard()" class="button1">
+            <button @click="navigateToSSMCdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Small-Scale Mining Contract
             </button>
-            <button @click="navigateToMPLdashboard()" class="button1">
+            <button @click="navigateToMPLdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Mineral Processor’s License
             </button>
-            <button @click="navigateToAMTRDdashboard()" class="button1">
+            <button @click="navigateToAMTRDdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Accreditation as Mineral Trader, Retailer, and Dealer
             </button>
-            <button @click="navigateToMOEPdashboard()" class="button1">
+            <button @click="navigateToMOEPdashboard()" class="button1 text-white hover:text-gray-950 bg-green-800 hover:bg-green-100 p-5 m-2 h-auto text-base rounded cursor-pointer font-normal mb-5">
               Mineral Ore Export Permit
             </button>
           </div>
@@ -143,23 +143,8 @@ export default {
 }
 
 .button1 {
-  padding: 20px;
-  margin: 0.5rem;
   width: 415px;
-  /* Fixed width for all buttons */
-  height: auto;
-  font-size: 1rem;
-  border-radius: 5px;
   border: none;
-  background-color: #e0b983;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
   transition: background-color 0.3s;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
-.button1:hover {
-  background-color: #ffe0b4;
-  color: rgb(90, 89, 89);
 }
 </style>

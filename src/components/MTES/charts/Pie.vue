@@ -25,7 +25,7 @@ export default {
                 labels: ['Bukidnon', 'Misamis Oriental', 'Misamis Occidental', 'Lanao del Norte', 'Camiguin', 'Cagayan de Oro City', 'Iligan City'],
                 datasets: [
                     {
-                        backgroundColor: ['#A79277', '#D1BB7E', '#FFF2E1', '#EAD8C0', '#FFF2E1', '#D1BB9E', '#A79277'],
+                        backgroundColor: ['#9FE2BF', '#32CD32', '#008000', '#50C878', '#8A9A5B', '#355E3B','#C1E1C1'],
                         data: [0, 0, 0, 0, 0, 0, 0] // Initialize with zeros
                     }
                 ]

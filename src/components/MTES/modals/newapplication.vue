@@ -16,38 +16,38 @@
                 <h3 id="modal-title" class="flex justify-center text-xl leading-6 font-medium text-gray-900 p-4">Application Form</h3>
                 <div class="mt-2 flex justify-between">
                   <p class="mr-5">Applicant Name:</p>
-                  <input v-model="detailstoadd.tenement_name" type="text" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <input v-model="detailstoadd.tenement_name" type="text" class="w-72 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
                 <div class="mt-2 flex justify-between">
                     <p class="mr-5">Tenement Number:</p>
-                    <input v-model="detailstoadd.tenement_number" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="detailstoadd.tenement_number" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                 
                 
                 <div class="mt-2 flex justify-between">
                     <p class="mr-5">Location:</p>
-                    <select @change="handleRegion" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <select @change="handleRegion" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select an Region - - - -</option>
                         <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{region.region_name}}</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5"></p>
-                    <select @change="handleProvince" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"  >
+                    <select @change="handleProvince" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"  >
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select Province - - - -</option>
                         <option v-for="province in provinces" :value="province.province_code" :key="province.province_code" >{{ province.province_name }}</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5"></p>
-                    <select class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="handleCity" >
+                    <select class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="handleCity" >
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select City - - - -</option>
                         <option v-for="city in cities" :value="city.city_code" :key="city.city_code">{{ city.city_name }}</option>
                     </select>
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5"></p>
-                    <select class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="barangaysChange" >
+                    <select class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="barangaysChange" >
                         <option value="" disabled selected class="text-center text-gray-100">- - - - Select Barangay - - - -</option>
                         <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{barangay.brgy_name}}
                         </option>
@@ -55,19 +55,19 @@
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Commodity:</p>
-                    <input v-model="detailstoadd.commodity" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="detailstoadd.commodity" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                   <p class="mr-5">Area (HA):</p>
-                  <input v-model="detailstoadd.area_hectares" type="number" class="w-72 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <input v-model="detailstoadd.area_hectares" type="number" class="w-72 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
                 <div class="mt-2 flex justify-between">
                   <p class="mr-5">Date Filed:</p>
-                  <input v-model="detailstoadd.date_filed" type="date" class="text-center w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                  <input v-model="detailstoadd.date_filed" type="date" class="text-center w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
                 <div class="mt-2 flex justify-between">
                     <p class="mr-5">Others:</p>
-                    <input v-model="detailstoadd.others" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="detailstoadd.others" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                 </div>
 
                 <h3 class="flex justify-center text-base leading-6 font-medium text-gray-900 p-4">Applicant's Details</h3>
@@ -76,7 +76,7 @@
                     <p class="mr-5">Category:</p>
                     <select
                       v-model="selectedCategory"
-                      class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                       <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
                       <option value="Individual">Individual</option>
                       <option value="Corporation">Corporation</option>
@@ -90,15 +90,15 @@
 
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Authorized Representative:</p>
-                    <input v-model="detailstoadd.authorized_rep" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="detailstoadd.authorized_rep" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Contact Number:</p>
-                    <input v-model="contactnum" type="text" class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="contactnum" type="text" @input="formatContactNum" maxlength="11"  class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
                   <div class="mt-2 flex justify-between">
                     <p class="mr-5">Email Address:</p>
-                    <input v-model="detailstoadd.email" type="text" @input="formatContactNum" maxlength="11" required class="w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <input v-model="detailstoadd.email" type="text" required class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                   </div>
 
     <div class="flex justify-center mt-4 border-t">
@@ -138,7 +138,7 @@
     <!-- Conditional dropdown for "On-going Process" -->
     <div class="flex justify-between border-t" v-if="detailstoadd.status === 'On-going Process'">
       <p class="mr-5 mt-4">Stage of Processing:</p>
-      <select v-model="selectedOngoingProcessing" class="mt-4 w-72 pl-1 pr-1 bg-orange-100 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <select v-model="selectedOngoingProcessing" class="mt-4 w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
         <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
         <option value="Under Pre-Processing by Mining Tenement Evaluation Section">Under Pre-Processing by Mining Tenement Evaluation Section</option>
         <option value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
@@ -163,10 +163,10 @@
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-800 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
               Close
             </button>
-            <button @click="submit" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+            <button @click="submit" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
               Submit
             </button>
           </div>
@@ -299,12 +299,18 @@
       // Update status and close modal
       this.submissionStatus = 'Success!';
       this.showModal = false;
+
+      // Display alert message
+      alert('New application successfully added!');
+
+      // Refresh the page
+      window.location.reload();
     })
     .catch(error => {
       console.error('Error:', error);
       this.submissionStatus = 'Submission failed.';
     });
-}
+},
 
     }
   };

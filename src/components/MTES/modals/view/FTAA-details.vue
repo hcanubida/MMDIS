@@ -10,39 +10,39 @@
                 <table class="w-full border-collapse rounded-lg overflow-hidden">
                     <tbody>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Application Name:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Application Name:</td>
                             <td class="border py-2 px-4">{{ details.tenement_name }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Tenement Number:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Tenement Number:</td>
                             <td class="border py-2 px-4">{{ details.tenement_number }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Location:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Location:</td>
                             <td class="border py-2 px-4">{{ details.barangay }}, {{ details.city }}, {{ details.province }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Commodity:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Commodity:</td>
                             <td class="border py-2 px-4">{{ details.commodity }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Area (HA):</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Area (HA):</td>
                             <td class="border py-2 px-4">{{ details.area_hectares }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Date Filed:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Date Filed:</td>
                             <td class="border py-2 px-4">{{ details.date_filed }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Others:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Others:</td>
                             <td class="border py-2 px-4">{{ details.others }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-orange-200 w-60">Stage of Processing:</td>
+                            <td class="border font-bold py-2 px-4 bg-amber-200 w-60">Stage of Processing:</td>
                             <td class="border py-2 px-4">{{ details.stage_of_processing }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-orange-200 w-60">Status:</td>
+                            <td class="border font-bold py-2 px-4 bg-amber-200 w-60">Status:</td>
                             <td class="border py-2 px-4">{{ details.status }}</td>
                         </tr>
                     </tbody>
@@ -52,19 +52,19 @@
                 <table class="w-full border-collapse rounded-lg overflow-hidden">
                     <tbody>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Category:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Category:</td>
                             <td class="border py-2 px-4">{{ details.category }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Authorized Representative:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Authorized Representative:</td>
                             <td class="border py-2 px-4">{{ details.authorized_rep }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Contact Number:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Contact Number:</td>
                             <td class="border py-2 px-4">{{ details.contact_no }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-stone-300 w-60">Email:</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Email:</td>
                             <td class="border py-2 px-4">{{ details.email }}</td>
                         </tr>
                     </tbody>
@@ -72,8 +72,8 @@
             </div>
 
             <div class="flex justify-center mt-8 gap-4">
-                <button @click="navigateToMandatoryReqFTTA(detail_id)" class="w-auto px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">Next</button>
-                <button @click="Exit" type="button" class="w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">Close</button>
+                <button @click="navigateToMandatoryReqFTTA(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
+                <button @click="Exit" type="button" class="w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-300 hover:text-black">Close</button>
             </div>
         </div>
     </div>

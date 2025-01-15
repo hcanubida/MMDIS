@@ -1,11 +1,11 @@
 <template>
 
-<div id="page-001" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+<div v-if="currentPage === 0" id="page-001-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">   
     <img src="../../../assets/icons/Header.png" class="">
     <p class="mt-8 text-xl font-bold text-center" style="letter-spacing: 3px;">
         FACT SHEET / EVALUATION SHEET
     </p>
-    <div class="flex items-left flex-col ml-16">
+    <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Application Details' Table--> 
         <div class="">
             <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
@@ -162,15 +162,15 @@
             </table>
         </div>
     </div>
-    <div class="flex justify-center">
-    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    <div class="flex justify-center mt-auto">
+    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
 
-<div id="page-002" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+<div v-if="currentPage === 1" id="page-002-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">
     <img src="../../../assets/icons/Header.png" class="">
 
-    <div class="flex items-left flex-col ml-16 mt-8">
+    <div class="flex items-left flex-col ml-16 mt-8 flex-grow">
         <!-- Mandatory Requirements' Table -->
         <div>
             <table class="w-11/12 border border-gray-300">
@@ -260,13 +260,13 @@
         </div>
     </div>
     <div class="flex justify-center">
-    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
-<div id="page-003" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
+<div v-if="currentPage === 2" id="page-003-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">
     <img src="../../../assets/icons/Header.png" class="">
 
-    <div class="flex items-left flex-col ml-16">
+    <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Summary of Lacking Requirements' Table-->
         <div>
             <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
@@ -289,8 +289,8 @@
                             Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application
                             (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
                         </td>
-                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
-                            <p>{{ recommendation.textInput1 }}</p>
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
+                            <p>Remarks/Status:<br><span class="text-black">{{ remarks.textInput1 }}</span><br>Recommendation or Lacking Submission:<br><span class="text-red-500">{{ recommendation.textInput1 }}</span></p>
                         </td>
                     </tr>
                     <tr>
@@ -299,8 +299,8 @@
                             boundaries (in tabulated form) with major environmental features/ other projects
                             (prepared, sealed and signed by a deputized Geodetic Engineer)
                         </td>
-                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
-                            <p>{{ recommendation.textInput2 }}</p>
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
+                            <p>Remarks/Status:<br><span class="text-black">{{ remarks.textInput2 }}</span><br>Recommendation or Lacking Submission:<br><span class="text-red-500">{{ recommendation.textInput2 }}</span></p>
                         </td>
                     </tr>
 
@@ -308,8 +308,8 @@
                         <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             3. Two (2)-Year Exploration Work Program (MGB Form No. 5-4),
                             duly prepared, signed and sealed by a licensed Mining Engineer or Geologist</td>
-                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
-                            <p>{{ recommendation.textInput3 }}</p>
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
+                            <p>Remarks/Status:<br><span class="text-black">{{ remarks.textInput3 }}</span><br>Recommendation or Lacking Submission:<br><span class="text-red-500">{{ recommendation.textInput3 }}</span></p>
                         </td>
                     </tr>
 
@@ -320,8 +320,8 @@
                             4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the
                             Work Programs
                         </td>
-                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
-                            <p>{{ recommendation.textInput4 }}</p>
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
+                            <p>Remarks/Status:<br><span class="text-black">{{ remarks.textInput4 }}</span><br>Recommendation or Lacking Submission:<br><span class="text-red-500">{{ recommendation.textInput4 }}</span></p>
                         </td>
                     </tr>
 
@@ -329,14 +329,22 @@
                         <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             5. Affidavit of Undertaking (using MGB Form No.99-10)
                         </td>
-                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left text-red-600">
-                            <p>{{ recommendation.textInput5 }}</p>
+                        <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
+                            <p>Remarks/Status:<br><span class="text-black">{{ remarks.textInput5 }}</span><br>Recommendation or Lacking Submission:<br><span class="text-red-500">{{ recommendation.textInput5 }}</span></p>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="flex justify-center mt-auto">
+    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
+    </div>
+</div>
+<div v-if="currentPage === 3" id="page-004-content" class="bg-white border-t flex flex-col max-h-screen" style="width: 816px; height: 1276px; position: relative;">
+    <img src="../../../assets/icons/Header.png" class="">
 
+    <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Status of Application Table-->
         <div>
             <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
@@ -345,7 +353,7 @@
             <table class="w-11/12 border border-gray-300">
                 <thead>
                     <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th class="border text-xs pb-4"  style="width: 30%; font-weight: bold;">Mandatory Requirements</th>
+                        <th class="border text-xs pb-4 w-2/5"  style="font-weight: bold;">Mandatory Requirements</th>
                         <th class="border text-xs pb-4"  style="width: 70%; font-weight: bold;">Remarks / Status</th>
                     </tr>
                 </thead>
@@ -365,15 +373,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="flex justify-center">
-    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
-    </div>
-</div>
-<div id="page-004" class="bg-white border-t" style="width: 816px; height: 1276px; position: relative;">
-    <img src="../../../assets/icons/Header.png" class="">
-
-    <div class="flex items-left flex-col ml-16">
         <!--Overall Remarks/Recommendations' Table-->
         <div>
             <p class="font-bold text-left text-sm mt-8 mb-8" style="letter-spacing: 3px;">
@@ -407,12 +406,30 @@
             </p>
         </div> -->
     </div>
-    <div class="flex justify-center">
-    <img src="../../../assets/icons/Footer.png" class="" style="position: absolute; bottom: 0; width:80%;">
+    <div class="flex justify-center mt-auto">
+    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
+
+<!-- Buttons outside the page (outside the content container) -->
+<div class="absolute top-1/2 transform -translate-y-1/2 left-0 z-10">
+  <button @click="goBack" class="bg-blue-500 text-white px-4 py-2 rounded-full">
+    <
+  </button>
+</div>
+
+<div class="absolute top-1/2 transform -translate-y-1/2 right-0 z-10">
+  <button @click="goNext" class="bg-blue-500 text-white px-4 py-2 rounded-full">
+    >
+  </button>
+</div>
+
 <!-- Button to trigger the download of all folios as PDFs -->
-<button @click="downloadAllPDFs" class="bg-green-500 rounded-lg border m-4 p-2">Download</button>
+<!-- <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
+  <button @click="downloadAllPDFs" class="bg-green-500 text-white px-4 py-2 rounded-full mb-4">
+    Download PDF
+  </button>
+</div> -->
 </template>
 
 
@@ -455,47 +472,58 @@ export default {
                 textInput4: '',
                 textInput5: '',
             },
-
+            currentPage: 0, // Current page index (starts from 0 for page-001)
         };
     },
     methods: {
-        downloadAllPDFs() {
-            const folioIds = ['page-001', 'page-002', 'page-003', 'page-004'];
-            const zip = new JSZip(); // Create a new ZIP instance
-
-            // Create a promise array for each PDF generation
-            const pdfPromises = folioIds.map(folioId => {
-                return new Promise((resolve, reject) => {
-                    const element = document.getElementById(folioId);
-                    const options = {
-                        filename: `${folioId}.pdf`,  // Set the filename
-                        html2canvas: { scale: 2 },   // Improve the quality of the PDF
-                        jsPDF: { 
-                            unit: 'mm', 
-                            format: [216, 356],  // Set to legal size (216 x 356 mm)
-                            orientation: 'portrait' // Set paper orientation to portrait
-                        },
-                    };
-                    
-                    // Generate the PDF and save it to a Blob
-                    html2pdf().from(element).set(options).outputPdf('blob').then((pdfBlob) => {
-                        // Add the PDF Blob to the ZIP file
-                        zip.file(`${folioId}.pdf`, pdfBlob);
-                        resolve();
-                    }).catch(reject);
-                });
-            });
-
-            // After all PDFs are generated, create and download the ZIP file
-            Promise.all(pdfPromises).then(() => {
-                zip.generateAsync({ type: 'blob' }).then((content) => {
-                    // Save the ZIP file
-                    saveAs(content, 'evaluation-sheet.zip');
-                });
-            }).catch((error) => {
-                console.error("Error generating PDFs:", error);
-            });
+        goNext() {
+            if (this.currentPage < 3) {
+                this.currentPage++;
+            }
         },
+        goBack() {
+            if (this.currentPage > 0) {
+                this.currentPage--;
+            }
+        },
+
+        // downloadAllPDFs() {
+        //     const folioIds = ['page-001', 'page-002', 'page-003', 'page-004'];
+        //     const zip = new JSZip(); // Create a new ZIP instance
+
+        //     // Create a promise array for each PDF generation
+        //     const pdfPromises = folioIds.map(folioId => {
+        //         return new Promise((resolve, reject) => {
+        //             const element = document.getElementById(folioId);
+        //             const options = {
+        //                 filename: `${folioId}.pdf`,  // Set the filename
+        //                 html2canvas: { scale: 2 },   // Improve the quality of the PDF
+        //                 jsPDF: { 
+        //                     unit: 'mm', 
+        //                     format: [216, 356],  // Set to legal size (216 x 356 mm)
+        //                     orientation: 'portrait' // Set paper orientation to portrait
+        //                 },
+        //             };
+                    
+        //             // Generate the PDF and save it to a Blob
+        //             html2pdf().from(element).set(options).outputPdf('blob').then((pdfBlob) => {
+        //                 // Add the PDF Blob to the ZIP file
+        //                 zip.file(`${folioId}.pdf`, pdfBlob);
+        //                 resolve();
+        //             }).catch(reject);
+        //         });
+        //     });
+
+        //     // After all PDFs are generated, create and download the ZIP file
+        //     Promise.all(pdfPromises).then(() => {
+        //         zip.generateAsync({ type: 'blob' }).then((content) => {
+        //             // Save the ZIP file
+        //             saveAs(content, 'evaluation-sheet.zip');
+        //         });
+        //     }).catch((error) => {
+        //         console.error("Error generating PDFs:", error);
+        //     });
+        // },
 
         async fetchDetails() {
             //Details applicants
@@ -583,11 +611,9 @@ export default {
                 console.error('Error fetching reco details:', error);
             }
         },
-
     },
     mounted() {
         this.fetchDetails();
     },
 }
-
 </script>

@@ -2,12 +2,12 @@
   <div class="fttatable">
     <!-- Status Section  -->
     <div class="flex justify-center">
-      <p class="m-8 bg-orange-300 p-2">On-going Process: {{ statusCount('On-going Process') }}</p>
-      <p class="m-8 bg-red-300 p-2">Denied: {{ statusCount('Denied') }}</p>
-      <p class="m-8 bg-emerald-300 p-2">With Order of Finality: {{ statusCount('With Order of Finality') }}</p>
-      <p class="m-8 bg-emerald-300 p-2">Issued: {{ statusCount('Issued') }}</p>
-      <p class="m-8 bg-emerald-300 p-2">Endorsed to MGB CO for Clearance: {{ statusCount('Endorsed to MGB CO for Clearance') }}</p>
-      <p class="m-8 bg-emerald-300 p-2">Endorsed to MGB CO for Approval: {{ statusCount('Endorsed to MGB CO for Approval') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">On-going Process: {{ statusCount('On-going Process') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">Denied: {{ statusCount('Denied') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">With Order of Finality: {{ statusCount('With Order of Finality') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">Issued: {{ statusCount('Issued') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">Endorsed to MGB CO for Clearance: {{ statusCount('Endorsed to MGB CO for Clearance') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">Endorsed to MGB CO for Approval: {{ statusCount('Endorsed to MGB CO for Approval') }}</p>
     </div>
 
     <!-- Search and Add Section -->
@@ -21,7 +21,7 @@
         <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Tenement Name or Location of the application ..." required />
       </div>
       <div class="flex lg:justify-end mb-5">
-        <button @click="navigateTomodal" class="text-dark bg-orange-200 hover:bg-red-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center mr-8">New Application<img class="w-4 m-2" src="../../../assets/icons/plus.png"></button>
+        <button @click="navigateTomodal" class="text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center mr-8">New Application<img class="w-4 m-2" src="../../../assets/icons/plus.png"></button>
       </div>
     </div>
 
@@ -43,7 +43,7 @@
     <div class="ftta_scrollable">
       <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
         <thead class="sticky top-0 z-50 border-y-50" style="z-index: 1;">
-          <tr style="background-color: #e6cfaf;">
+          <tr class="bg-green-800 text-white">
             <th class="border text-center p-2">Stages of Processing</th>
             <th class="border text-center p-2 cursor-pointer" @click="sortmethod('status')">
               Status
