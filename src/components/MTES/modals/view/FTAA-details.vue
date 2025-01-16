@@ -73,7 +73,7 @@
 
             <div class="flex justify-center mt-8 gap-4">
                 <button @click="navigateToMandatoryReqFTTA(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
-                <button @click="Exit" type="button" class="w-auto px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-300 hover:text-black">Close</button>
+                <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md  hover:bg-red-700 bg-red-800 text-white">Close</button>
             </div>
         </div>
     </div>
@@ -123,7 +123,7 @@ export default {
             }
         },
         navigateToMandatoryReqFTTA(detail_id) {
-            window.location.href = `/ReqFTTA/${detail_id}`;
+            window.location.href = `/MandatoryRequirements/${detail_id}`;
         },
     }
 }

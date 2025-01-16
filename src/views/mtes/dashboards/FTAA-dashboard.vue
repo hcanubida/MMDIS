@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import appdet from "../../../components/MTES/modals/newapplication.vue"
+import appdet from "../../../components/MTES/modals/add/ftta-newapplication.vue"
 import viewdetail from '../../../components/MTES/modals/view/FTAA-details.vue'
 import Header from '../../../components/header.vue'; 
 import UserBtn from '../../../components/user-dbbtn.vue'; 

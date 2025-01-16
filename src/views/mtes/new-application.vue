@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <!-- Header and User Button Section -->
-    <div class="flex">
-        <Header />
-        <UserBtn />
-    </div>
+  <div class="flex h-2">
+      <Header />
+      <UserBtn />
+  </div>
 
-    <div class="flex justify-center items-center h-1/4">
+  <div class="background-container flex justify-center items-center">
+    <div class="flex justify-center items-center h-1/4 bg-gray-300 bg-opacity-50 rounded-lg w-1/2">
       <div class="new-app-content">
         <h1 style="font-size: 50px; margin-bottom: 30px; margin-top: -150px;">New Applications</h1>
         <div style="display: flex; justify-content: center;">
@@ -66,53 +65,57 @@ import UserBtn from '../../components/user-dbbtn.vue'
 import router from '../../router/index';
 
 export default {
-
   methods: {
     navigateToFTTAdashboard() {
-      // Use router.push to navigate to '/newappcontent'
       router.push('/ftta');
     },
     navigateToEPdashboard() {
-      // Use router.push to navigate to '/newappcontent'
       router.push('/ep');
     },
     navigateToMPSAdashboard() {
-      router.push('/mpsa')
+      router.push('/mpsa');
     },
     navigateToISAGdashboard() {
-      router.push('/isag')
+      router.push('/isag');
     },
     navigateToMBdashboard() {
-      router.push('/mb')
+      router.push('/mb');
     },
     navigateToMPLdashboard() {
-      router.push('/mpl')
+      router.push('/mpl');
     },
     navigateToMPPdashboard() {
-      router.push('/mpp')
+      router.push('/mpp');
     },
     navigateToOTPdashboard() {
-      router.push('/otp')
+      router.push('/otp');
     },
     navigateToSSMCdashboard() {
-      router.push('/ssmc')
+      router.push('/ssmc');
     },
     navigateToAMTRDdashboard() {
-      router.push('/amtrd')
+      router.push('/amtrd');
     },
     navigateToMOEPdashboard() {
-      router.push('/moep')
+      router.push('/moep');
     },
   }
 };
 </script>
 
 <style scoped>
+.background-container {
+  background-image: url('/src/assets/bg-img.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
 .panel {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .new-app-content {
@@ -128,18 +131,14 @@ export default {
 .button-container1 {
   display: flex;
   flex-direction: column;
-  /* Align buttons vertically */
   align-items: center;
-  /* Align buttons horizontally */
   margin-right: 50px;
 }
 
 .button-container2 {
   display: flex;
   flex-direction: column;
-  /* Align buttons vertically */
   align-items: center;
-  /* Align buttons horizontally */
 }
 
 .button1 {

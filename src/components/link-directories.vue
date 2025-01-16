@@ -1,8 +1,8 @@
 <template>
   <!-- drawer init and show -->
-  <div class="text-center flex ml-4 mt-32 ">
+  <div class="text-center flex ml-4">
     <button
-      class="fixed text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+      class="fixed text-black bg-amber-400 hover:bg-amber-100 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
       type="button"
       @click="toggleDrawer"
       aria-controls="drawer-navigation"
@@ -50,10 +50,10 @@
           <a
             href="http://202.137.117.84:8001/"
             target="_blank"
-            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-black"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
           >
             <svg
-              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-black"
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -69,10 +69,10 @@
           <a
             href="http://172.31.10.35:8007/rso/"
             target="_blank"
-            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-black"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
           >
             <svg
-              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-black"
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -88,10 +88,10 @@
           <a
             href="https://www.facebook.com/mgbregionxofficialpage"
             target="_blank"
-            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-black"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
           >
             <svg
-              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-black"
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -107,10 +107,10 @@
           <a
             href="https://region10.mgb.gov.ph/"
             target="_blank"
-            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-black"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
           >
             <svg
-              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-black"
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"

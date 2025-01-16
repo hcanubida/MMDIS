@@ -1,7 +1,7 @@
 <!-- header.vue -->
 
 <template>
-      <div>
+      <div class="mt-32">
         <Link />
       </div>
 

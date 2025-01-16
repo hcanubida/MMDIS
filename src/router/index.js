@@ -52,18 +52,7 @@ import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
 import EPtable from "../views/mtes/tables/EP-table.vue";
 
 // MTES Mandatory Requirements
-// import ReqFTTA2 from "../views/mtes/requirements/2FTTA.vue";
-import ReqFTTA from "../views/mtes/requirements/FTTAmandatoryReq.vue";
-import ReqEP from "../views/mtes/requirements/EPmandatoryReq.vue";
-import ReqMPSA from "../views/mtes/requirements/MPSAmandatoryReq.vue";
-import ReqISAG from "../views/mtes/requirements/ISAGmandatory.vue";
-import ReqMPP from "../views/mtes/requirements/MPPmandatory.vue";
-import ReqMB from "../views/mtes/requirements/MBmandatory.vue";
-import ReqAMTRD from "../views/mtes/requirements/AMTRDmandatoryReq.vue";
-import ReqOTP from "../views/mtes/requirements/OTPmandatoryReq.vue";
-import ReqMPL from "../views/mtes/requirements/MPLmandatoryReq.vue";
-import ReqSSMC from "../views/mtes/requirements/SSMCmandatoryReq.vue";
-import ReqMOEP from "@/views/mtes/requirements/MOEPmandatoryReq.vue";
+import MandatoryRequirements from "../views/mtes/requirements/mandatoryReq.vue";
 
 // MTES Fax Sheets
 import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
@@ -156,18 +145,7 @@ const routes = [
   { path: "/xpsample", component: xpsample, meta: { requiresAuth: true } },
 
   // Mandatory Requirements
-  // { path: "/ReqFTTA/:detail_id", component: ReqFTTA2 },
-  { path: "/ReqFTTA/:detail_id", component: ReqFTTA },
-  { path: "/ReqEP/:detail_id1", component: ReqEP },
-  { path: "/ReqMPSA/:detail_id2", component: ReqMPSA },
-  { path: "/ReqISAG/:detail_id3", component: ReqISAG },
-  { path: "/ReqMPP/:detail_id5", component: ReqMPP },
-  { path: "/ReqMB/:detail_id4", component: ReqMB },
-  { path: "/ReqAMTRD/:detail_id9", component: ReqAMTRD },
-  { path: "/ReqOTP/:detail_id6", component: ReqOTP },
-  { path: "/ReqMPL/:detail_id8", component: ReqMPL },
-  { path: "/ReqSSMC/:detail_id7", component: ReqSSMC },
-  { path: "/ReqMOEP/:detail_id10", component: ReqMOEP },
+  { path: "/MandatoryRequirements/:detail_id", component: MandatoryRequirements },
 ];
 
 // Create router instance

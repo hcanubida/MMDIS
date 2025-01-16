@@ -31,7 +31,7 @@
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
                 ref="fileInput1"
-                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file1" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
@@ -65,7 +65,7 @@
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
                 ref="fileInput2"
-                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file2" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
@@ -99,7 +99,7 @@
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
                 ref="fileInput3"
-                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file3" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
@@ -135,7 +135,7 @@
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
                 ref="fileInput4"
-                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file ) in uploadFiles.file4" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
@@ -169,7 +169,7 @@
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
                 ref="fileInput5"
-                class="flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+                class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file ) in uploadFiles.file5" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
@@ -435,20 +435,20 @@ export default {
         file4: [],
         file5: []
       },
-      created() {
-        this.fetchDetails(this.id);
-  },
+  //     created() {
+  //       this.fetchDetails(this.id);
+  // },
 
     };
     
   },
-  watch: {
-    selectedStatus(newValue) {
-      if (newValue !== 'other') {
-        this.otherStatus = '';
-      }
-    }
-  },
+  // watch: {
+  //   selectedStatus(newValue) {
+  //     if (newValue !== 'other') {
+  //       this.otherStatus = '';
+  //     }
+  //   }
+  // },
   methods: {
 
   ///
@@ -463,14 +463,14 @@ export default {
       this.selectedCategory = '';
       this.selectedOngoingProcessing = '';
     },
-    async fetchDetails() {
-      try {
-        const response = await axios.get(`/api/details/${this.detail_id}`);
-        this.details = response.data || {};
-      } catch (error) {
-        console.error('Error fetching details:', error);
-      }
-    },
+    // async fetchDetails() {
+    //   try {
+    //     const response = await axios.get(`/api/details/${this.detail_id}`);
+    //     this.details = response.data || {};
+    //   } catch (error) {
+    //     console.error('Error fetching details:', error);
+    //   }
+    // },
     async saveChanges() {
       const payload = {
         status: this.selectedCategory,
@@ -509,6 +509,14 @@ export default {
     },
 
     async getDetails() {
+    //Details applicants
+      try {
+        const response = await axios.get(`${API_BASE_URL}/get_details/`);
+        this.details = response.data.filter(det => det.id == this.$route.params.detail_id);
+      } catch (error) {
+        console.error('Error fetching details:', error);
+      }
+      
       try {
         const overallstatus = await axios.get(`${API_BASE_URL}/get_mtsrstatus`);
         const filteredoverall = overallstatus.data.find(req => req.id_reference === parseInt(this.$route.params.detail_id));
@@ -713,7 +721,7 @@ export default {
   },
   mounted() {
     this.getDetails();
-    this.fetchDetails();
+    // this.fetchDetails();
   },
 }
 </script>

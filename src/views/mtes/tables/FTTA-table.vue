@@ -35,7 +35,7 @@
           <p>{{ selectedDetail?.comments || 'No comments available' }}</p>
         </div>
         <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
-          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer  bg-[#e6cfaf] hover:bg-[#d6bf9f]">Close</button>
+          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer hover:bg-red-700 bg-red-800 text-white">Close</button>
         </div>
       </div>
     </div>
@@ -157,7 +157,7 @@ export default {
     async fetchDetails() {
       try {
         const response = await axios.get(`${API_BASE_URL}/get_details/`);
-        this.details = response.data;
+        this.details = response.data.filter(det => det.application == 'ftta');
       } catch (error) {
         console.error('Error fetching details:', error);
       }
