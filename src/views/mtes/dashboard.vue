@@ -1,13 +1,11 @@
 <template>
-    <div>
-      <!-- Header and User Button Section -->
-      <div class="flex">
-            <Header />
-            <UserBtn />
-      </div>
 
-
-      <div class="justify-center items-center flex mt-64">
+  <div class="flex h-2">
+      <Header />
+      <UserBtn />
+  </div>
+    <div class="background-container flex justify-center items-center ">
+      <div class="justify-center items-center flex">
         <div class="flex flex-col justify-center content-center p-5" style="border-radius: 25px; width: 80vw; max-width: 700px; height: 300px;">
             <div class="flex justify-center mb-6">
                 <button class="button text-2xl rounded h-24 text-white bg-green-800 hover:bg-green-300 hover:text-gray-950 cursor-pointer ease-in-out duration-300  " @click="navigateToFirstPage">NEW APPLICATIONS</button>
@@ -59,4 +57,12 @@
   .button:hover {
     transition: 0.3s;
   }
+
+  .background-container {
+  background-image: url('/src/assets/bg-img.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
   </style>

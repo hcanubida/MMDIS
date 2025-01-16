@@ -1,5 +1,5 @@
 <template>
-    <div class="eptable">
+    <div class="table">
       <!-- Status Section  -->
       <div class="flex justify-center">
         <p class="m-8 border border-green-800 p-2 rounded-lg">On-going Process: {{ statusCount('On-going Process') }}</p>
@@ -40,7 +40,7 @@
         </div>
       </div>
   
-      <div class="ep_scrollable">
+      <div class="scrollable">
         <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
           <thead class="sticky top-0 z-50 border-y-50" style="z-index: 1;">
             <tr class="bg-green-800 text-white">
@@ -196,14 +196,14 @@
   </script>
   
   <style scoped>
-  .eptable {
+  .table {
     flex: auto;
     flex-direction: column;
     border-collapse: collapse;
     width: 100%;
   }
   
-  .ep_scrollable {
+  .scrollable {
     margin: 15px;
     box-shadow: 2px 3px 5px rgb(175, 175, 175);
     max-height: 369px;

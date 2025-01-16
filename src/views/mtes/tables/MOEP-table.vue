@@ -1,5 +1,5 @@
 <template>
-    <div class="isagtable">
+    <div class="table">
       <!-- Status Section  -->
       <div class="flex justify-center">
         <p class="m-8 border border-green-800 p-2 rounded-lg">On-going Process: {{ statusCount('On-going Process') }}</p>
@@ -196,14 +196,14 @@
   </script>
   
   <style scoped>
-  .isagtable {
+  .table {
     flex: auto;
     flex-direction: column;
     border-collapse: collapse;
     width: 100%;
   }
   
-  .isag_scrollable {
+  .scrollable {
     margin: 15px;
     box-shadow: 2px 3px 5px rgb(175, 175, 175);
     max-height: 369px;

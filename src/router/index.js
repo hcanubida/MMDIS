@@ -49,7 +49,7 @@ import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
 
 // MTES Tables
 import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
-import EPtable from "../views/mtes/tables/EP-table.vue";
+import  table from "../views/mtes/tables/EP-table.vue";
 
 // MTES Mandatory Requirements
 import MandatoryRequirements from "../views/mtes/requirements/mandatoryReq.vue";
