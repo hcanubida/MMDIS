@@ -36,7 +36,7 @@
   </template>
   
   <script setup>
-  import appdet from "../../../components/MTES/modals/add/MPP-add.vue"
+  import appdet from "../../../components/MTES/modals/add/mpp-newapplication.vue"
   import viewdetail from '../../../components/MTES/modals/view/MPP-details.vue'
   import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'

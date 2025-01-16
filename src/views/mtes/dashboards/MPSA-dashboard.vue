@@ -36,7 +36,7 @@
   </template>
   
   <script setup>
-  import appdet from "../../../components/MTES/modals/add/MPSA-add.vue"
+  import appdet from "../../../components/MTES/modals/add/mpsa-newapplication.vue"
   import viewdetail2 from '../../../components/MTES/modals/view/MPSA-details.vue'
   import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'

@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import appdet from "../../../components/MTES/modals/add/MOEP-add.vue"
+import appdet from "../../../components/MTES/modals/add/moep-newapplication.vue"
 import viewdetail from '../../../components/MTES/modals/view/MOEP-details.vue'
 import qwe from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'

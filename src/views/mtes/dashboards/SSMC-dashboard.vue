@@ -37,7 +37,7 @@
   </template>
   
   <script setup>
-  import appdet from "../../../components/MTES/modals/add/SSMC-add.vue"
+  import appdet from "../../../components/MTES/modals/add/ssmc-newapplication.vue"
   import viewdetail2 from '../../../components/MTES/modals/view/SSMC-details.vue'
   import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'

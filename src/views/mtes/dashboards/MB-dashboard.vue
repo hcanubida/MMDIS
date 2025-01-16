@@ -36,7 +36,7 @@
   </template>
   
   <script setup>
-  import appdet from "../../../components/MTES/modals/add/MB-add.vue"
+  import appdet from "../../../components/MTES/modals/add/mb-newapplication.vue"
   import viewdetail from '../../../components/MTES/modals/view/MB-details.vue'
   import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'

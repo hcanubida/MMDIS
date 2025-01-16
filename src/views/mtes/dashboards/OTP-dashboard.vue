@@ -36,7 +36,7 @@
   </template>
   
   <script setup>
-  import appdet from "../../../components/MTES/modals/add/OTP-add.vue"
+  import appdet from "../../../components/MTES/modals/add/otp-newapplication.vue"
   import viewdetail2 from '../../../components/MTES/modals/view/OTP-details.vue'
   import qwe from '../../../components/header.vue'
   import Pie from '../../../components/MTES/charts/Pie.vue'
