@@ -1,17 +1,16 @@
 <template>
 
   <div class="">
-    <!-- Header -->
-    <div>
-      <qwe />
-      <userbutton />
+    <!-- Header and User Button Section -->
+    <div class="flex">
+        <Header />
+        <UserBtn />
     </div>
-    <!-- Text -->
-    <div class="textz">
-      <p class="text1">Mineral Ore Export Permit</p>
-      <h2 class="text2">
-        SUMMARY
-      </h2>
+  
+    <!-- Title Section -->
+    <div class="flex flex-col mt-18 justify-center font-bold text-center">
+        <h1 class="text-4xl">Mineral Ore Export Permit</h1>
+        <h2 class="text-2xl pt-2">SUMMARY</h2>
     </div>
 
     <div v-if="addDetail10">
@@ -19,17 +18,19 @@
     </div>
 
     <div v-if="viewDetail10">
-      <viewdetail :detail_id10="detail_id10" />
+      <viewdetail10 :detail_id10="detail_id10" />
     </div>
 
     <!-- Charts for summary  -->
-    <div class="chart1">
-      <Pie class="pie1" :application="application" />
-      <BarChart class="bar1" :application="application" />
+    <div class="flex flex-row justify-center top-0 left-0 right-0 w-auto mt-8">
+      <Pie class="w-1/5 ml-12" :application="application" />
+      <BarChart class="ml-8" :application="application" />
     </div>
 
+
+
     <!-- Table list -->
-    <div class="table">
+    <div class="w-screen"> 
       <Tableview />
     </div>
   </div>
@@ -37,12 +38,12 @@
 
 <script setup>
 import appdet from "../../../components/MTES/modals/add/moep-newapplication.vue"
-import viewdetail from '../../../components/MTES/modals/view/MOEP-details.vue'
-import qwe from '../../../components/header.vue'
+import viewdetail10 from '../../../components/MTES/modals/view/MOEP-details.vue'
+import Header from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
 import Tableview from '../../mtes/tables/MOEP-table.vue'
-import userbutton from '../../../components/user-dbbtn.vue'
+import UserBtn from '../../../components/user-dbbtn.vue'
 import axios from 'axios';
 import { API_BASE_URL } from '../../../config';
 
@@ -98,38 +99,5 @@ export { addDetail10, detailToggle10, viewDetail10, viewToggle10, detail_id10 }
 .text2 {
   font-weight: 00;
 }
-
-.chart1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin-top: 13%;
-  width: auto;
-}
-
-.pie1 {
-  width: 400px;
-  margin-left: 50px;
-}
-
-.bar1 {
-  margin-left: 30px;
-}
-
-.table {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin-top: 34%;
-}
-
 
 </style>

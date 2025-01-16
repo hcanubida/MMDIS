@@ -8,7 +8,7 @@
       </div>
       <!-- Text -->
       <div class="textz">
-        <p class="text1">Industrial Sand and Gravel Permit</p>
+        <p class="text1">Declaration of Minahang Bayan</p>
         <h2 class="text2">
           SUMMARY
         </h2>
