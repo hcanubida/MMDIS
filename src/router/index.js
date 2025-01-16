@@ -56,17 +56,6 @@ import MandatoryRequirements from "../views/mtes/requirements/mandatoryReq.vue";
 
 // MTES Fax Sheets
 import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
-// import FaxEP from "../views/mtes/faxsheet/ep-factsheet.vue";
-// import FaxISAG from "../views/mtes/faxsheet/isag-factsheet.vue";
-// import FaxMB from "../views/mtes/faxsheet/mb-factsheet.vue";
-// import FaxMPP from "../views/mtes/faxsheet/mpp-factsheet.vue";
-// import FaxMPSA from "../views/mtes/faxsheet/mpsa-factsheet.vue";
-// import FaxOTP from "../views/mtes/faxsheet/otp-factsheet.vue";
-// import FaxSSMC from "../views/mtes/faxsheet/ssmc-factsheet.vue";
-// import FaxMPL from "../views/mtes/faxsheet/mpl-facsheet.vue";
-// import FaxMOEP from "../views/mtes/faxsheet/moep-factsheet.vue";
-// import FaxAMTRD from "../views/mtes/faxsheet/amtrd-factsheet.vue";
-// import xpsample from "../views/mtes/faxsheet/xpfaxtsheet.vue";
 
 // Components (modals, charts, etc.)
 import demo from "../components/MTES/modals/uploaad.vue";
@@ -117,18 +106,8 @@ const routes = [
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
   { path: "/table", component: FTTAtable },
 
-  // MTES Fax sheets
+  // MTES Fax sheet
   { path: "/FTTAFax", component: FaxFTTA, meta: { requiresAuth: true } },
-  // { path: "/EpFax", component: FaxEP, meta: { requiresAuth: true } },
-  // { path: "/ISAGFax", component: FaxISAG, meta: { requiresAuth: true } },
-  // { path: "/MBFax", component: FaxMB, meta: { requiresAuth: true } },
-  // { path: "/MPPFax", component: FaxMPP, meta: { requiresAuth: true } },
-  // { path: "/MPSAFax", component: FaxMPSA, meta: { requiresAuth: true } },
-  // { path: "/OTPFax", component: FaxOTP, meta: { requiresAuth: true } },
-  // { path: "/SSMCFax", component: FaxSSMC, meta: { requiresAuth: true } },
-  // { path: "/MPLFax", component: FaxMPL, meta: { requiresAuth: true } },
-  // { path: "/MOEPFax", component: FaxMOEP, meta: { requiresAuth: true } },
-  // { path: "/AMTRDFax", component: FaxAMTRD, meta: { requiresAuth: true } },
 
   // Dashboards
   { path: "/ftta", component: fttadashboard, meta: { requiresAuth: true } },
@@ -142,7 +121,6 @@ const routes = [
   { path: "/ssmc", component: ssmcdashboard, meta: { requiresAuth: true } },
   { path: "/amtrd", component: amtrddashboard, meta: { requiresAuth: true } },
   { path: "/moep", component: moepddashboard, meta: { requiresAuth: true } },
-  // { path: "/xpsample", component: xpsample, meta: { requiresAuth: true } },
 
   // Mandatory Requirements
   { path: "/MandatoryRequirements/:detail_id", component: MandatoryRequirements },
