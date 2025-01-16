@@ -106,7 +106,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { API_BASE_URL } from '../../../config';
-import { addDetail1, viewDetail1, detailToggle1, detail_id1 } from '../dashboards/EP-dasboard.vue';
+import { addDetail1, viewDetail1, detailToggle1, detail_id1 } from '../dashboards/EP-dashboard.vue';
 
 export default {
   name: 'typeofapp',

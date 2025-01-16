@@ -63,7 +63,7 @@ import { addDetail3 } from '../../../views/mtes/dashboards/ISAG-dashboard.vue';
 import { addDetail4 } from '../../../views/mtes/dashboards/MB-dashboard.vue';
 import { addDetail2 } from '../../../views/mtes/dashboards/MPSA-dashboard.vue';
 import { addDetail } from '../../../views/mtes/dashboards/FTAA-dashboard.vue';
-import { addDetail1 } from '../../../views/mtes/dashboards/EP-dasboard.vue';
+import { addDetail1 } from '../../../views/mtes/dashboards/EP-dashboard.vue';
 import { addDetail5 } from '../../../views/mtes/dashboards/MPP-dashboard.vue';
 import { API_BASE_URL } from '../../../config'
 

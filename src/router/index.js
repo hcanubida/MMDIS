@@ -36,7 +36,7 @@ import permitpage from "../views/mtes/permit.vue";
 
 // MTES Dashboards
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
-import epdashboard from "../views/mtes/dashboards/EP-dasboard.vue";
+import epdashboard from "../views/mtes/dashboards/EP-dashboard.vue";
 import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue";
 import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue";
 import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue";

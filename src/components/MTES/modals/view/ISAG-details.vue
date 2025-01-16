@@ -80,7 +80,7 @@
   </template>
   
   <script>
-  import { viewDetail1 } from '../../../../views/mtes/dashboards/EP-dasboard.vue';
+  import { viewDetail1 } from '../../../../views/mtes/dashboards/EP-dashboard.vue';
   import axios from 'axios';
   import { API_BASE_URL } from '../../../../config'
   
