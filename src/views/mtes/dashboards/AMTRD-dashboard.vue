@@ -13,12 +13,12 @@
         <h2 class="text-2xl pt-2">SUMMARY</h2>
     </div>
 
-    <div v-if="addDetail9">
+    <div v-if="addDetail">
       <appdet></appdet>
     </div>
 
-    <div v-if="viewDetail9">
-      <viewdetail :detail_id9="detail_id9" />
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
     </div>
 
     <!-- Charts for summary  -->
@@ -60,19 +60,19 @@ onMounted(async () => {
 <script>
 import { ref } from 'vue';
 
-const detail_id9 = ref('')
-const addDetail9 = ref(false)
-const detailToggle9 = () => {
-  addDetail9.value = true
+const detail_id = ref('')
+const addDetail = ref(false)
+const detailToggle = () => {
+  addDetail.value = true
 };
 const application = 'amtrd'
 
-const viewDetail9 = ref(false)
-const viewToggle9 = () => {
-  viewDetail9.value = true
+const viewDetail = ref(false)
+const viewToggle = () => {
+  viewDetail.value = true
 };
 
-export { addDetail9, detailToggle9, viewDetail9, viewToggle9, detail_id9 }
+export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
 
 </script>
 

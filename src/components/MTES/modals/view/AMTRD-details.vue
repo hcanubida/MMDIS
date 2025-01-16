@@ -72,7 +72,7 @@
             </div>
   
             <div class="flex justify-center mt-8 gap-4">
-                <button @click="navigateToMandatoryReqAMTRD(detail_id9)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
+                <button @click="navigateToMandatoryReqAMTRD(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
                 <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md hover:bg-red-700 bg-red-800 text-white">Close</button>
             </div>
         </div>
@@ -80,13 +80,13 @@
   </template>
 
 <script>
-import { viewDetail9 } from '../../../../views/mtes/dashboards/AMTRD-dashboard.vue';
+import { viewDetail } from '../../../../views/mtes/dashboards/AMTRD-dashboard.vue';
 import axios from 'axios';
 import { API_BASE_URL } from '../../../../config'
 
 export default { 
     props: {
-        detail_id9: String,
+        detail_id: String,
     },
     data() {
         return {
@@ -101,12 +101,12 @@ export default {
     },
     methods: {
         Exit() {
-            viewDetail9.value = false
+            viewDetail.value = false
         },
         async fetchDetails() {
             try {
                 const response = await axios.get(`${API_BASE_URL}/get_details/`);
-                this.details = response.data.find(det => det.id === parseInt(this.detail_id9))
+                this.details = response.data.find(det => det.id === parseInt(this.detail_id))
                 console.log(this.detail_id)
                 console.log(this.details)
 
@@ -123,9 +123,9 @@ export default {
                 console.error('Error fetching comment status:', error);
             }
         },
-        navigateToMandatoryReqAMTRD(detail_id9) {
-            console.log(detail_id9)
-        window.location.href = `/MandatoryRequirements/${detail_id9}`;
+        navigateToMandatoryReqAMTRD(detail_id) {
+            console.log(detail_id)
+        window.location.href = `/MandatoryRequirements/${detail_id}`;
       },
     }
 }

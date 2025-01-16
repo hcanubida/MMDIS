@@ -1,54 +1,92 @@
 <template>
-    <div style="display: flex; height: 100vh;">
-        <div class="panel">
-            <div class="appdetails">
-                <div style="display: flex; justify-content: flex-end;">
-                    <button
-                        style="border: 1px solid black; color: black; width: 45px; border-radius: 5px; background-color: #fca5a5; position: absolute;"
-                        @click="Exit">
-                        X
-                    </button>
-                </div>
-                <div class="appdetails1">
-                    <p>Application Details </p>
-                </div>
-                <div class="appdetails2">
-                    <div class="appdetails3">
-                        <p class="detailss">Application Number: <a style="font-weight: 400;">{{ detail_id7 }}</a></p>
-                        <p class="detailss">Tenement Number: <a a style="font-weight: 400;">{{ details.tenement_number }}</a></p>
-                        <p class="detailss">Status: <a :style="{color: (details.status === 'unpaid') ? 'red' : 'black', fontWeight: 400}">{{ details.status }}</a></p>
-                        <p class="detailss">Area (Hectares): <a style="font-weight: 400;">{{ details.area_hectares }}</a></p>
-                        <p class="detailss">Barangay: <a style="font-weight: 400;">{{ details.barangay }}</a></p>
-                        <p class="detailss">City: 
-                            <a style="font-weight: 400;">{{ details.city }}</a></p>
-                        <p class="detailss">Commodity: <a style="font-weight: 400;">{{ details.commodity }}</a></p>
-                        <p class="detailss">Date Filed: <a style="font-weight: 400;">{{ details.date_filed }}</a></p>
-                    </div>
-
-                    <div class="appdetails4">
-                        <p class="detailss">Category: <a style="font-weight: 400;">{{ details.category }}</a></p>
-                        <p class="detailss">Authorized <br> Representative: <a style="font-weight: 400;">{{ details.authorized_rep }}</a></p>
-                        <p class="detailss">Contact Number: <a style="font-weight: 400;">{{ details.contact_no }}</a></p>
-                        <p class="detailss">Email: <a style="font-weight: 400;">{{ details.email }}</a></p>
-                        <p class="detailss">Others: <a style="font-weight: 400;">{{ details.others }}</a></p>
-                    </div>
-                </div>
-                <div class="appdetailsbutton1">
-                    <button class="butons1" @click="navigateToMandatoryReqSSMC(detail_id7)">Next</button>
-                </div>
+    <div class="fixed inset-0 flex items-center justify-center z-10">
+        <!-- Background overlay -->
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        
+        <div class="relative rounded-2xl p-5 bg-zinc-100 w-full max-w-lg mx-4">
+            <h3 id="modal-title" class="text-xl font-medium text-gray-900 text-center p-4">Application Details</h3>
+            
+            <div class="table-container">
+                <table class="w-full border-collapse rounded-lg overflow-hidden">
+                    <tbody>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Application Name:</td>
+                            <td class="border py-2 px-4">{{ details.tenement_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Tenement Number:</td>
+                            <td class="border py-2 px-4">{{ details.tenement_number }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Location:</td>
+                            <td class="border py-2 px-4">{{ details.barangay }}, {{ details.city }}, {{ details.province }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Commodity:</td>
+                            <td class="border py-2 px-4">{{ details.commodity }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Area (HA):</td>
+                            <td class="border py-2 px-4">{{ details.area_hectares }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Date Filed:</td>
+                            <td class="border py-2 px-4">{{ details.date_filed }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Others:</td>
+                            <td class="border py-2 px-4">{{ details.others }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-amber-200 w-60">Stage of Processing:</td>
+                            <td class="border py-2 px-4">{{ details.stage_of_processing }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-amber-200 w-60">Status:</td>
+                            <td class="border py-2 px-4">{{ details.status }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+  
+                <h3 id="modal-title" class="text-base font-medium text-gray-900 text-center p-4">Applicant's Details</h3>
+                <table class="w-full border-collapse rounded-lg overflow-hidden">
+                    <tbody>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Category:</td>
+                            <td class="border py-2 px-4">{{ details.category }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Authorized Representative:</td>
+                            <td class="border py-2 px-4">{{ details.authorized_rep }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Contact Number:</td>
+                            <td class="border py-2 px-4">{{ details.contact_no }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Email:</td>
+                            <td class="border py-2 px-4">{{ details.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+  
+            <div class="flex justify-center mt-8 gap-4">
+                <button @click="navigateToMandatoryReqSSMC(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
+                <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md hover:bg-red-700 bg-red-800 text-white">Close</button>
             </div>
         </div>
     </div>
-</template>
-
-<script>
-import { viewDetail7 } from '../../../../views/mtes/dashboards/SSMC-dashboard.vue';
-import axios from 'axios';
-import { API_BASE_URL } from '../../../../config'
-
-export default { 
+  </template>
+  
+  <script>
+  import { viewDetail } from '../../../../views/mtes/dashboards/SSMC-dashboard.vue';
+  import axios from 'axios';
+  import { API_BASE_URL } from '../../../../config'
+  
+  export default { 
     props: {
-        detail_id7: String,
+        detail_id: String,
     },
     data() {
         return {
@@ -57,82 +95,36 @@ export default {
     },
     mounted() {
         this.fetchDetails();
+        this.details.forEach((detail, index) => {
+            this.checkForComment(detail.id, index);
+        });
     },
     methods: {
         Exit() {
-            viewDetail7.value = false
+            viewDetail.value = false
         },
         async fetchDetails() {
             try {
                 const response = await axios.get(`${API_BASE_URL}/get_details/`);
-                this.details = response.data.find(det => det.id === parseInt(this.detail_id7))
+                this.details = response.data.find(det => det.id === parseInt(this.detail_id))
                 console.log(this.detail_id)
                 console.log(this.details)
-
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
         },
-        navigateToMandatoryReqSSMC(detail_id7) {
-            console.log(detail_id7)
-        // Use router.push to navigate to '/newappcontent'
-        window.location.href = `/ReqSSMC/${detail_id7}`;
-      },
+        async checkForComment(id, index) {
+            try {
+                const response = await fetch(`/comments/has/${id}`);
+                const data = await response.json();
+                this.details[index].hasComment = data.hasComment;
+            } catch (error) {
+                console.error('Error fetching comment status:', error);
+            }
+        },
+        navigateToMandatoryReqSSMC(detail_id) {
+            window.location.href = `/MandatoryRequirements/${detail_id}`;
+        },
     }
-}
-
-</script>
-
-<style lang="scss" scoped>
-.panel {
-    display: flex;
-    backdrop-filter: blur(5px);
-    height: 100vh;
-    width: 100%;
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-}
-
-.appdetails3 {
-    display: flex;
-    flex-direction: column;
-}
-
-.detailss{
-    margin-bottom: 10px;
-}
-.appdetails {
-  background-color: #ffd498;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  width: auto;
-  /* Set a maximum width */
-  height: auto;
-  /* Let the height adjust based on content */
-  padding: 20px;
-}
-
-.appdetailsbutton1 {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.butons1 {
-  /* border: 1px solid white; */
-  padding: 5px;
-  width: 60px;
-  border-radius: 10px;
-  background-color: #fafafa;
-  color: rgb(92, 92, 92);
-  width: 300px;
-  height: 50px;
-  font-size: 23px;
-}
-
-.butons:hover1 {
-  background-color: #ececec;
-}
-</style>
+  }
+  </script>

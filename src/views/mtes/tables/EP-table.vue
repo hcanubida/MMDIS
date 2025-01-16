@@ -106,7 +106,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { API_BASE_URL } from '../../../config';
-import { addDetail1, viewDetail1, detailToggle1, detail_id1 } from '../dashboards/EP-dashboard.vue';
+import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/EP-dashboard.vue';
 
 export default {
   name: 'typeofapp',
@@ -116,9 +116,9 @@ export default {
       selectedDetail: null,
       viewComment: false,
       searchQuery: '',
-      addDetail1: false,
-      viewDetail1: false,
-      detail_id1: null,
+      addDetail: false,
+      viewDetail: false,
+      detail_id: null,
       sortKey: '',
       sortOrder: 'asc',
     };
@@ -163,11 +163,11 @@ export default {
       }
     },
     navigateTomodal() {
-      addDetail1.value = true;
+      addDetail.value = true;
     },
     navigateTomodalView(id) {
-      detail_id1.value = id;
-      viewDetail1.value = true; // Define your navigation logic here
+      detail_id.value = id;
+      viewDetail.value = true; // Define your navigation logic here
     },
     showComment(detail) {
       this.selectedDetail = detail;

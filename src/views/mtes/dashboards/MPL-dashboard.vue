@@ -1,135 +1,103 @@
 <template>
 
-    <div class="">
-      <!-- Header -->
-      <div>
-        <qwe />
-        <userbutton />
-      </div>
-      <!-- Text -->
-      <div class="textz">
-        <p class="text1">Mining Processer's Liscense</p>
-        <h2 class="text2">
-          SUMMARY
-        </h2>
-      </div>
-
-      <div v-if="addDetail8"> 
-        <appdet></appdet>
-      </div>
-  
-      <div v-if="viewDetail8">
-        <viewdetail2 :detail_id8="detail_id8" />
-      </div>
-  
-      <!-- Charts for summary  -->
-      <div class="chart1">
-        <Pie class="pie1" :application="application"/>
-        <BarChart class="bar1" :application="application" />
-      </div>
-  
-      <!-- Table list/ wala pani table -->
-      <div class="table">
-        <Tableview />
-      </div>
+  <div class="">
+    <!-- Header and User Button Section -->
+    <div class="flex">
+        <Header />
+        <UserBtn />
     </div>
-  </template>
   
-  <script setup>
-  import appdet from "../../../components/MTES/modals/add/mpl-newapplication.vue"
-  import viewdetail2 from '../../../components/MTES/modals/view/MPL-details.vue'
-  import qwe from '../../../components/header.vue'
-  import Pie from '../../../components/MTES/charts/Pie.vue'
-  import BarChart from '../../../components/MTES/charts/bar.vue'
-  import Tableview from '../../mtes/tables/MPL-table.vue'
-  import userbutton from '../../../components/user-dbbtn.vue'
-  import axios from 'axios';
-  import { API_BASE_URL } from '../../../config';
-  
-  import { ref, onMounted } from 'vue'
-  
-  const user = ref();
-  onMounted(async () => {
-    const data = await axios.get(`${API_BASE_URL}/get_accounts/`)
-    user.value = data;
-  })
-  
-  
-  </script>
-  <script>
-  import { ref } from 'vue';
-  
-  const detail_id8 = ref('')
-  const addDetail8 = ref(false)
-  const detailToggle8 = () => {
-    addDetail8.value = true
-  };
-  const application = 'mpl'
-  
-  const viewDetail8 = ref(false)
-  const viewToggle8 = () => {
-    viewDetail8.value = true
-  };
-  
-  export { addDetail8, detailToggle8, viewDetail8, viewToggle8, detail_id8 }
-  
-  </script>
-  
-  <style scoped>
-  .textz {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    margin-top: 6%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size: 20px;
-  }
-  
-  .text1 {
-    align-items: center;
-    margin-bottom: 30px;
-    font-weight: 700;
-  }
-  
-  .text2 {
-    font-weight: 00;
-  }
-  
-  .chart1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: 13%;
-    width: auto;
-  }
-  
-  .pie1 {
-    width: 400px;
-    margin-left: 50px;
-  }
-  
-  .bar1 {
-    margin-left: 30px;
-  }
-  
-  .table {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: 34%;
-  }
-  
-  
-  </style>
+    <!-- Title Section -->
+    <div class="flex flex-col mt-18 justify-center font-bold text-center">
+        <h1 class="text-4xl">Mineral Processor's License</h1>
+        <h2 class="text-2xl pt-2">SUMMARY</h2>
+    </div>
+
+    <div v-if="addDetail">
+      <appdet></appdet>
+    </div>
+
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
+    </div>
+
+    <!-- Charts for summary  -->
+    <div class="flex flex-row justify-center top-0 left-0 right-0 w-auto mt-8">
+      <Pie class="w-1/5 ml-12" :application="application" />
+      <BarChart class="ml-8" :application="application" />
+    </div>
+
+
+
+    <!-- Table list -->
+    <div class="w-screen"> 
+      <Tableview />
+    </div>
+  </div>
+</template>
+
+<script setup>
+import appdet from "../../../components/MTES/modals/add/mpl-newapplication.vue"
+import viewdetail from '../../../components/MTES/modals/view/MPL-details.vue'
+import Header from '../../../components/header.vue'
+import Pie from '../../../components/MTES/charts/Pie.vue'
+import BarChart from '../../../components/MTES/charts/bar.vue'
+import Tableview from '../../mtes/tables/MPL-table.vue'
+import UserBtn from '../../../components/user-dbbtn.vue'
+import axios from 'axios';
+import { API_BASE_URL } from '../../../config';
+
+import { ref, onMounted } from 'vue'
+
+const user = ref();
+onMounted(async () => {
+  const data = await axios.get(`${API_BASE_URL}/get_accounts/`)
+  user.value = data;
+})
+
+
+</script>
+<script>
+import { ref } from 'vue';
+
+const detail_id = ref('')
+const addDetail = ref(false)
+const detailToggle = () => {
+  addDetail.value = true
+};
+const application = 'mpl'
+
+const viewDetail = ref(false)
+const viewToggle = () => {
+  viewDetail.value = true
+};
+
+export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
+
+</script>
+
+<style scoped>
+.textz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  margin-top: 6%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+}
+
+.text1 {
+  align-items: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.text2 {
+  font-weight: 00;
+}
+
+</style>

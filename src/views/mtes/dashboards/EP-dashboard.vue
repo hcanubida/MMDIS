@@ -13,12 +13,12 @@
         <h2 class="text-2xl pt-2">SUMMARY</h2>
     </div>
 
-    <div v-if="addDetail1">
+    <div v-if="addDetail">
       <appdet></appdet>
     </div>
 
-    <div v-if="viewDetail1">
-      <viewdetail1 :detail_id1="detail_id1" />
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
     </div>
 
     <!-- Charts for summary  -->
@@ -38,7 +38,7 @@
 
 <script setup>
 import appdet from "../../../components/MTES/modals/add/ep-newapplication.vue"
-import viewdetail1 from '../../../components/MTES/modals/view/EP-details.vue'
+import viewdetail from '../../../components/MTES/modals/view/EP-details.vue'
 import Header from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
@@ -60,19 +60,19 @@ onMounted(async () => {
 <script>
 import { ref } from 'vue';
 
-const detail_id1 = ref('')
-const addDetail1 = ref(false)
-const detailToggle1 = () => {
-  addDetail1.value = true
+const detail_id = ref('')
+const addDetail = ref(false)
+const detailToggle = () => {
+  addDetail.value = true
 };
 const application = 'ep'
 
-const viewDetail1 = ref(false)
-const viewToggle1 = () => {
-  viewDetail1.value = true
+const viewDetail = ref(false)
+const viewToggle = () => {
+  viewDetail.value = true
 };
 
-export { addDetail1, detailToggle1, viewDetail1, viewToggle1, detail_id1 }
+export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
 
 </script>
 

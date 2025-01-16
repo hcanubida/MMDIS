@@ -1,95 +1,193 @@
 <template>
-  <div style="display: flex; height: 100vh;">
-    <div class=zeroappdetails>
-      <div class="appdetails">
-        <div style="display: flex; justify-content: flex-end;">
-          <button
-            style=" color: black; width: 45px; color: #BB080A; position: absolute;font-size: 25px; font-weight: 700;margin-top: -12px;"
-            @click="Exit">
-            X
+  <!-- Modal -->
+  <div v-if="showModal" class="fixed inset-0 overflow-y-auto" style="z-index: 10;">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+
+      <!-- Modal content -->
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+              <h3 id="modal-title" class="flex justify-center text-xl leading-6 font-medium text-gray-900 p-4">Application Form</h3>
+              <div class="mt-2 flex justify-between">
+                <p class="mr-5">Applicant Name:</p>
+                <input v-model="detailstoadd.tenement_name" type="text" class="w-72 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              </div>
+              <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Tenement Number:</p>
+                  <input v-model="detailstoadd.tenement_number" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+              
+              
+              <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Location:</p>
+                  <select @change="handleRegion" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                      <option value="" disabled selected class="text-center text-gray-100">- - - - Select an Region - - - -</option>
+                      <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{region.region_name}}</option>
+                  </select>
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5"></p>
+                  <select @change="handleProvince" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"  >
+                      <option value="" disabled selected class="text-center text-gray-100">- - - - Select Province - - - -</option>
+                      <option v-for="province in provinces" :value="province.province_code" :key="province.province_code" >{{ province.province_name }}</option>
+                  </select>
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5"></p>
+                  <select class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="handleCity" >
+                      <option value="" disabled selected class="text-center text-gray-100">- - - - Select City - - - -</option>
+                      <option v-for="city in cities" :value="city.city_code" :key="city.city_code">{{ city.city_name }}</option>
+                  </select>
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5"></p>
+                  <select class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" @change="barangaysChange" >
+                      <option value="" disabled selected class="text-center text-gray-100">- - - - Select Barangay - - - -</option>
+                      <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{barangay.brgy_name}}
+                      </option>
+                  </select>
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Commodity:</p>
+                  <input v-model="detailstoadd.commodity" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                <p class="mr-5">Area (HA):</p>
+                <input v-model="detailstoadd.area_hectares" type="number" class="w-72 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              </div>
+              <div class="mt-2 flex justify-between">
+                <p class="mr-5">Date Filed:</p>
+                <input v-model="detailstoadd.date_filed" type="date" class="text-center w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              </div>
+              <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Others:</p>
+                  <input v-model="detailstoadd.others" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+              </div>
+
+              <h3 class="flex justify-center text-base leading-6 font-medium text-gray-900 p-4">Applicant's Details</h3>
+              <div class="mt-2 flex flex-col space-y-2">
+                <div class="flex justify-between">
+                  <p class="mr-5">Category:</p>
+                  <select
+                    v-model="selectedCategory"
+                    class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                    <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Corporation">Corporation</option>
+                    <option value="Cooperative">Cooperative</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <!-- Conditional input field for 'Other' category -->
+                <input v-if="selectedCategory === 'Other'" v-model="otherCategory" class="ml-56 mt-2 pl-1 pr-1 border rounded-md w-72" placeholder="Enter other category"/>
+              </div>
+
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Authorized Representative:</p>
+                  <input v-model="detailstoadd.authorized_rep" type="text" class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Contact Number:</p>
+                  <input v-model="contactnum" type="text" @input="formatContactNum" maxlength="11"  class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+                <div class="mt-2 flex justify-between">
+                  <p class="mr-5">Email Address:</p>
+                  <input v-model="detailstoadd.email" type="text" required class="w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                </div>
+
+  <div class="flex justify-center mt-4 border-t">
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status" type="radio" name="options" value="On-going Process" class="form-radio h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"/>
+      <span class="ml-2">On-going Process</span>
+    </label>
+
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status"type="radio" name="options" value="Issued" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+      <span class="ml-2">Issued</span>
+    </label>
+
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status" type="radio" name="options" value="Denied" class="form-radio h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500"/>
+      <span class="ml-2">Denied</span>
+    </label>
+  </div>
+
+  <div class="flex justify-center mt-4 border-t">
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status"type="radio" name="options" value="With Order of Finality" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+      <span class="ml-2">With Order of Finality</span>
+    </label>
+
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status"type="radio" name="options" value="Endorsed to MGB CO for Clearance" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+      <span class="ml-2">Endorsed to MGB CO for Clearance</span>
+    </label>
+
+    <label class="inline-flex items-center m-2">
+      <input v-model="detailstoadd.status" type="radio" name="options" value="Endorsed to MGB CO for Approval" class="form-radio h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"/>
+      <span class="ml-2">Endorsed to MGB CO for Approval</span>
+    </label>
+  </div>
+
+  <!-- Conditional dropdown for "On-going Process" -->
+  <div class="flex justify-between border-t" v-if="detailstoadd.status === 'On-going Process'">
+    <p class="mr-5 mt-4">Stage of Processing:</p>
+    <select v-model="selectedOngoingProcessing" class="mt-4 w-72 pl-1 pr-1 bg-green-300 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+      <option value="" disabled selected class="text-center text-gray-100">- - - - Select an option - - - -</option>
+      <option value="Under Pre-Processing by Mining Tenement Evaluation Section">Under Pre-Processing by Mining Tenement Evaluation Section</option>
+      <option value="Under Preliminary Evaluation">Under Preliminary Evaluation</option>
+      <option value="Pending Area Clearance/Status (FMS/EMPAS,LMS)">Pending Area Clearance/Status (FMS/EMPAS,LMS)</option>
+      <option value="Undergoing Publication/Posting/Radio Announcement">Undergoing Publication/Posting/Radio Announcement</option>
+      <option value="Published/Posted Announcement within 30-days period for possible protest/adverse claim">Published/Posted Announcement within 30-days period for possible protest/adverse claim</option>
+      <option value="With mining dispute filed at Panel of Arbitrators">With mining dispute filed at Panel of Arbitrators</option>
+      <option value="Appeal to the Mines Adjudication Board/LSD-CO/OP">Appeal to the Mines Adjudication Board/LSD-CO/OP</option>
+      <option value="Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.">Pending NCIP Certification/Proof of Consultation from LGU,ECC, etc.</option>
+      <option value="Under Final Evaluation by R.O.">Under Final Evaluation by R.O.</option>
+      <option value="Endorsed to Central Office">Endorsed to Central Office</option>
+      <option value="Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal">Denied by MGB-RO/COP/PA/MAB but within grace period for Motion for Reconsideration or Appeal</option>
+      <option value="Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal">Denied/Rejected by MGB-RO/COP/PA/MAB but with pending Motion for Reconsideration or Appeal</option>
+      <option value="A. Others (Renewal)">A. Others (Renewal)</option>
+      <option value="B. Others (With Clearance)">B. Others (With Clearance)</option>
+      <option value="Conversion from Other Tenement">Conversion from Other Tenement</option>
+      <option value="Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.">Denied by MGB-RO/COP/PA/MAP/DENR but with pending Appeal at the O.P.</option>
+      <option value="- - -">- - -</option>
+    </select>
+  </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button @click="showModal = false" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white hover:bg-red-700 bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+            Close
           </button>
-        </div>
-        <div class="appdetails1">
-          <p>Application Details</p>
-        </div>
-        <div class="appdetails2">
-          <div class="appdetails3">
-            <input class="inputall" placeholder="Name of the Applicant" v-model="detailstoadd.tenement_name" />
-            <input class="inputall" placeholder="Area(Hectares)" v-model="detailstoadd.area_hectares" />
-            <label style="margin-bottom: -15px;margin-top: 5px; font-weight: 300;">Date Filed:</label>
-            <input class="inputall" style=" " v-model="formattedDate" type="date" />
-            <select name="" id="" class="inputall" @change="handleRegion">
-              <option disabled selected>Select Region</option>
-              <option v-for="region in regions" :value="region.region_code" :key="region.region_code">{{
-              region.region_name
-            }}
-              </option>
-            </select>
-            <select name="" id="" class="inputall" @change="handleProvince">
-              <option disabled selected>Select Province</option>
-              <option v-for="province in provinces" :value="province.province_code" :key="province.province_code">
-                {{ province.province_name }}
-              </option>
-            </select>
-            <select name="" id="" @change="handleCity" class="inputall">
-              <option disabled selected>Select City</option>
-              <option v-for="city in cities" :value="city.city_code" :key="city.city_code">{{ city.city_name }}</option>
-            </select>
-            <select name="" id="" @change="barangaysChange" class="inputall">
-              <option disabled selected>Select Barangay</option>
-              <option v-for="barangay in barangays" :value="barangay.brgy_code" :key="barangay.brgy_code">{{
-              barangay.brgy_name
-            }}
-              </option>
-            </select>
-            <input class="inputall" placeholder="Commodity" v-model="detailstoadd.commodity" />
-          </div>
-
-          <div class="appdetails4">
-            <select class="inputall " v-model="selectedCategory">
-              <option disabled value="individual">Category</option>
-              <option value="individual">Individual</option>
-              <option value="corporation">Corporation</option>
-              <option value="cooperative">Cooperative</option>
-              <option value="other">Other</option>
-            </select>
-
-            <!-- Conditional input field for 'Other' category -->
-            <input v-if="selectedCategory === 'other'" class="inputall cate" v-model="otherCategory"
-              placeholder="Enter other category" />
-            <input class="inputall" placeholder="Authorized Representative" v-model="detailstoadd.authorized_rep" />
-            <input class="inputall" v-model="contactnum" @input="formatContactNum" maxlength="11" required
-              placeholder="Contact Number" />
-            <input class="inputall" placeholder="Email Address" v-model="detailstoadd.email" />
-            <input class="inputall" placeholder="Others:" v-model="detailstoadd.others" />
-            <input class="inputall" placeholder="Status:" v-model="detailstoadd.status" />
-            <input class="inputall" placeholder="Tenement Number:" v-model="detailstoadd.tenement_number" />
-
-          </div>
-        </div>
-        <div class="appdetailsbutton">
-          <button class="butons" @click="submitmpsa">Add</button>
+          <button @click="submit" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+            Submit
+          </button>
         </div>
       </div>
     </div>
   </div>
+  <!-- End Modal -->
 </template>
 
-<script setup>
-
-</script>
-
 <script>
-import { addDetail2 } from '../../../../views/mtes/dashboards/MPSA-dashboard.vue';
-import { regions, provinces, cities, barangays } from 'select-philippines-address'
-import { API_BASE_URL } from '../../../../config'
+import { regions, provinces, cities, barangays } from 'select-philippines-address';
+import axios from 'axios';
+import { API_BASE_URL } from '../../../../config';
 
 export default {
   data() {
     return {
       details: [],
       contactnum: '',
-      selectedCategory: 'individual',
+      selectedOngoingProcessing: '',
+      selectedCategory: '',
       otherCategory: '',
       regions: [],
       provinces: [],
@@ -99,19 +197,32 @@ export default {
       province: null,
       city: null,
       barangay: null,
-      addDetail2: true,
+      showModal: true,
+      submissionStatus: '',
       detailstoadd: {
         status: '',
+        stage_of_processing: '-',
         tenement_number: '',
         tenement_name: '',
         area_hectares: '',
+        date_filed: '',
         commodity: '',
         authorized_rep: '',
         email: '',
         others: '',
         application: 'mpsa'
-      }
+      },
     };
+  },
+  computed: {
+    formattedDate() {
+      if (!this.detailstoadd.date_filed) return '';
+      const dateObj = new Date(this.detailstoadd.date_filed);
+      const year = dateObj.getFullYear();
+      const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const day = String(dateObj.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
   },
   watch: {
     selectedCategory(newValue) {
@@ -147,186 +258,60 @@ export default {
     barangaysChange(e) {
       this.barangay = e.target.selectedOptions[0].text;
     },
-
-    Exit() {
-      addDetail2.value = false
-    },
-    formattedDate() {
-      if (!this.detailstoadd.date) return ''; // handle case where date is not set
-      const dateObj = new Date(this.detailstoadd.date);
-      const year = dateObj.getFullYear();
-      let month = (1 + dateObj.getMonth()).toString();
-      month = month.length > 1 ? month : '0' + month; // add leading zero if needed
-      let day = dateObj.getDate().toString();
-      day = day.length > 1 ? day : '0' + day; // add leading zero if needed
-      return `${year}-${month}-${day}`;
-    },
-
-
     formatContactNum() {
-      // Remove non-numeric characters
-      this.contactnum = this.contactnum.replace(/\D/g, '');
-
-      // Ensure the input starts with "09"
-      if (!/^09/.test(this.contactnum)) {
+      this.contactnum = this.contactnum.replace(/\D/g, '').slice(0, 11);
+      if (!this.contactnum.startsWith('09')) {
         this.contactnum = '09';
       }
-
-      // Limit the input to 11 characters
-      this.contactnum = this.contactnum.slice(0, 11);
     },
-    submitmpsa() {
-      const formData = new FormData();
-      formData.append('status', this.detailstoadd.status);
-      formData.append('tenement_number', this.detailstoadd.tenement_number);
-      formData.append('tenement_name', this.detailstoadd.tenement_name);
-      formData.append('area_hectares', this.detailstoadd.area_hectares);
-      formData.append('date_filed', this.formattedDate);
-      formData.append('barangay', this.barangay);
-      formData.append('city', this.city);
-      formData.append('province', this.province);
-      formData.append('commodity', this.detailstoadd.commodity);
-      formData.append('authorized_rep', this.detailstoadd.authorized_rep);
-      formData.append('contact_no', this.contactnum);
-      formData.append('email', this.detailstoadd.email);
-      formData.append('others', this.detailstoadd.others);
-      formData.append('application', this.detailstoadd.application);
+    submit() {
+const formData = new FormData();
 
-      // Append category based on selectedCategory
-      if (this.selectedCategory === 'other') {
-        // Append otherCategory if selectedCategory is 'others'
-        formData.append('category', this.otherCategory);
-      } else {
-        // Append selectedCategory directly otherwise
-        formData.append('category', this.selectedCategory);
-      }
+// Append all fields from detailstoadd
+for (const [key, value] of Object.entries(this.detailstoadd)) {
+  formData.append(key, value);
+}
 
+// Append category and additional details
+formData.append('category', this.selectedCategory === 'Other' ? this.otherCategory : this.selectedCategory);
+formData.append('contact_no', this.contactnum);
+formData.append('barangay', this.barangay);
+formData.append('city', this.city);
+formData.append('province', this.province);
 
-      // Make axios POST request
-      axios.post(`${API_BASE_URL}/add_details`, formData)
-        .then(response => {
-          // Handle response
-          console.log(response.data);
-          window.location.reload();
-        })
-        .catch(error => {
-          // Handle error
-          console.error('Error:', error);
-        });
-    },
+// Update stage_of_processing based on status
+if (this.detailstoadd.status === 'On-going Process') {
+  formData.append('stage_of_processing', this.selectedOngoingProcessing);
+  this.detailstoadd.stage_of_processing = this.selectedOngoingProcessing; // Ensure it's reflected in the object
+} else {
+  formData.append('stage_of_processing', '-');
+  this.detailstoadd.stage_of_processing = '-';
+}
+
+// Simulate backend submission
+axios.post(`${API_BASE_URL}/add_details`, formData)
+  .then(response => {
+    // Push new data to `details` array for display
+    this.details.push({
+      ...this.detailstoadd,
+    });
+
+    // Update status and close modal
+    this.submissionStatus = 'Success!';
+    this.showModal = false;
+
+    // Display alert message
+    alert('New application successfully added!');
+
+    // Refresh the page
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    this.submissionStatus = 'Submission failed.';
+  });
+},
 
   }
-}
+};
 </script>
-
-<style>
-.zeroappdetails {
-  display: flex;
-  backdrop-filter: blur(5px);
-  height: 100vh;
-  width: 100%;
-  z-index: 999;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.appdetails {
-  background-color: #e0b983;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  width: auto;
-  /* Set a maximum width */
-  height: auto;
-  /* Let the height adjust based on content */
-  padding: 20px;
-}
-
-.appdetails1 {
-  text-align: center;
-  /* background-color: yellow; */
-  font-size: 30px;
-  font-weight: 400;
-}
-
-.appdetails2 {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  /* background-color: green; */
-  font-size: 20px;
-  height: auto;
-  margin-top: 10px;
-  text-align: left;
-
-
-}
-
-.appdetails3 {
-  display: flex;
-  /* background-color: blue; */
-  width: 340px;
-  flex-direction: column;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.appdetails4 {
-  display: flex;
-  /* background-color: orange; */
-  width: 310px;
-  flex-direction: column;
-  font-weight: bold;
-}
-
-.appdetailsbutton {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.butons {
-  /* border: 1px solid white; */
-  padding: 5px;
-  width: 60px;
-  border-radius: 10px;
-  background-color: #fafafa;
-  color: rgb(92, 92, 92);
-  width: 300px;
-  height: 50px;
-  font-size: 23px;
-}
-
-.butons:hover {
-  background-color: #ececec;
-}
-
-.inputall {
-  display: flex;
-  width: 300px;
-  height: 40px;
-  background-color: rgb(235, 234, 234);
-  color: black;
-  margin-left: 1px;
-  padding-left: 4px;
-  margin-top: 20px;
-  font-weight: 20;
-}
-
-.inputall::placeholder {
-  color: black;
-}
-
-.cate::placeholder {
-  color: black;
-  font-weight: 20px;
-  opacity: 50%;
-}
-
-@media (max-width: 768px) {
-  .zeroappdetails {
-    top: -3000px
-  }
-}
-</style>

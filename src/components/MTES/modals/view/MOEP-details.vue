@@ -72,7 +72,7 @@
             </div>
   
             <div class="flex justify-center mt-8 gap-4">
-                <button @click="navigateToMandatoryReqMOEP(detail_id10)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
+                <button @click="navigateToMandatoryReqMOEP(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
                 <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md hover:bg-red-700 bg-red-800 text-white">Close</button>
             </div>
         </div>
@@ -80,13 +80,13 @@
   </template>
   
   <script>
-  import { viewDetail10 } from '../../../../views/mtes/dashboards/MOEP-dashboard.vue';
+  import { viewDetail } from '../../../../views/mtes/dashboards/MOEP-dashboard.vue';
   import axios from 'axios';
   import { API_BASE_URL } from '../../../../config'
   
   export default { 
     props: {
-        detail_id10: String,
+        detail_id: String,
     },
     data() {
         return {
@@ -106,8 +106,8 @@
         async fetchDetails() {
             try {
                 const response = await axios.get(`${API_BASE_URL}/get_details/`);
-                this.details = response.data.find(det => det.id === parseInt(this.detail_id10))
-                console.log(this.detail_id10)
+                this.details = response.data.find(det => det.id === parseInt(this.detail_id))
+                console.log(this.detail_id)
                 console.log(this.details)
             } catch (error) {
                 console.error('Error fetching details:', error);
@@ -122,10 +122,9 @@
                 console.error('Error fetching comment status:', error);
             }
         },
-        navigateToMandatoryReqMOEP(detail_id10) {
-            window.location.href = `/MandatoryRequirements/${detail_id10}`;
+        navigateToMandatoryReqMOEP(detail_id) {
+            window.location.href = `/MandatoryRequirements/${detail_id}`;
         },
     }
   }
-  //detail_id10
   </script>

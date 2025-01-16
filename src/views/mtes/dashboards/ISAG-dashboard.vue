@@ -13,12 +13,12 @@
         <h2 class="text-2xl pt-2">SUMMARY</h2>
     </div>
 
-    <div v-if="addDetail3">
+    <div v-if="addDetail">
       <appdet></appdet>
     </div>
 
-    <div v-if="viewDetail3">
-      <viewdetail3 :detail_id3="detail_id3" />
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
     </div>
 
     <!-- Charts for summary  -->
@@ -38,7 +38,7 @@
 
 <script setup>
 import appdet from "../../../components/MTES/modals/add/isag-newapplication.vue"
-import viewdetail3 from '../../../components/MTES/modals/view/ISAG-details.vue'
+import viewdetail from '../../../components/MTES/modals/view/ISAG-details.vue'
 import Header from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
@@ -60,19 +60,19 @@ onMounted(async () => {
 <script>
 import { ref } from 'vue';
 
-const detail_id3 = ref('')
-const addDetail3 = ref(false)
-const detailToggle3 = () => {
-  addDetail3.value = true
+const detail_id = ref('')
+const addDetail = ref(false)
+const detailToggle = () => {
+  addDetail.value = true
 };
 const application = 'isag'
 
-const viewDetail3 = ref(false)
-const viewToggle3 = () => {
-  viewDetail3.value = true
+const viewDetail = ref(false)
+const viewToggle = () => {
+  viewDetail.value = true
 };
 
-export { addDetail3, detailToggle3, viewDetail3, viewToggle3, detail_id3 }
+export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
 
 </script>
 

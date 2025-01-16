@@ -107,16 +107,16 @@
   import { ref } from 'vue';
   import { API_BASE_URL } from '../../../config';
   
-  import { addDetail9, viewDetail9, detailToggle9, detail_id9 } from '../dashboards/AMTRD-dashboard.vue';
+  import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/AMTRD-dashboard.vue';
   
   export default {
     name: 'typeofapp',
     data() {
         return {
             details: [],
-            addDetail9: false,
-            viewDetail9: false,
-            detail_id9: null,
+            addDetail: false,
+            viewDetail: false,
+            detail_id: null,
             selectedDetail: null,
             viewComment: false,
             searchQuery: '',
@@ -164,11 +164,11 @@
             }
         },
         navigateTomodal() {
-            addDetail9.value = true// Define your navigation logic here
+            addDetail.value = true// Define your navigation logic here
         },
         navigateTomodalView(id) {
-            detail_id9.value = id
-            viewDetail9.value = true// Define your navigation logic here
+            detail_id.value = id
+            viewDetail.value = true// Define your navigation logic here
         },
         showComment(detail) {
             this.selectedDetail = detail;
