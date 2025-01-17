@@ -9,8 +9,12 @@
   
     <!-- Title Section -->
     <div class="flex flex-col mt-18 justify-center font-bold text-center">
-        <h1 class="text-4xl">Exploration Permit</h1>
+        <h1 class="text-4xl">Financial or Technical Assistance Agreement</h1>
         <h2 class="text-2xl pt-2">SUMMARY</h2>
+    </div>
+
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
     </div>
 
     <!-- Charts for summary  -->
@@ -27,15 +31,14 @@
 </template>
 
 <script setup>
-
-
-import Header from '../../../components/header.vue'
+import viewdetail from '../../../components/MTES/modals/view/EP-details.vue'
+import Header from '../../../components/header.vue'; 
+import UserBtn from '../../../components/user-dbbtn.vue'; 
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'
 import Tableview from '../../asViewer/tables/EP-table.vue'
-import UserBtn from '../../../components/user-dbbtn.vue'
 import axios from 'axios';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../../config'
 
 import { ref, onMounted } from 'vue'
 
@@ -51,10 +54,6 @@ onMounted(async () => {
 import { ref } from 'vue';
 
 const detail_id = ref('')
-const addDetail = ref(false)
-const detailToggle = () => {
-  addDetail.value = true
-};
 const application = 'ep'
 
 const viewDetail = ref(false)
@@ -62,7 +61,7 @@ const viewToggle = () => {
   viewDetail.value = true
 };
 
-export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
+export { viewDetail, viewToggle, detail_id }
 
 </script>
 

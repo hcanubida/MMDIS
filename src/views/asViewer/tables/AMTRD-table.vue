@@ -88,14 +88,13 @@
   import { ref } from 'vue';
   import { API_BASE_URL } from '../../../config';
   
-  import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/v-AMTRD-dashboard.vue';
+  import { viewDetail, detail_id } from '../dashboards/v-AMTRD-dashboard.vue';
   
   export default {
     name: 'typeofapp',
     data() {
         return {
             details: [],
-            addDetail: false,
             viewDetail: false,
             detail_id: null,
             selectedDetail: null,
@@ -143,9 +142,6 @@
             } catch (error) {
                 console.error('Error fetching details:', error);
             }
-        },
-        navigateTomodal() {
-            addDetail.value = true// Define your navigation logic here
         },
         navigateTomodalView(id) {
             detail_id.value = id

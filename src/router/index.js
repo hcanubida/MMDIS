@@ -58,6 +58,7 @@ import pie from "../components/MTES/charts/Pie.vue";
 //asViewer
 import asViewer_dashboard from "../views/asViewer/v-dashboard.vue";  
 import asViewer_newapplication from "../views/asViewer/v-new-application.vue";
+import asViewer_MandatoryRequirements from "../views/asViewer/v-mandatoryReq.vue";
 import asViewer_amtrd from "../views/asViewer/dashboards/v-AMTRD-dashboard.vue";
 import asViewer_ftta from "../views/asViewer/dashboards/v-FTAA-dashboard.vue";
 import asViewer_ep from "../views/asViewer/dashboards/v-EP-dashboard.vue";
@@ -69,9 +70,6 @@ import asViewer_mpp from "../views/asViewer/dashboards/v-MPP-dashboard.vue";
 import asViewer_otp from "../views/asViewer/dashboards/v-OTP-dashboard.vue";
 import asViewer_ssmc from "../views/asViewer/dashboards/v-SSMC-dashboard.vue";
 import asViewer_moep from "../views/asViewer/dashboards/v-MOEP-dashboard.vue";
-
-
-
 
 // Mock function to check if user is authenticated
 function isAuthenticated() {
@@ -129,6 +127,7 @@ const routes = [
   { path: "/mtes/new-application/otp", component: asViewer_otp, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
+  { path: "/mtes/MandatoryRequirements/:detail_id", component: asViewer_MandatoryRequirements },
 
   // MTES Fax sheets
   { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },

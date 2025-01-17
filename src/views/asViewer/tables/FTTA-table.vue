@@ -87,7 +87,7 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { API_BASE_URL } from '../../../config';
-import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/v-FTAA-dashboard.vue';
+import { viewDetail, detail_id } from '../dashboards/v-FTAA-dashboard.vue';
 
 export default {
   name: 'typeofapp',
@@ -97,7 +97,6 @@ export default {
       selectedDetail: null,
       viewComment: false,
       searchQuery: '',
-      addDetail: false,
       viewDetail: false,
       detail_id: null,
       sortKey: '',
@@ -142,9 +141,6 @@ export default {
       } catch (error) {
         console.error('Error fetching details:', error);
       }
-    },
-    navigateTomodal() {
-      addDetail.value = true;
     },
     navigateTomodalView(id) {
       detail_id.value = id;

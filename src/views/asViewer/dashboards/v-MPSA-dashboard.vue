@@ -51,10 +51,6 @@ onMounted(async () => {
 import { ref } from 'vue';
 
 const detail_id = ref('')
-const addDetail = ref(false)
-const detailToggle = () => {
-  addDetail.value = true
-};
 const application = 'mpsa'
 
 const viewDetail = ref(false)
@@ -62,7 +58,7 @@ const viewToggle = () => {
   viewDetail.value = true
 };
 
-export { addDetail, detailToggle, viewDetail, viewToggle, detail_id }
+export { viewDetail, viewToggle, detail_id }
 
 </script>
 
