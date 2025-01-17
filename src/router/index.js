@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 // MTSS Views
 // import home from "../views/home.vue";
-import home from "../views/mtes/Login.vue";
+import home from "../views/Login.vue";
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue";
 import inventory from "../views/mtss/inventory.vue";
@@ -29,8 +29,7 @@ import PDFcontent from "../components/MLSS/pdf-content.vue";
 
 // MTES Views
 import firstpage from "../views/mtes/dashboard.vue";  
-import login from "../views/mtes/Login.vue";
-import signup from "../views/mtes/Signup.vue";
+import login from "../views/Login.vue";
 import applicationpage from "../views/mtes/new-application.vue";
 import permitpage from "../views/mtes/permit.vue";
 
@@ -101,7 +100,6 @@ const routes = [
 
   // MTES routes
   { path: "/firstpage", component: firstpage, meta: { requiresAuth: true } },
-  { path: "/signup", component: signup },
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
   { path: "/table", component: FTTAtable },
