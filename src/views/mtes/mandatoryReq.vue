@@ -372,11 +372,11 @@
 </template>
 
 <script setup>
-import Header from '../../../components/header.vue'
-import UserBtn from '../../../components/user-dbbtn.vue'
-import imagees from '../../../components/MTES/modals/imguploads.vue'
-import faxx from '../faxsheet/ffta-factsheet.vue'
-import { API_BASE_URL } from '../../../config'
+import Header from '../../components/header.vue'
+import UserBtn from '../../components/user-dbbtn.vue'
+import imagees from '../../components/MTES/modals/imguploads.vue'
+import faxx from '../mtes/factsheet.vue'
+import { API_BASE_URL } from '../../config'
 // import { detail_id } from '../dashboards/FTAA-dashboard.vue';
 </script>
 

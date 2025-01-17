@@ -1,7 +1,7 @@
 <template>
 
 <div v-if="currentPage === 0" id="page-001-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">   
-    <img src="../../../assets/icons/Header.png" class="">
+    <img src="../../assets/icons/Header.png" class="">
     <p class="mt-8 text-xl font-bold text-center" style="letter-spacing: 3px;">
         FACT SHEET / EVALUATION SHEET
     </p>
@@ -163,12 +163,12 @@
         </div>
     </div>
     <div class="flex justify-center mt-auto">
-    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
+    <img src="../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
 
 <div v-if="currentPage === 1" id="page-002-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">
-    <img src="../../../assets/icons/Header.png" class="">
+    <img src="../../assets/icons/Header.png" class="">
 
     <div class="flex items-left flex-col ml-16 mt-8 flex-grow">
         <!-- Mandatory Requirements' Table -->
@@ -260,11 +260,11 @@
         </div>
     </div>
     <div class="flex justify-center">
-    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
+    <img src="../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
 <div v-if="currentPage === 2" id="page-003-content" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">
-    <img src="../../../assets/icons/Header.png" class="">
+    <img src="../../assets/icons/Header.png" class="">
 
     <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Summary of Lacking Requirements' Table-->
@@ -338,11 +338,11 @@
         </div>
     </div>
     <div class="flex justify-center mt-auto">
-    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
+    <img src="../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
 <div v-if="currentPage === 3" id="page-004-content" class="bg-white border-t flex flex-col max-h-screen" style="width: 816px; height: 1276px; position: relative;">
-    <img src="../../../assets/icons/Header.png" class="">
+    <img src="../../assets/icons/Header.png" class="">
 
     <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Status of Application Table-->
@@ -407,7 +407,7 @@
         </div> -->
     </div>
     <div class="flex justify-center mt-auto">
-    <img src="../../../assets/icons/Footer.png" class="" style="width:80%;">
+    <img src="../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
 
@@ -440,7 +440,7 @@ import html2pdf from 'html2pdf.js';
 import jsPDF from 'jspdf';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { API_BASE_URL } from '../../../config';
+import { API_BASE_URL } from '../../config';
 
 export default {
     props: {

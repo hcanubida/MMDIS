@@ -51,10 +51,10 @@ import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
 import  table from "../views/mtes/tables/EP-table.vue";
 
 // MTES Mandatory Requirements
-import MandatoryRequirements from "../views/mtes/requirements/mandatoryReq.vue";
+import MandatoryRequirements from "../views/mtes/mandatoryReq.vue";
 
 // MTES Fax Sheets
-import FaxFTTA from "../views/mtes/faxsheet/ffta-factsheet.vue";
+import FaxFTTA from "../views/mtes/factsheet.vue";
 
 // Components (modals, charts, etc.)
 import demo from "../components/MTES/modals/uploaad.vue";
