@@ -1,9 +1,11 @@
 // Import Vue Router components
 import { createRouter, createWebHistory } from "vue-router";
 
+import Login from "../views/Login.vue";
+
 // MTSS Views
 // import home from "../views/home.vue";
-import home from "../views/Login.vue";
+
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue";
 import inventory from "../views/mtss/inventory.vue";
@@ -29,36 +31,31 @@ import PDFcontent from "../components/MLSS/pdf-content.vue";
 
 // MTES Views
 import firstpage from "../views/mtes/dashboard.vue";  
-import login from "../views/Login.vue";
 import applicationpage from "../views/mtes/new-application.vue";
 import permitpage from "../views/mtes/permit.vue";
 
-// MTES Dashboards
-import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
-import epdashboard from "../views/mtes/dashboards/EP-dashboard.vue";
-import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue";
-import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue";
-import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue";
-import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue";
-import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue";
-import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue";
-import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue";
-import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue";
-import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
+  // MTES Dashboards
+  import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
+  import epdashboard from "../views/mtes/dashboards/EP-dashboard.vue";
+  import mpsadashboard from "../views/mtes/dashboards/MPSA-dashboard.vue";
+  import isagdashboard from "../views/mtes/dashboards/ISAG-dashboard.vue";
+  import mbdashboard from "../views/mtes/dashboards/MB-dashboard.vue";
+  import mpldashboard from "../views/mtes/dashboards/MPL-dashboard.vue";
+  import mppdashboard from "../views/mtes/dashboards/MPP-dashboard.vue";
+  import otpdashboard from "../views/mtes/dashboards/OTP-dashboard.vue";
+  import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue";
+  import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue";
+  import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
 
-// MTES Tables
-import FTTAtable from "../views/mtes/tables/FTTA-table.vue";
-import  table from "../views/mtes/tables/EP-table.vue";
+  // MTES Mandatory Requirements
+  import MandatoryRequirements from "../views/mtes/mandatoryReq.vue";
 
-// MTES Mandatory Requirements
-import MandatoryRequirements from "../views/mtes/mandatoryReq.vue";
+  // MTES Fax Sheets
+  import Factsheet from "../views/mtes/factsheet.vue";
 
-// MTES Fax Sheets
-import FaxFTTA from "../views/mtes/factsheet.vue";
-
-// Components (modals, charts, etc.)
-import demo from "../components/MTES/modals/uploaad.vue";
-import pie from "../components/MTES/charts/Pie.vue";
+  // Components (modals, charts, etc.)
+  import demo from "../components/MTES/modals/uploaad.vue";
+  import pie from "../components/MTES/charts/Pie.vue";
 
 // Mock function to check if user is authenticated
 function isAuthenticated() {
@@ -67,12 +64,12 @@ function isAuthenticated() {
 
 // Define route configurations
 const routes = [
-  { path: "/", component: home },
+  { path: "/", component: Login },
   { path: "/demo_upload", component: demo },
   { path: "/pie", component: pie },
 
   //Login Page
-  { path: "/login", component: login },
+  // { path: "/login", component: Login },
   
   // MTSS routes
   { path: "/mtss/dashboard", component: dashboard, meta: { requiresAuth: true }},
@@ -102,10 +99,9 @@ const routes = [
   { path: "/firstpage", component: firstpage, meta: { requiresAuth: true } },
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
-  { path: "/table", component: FTTAtable },
 
   // MTES Fax sheet
-  { path: "/FTTAFax", component: FaxFTTA, meta: { requiresAuth: true } },
+  { path: "/Factsheet", component: Factsheet, meta: { requiresAuth: true } },
 
   // Dashboards
   { path: "/ftta", component: fttadashboard, meta: { requiresAuth: true } },
