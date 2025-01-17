@@ -20,24 +20,6 @@
         </div>
         <input v-model="searchQuery" @input="debouncedSearch" type="search" id="default-search" class="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Tenement Name or Location of the application ..." required />
       </div>
-      <div class="flex lg:justify-end mb-5">
-        <button @click="navigateTomodal" class="text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm pl-4 pr-2 py-2 text-center flex items-center mr-8">New Application<img class="w-4 m-2" src="../../../assets/icons/plus.png"></button>
-      </div>
-    </div>
-
-    <!-- Modal Section -->
-    <div v-if="viewComment" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeComment">
-      <div class="bg-white rounded-lg" style="width: 400px; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
-        <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
-          <h2 class="text-lg font-bold">Comments</h2>
-        </div>
-        <div class="p-4">
-          <p>{{ selectedDetail?.comments || 'No comments available' }}</p>
-        </div>
-        <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
-          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer hover:bg-red-700 bg-red-800 text-white">Close</button>
-        </div>
-      </div>
     </div>
 
     <div class="scrollable">
@@ -93,7 +75,6 @@
                 <img src="../../../assets/icons/comment.png" style="width: 20px;">
                 <span v-if="detail.hasComment" class="red-dot"></span>
               </button>
-              <button class="bg-grey-100 text-white py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
             </td>
           </tr>
         </tbody>
@@ -106,135 +87,139 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { API_BASE_URL } from '../../../config';
-import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/SSMC-dashboard.vue';
+
+import { addDetail, viewDetail, detailToggle, detail_id } from '../dashboards/v-SSMC-dashboard.vue';
 
 export default {
   name: 'typeofapp',
   data() {
-    return {
-      details: [],
-      selectedDetail: null,
-      viewComment: false,
-      searchQuery: '',
-      addDetail: false,
-      viewDetail: false,
-      detail_id: null,
-      sortKey: '',
-      sortOrder: 'asc',
-    };
+      return {
+          details: [],
+          addDetail: false,
+          viewDetail: false,
+          detail_id: null,
+          selectedDetail: null,
+          viewComment: false,
+          searchQuery: '',
+          sortKey: '',
+          sortOrder: 'asc',
+      };
   },
   computed: {
-    sortedEntries() {
+      sortedEntries() {
       // Sort and return the entries based on sortKey and sortOrder
       return [...this.details].sort((a, b) => {
-        let result = 0;
-        if (a[this.sortKey] > b[this.sortKey]) result = 1;
-        else if (a[this.sortKey] < b[this.sortKey]) result = -1;
-        return this.sortOrder === 'asc' ? result : -result;
+          let result = 0;
+          if (a[this.sortKey] > b[this.sortKey]) result = 1;
+          else if (a[this.sortKey] < b[this.sortKey]) result = -1;
+          return this.sortOrder === 'asc' ? result : -result;
       });
-    },
-    filteredEntries() {
+      },
+      filteredEntries() {
       // Filter the sorted entries based on the search query
       const query = this.searchQuery.toLowerCase();
       return this.sortedEntries.filter((detail) => {
-        return (
+          return (
           (detail.tenement_name && detail.tenement_name.toLowerCase().includes(query)) ||
           (detail.province && detail.province.toLowerCase().includes(query)) ||
           (detail.city && detail.city.toLowerCase().includes(query)) ||
           (detail.barangay && detail.barangay.toLowerCase().includes(query))
-        );
+          );
       });
-    },
-    statusCount() {
+      },
+      statusCount() {
       // Return the count of entries with a specific status
       return (status) => this.details.filter((detail) => detail.status === status).length;
-    },
+      },
   },
   mounted() {
-    this.fetchDetails();
+      this.fetchDetails();
   },
   methods: {
-    async fetchDetails() {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/get_details/`);
-        this.details = response.data.filter(det => det.application == 'ssmc');
-      } catch (error) {
-        console.error('Error fetching details:', error);
-      }
-    },
-    navigateTomodal() {
-      addDetail.value = true;
-    },
-    navigateTomodalView(id) {
-      detail_id.value = id;
-      viewDetail.value = true; // Define your navigation logic here
-    },
-    showComment(detail) {
-      this.selectedDetail = detail;
-      this.viewComment = true;
-    },
-    closeComment() {
-      this.viewComment = false;
-      this.selectedDetail = null;
-    },
-    sortmethod(key) {
-      if (this.sortKey === key) {
-        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-      } else {
-        this.sortKey = key;
-        this.sortOrder = 'asc';
-      }
-    },
-    debouncedSearch() {
-      clearTimeout(this.debounceTimeout);
-      this.debounceTimeout = setTimeout(() => {
-        // Handle debounce logic
-      }, 300);
-    },
+      async fetchDetails() {
+          try {
+              const response = await axios.get(`${API_BASE_URL}/get_details/`);
+              this.details = response.data.filter(det => det.application == 'ssmc');
+          } catch (error) {
+              console.error('Error fetching details:', error);
+          }
+      },
+      navigateTomodal() {
+          addDetail.value = true// Define your navigation logic here
+      },
+      navigateTomodalView(id) {
+          detail_id.value = id
+          viewDetail.value = true// Define your navigation logic here
+      },
+      showComment(detail) {
+          this.selectedDetail = detail;
+          this.viewComment = true;
+      },
+      closeComment() {
+          this.viewComment = false;
+          this.selectedDetail = null;
+      },
+      sortmethod(key) {
+          if (this.sortKey === key) {
+              this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+          } else {
+              this.sortKey = key;
+              this.sortOrder = 'asc';
+          }
+      },
+      debouncedSearch() {
+          clearTimeout(this.debounceTimeout);
+          this.debounceTimeout = setTimeout(() => {
+              // Handle debounce logic
+          }, 300);
+      },
   },
 };
+
+
 </script>
 
-<style scoped>
+<style>
+.button {
+  text-align: center;
+  padding: 10px;
+  margin: 1rem;
+  width: 250px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #eacda3;
+  color: white;
+  cursor: pointer;
+}
+
 .table {
   flex: auto;
   flex-direction: column;
+  margin-left: 20px;
   border-collapse: collapse;
   width: 100%;
 }
 
+#table {
+  width: 100%;
+  margin: auto;
+  height: auto;
+}
+
 .scrollable {
+  /* Adjust the maximum height as needed */
   margin: 15px;
   box-shadow: 2px 3px 5px rgb(175, 175, 175);
-  max-height: 369px;
-  overflow-y: auto;
+  max-height:200px; 
+  overflow-y: auto; 
 }
 
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.btn-close {
-  
-  border: none;
-  
-  padding: 8px 16px;
-  
-}
-
-.btn-close:hover {
-  background-color: #0056b3;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.th,
+.td {
+  border: 1px solid #888888;
+  text-align: center;
+  padding: 10px;
+  position: sticky;
 }
 </style>
