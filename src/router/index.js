@@ -31,6 +31,9 @@ import PDFcontent from "../components/MLSS/pdf-content.vue";
 import firstpage from "../views/mtes/dashboard.vue";  
 import applicationpage from "../views/mtes/new-application.vue";
 import permitpage from "../views/mtes/permit.vue";
+// import asViewer_firstpage from "../views/asViewer/mtes/dashboard.vue";
+// import asViewer_applicationpage from "../views/asViewer/mtes/new-application.vue";
+// import asViewer_permitpage from "../views/asViewer/mtes/permit.vue";
 
 // MTES Dashboards
 import fttadashboard from "../views/mtes/dashboards/FTAA-dashboard.vue";
@@ -45,8 +48,8 @@ import ssmcdashboard from "../views/mtes/dashboards/SSMC-dashboard.vue";
 import amtrddashboard from "../views/mtes/dashboards/AMTRD-dashboard.vue";
 import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
 
-// MTES Mandatory Requirements
-import MandatoryRequirements from "../views/mtes/mandatoryReq.vue";
+  // MTES Mandatory Requirements
+  import MandatoryRequirements from "../views/mtes/mandatoryReq.vue";
 
 // MTES Fax Sheets
 import Factsheet from "../views/mtes/factsheet.vue";
@@ -97,6 +100,9 @@ const routes = [
   { path: "/firstpage", component: firstpage, meta: { requiresAuth: true } },
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
+  // { path: "/mtes", component: asViewer_firstpage, meta: { requiresAuth: true } },
+  // { path: "/applicationpage", component: asViewer_applicationpage, meta: { requiresAuth: true } },
+  // { path: "/permitpage", component: asViewer_permitpage, meta: { requiresAuth: true } },
 
   // MTES Fax sheets
   { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },
@@ -114,9 +120,21 @@ const routes = [
   { path: "/ssmc", component: ssmcdashboard, meta: { requiresAuth: true } },
   { path: "/amtrd", component: amtrddashboard, meta: { requiresAuth: true } },
   { path: "/moep", component: moepddashboard, meta: { requiresAuth: true } },
+  // { path: "/ftta", component: asViewer_fttadashboard, meta: { requiresAuth: true } },
+  // { path: "/ep", component: asViewer_epdashboard, meta: { requiresAuth: true } },
+  // { path: "/mpsa", component: asViewer_mpsadashboard, meta: { requiresAuth: true } },
+  // { path: "/isag", component: asViewer_isagdashboard, meta: { requiresAuth: true } },
+  // { path: "/mb", component: asViewer_mbdashboard, meta: { requiresAuth: true } },
+  // { path: "/mpl", component: asViewer_mpldashboard, meta: { requiresAuth: true } },
+  // { path: "/mpp", component: asViewer_mppdashboard, meta: { requiresAuth: true } },
+  // { path: "/otp", component: asViewer_otpdashboard, meta: { requiresAuth: true } },
+  // { path: "/ssmc", component: asViewer_ssmcdashboard, meta: { requiresAuth: true } },
+  // { path: "/amtrd", component: asViewer_amtrddashboard, meta: { requiresAuth: true } },
+  // { path: "/moep", component: asViewer_moepddashboard, meta: { requiresAuth: true } },
 
   // Mandatory Requirements
   { path: "/MandatoryRequirements/:detail_id", component: MandatoryRequirements },
+  // { path: "/MandatoryRequirements/:detail_id", component: asViewer_MandatoryRequirements },
 ];
 
 // Create router instance
