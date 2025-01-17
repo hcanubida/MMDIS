@@ -39,19 +39,19 @@
           <div>
             <button
               @click="toggleDropdown('isDropdownASC')"
-              class="flex items-center justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+              class="flex items-center justify-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-amber-400 hover:bg-amber-100"
               :aria-expanded="isDropdownASC.toString()"
               aria-controls="area-status-dropdown"
             >
               Area Status Clearance
               <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
             </button>
-            <div v-if="isDropdownASC" id="area-status-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
+            <div v-if="isDropdownASC" id="area-status-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-amber-400 shadow-lg">
               <a
                 v-for="(item, index) in areaStatusItems"
                 :key="index"
                 @click="openPDF(item.pdfUrl)"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
               >
                 {{ item.label }}
               </a>
@@ -62,16 +62,16 @@
           <div>
             <button
               @click="toggleDropdown('isDropdownDatabase')"
-              class="flex justify-center items-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-orange-200 hover:bg-red-200"
+              class="flex justify-center items-center w-64 gap-4 text-lg mb-4 p-3 rounded-xl bg-amber-400 hover:bg-amber-100"
               :aria-expanded="isDropdownDatabase.toString()"
               aria-controls="database-dropdown"
             >
               Database
               <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
             </button>
-            <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-orange-200 rounded-lg shadow-lg text-left">
-              <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">MOEP Validation</a>
-              <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mining Tenement Maps</a>
+            <div v-if="isDropdownDatabase" id="database-dropdown" class="mt-2 w-64 bg-amber-400 rounded-lg shadow-lg text-left">
+              <a @click="MOEPValidation" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100">MOEP Validation</a>
+              <a @click="MiningTenementMaps" class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100">Mining Tenement Maps</a>
 
               <!-- New Dropdown under Area Status Clearance -->
               <div>
@@ -84,22 +84,22 @@
                   Area Status Clearance
                   <img class="w-4" src="../../assets/icons/drop-down.png" alt="dropdown-icon">
                 </button>
-                <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-orange-200 shadow-lg">
+                <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-amber-400 shadow-lg">
                   <a
                     @click="navigateTo('CSAG')"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     CSAG
                   </a>
                   <a
                     @click="navigateTo('ISAG')"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     ISAG
                   </a>
                   <a
                     @click="navigateTo('MQUARRY')"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     MQUARRY
                   </a>

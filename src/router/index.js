@@ -1,8 +1,8 @@
 // Import Vue Router components
 import { createRouter, createWebHistory } from "vue-router";
+// import home from "../views/home.vue";
 
 // MTSS Views
-// import home from "../views/home.vue";
 import login from "../views/Login.vue";
 import dashboard from "../views/mtss/dashboard.vue";
 import ostc from "../views/mtss/ostc.vue";
@@ -55,6 +55,24 @@ import moepddashboard from "../views/mtes/dashboards/MOEP-dashboard.vue";
 import demo from "../components/MTES/modals/uploaad.vue";
 import pie from "../components/MTES/charts/Pie.vue";
 
+//asViewer
+import asViewer_dashboard from "../views/asViewer/v-dashboard.vue";  
+import asViewer_newapplication from "../views/asViewer/v-new-application.vue";
+import asViewer_amtrd from "../views/asViewer/dashboards/v-AMTRD-dashboard.vue";
+import asViewer_ftta from "../views/asViewer/dashboards/v-FTAA-dashboard.vue";
+import asViewer_ep from "../views/asViewer/dashboards/v-EP-dashboard.vue";
+import asViewer_mpsa from "../views/asViewer/dashboards/v-MPSA-dashboard.vue";
+import asViewer_isag from "../views/asViewer/dashboards/v-ISAG-dashboard.vue";
+import asViewer_mb from "../views/asViewer/dashboards/v-MB-dashboard.vue";
+import asViewer_mpl from "../views/asViewer/dashboards/v-MPL-dashboard.vue";
+import asViewer_mpp from "../views/asViewer/dashboards/v-MPP-dashboard.vue";
+import asViewer_otp from "../views/asViewer/dashboards/v-OTP-dashboard.vue";
+import asViewer_ssmc from "../views/asViewer/dashboards/v-SSMC-dashboard.vue";
+import asViewer_moep from "../views/asViewer/dashboards/v-MOEP-dashboard.vue";
+
+
+
+
 // Mock function to check if user is authenticated
 function isAuthenticated() {
   return !!localStorage.getItem('authToken'); // You can customize this auth method as needed
@@ -97,6 +115,20 @@ const routes = [
   { path: "/firstpage", component: firstpage, meta: { requiresAuth: true } },
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
+  /////////////////////
+  { path: "/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application", component: asViewer_newapplication, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/amtrd", component: asViewer_amtrd, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/ftta", component: asViewer_ftta, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/ep", component: asViewer_ep, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/mpsa", component: asViewer_mpsa, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/isag", component: asViewer_isag, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/mb", component: asViewer_mb, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/mpl", component: asViewer_mpl, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/mpp", component: asViewer_mpp, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/otp", component: asViewer_otp, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
+  { path: "/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
 
   // MTES Fax sheets
   { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },

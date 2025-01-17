@@ -1,33 +1,43 @@
 <template>
+    <taas />
 
-        <taas />
-
-        <div class="panel flex justify-center items-center ">
-            <div class="panel1 h-auto flex flex-row justify-center items-center mt-32">
-                <img :src="mgb" class="img123" style="width: 330px;"/>
-                <div class="login -ml-16 bg-green-800">
-                    <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
-                        <h1 style="font-weight: 700; font-size: 25px;" class="text-white">Welcome Back!</h1>
-                        <p style="font-size: 15px;" class="text-white">Login to access the MGB-X </p>
-                        <p style="font-size: 15px;" class="text-white">MMD Information System:</p>
+    <div class="panel flex justify-center items-center ">
+        <div class="panel1 h-auto flex flex-row justify-center items-center mt-32">
+            <img :src="mgb" class="img123" style="width: 330px;" />
+            <div class="login -ml-16 bg-green-800">
+                <div style="margin-left: 40px;margin-top: 30px;margin-bottom: 20px;">
+                    <h1 style="font-weight: 700; font-size: 25px;" class="text-white">Welcome Back!</h1>
+                    <p style="font-size: 15px;" class="text-white">Login to access the MGB-X </p>
+                    <p style="font-size: 15px;" class="text-white">MMD Information System:</p>
+                </div>
+                <form>
+                    <div class="inputfield flex flex-col">
+                        <input v-model="form.username" id="username" name="username" type="username"
+                            autocomplete="username" placeholder="Username"
+                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
+                        <input v-model="form.password" id="password" name="password" type="password"
+                            autocomplete="password" placeholder="Password"
+                            class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md"
+                            @keyup.enter="handleLogin" />
                     </div>
-                    <form>
-                        <div class="inputfield flex flex-col">
-                            <input v-model="form.username" id="username" name="username" type="username"
-                                autocomplete="username" placeholder="Username"
-                                class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
-                            <input v-model="form.password" id="password" name="password" type="password"
-                                autocomplete="password" placeholder="Password"
-                                class="pl-2 drop-shadow-lg py-2 mx-10 mb-4 w-70 rounded-md" />
-                        </div>
-                    </form>
-                    <div class="third flex flex-col items-center pt-16">
-                        <button class="buttonlogin text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">Login</button>
-                    </div>
+                </form>
+                <div class="third flex flex-col items-center pt-16">
+                    <button class="buttonlogin text-black bg-amber-400 hover:bg-amber-100 hover:text-gray-950 pl-12 pr-12 pb-2 pt-2" :disabled="submitting" @click="handleLogin">
+                        <span v-if="submitting">
+                            <!-- Loading Spinner (you can use any loading spinner here) -->
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+                                <path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0z" stroke="currentColor" stroke-width="4" class="opacity-75"></path>
+                            </svg>
+                        </span>
+                        <span v-else>
+                            Login
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
-
+    </div>
 </template>
 
 <script setup>
@@ -94,6 +104,9 @@ const handleLogin = async () => {
                 break;
             case 'mlss':
                 router.push("/mlss/mlssdashboard");
+                break;
+            case 'asViewer':
+                router.push("/mtes");
                 break;
             default:
                 router.push("/default-page");

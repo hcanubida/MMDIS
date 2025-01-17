@@ -26,7 +26,7 @@ export default {
           {
             label: 'Entries by Province',
             data: Object.values(this.provinceData),
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#F7464A'],
+            backgroundColor: ['#9FE2BF', '#32CD32', '#008000', '#8A9A5B', '#50C878'],
           },
         ],
       }

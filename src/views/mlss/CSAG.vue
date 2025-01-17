@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="flex content-center">
-        <button @click="showModal = true" class="mr-4 bg-green-900 p-2 text-white font-bold rounded-lg">Add New Data</button>
+        <button @click="showModal = true" class="mr-4 bg-amber-400 hover:bg-amber-100 p-2 text-black rounded-lg">Add New Data</button>
       </div>
     </div>
 
@@ -123,7 +123,7 @@
             <input type="text" id="name" 
                    :value="formatInput(newEntry.name)" 
                    @input="updateEntry('name', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
@@ -132,13 +132,13 @@
             <input type="text" id="area" 
                    :value="formatInput(newEntry.area)" 
                    @input="updateEntry('area', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
           <div class="mb-4">
             <label for="province" class="block text-sm font-medium text-gray-700">Province</label>
-            <select id="province" v-model="newEntry.province" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <select id="province" v-model="newEntry.province" class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
               <option>BUKIDNON</option>
               <option>CAMIGUIN</option>
               <option>LANAO DEL NORTE</option>
@@ -152,7 +152,7 @@
             <input type="text" id="city_municipality" 
                    :value="formatInput(newEntry.city_municipality)" 
                    @input="updateEntry('city_municipality', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
@@ -161,7 +161,7 @@
             <input type="text" id="barangay" 
                    :value="formatInput(newEntry.barangay)" 
                    @input="updateEntry('barangay', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
@@ -170,7 +170,7 @@
             <input type="text" id="sitio" 
                    :value="formatInput(newEntry.sitio)" 
                    @input="updateEntry('sitio', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
           </div>
 
           <div class="mb-4">
@@ -178,18 +178,18 @@
             <input type="text" id="river" 
                    :value="formatInput(newEntry.river)" 
                    @input="updateEntry('river', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
           <div class="mb-4">
             <label for="received" class="block text-sm font-medium text-gray-700">Date Received</label>
-            <input type="date" id="received" v-model="newEntry.received" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="date" id="received" v-model="newEntry.received" class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
           </div>
 
           <div class="mb-4">
             <label for="released" class="block text-sm font-medium text-gray-700">Date Released</label>
-            <input type="date" id="released" v-model="newEntry.released" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            <input type="date" id="released" v-model="newEntry.released" class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
           </div>
 
           <div class="mb-4">
@@ -197,18 +197,18 @@
             <input type="text" id="status" 
                    :value="formatInput(newEntry.status)" 
                    @input="updateEntry('status', $event.target.value)" 
-                   class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                   class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
                    required>
           </div>
 
           <div class="mb-4">
             <label for="remarks" class="block text-sm font-medium text-gray-700">Remarks</label>
-            <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-orange-100 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+            <textarea id="remarks" v-model="newEntry.remarks" class="p-1 mt-1 block w-full bg-green-300 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
           </div>
 
           <div class="flex justify-end">
-            <button type="button" @click="showModal = false" class="bg-red-500 text-white px-4 py-2 rounded mr-2">Cancel</button>
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Entry</button>
+            <button type="button" @click="showModal = false" class="bg-red-500 text-white hover:bg-red-300 hover:text-black px-4 py-2 rounded mr-2">Cancel</button>
+            <button type="submit" class="bg-amber-400 hover:bg-amber-100 text-black px-4 py-2 rounded">Add Entry</button>
           </div>
         </form>
       </div>

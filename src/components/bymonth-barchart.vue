@@ -26,7 +26,7 @@
           datasets: [
             {
               label: 'Released',
-              backgroundColor: '#42A5F5',
+              backgroundColor: '#9FE2BF',
               data: this.monthlyTotals
             }
           ]
