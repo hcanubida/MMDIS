@@ -1,9 +1,4 @@
 <template>
-  <div class="flex">
-    <Header />
-    <UserBtn />
-  </div>
-
   <div>
     <!-- Modal Overlay -->
     <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center" style="background: rgba(0, 0, 0, 0.5); z-index: 1000;">
@@ -15,8 +10,6 @@
 </template>
 
 <script setup>
-import Header from '../../components/header.vue';
-import UserBtn from '../../components/user-dbbtn.vue';
 import faxx from '../mtes/factsheet.vue';
 import { API_BASE_URL } from '../../config';
 </script>

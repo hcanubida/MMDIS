@@ -82,7 +82,7 @@
 <script>
 import { viewDetail } from '../dashboards/v-FTAA-dashboard.vue';
 import axios from 'axios';
-import { API_BASE_URL } from '../../../../config'
+import { API_BASE_URL } from '../../../config'
 
 export default { 
     props: {
@@ -123,7 +123,7 @@ export default {
             }
         },
         navigateToMandatoryReqFTTA(detail_id) {
-            window.location.href = `/mtes/MandatoryRequirements/${detail_id}`;
+            window.open(`/mtes/mandatory_requirements/${detail_id}`, '_blank');
         },
     }
 }

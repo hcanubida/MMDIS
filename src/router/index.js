@@ -127,7 +127,7 @@ const routes = [
   { path: "/mtes/new-application/otp", component: asViewer_otp, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
-  { path: "/mtes/MandatoryRequirements/:detail_id", component: asViewer_MandatoryRequirements },
+  { path: "/mtes/mandatory_requirements/:detail_id", component: asViewer_MandatoryRequirements },
 
   // MTES Fax sheets
   { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },
