@@ -161,59 +161,59 @@ export default {
           viewDetail.value = true// Define your navigation logic here
       },
       // comment methods
-    showComment(detail) {
-      if (!detail) {
-        console.error('No detail provided to showComment');
-        return;
-      }
-      this.selectedDetail = detail;
-      this.viewComment = true;
-    },
-    closeComment() {
-      this.viewComment = false;
-      this.selectedDetail = null;
-    },
-    async saveComment(detail) {
-      // Ensure selectedDetail is valid
-      if (!detail || !detail.id) {
-        alert('Invalid detail selected. Please refresh and try again.');
-        return;
-      }
+      showComment(detail) {
+        if (!detail) {
+          console.error('No detail provided to showComment');
+          return;
+        }
+        this.selectedDetail = detail;
+        this.viewComment = true;
+      },
+      closeComment() {
+        this.viewComment = false;
+        this.selectedDetail = null;
+      },
+      async saveComment(detail) {
+        // Ensure selectedDetail is valid
+        if (!detail || !detail.id) {
+          alert('Invalid detail selected. Please refresh and try again.');
+          return;
+        }
 
-      // Ensure the comment is not empty
-      console.log(detail.comments); // Add this to see the actual value
-      if (!detail.comments || detail.comments.trim() === '') {
-        alert('Please enter a valid comment before saving.');
-        return;
-      }
+        // Ensure the comment is not empty
+        console.log(detail.comments); // Add this to see the actual value
+        if (!detail.comments || detail.comments.trim() === '') {
+          alert('Please enter a valid comment before saving.');
+          return;
+        }
 
-      try {
-        const payload = {
-          detail_id: detail.id,
-          comments: detail.comments.trim(), // Send trimmed comment to avoid unnecessary spaces
-        };
+        try {
+          const payload = {
+            id: detail.id,
+            comments: detail.comments.trim(), // Send trimmed comment to avoid unnecessary spaces
+          };
 
-        // Send the comment to the backend
-        const response = await axios.post(`${API_BASE_URL}/update_comment`, payload);
+          // Send the comment to the backend
+          const response = await axios.post(`${API_BASE_URL}/update_comment`, payload);
 
-        // Update the details array with the new comment
-        const updatedDetails = this.details.map((item) => {
-          if (item.id === detail.id) {
-            return { ...item, comments: detail.comments.trim(), hasComment: true };
-          }
-          return item;
-        });
-        this.details = updatedDetails;
+          // Update the details array with the new comment
+          const updatedDetails = this.details.map((item) => {
+            if (item.id === detail.id) {
+              return { ...item, comments: detail.comments.trim(), hasComment: true };
+            }
+            return item;
+          });
+          this.details = updatedDetails;
 
-        // Show success message and close the modal
-        alert(response.data.message || 'Comment saved successfully!');
-        this.closeComment();
-      } catch (error) {
-        console.error('Error saving comment:', error);
-        alert(error.response?.data?.error || 'Failed to save the comment. Please try again.');
-      }
-    },
-    //end comment methods
+          // Show success message and close the modal
+          alert(response.data.message || 'Comment saved successfully!');
+          this.closeComment();
+        } catch (error) {
+          console.error('Error saving comment:', error);
+          alert(error.response?.data?.error || 'Failed to save the comment. Please try again.');
+        }
+      },
+      //end comment methods
       sortmethod(key) {
           if (this.sortKey === key) {
               this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';

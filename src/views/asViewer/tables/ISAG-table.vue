@@ -191,7 +191,7 @@ export default {
 
       try {
         const payload = {
-          detail_id: detail.id,
+          id: detail.id,
           comments: detail.comments.trim(), // Send trimmed comment to avoid unnecessary spaces
         };
 
