@@ -97,6 +97,9 @@ const handleLogin = async () => {
         pleaseWait.value = false;
         switch (account.section) {
             case 'asViewer':
+                router.push("/");
+                break;
+            case 'MMD_Chief':
                 router.push("/mmd");
                 break;
             case 'mtes':
