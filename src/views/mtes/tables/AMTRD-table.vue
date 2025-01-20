@@ -90,10 +90,13 @@
               <td class="border p-2 flex items-center justify-center">
                 <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
                 <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
+                  <!-- Red dot for comment availability -->
+                  <span v-if="detail.comments && detail.comments.length > 0" class="absolute  top-[-3px] right-[5px]  w-2 h-2 rounded-full bg-red-600"></span>
                   <img src="../../../assets/icons/comment.png" style="width: 20px;">
-                  <span v-if="detail.hasComment" class="red-dot"></span>
                 </button>
-                <button class="bg-grey-100 text-white py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
+                <button @click="deleteDetail(detail.id)" class="bg-grey-100 text-white py-1 rounded">
+                  <img src="../../../assets/icons/remove.png" style="width: 15px;">
+                </button>
               </td>
             </tr>
           </tbody>

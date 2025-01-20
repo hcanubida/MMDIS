@@ -23,8 +23,8 @@
     </template>
     
     <script setup>
-    import Header from '../components/header.vue'
-    import UserBtn from '../components/user-dbbtn.vue'
+    import Header from '../../components/header.vue'
+    import UserBtn from '../../components/user-dbbtn.vue'
     </script>
     
     <script>
@@ -33,15 +33,15 @@
       methods: {
         navigateToMTSS() {
           // Use router.push to navigate to '/applicationpage'
-          window.location.href = '/mtss/dashboard';
+          window.location.href = 'mmd/mtss';
         },
         navigateToMTES() {
           // Use router.push to navigate to '/permitpage'
-          window.location.href = '/mtes';
+          window.location.href = 'mmd/mtes';
         },
         navigateToMLSS() {
           // Use router.push to navigate to '/permitpage'
-          window.location.href = '/mlss/mlssdashboard';
+          window.location.href = 'mmd/mlss';
         },
       }
     };

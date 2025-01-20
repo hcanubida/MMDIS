@@ -96,14 +96,17 @@ const handleLogin = async () => {
 
         pleaseWait.value = false;
         switch (account.section) {
+            case 'asViewer':
+                router.push("/mmd");
+                break;
             case 'mtes':
                 router.push("/firstpage");
                 break;
             case 'mtss':
-                router.push("/mtss/dashboard");
+                router.push("/mmd/mtss");
                 break;
             case 'mlss':
-                router.push("/mlss/mlssdashboard");
+                router.push("/mmd/mlss");
                 break;
             case 'asViewer':
                 router.push("/mtes");

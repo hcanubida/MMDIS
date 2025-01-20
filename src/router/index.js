@@ -56,6 +56,7 @@ import demo from "../components/MTES/modals/uploaad.vue";
 import pie from "../components/MTES/charts/Pie.vue";
 
 //asViewer
+import asViewer_landing_page from "../views/asViewer/asViewer_landing_page.vue";  
 import asViewer_dashboard from "../views/asViewer/v-dashboard.vue";  
 import asViewer_newapplication from "../views/asViewer/v-new-application.vue";
 import asViewer_MandatoryRequirements from "../views/asViewer/v-mandatoryReq.vue";
@@ -86,7 +87,7 @@ const routes = [
   { path: "/login", component: login },
   
   // MTSS routes
-  { path: "/mtss/dashboard", component: dashboard, meta: { requiresAuth: true }},
+  { path: "/mmd/mtss", component: dashboard, meta: { requiresAuth: true }},
   { path: "/mtss/ostc", component: ostc, meta: { requiresAuth: true } },
   { path: "/mtss/inventory", component: inventory, meta: { requiresAuth: true } },
   { path: "/mtss/wpm", component: wpm, meta: { requiresAuth: true } },
@@ -101,7 +102,7 @@ const routes = [
   { path: "/mtss/mpp", component: mpp, meta: { requiresAuth: true } },
 
   // MLSS routes
-  { path: "/mlss/mlssdashboard", component: mlssdashboard, meta: { requiresAuth: true } },
+  { path: "/mmd/mlss", component: mlssdashboard, meta: { requiresAuth: true } },
   { path: "/mlss/CSAG", component: CSAG, meta: { requiresAuth: true } },
   { path: "/mlss/ISAG", component: ISAG, meta: { requiresAuth: true } },
   { path: "/mlss/MQUARRY", component: MQUARRY, meta: { requiresAuth: true } },
@@ -114,7 +115,8 @@ const routes = [
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
   /////////////////////
-  { path: "/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
+  { path: "/mmd", component: asViewer_landing_page, meta: { requiresAuth: true } },
+  { path: "/mmd/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
   { path: "/mtes/new-application", component: asViewer_newapplication, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/amtrd", component: asViewer_amtrd, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/ftta", component: asViewer_ftta, meta: { requiresAuth: true } },

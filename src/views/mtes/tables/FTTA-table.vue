@@ -90,10 +90,13 @@
             <td class="border p-2 flex items-center justify-center">
               <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
               <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
+                <!-- Red dot for comment availability -->
+                <span v-if="detail.comments && detail.comments.length > 0" class="absolute  top-[-3px] right-[5px]  w-2 h-2 rounded-full bg-red-600"></span>
                 <img src="../../../assets/icons/comment.png" style="width: 20px;">
-                <span v-if="detail.hasComment" class="red-dot"></span>
               </button>
-              <button class="bg-grey-100 text-white py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
+              <button @click="deleteDetail(detail.id)" class="bg-grey-100 text-white py-1 rounded">
+                <img src="../../../assets/icons/remove.png" style="width: 15px;">
+              </button>
             </td>
           </tr>
         </tbody>
@@ -185,6 +188,20 @@ export default {
         this.sortOrder = 'asc';
       }
     },
+    async deleteDetail(id) {
+      const confirmed = confirm("Are you sure you want to delete this item?");
+      if (confirmed) {
+        try {
+          const response = await axios.delete(`${API_BASE_URL}/delete_detail/${id}`);
+          if (response.status === 200) {
+            // Remove the deleted detail from the list
+            this.details = this.details.filter((detail) => detail.id !== id);
+          }
+        } catch (error) {
+          console.error('Error deleting detail:', error);
+        }
+      }
+    },
     debouncedSearch() {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = setTimeout(() => {
@@ -208,25 +225,6 @@ export default {
   box-shadow: 2px 3px 5px rgb(175, 175, 175);
   max-height: 369px;
   overflow-y: auto;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.btn-close {
-  
-  border: none;
-  
-  padding: 8px 16px;
-  
-}
-
-.btn-close:hover {
-  background-color: #0056b3;
 }
 
 @keyframes fadeIn {

@@ -25,20 +25,20 @@
       </div>
     </div>
 
-    <!-- Modal Section -->
-    <div v-if="viewComment" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeComment">
-      <div class="bg-white rounded-lg" style="width: 400px; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
-        <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
-          <h2 class="text-lg font-bold">Comments</h2>
-        </div>
-        <div class="p-4">
-          <p>{{ selectedDetail?.comments || 'No comments available' }}</p>
-        </div>
-        <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
-          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer hover:bg-red-700 bg-red-800 text-white">Close</button>
+      <!-- Modal Section -->
+      <div v-if="viewComment" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeComment">
+        <div class="bg-white rounded-lg" style="width: 400px; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
+          <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
+            <h2 class="text-lg font-bold">Comments</h2>
+          </div>
+          <div class="p-4">
+            <p>{{ selectedDetail?.comments || 'No comments available' }}</p>
+          </div>
+          <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
+            <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer hover:bg-red-700 bg-red-800 text-white">Close</button>
+          </div>
         </div>
       </div>
-    </div>
 
     <div class="scrollable">
       <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
@@ -88,13 +88,16 @@
             <td class="border text-center p-2">{{ detail.province }}</td>
             <td class="border text-center p-2">{{ detail.commodity }}</td>
             <td class="border p-2 flex items-center justify-center">
-              <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
-              <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
-                <img src="../../../assets/icons/comment.png" style="width: 20px;">
-                <span v-if="detail.hasComment" class="red-dot"></span>
-              </button>
-              <button class="bg-grey-100 text-white py-1 rounded"><img src="../../../assets/icons/remove.png" style="width: 15px;"></button>
-            </td>
+                <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
+                <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
+                  <!-- Red dot for comment availability -->
+                  <span v-if="detail.comments && detail.comments.length > 0" class="absolute  top-[-3px] right-[5px]  w-2 h-2 rounded-full bg-red-600"></span>
+                  <img src="../../../assets/icons/comment.png" style="width: 20px;">
+                </button>
+                <button @click="deleteDetail(detail.id)" class="bg-grey-100 text-white py-1 rounded">
+                  <img src="../../../assets/icons/remove.png" style="width: 15px;">
+                </button>
+              </td>
           </tr>
         </tbody>
       </table>
@@ -208,25 +211,6 @@ export default {
   box-shadow: 2px 3px 5px rgb(175, 175, 175);
   max-height: 369px;
   overflow-y: auto;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.btn-close {
-  
-  border: none;
-  
-  padding: 8px 16px;
-  
-}
-
-.btn-close:hover {
-  background-color: #0056b3;
 }
 
 @keyframes fadeIn {

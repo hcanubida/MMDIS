@@ -22,6 +22,22 @@
       </div>
     </div>
 
+    <!-- Modal Section -->
+    <div v-if="viewComment" class="fixed top-0 left-0 w-full h-full flex items-center justify-center" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1000;" @click.self="closeComment">
+      <div class="bg-white rounded-lg" style="width: 400px; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); animation: fadeIn 0.3s ease-in-out;">
+        <div class="flex justify-between items-center p-4" style="border-bottom: 1px solid #ddd;"> 
+          <h2 class="text-lg font-bold">Comments</h2>
+        </div>
+        <div class="p-4">
+          <textarea v-model="selectedDetail.comments" class="w-full p-1" placeholder="Add comment . . ."></textarea>
+        </div>
+        <div class="p-4 text-right" style="border-top: 1px solid #ddd;">
+          <button @click="saveComment(selectedDetail)" class="py-1 px-2 rounded cursor-pointer hover:bg-green-300 bg-green-800 text-white hover:text-black mx-1">Save</button>
+          <button @click="closeComment" class="py-1 px-2 rounded cursor-pointer hover:bg-red-700 bg-red-800 text-white">Close</button>
+        </div>
+      </div>
+    </div>
+
     <div class="ftta_scrollable">
       <table class="w-full text-sm text-left text-black-300 dark:text-gray-400 shadow-xl overflow-y-auto max-h-100px">
         <thead class="sticky top-0 z-50 border-y-50" style="z-index: 1;">
@@ -73,7 +89,6 @@
               <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
               <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
                 <img src="../../../assets/icons/comment.png" style="width: 20px;">
-                <span v-if="detail.hasComment" class="red-dot"></span>
               </button>
             </td>
           </tr>
@@ -146,7 +161,12 @@ export default {
       detail_id.value = id;
       viewDetail.value = true; // Define your navigation logic here
     },
+    // comment methods
     showComment(detail) {
+      if (!detail) {
+        console.error('No detail provided to showComment');
+        return;
+      }
       this.selectedDetail = detail;
       this.viewComment = true;
     },
@@ -154,6 +174,47 @@ export default {
       this.viewComment = false;
       this.selectedDetail = null;
     },
+    async saveComment(detail) {
+      // Ensure selectedDetail is valid
+      if (!detail || !detail.id) {
+        alert('Invalid detail selected. Please refresh and try again.');
+        return;
+      }
+
+      // Ensure the comment is not empty
+      console.log(detail.comments); // Add this to see the actual value
+      if (!detail.comments || detail.comments.trim() === '') {
+        alert('Please enter a valid comment before saving.');
+        return;
+      }
+
+      try {
+        const payload = {
+          detail_id: detail.id,
+          comments: detail.comments.trim(), // Send trimmed comment to avoid unnecessary spaces
+        };
+
+        // Send the comment to the backend
+        const response = await axios.post(`${API_BASE_URL}/update_comment`, payload);
+
+        // Update the details array with the new comment
+        const updatedDetails = this.details.map((item) => {
+          if (item.id === detail.id) {
+            return { ...item, comments: detail.comments.trim(), hasComment: true };
+          }
+          return item;
+        });
+        this.details = updatedDetails;
+
+        // Show success message and close the modal
+        alert(response.data.message || 'Comment saved successfully!');
+        this.closeComment();
+      } catch (error) {
+        console.error('Error saving comment:', error);
+        alert(error.response?.data?.error || 'Failed to save the comment. Please try again.');
+      }
+    },
+    //end comment methods
     sortmethod(key) {
       if (this.sortKey === key) {
         this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
@@ -185,25 +246,6 @@ export default {
   box-shadow: 2px 3px 5px rgb(175, 175, 175);
   max-height: 369px;
   overflow-y: auto;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.btn-close {
-  
-  border: none;
-  
-  padding: 8px 16px;
-  
-}
-
-.btn-close:hover {
-  background-color: #0056b3;
 }
 
 @keyframes fadeIn {
