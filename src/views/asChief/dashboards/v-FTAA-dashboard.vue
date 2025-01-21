@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+import viewdetail from '../../../views/asChief/modal_details/FTAA-details.vue'
 import Header from '../../../components/header.vue'; 
 import UserBtn from '../../../components/user-dbbtn.vue'; 
 import Pie from '../../../components/MTES/charts/Pie.vue'

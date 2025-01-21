@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import viewdetail from '../../../components/MTES/modals/view/AMTRD-details.vue'
+import viewdetail from '../modal_details/AMTRD-details.vue'
 import Header from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'

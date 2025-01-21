@@ -80,9 +80,9 @@
   </template>
   
   <script>
-  import { viewDetail } from '../../../../views/mtes/dashboards/MB-dashboard.vue';
+  import { viewDetail } from '../dashboards/v-MB-dashboard.vue';
   import axios from 'axios';
-  import { API_BASE_URL } from '../../../../config'
+  import { API_BASE_URL } from '../../../config'
   
   export default { 
     props: {

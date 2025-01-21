@@ -80,9 +80,9 @@
   </template>
   
   <script>
-  import { viewDetail } from '../../../../views/mtes/dashboards/MPL-dashboard.vue';
+  import { viewDetail } from '../dashboards/v-MPL-dashboard.vue';
   import axios from 'axios';
-  import { API_BASE_URL } from '../../../../config'
+  import { API_BASE_URL } from '../../../config'
   
   export default { 
     props: {

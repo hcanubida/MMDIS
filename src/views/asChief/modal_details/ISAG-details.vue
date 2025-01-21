@@ -80,9 +80,9 @@
   </template>
   
   <script>
-  import { viewDetail } from '../../../../views/mtes/dashboards/ISAG-dashboard.vue';
+  import { viewDetail } from '../dashboards/v-ISAG-dashboard.vue';
   import axios from 'axios';
-  import { API_BASE_URL } from '../../../../config'
+  import { API_BASE_URL } from '../../../config'
   
   export default { 
     props: {

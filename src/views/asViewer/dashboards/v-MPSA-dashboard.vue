@@ -13,6 +13,10 @@
         <h2 class="text-2xl pt-2">SUMMARY</h2>
     </div>
 
+    <div v-if="viewDetail">
+      <viewdetail :detail_id="detail_id" />
+    </div>
+
     <!-- Charts for summary  -->
     <div class="flex flex-row justify-center top-0 left-0 right-0 w-auto mt-8">
       <Pie class="w-1/5 ml-12" :application="application" />
@@ -28,7 +32,7 @@
 
 <script setup>
 
-
+import viewdetail from '../modal_details/MPSA-details.vue'
 import Header from '../../../components/header.vue'
 import Pie from '../../../components/MTES/charts/Pie.vue'
 import BarChart from '../../../components/MTES/charts/bar.vue'

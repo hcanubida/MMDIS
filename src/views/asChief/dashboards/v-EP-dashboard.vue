@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import viewdetail from '../../../components/MTES/modals/view/EP-details.vue'
+import viewdetail from '../../../views/asChief/modal_details/EP-details.vue'
 import Header from '../../../components/header.vue'; 
 import UserBtn from '../../../components/user-dbbtn.vue'; 
 import Pie from '../../../components/MTES/charts/Pie.vue'
