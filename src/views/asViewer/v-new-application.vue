@@ -67,37 +67,37 @@ import router from '../../router/index';
 export default {
   methods: {
     navigateToFTTAdashboard() {
-      router.push('/mtes/new-application/ftta');
+      router.push('/asViewer/mtes/new-application/ftta');
     },
     navigateToEPdashboard() {
-      router.push('/mtes/new-application/ep');
+      router.push('/asViewer/mtes/new-application/ep');
     },
     navigateToMPSAdashboard() {
-      router.push('/mtes/new-application/mpsa');
+      router.push('/asViewer/mtes/new-application/mpsa');
     },
     navigateToISAGdashboard() {
-      router.push('/mtes/new-application/isag');
+      router.push('/asViewer/mtes/new-application/isag');
     },
     navigateToMBdashboard() {
-      router.push('/mtes/new-application/mb');
+      router.push('/asViewer/mtes/new-application/mb');
     },
     navigateToMPLdashboard() {
-      router.push('/mtes/new-application/mpl');
+      router.push('/asViewer/mtes/new-application/mpl');
     },
     navigateToMPPdashboard() {
-      router.push('/mtes/new-application/mpp');
+      router.push('/asViewer/mtes/new-application/mpp');
     },
     navigateToOTPdashboard() {
-      router.push('/mtes/new-application/otp');
+      router.push('/asViewer/mtes/new-application/otp');
     },
     navigateToSSMCdashboard() {
-      router.push('/mtes/new-application/ssmc');
+      router.push('/asViewer/mtes/new-application/ssmc');
     },
     navigateToAMTRDdashboard() {
-      router.push('/mtes/new-application/amtrd');
+      router.push('/asViewer/mtes/new-application/amtrd');
     },
     navigateToMOEPdashboard() {
-      router.push('/mtes/new-application/moep');
+      router.push('/asViewer/mtes/new-application/moep');
     },
   }
 };

@@ -33,15 +33,15 @@
       methods: {
         navigateToMTSS() {
           // Use router.push to navigate to '/applicationpage'
-          window.location.href = 'mmd/mtss';
+          window.location.href = '#';
         },
         navigateToMTES() {
           // Use router.push to navigate to '/permitpage'
-          window.location.href = 'mmd/mtes';
+          window.location.href = '/asViewer/mtes';
         },
         navigateToMLSS() {
           // Use router.push to navigate to '/permitpage'
-          window.location.href = 'mmd/mlss';
+          window.location.href = '#';
         },
       }
     };

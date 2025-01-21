@@ -59,7 +59,7 @@ import pie from "../components/MTES/charts/Pie.vue";
 import asViewer_landing_page from "../views/asViewer/asViewer_landing_page.vue";  
 import asViewer_dashboard from "../views/asViewer/v-dashboard.vue";  
 import asViewer_newapplication from "../views/asViewer/v-new-application.vue";
-import asViewer_MandatoryRequirements from "../views/asViewer/v-mandatoryReq.vue";
+import View_MandatoryRequirements from "../views/asChief/mandatoryReq.vue";
 import asViewer_amtrd from "../views/asViewer/dashboards/v-AMTRD-dashboard.vue";
 import asViewer_ftta from "../views/asViewer/dashboards/v-FTAA-dashboard.vue";
 import asViewer_ep from "../views/asViewer/dashboards/v-EP-dashboard.vue";
@@ -76,7 +76,6 @@ import asViewer_moep from "../views/asViewer/dashboards/v-MOEP-dashboard.vue";
 import asChief_landing_page from "../views/asChief/asChief_landing_page.vue";  
 import asChief_dashboard from "../views/asChief/dashboard.vue";  
 import asChief_newapplication from "../views/asChief/new-application.vue";
-import asChief_MandatoryRequirements from "../views/asChief/mandatoryReq.vue";
 import asChief_amtrd from "../views/asChief/dashboards/v-AMTRD-dashboard.vue";
 import asChief_ftta from "../views/asChief/dashboards/v-FTAA-dashboard.vue";
 import asChief_ep from "../views/asChief/dashboards/v-EP-dashboard.vue";
@@ -128,48 +127,9 @@ const routes = [
   { path: "/mlss/pdf-content", component: PDFcontent, meta: { requiresAuth: true } },
 
   // MTES routes
-  { path: "/mmd/mtes", component: firstpage, meta: { requiresAuth: true } },
-  { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
-  { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
-  /////////////////////
-  { path: "/mmd/asViewer", component: asViewer_landing_page, meta: { requiresAuth: true } },
-  { path: "/mmd/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application", component: asViewer_newapplication, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/amtrd", component: asViewer_amtrd, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/ftta", component: asViewer_ftta, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/ep", component: asViewer_ep, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/mpsa", component: asViewer_mpsa, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/isag", component: asViewer_isag, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/mb", component: asViewer_mb, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/mpl", component: asViewer_mpl, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/mpp", component: asViewer_mpp, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/otp", component: asViewer_otp, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
-  { path: "/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
-  { path: "/mtes/mandatory_requirements/:detail_id", component: asViewer_MandatoryRequirements },
-
-   /////////////////////
-   { path: "/mmd", component: asChief_landing_page, meta: { requiresAuth: true } },
-   { path: "/mmd/mtes", component: asChief_dashboard, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application", component: asChief_newapplication, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/amtrd", component: asChief_amtrd, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/ftta", component: asChief_ftta, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/ep", component: asChief_ep, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/mpsa", component: asChief_mpsa, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/isag", component: asChief_isag, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/mb", component: asChief_mb, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/mpl", component: asChief_mpl, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/mpp", component: asChief_mpp, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/otp", component: asChief_otp, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/ssmc", component: asChief_ssmc, meta: { requiresAuth: true } },
-   { path: "/mtes/new-application/moep", component: asChief_moep, meta: { requiresAuth: true } },
-   { path: "/mtes/mandatory_requirements/:detail_id", component: asChief_MandatoryRequirements },
-
-  // MTES Fax sheets
-  { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },
-
-
-  // Dashboards
+  { path: "/mtes", component: firstpage, meta: { requiresAuth: true } },
+  { path: "/new-application", component: applicationpage, meta: { requiresAuth: true } },
+  { path: "/permit", component: permitpage, meta: { requiresAuth: true } },
   { path: "/ftta", component: fttadashboard, meta: { requiresAuth: true } },
   { path: "/ep", component: epdashboard, meta: { requiresAuth: true } },
   { path: "/mpsa", component: mpsadashboard, meta: { requiresAuth: true } },
@@ -181,9 +141,40 @@ const routes = [
   { path: "/ssmc", component: ssmcdashboard, meta: { requiresAuth: true } },
   { path: "/amtrd", component: amtrddashboard, meta: { requiresAuth: true } },
   { path: "/moep", component: moepddashboard, meta: { requiresAuth: true } },
-
-  // Mandatory Requirements
+  { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },
   { path: "/MandatoryRequirements/:detail_id", component: MandatoryRequirements },
+  //MTES_asViewer
+  { path: "/asViewer", component: asViewer_landing_page, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application", component: asViewer_newapplication, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/amtrd", component: asViewer_amtrd, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/ftta", component: asViewer_ftta, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/ep", component: asViewer_ep, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/mpsa", component: asViewer_mpsa, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/isag", component: asViewer_isag, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/mb", component: asViewer_mb, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/mpl", component: asViewer_mpl, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/mpp", component: asViewer_mpp, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/otp", component: asViewer_otp, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
+  { path: "/asViewer/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
+   //MTES_asChief
+   { path: "/mmd", component: asChief_landing_page, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes", component: asChief_dashboard, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application", component: asChief_newapplication, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/amtrd", component: asChief_amtrd, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/ftta", component: asChief_ftta, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/ep", component: asChief_ep, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/mpsa", component: asChief_mpsa, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/isag", component: asChief_isag, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/mb", component: asChief_mb, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/mpl", component: asChief_mpl, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/mpp", component: asChief_mpp, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/otp", component: asChief_otp, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/ssmc", component: asChief_ssmc, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes/new-application/moep", component: asChief_moep, meta: { requiresAuth: true } },
+   { path: "/mmd/MandatoryRequirements/:detail_id", component: View_MandatoryRequirements },
+  
 ];
 
 // Create router instance

@@ -30,7 +30,7 @@
     methods: {
       navigateToFirstPage() {
         // Use router.push to navigate to ''
-        window.location.href = '/mtes/new-application';
+        window.location.href = '/mmd/mtes/new-application';
       },
       navigateToSecondPage() {
         // Use router.push to navigate to '/permitpage'

@@ -123,7 +123,7 @@ export default {
             }
         },
         navigateToMandatoryReqFTTA(detail_id) {
-            window.open(`/mtes/mandatory_requirements/${detail_id}`, '_blank');
+            window.open(`/mmd/MandatoryRequirements/${detail_id}`, '_blank');
         },
     }
 }

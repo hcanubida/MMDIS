@@ -123,7 +123,7 @@
             }
         },
         navigateToMandatoryReqMPL(detail_id8) {
-            window.location.href = `/MandatoryRequirements/${detail_id8}`;
+            window.location.href = `/mmd/MandatoryRequirements/${detail_id8}`;
         },
     }
   }
