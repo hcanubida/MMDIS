@@ -4,34 +4,34 @@
 
     <div class="flex w-full justify-center items-start">  
         <!-- Accomplishment Reports Section -->
-        <div class="flex flex-col items-center p-8 bg-orange-100 mt-18 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-green-800 mt-18 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/ar.png" alt="MGBLogo" class="flex justify-center w-24">
-                <h1 class="font-bold">Accomplishment Reports</h1>
+                <h1 class="font-bold text-white">Accomplishment Reports</h1>
             </div>
             <div class="flex flex-col">
-                <button @click="redirectToOSTC" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">OSTC</button>
-                <button @click="redirectToInventory" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Inventory</button>
-                <button @click="redirectToWPM" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Work Program Monitoring</button>
-                <button @click="redirectToMBM" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Minahang Bayan Monitoring</button>
-                <button @click="redirectToInvestigation" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Investigation</button>
-                <button @click="redirectToAI" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">Anti-Illegal</button>
-                <button @click="redirectToDMPF" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">DMPF</button>
-                <button @click="redirectToPCMRB" class="button-styled text-lg mb-4 rounded-xl p-3 cursor-pointer">PCMRB Meetings</button>
+                <button @click="redirectToOSTC" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">OSTC</button>
+                <button @click="redirectToInventory" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">Inventory</button>
+                <button @click="redirectToWPM" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">Work Program Monitoring</button>
+                <button @click="redirectToMBM" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">Minahang Bayan Monitoring</button>
+                <button @click="redirectToInvestigation" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">Investigation</button>
+                <button @click="redirectToAI" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">Anti-Illegal</button>
+                <button @click="redirectToDMPF" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">DMPF</button>
+                <button @click="redirectToPCMRB" class="hover:bg-amber-200 bg-amber-400 text-lg mb-4 rounded-xl p-3 cursor-pointer">PCMRB Meetings</button>
             </div>
         </div>
 
         <!-- Databases Section -->
-        <div class="flex flex-col items-center p-8 bg-orange-100 mt-18 m-4 rounded-3xl">
+        <div class="flex flex-col items-center p-8 bg-green-800 mt-18 m-4 rounded-3xl">
             <div class="flex mb-4">
                 <img src="../../assets/icons/db.png" alt="MGBLogo" class="flex justify-center w-24">
-                <h1 class="font-bold">Databases</h1>
+                <h1 class="font-bold text-white">Databases</h1>
             </div>
             <div class="flex flex-col">
-                <button @click="redirectToMPSA" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPSA</button>
-                <button @click="redirectToISAG" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">ISAG</button>
-                <button @click="redirectToEP" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">EP</button>
-                <button @click="redirectToMPP" class="button-styled w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPP</button>
+                <button @click="redirectToMPSA" class="hover:bg-amber-200 bg-amber-400 w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPSA</button>
+                <button @click="redirectToISAG" class="hover:bg-amber-200 bg-amber-400 w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">ISAG</button>
+                <button @click="redirectToEP" class="hover:bg-amber-200 bg-amber-400 w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">EP</button>
+                <button @click="redirectToMPP" class="hover:bg-amber-200 bg-amber-400 w-64 text-lg mb-4 rounded-xl p-3 cursor-pointer">MPP</button>
             </div>
         </div>
     </div>

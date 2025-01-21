@@ -86,19 +86,19 @@
                 </button>
                 <div v-if="isDropdownASCNew" id="area-status-new-dropdown" class="mt-2 w-64 rounded-lg z-10 bg-amber-400 shadow-lg">
                   <a
-                    @click="navigateTo('CSAG')"
+                    @click="navigateTo('/mlss/CSAG')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     CSAG
                   </a>
                   <a
-                    @click="navigateTo('ISAG')"
+                    @click="navigateTo('/mlss/ISAG')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     ISAG
                   </a>
                   <a
-                    @click="navigateTo('MQUARRY')"
+                    @click="navigateTo('/mlss/MQUARRY')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-amber-100"
                   >
                     MQUARRY
