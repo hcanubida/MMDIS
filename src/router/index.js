@@ -72,6 +72,23 @@ import asViewer_otp from "../views/asViewer/dashboards/v-OTP-dashboard.vue";
 import asViewer_ssmc from "../views/asViewer/dashboards/v-SSMC-dashboard.vue";
 import asViewer_moep from "../views/asViewer/dashboards/v-MOEP-dashboard.vue";
 
+//asChief
+import asChief_landing_page from "../views/asChief/asChief_landing_page.vue";  
+import asChief_dashboard from "../views/asChief/dashboard.vue";  
+import asChief_newapplication from "../views/asChief/new-application.vue";
+import asChief_MandatoryRequirements from "../views/asChief/mandatoryReq.vue";
+import asChief_amtrd from "../views/asChief/dashboards/v-AMTRD-dashboard.vue";
+import asChief_ftta from "../views/asChief/dashboards/v-FTAA-dashboard.vue";
+import asChief_ep from "../views/asChief/dashboards/v-EP-dashboard.vue";
+import asChief_mpsa from "../views/asChief/dashboards/v-MPSA-dashboard.vue";
+import asChief_isag from "../views/asChief/dashboards/v-ISAG-dashboard.vue";
+import asChief_mb from "../views/asChief/dashboards/v-MB-dashboard.vue";
+import asChief_mpl from "../views/asChief/dashboards/v-MPL-dashboard.vue";
+import asChief_mpp from "../views/asChief/dashboards/v-MPP-dashboard.vue";
+import asChief_otp from "../views/asChief/dashboards/v-OTP-dashboard.vue";
+import asChief_ssmc from "../views/asChief/dashboards/v-SSMC-dashboard.vue";
+import asChief_moep from "../views/asChief/dashboards/v-MOEP-dashboard.vue";
+
 // Mock function to check if user is authenticated
 function isAuthenticated() {
   return !!localStorage.getItem('authToken'); // You can customize this auth method as needed
@@ -111,11 +128,11 @@ const routes = [
   { path: "/mlss/pdf-content", component: PDFcontent, meta: { requiresAuth: true } },
 
   // MTES routes
-  { path: "/firstpage", component: firstpage, meta: { requiresAuth: true } },
+  { path: "/mmd/mtes", component: firstpage, meta: { requiresAuth: true } },
   { path: "/applicationpage", component: applicationpage, meta: { requiresAuth: true } },
   { path: "/permitpage", component: permitpage, meta: { requiresAuth: true } },
   /////////////////////
-  { path: "/mmd", component: asViewer_landing_page, meta: { requiresAuth: true } },
+  { path: "/mmd/asViewer", component: asViewer_landing_page, meta: { requiresAuth: true } },
   { path: "/mmd/mtes", component: asViewer_dashboard, meta: { requiresAuth: true } },
   { path: "/mtes/new-application", component: asViewer_newapplication, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/amtrd", component: asViewer_amtrd, meta: { requiresAuth: true } },
@@ -130,6 +147,23 @@ const routes = [
   { path: "/mtes/new-application/ssmc", component: asViewer_ssmc, meta: { requiresAuth: true } },
   { path: "/mtes/new-application/moep", component: asViewer_moep, meta: { requiresAuth: true } },
   { path: "/mtes/mandatory_requirements/:detail_id", component: asViewer_MandatoryRequirements },
+
+   /////////////////////
+   { path: "/mmd", component: asChief_landing_page, meta: { requiresAuth: true } },
+   { path: "/mmd/mtes", component: asChief_dashboard, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application", component: asChief_newapplication, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/amtrd", component: asChief_amtrd, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/ftta", component: asChief_ftta, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/ep", component: asChief_ep, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/mpsa", component: asChief_mpsa, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/isag", component: asChief_isag, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/mb", component: asChief_mb, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/mpl", component: asChief_mpl, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/mpp", component: asChief_mpp, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/otp", component: asChief_otp, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/ssmc", component: asChief_ssmc, meta: { requiresAuth: true } },
+   { path: "/mtes/new-application/moep", component: asChief_moep, meta: { requiresAuth: true } },
+   { path: "/mtes/mandatory_requirements/:detail_id", component: asChief_MandatoryRequirements },
 
   // MTES Fax sheets
   { path: "/factsheet", component: Factsheet, meta: { requiresAuth: true } },
