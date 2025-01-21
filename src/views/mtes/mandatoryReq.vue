@@ -396,10 +396,11 @@ export default {
       EditModal: false,
       selectedCategory: '',
       selectedOngoingProcessing: '',
-      details: {
+      details: {},
         status: '',
         stage_of_processing: '',
-      },
+      
+      id: null,
       selectedCategory: "",
       selectedOngoingProcessing: "",
       overallStatus: '',
@@ -435,20 +436,8 @@ export default {
         file4: [],
         file5: []
       },
-  //     created() {
-  //       this.fetchDetails(this.id);
-  // },
-
     };
-    
   },
-  // watch: {
-  //   selectedStatus(newValue) {
-  //     if (newValue !== 'other') {
-  //       this.otherStatus = '';
-  //     }
-  //   }
-  // },
   methods: {
 
   ///
@@ -463,35 +452,62 @@ export default {
       this.selectedCategory = '';
       this.selectedOngoingProcessing = '';
     },
-    // async fetchDetails() {
-    //   try {
-    //     const response = await axios.get(`/api/details/${this.detail_id}`);
-    //     this.details = response.data || {};
-    //   } catch (error) {
-    //     console.error('Error fetching details:', error);
-    //   }
-    // },
-    async saveChanges() {
-      const payload = {
-        status: this.selectedCategory,
-        stage_of_processing: this.selectedOngoingProcessing,
-      };
-
+    async fetchDetails(id) {
       try {
-        await axios.post(`/api/details/${this.details.id}`, payload);
+        const response = await axios.get(`${API_BASE_URL}/get_details/${id}`);
+        this.details = response.data || {};
+        this.id = this.details.id; // Assuming the ID is part of the response
+      } catch (error) {
+        console.error('Error fetching details:', error);
+      }
+    },
+    async saveChanges() {
+      console.log(`Attempting to save changes with ID: ${this.id}`);
+      
+      if (!this.id) {
+        this.handleError('ID is undefined. Cannot save changes.');
+        return;
+      }
+
+      this.isLoading = true;
+      try {
+        const formData = this.createFormData();
+        const response = await axios.post(`${API_BASE_URL}/update_status/${this.id}`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+
         alert('Details updated successfully');
-        this.fetchDetails(); // Refresh details
+        await this.fetchDetails(this.id);
         this.closeEditModal();
       } catch (error) {
-        console.error('Error saving changes:', error);
-        alert('Failed to update details.');
+        this.handleError(error);
+      } finally {
+        this.isLoading = false;
       }
     },
 
+    createFormData() {
+      const formData = new FormData();
+      formData.append('status', this.selectedCategory);
+      formData.append('stage_of_processing', this.selectedOngoingProcessing);
+      return formData;
+    },
+
+    handleError(error) {
+      console.error('Error saving changes:', error);
+      if (error.response) {
+        console.error('Response data:', error.response.data);
+        alert(`Failed to update details: ${error.response.data.message || 'Unknown error'}`);
+      } else if (error.request) {
+        alert('Failed to update details: No response from server.');
+      } else {
+        alert('Failed to update details: ' + error.message);
+      }
+    },
+    //
     toggleModal() {
       this.isVisible = !this.isVisible;
     },
-
     myAction(payload) {
       const { containerId, images } = payload;
       this.imagesfile[containerId] = images;
@@ -721,7 +737,8 @@ export default {
   },
   mounted() {
     this.getDetails();
-    // this.fetchDetails();
+    const id = this.$route.params.detail_id;
+    this.fetchDetails(id); 
   },
 }
 </script>

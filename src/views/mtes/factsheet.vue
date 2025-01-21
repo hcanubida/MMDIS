@@ -358,14 +358,17 @@
                     </tr>
                 </thead>
                 <tbody class="w-full">
-                    <tr>
+                    <tr v-for="(detail, index) in details" :key="`status-${index}`">
                         <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             Status
                         </td>
 
                         <td class="w-72 px-2 py-2 text-xs font-normal tracking-wider border border-gray-300 text-left">
                             <p>
-                                {{ mtsrvalue }}
+                                {{ detail.status }} 
+                                <span v-if="detail.status === 'On-going Process'" class="italic">
+                                    <br>{{ detail.stage_of_processing }}
+                                </span>
                             </p>
                         </td>
 
