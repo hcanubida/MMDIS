@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="flex justify-center">
     <!-- Modal Overlay -->
     <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center" style="background: rgba(0, 0, 0, 0.5); z-index: 1000;">
-      <div class="bg-white rounded-lg w-4/5 relative" style="max-width: 800px;">
+      <div class="bg-white rounded-lg w-4/5 relative" style="max-width: 640px;">
         <faxx />
       </div>
     </div>
