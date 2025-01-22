@@ -341,7 +341,7 @@
     <img src="../../assets/icons/Footer.png" class="" style="width:80%;">
     </div>
 </div>
-<div v-if="forceRenderPages || currentPage === 4" id="page-004" class="bg-white border-t flex flex-col max-h-screen" style="width: 640px; height: 1320px; position: relative;">
+<div v-if="forceRenderPages || currentPage === 4" id="page-004" class="bg-white border-t flex flex-col" style="width: 100%; max-width: 816px; height: 100vh; position: relative; overflow: auto;">
     <img src="../../assets/icons/Header.png" class="flex" style="padding: 0px 20px">
 
     <div class="flex items-left flex-col ml-16 flex-grow">
