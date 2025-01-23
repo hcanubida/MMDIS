@@ -27,7 +27,7 @@
         <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload:
+                Files to upload: (max 10mb/10,000kb)
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
                 ref="fileInput1"
@@ -61,7 +61,7 @@
         <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload:
+                Files to upload: (max 10mb/10,000kb)
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
                 ref="fileInput2"
@@ -95,7 +95,7 @@
         <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload:
+                Files to upload: (max 10mb/10,000kb)
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
                 ref="fileInput3"
@@ -131,7 +131,7 @@
         <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload:
+                Files to upload: (max 10mb/10,000kb)
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
                 ref="fileInput4"
@@ -165,7 +165,7 @@
         <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
               <label
                 class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload:
+                Files to upload: (max 10mb/10,000kb)
               </label>
               <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
                 ref="fileInput5"
@@ -638,6 +638,8 @@ export default {
 
     },
     update() {
+      // Show an alert message when the update process is initiated
+  alert('An update has been initiated.');
       const formData = new FormData();
       formData.append('id_reference', this.$route.params.detail_id);
       formData.append('overallstatus', this.overallStatus);
