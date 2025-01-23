@@ -131,10 +131,10 @@
             <table class="w-11/12 border border-gray-300" style="font-size: 10px;">
                 <thead>
                     <tr style="text-align: center;">
-                        <th class="border pb-4" style="width: 30%; font-weight: bold;">Requirement</th>
-                        <th class="border pb-4" style="width: 20%; font-weight: bold;">Uploads</th>
-                        <th class="border pb-4" style="width: 25%; font-weight: bold;">Remarks / Status</th>
-                        <th class="border pb-4" style="width: 25%; font-weight: bold;">Recommendation</th>
+                        <th class="border" style="width: 30%; font-weight: bold;">Requirement</th>
+                        <th class="border" style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th class="border" style="width: 25%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border" style="width: 25%; font-weight: bold;">Recommendation</th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
@@ -176,10 +176,10 @@
             <table class="w-11/12 border border-gray-300" style="font-size: 10px;">
                 <thead>
                     <tr style="text-align: center;">
-                        <th class="border text-xs pb-4" style="width: 30%; font-weight: bold;">Requirement</th>
-                        <th class="border text-xs pb-4" style="width: 20%; font-weight: bold;">Uploads</th>
-                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Remarks / Status</th>
-                        <th class="border text-xs pb-4" style="width: 25%; font-weight: bold;">Recommendation</th>
+                        <th class="border" style="width: 30%; font-weight: bold;">Requirement</th>
+                        <th class="border" style="width: 20%; font-weight: bold;">Uploads</th>
+                        <th class="border" style="width: 25%; font-weight: bold;">Remarks / Status</th>
+                        <th class="border" style="width: 25%; font-weight: bold;">Recommendation</th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
@@ -269,15 +269,15 @@
     <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Summary of Lacking Requirements' Table-->
         <div>
-            <p class="font-bold text-left text-xs mt-8 mb-8" style="letter-spacing: 3px;">
+            <p class="font-bold text-left text-xs mt-8 mb-4" style="letter-spacing: 3px;">
                 IV.&nbsp;&nbsp;&nbsp;SUMMARY OF LACKING REQUIREMENTS
             </p>
 
             <table class="w-11/12 border border-gray-300" style="font-size: 10px;">
                 <thead>
                     <tr style="text-align: center;">
-                        <th class="border text-xs pb-4" style="width: 40%; font-weight: bold;">Requirement</th>
-                        <th class="border text-xs pb-4" style="width: 60%; font-weight: bold;">Recommendation or Lacking Submission</th>
+                        <th class="border" style="width: 40%; font-weight: bold;">Requirement</th>
+                        <th class="border" style="width: 60%; font-weight: bold;">Recommendation or Lacking Submission</th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
@@ -347,14 +347,14 @@
     <div class="flex items-left flex-col ml-16 flex-grow">
         <!--Status of Application Table-->
         <div>
-            <p class="font-bold text-left text-xs mt-8 mb-8" style="letter-spacing: 3px;">
+            <p class="font-bold text-left text-xs mt-8 mb-4" style="letter-spacing: 3px;">
                 V.&nbsp;&nbsp;&nbsp;STATUS OF THE APPLICATION
             </p>
             <table class="w-11/12 border border-gray-300" style="font-size: 10px;">
                 <thead>
-                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th class="border text-xs pb-4 w-2/5"  style="font-weight: bold;">Mandatory Requirements</th>
-                        <th class="border text-xs pb-4"  style="width: 70%; font-weight: bold;">Remarks / Status</th>
+                    <tr style="text-align: center;">
+                        <th class="border w-2/5"  style="font-weight: bold;">Mandatory Requirements</th>
+                        <th class="border"  style="width: 70%; font-weight: bold;">Remarks / Status</th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
@@ -378,14 +378,14 @@
         </div>
         <!--Overall Remarks/Recommendations' Table-->
         <div>
-            <p class="font-bold text-left text-xs mt-8 mb-8" style="letter-spacing: 3px;">
+            <p class="font-bold text-left text-xs mt-8 mb-4" style="letter-spacing: 3px;">
                 VI.&nbsp;&nbsp;&nbsp;OVERALL REMARKS/ RECOMMENDATIONS
             </p>
             <table class="w-11/12 border border-gray-300" style="font-size: 10px;">
                 <thead>
-                    <tr style="text-align: center; font-size: 12px; font-weight: 700;">
-                        <th class="border text-xs pb-4" style="width: 40%; font-weight: bold;">Mandatory Requirements</th>
-                        <th class="border text-xs pb-4" style="width: 60%; font-weight: bold;">Remarks / Status</th>
+                    <tr style="text-align: center;">
+                        <th class="border" style="width: 40%; font-weight: bold;">Mandatory Requirements</th>
+                        <th class="border" style="width: 60%; font-weight: bold;">Remarks / Status</th>
                     </tr>
                 </thead>
                 <tbody class="w-full">
