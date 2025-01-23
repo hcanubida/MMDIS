@@ -334,7 +334,7 @@
       <!-- Save Button -->
       <button @click="saveChanges" class="py-1 px-2 mx-2 rounded cursor-pointer text-white hover:text-gray-950 bg-green-800 hover:bg-green-100">Save</button>
       <!-- Close Button -->
-      <button @click="closeEditModal" class="py-1 px-2 mx-2 rounded cursor-pointer bg-[#e6cfaf] hover:bg-[#d6bf9f]">Close</button>
+      <button @click="closeEditModal" class="py-1 px-2 mx-2 rounded cursor-pointer text-white hover:bg-red-700 bg-red-800">Close</button>
     </div>
   </div>
 </div>
