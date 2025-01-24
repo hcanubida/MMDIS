@@ -48,6 +48,46 @@
       <ul class="space-y-2 font-medium">
         <li>
           <a
+            href="https://docs.google.com/spreadsheets/d/1Mi4K6Z6piQ7QtYAg6KBHf-OfcDvPKdjjzkUZVdimSIk/edit?gid=0#gid=0"
+            target="_blank"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
+          >
+            <svg
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 21"
+            >
+              <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+              <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+            </svg>
+            <span class="ms-3">MMD Directory of Links</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="http://202.137.117.84:8010/travelorder"
+            target="_blank"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
+          >
+            <svg
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 21"
+            >
+              <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+              <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+            </svg>
+            <span class="ms-3">Travel Order Online Application</span>
+          </a>
+        </li>
+
+        <li>
+          <a
             href="http://202.137.117.84:8001/"
             target="_blank"
             class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
@@ -62,9 +102,10 @@
               <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
               <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
             </svg>
-            <span class="ms-3">Document Tracking and Online Application</span>
+            <span class="ms-3">Document Tracking System</span>
           </a>
         </li>
+
         <li>
           <a
             href="http://172.31.10.35:8007/rso/"
@@ -84,6 +125,27 @@
             <span class="ms-3">Document Archiving System</span>
           </a>
         </li>
+        
+        <li>
+          <a
+            href="http://202.137.117.84:8010/leaveform"
+            target="_blank"
+            class="flex items-center p-2 text-gray-100 rounded-lg hover:text-amber-400"
+          >
+            <svg
+              class="w-5 h-5 text-gray-100 transition duration-75 group-hover:text-amber-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 22 21"
+            >
+              <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+              <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+            </svg>
+            <span class="ms-3">Leave Online Application</span>
+          </a>
+        </li>
+
         <li>
           <a
             href="https://www.facebook.com/mgbregionxofficialpage"
