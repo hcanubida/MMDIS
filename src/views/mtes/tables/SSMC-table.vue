@@ -8,6 +8,7 @@
       <p class="m-8 border border-green-800 p-2 rounded-lg">Issued: {{ statusCount('Issued') }}</p>
       <p class="m-8 border border-green-800 p-2 rounded-lg">Endorsed to MGB CO for Clearance: {{ statusCount('Endorsed to MGB CO for Clearance') }}</p>
       <p class="m-8 border border-green-800 p-2 rounded-lg">Endorsed to MGB CO for Approval: {{ statusCount('Endorsed to MGB CO for Approval') }}</p>
+      <p class="m-8 border border-green-800 p-2 rounded-lg">Issued Expired: {{ statusCount('Issued Expired') }}</p>
     </div>
 
     <!-- Search and Add Section -->
