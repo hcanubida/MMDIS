@@ -4,6 +4,11 @@
     <UserBtn />
   </div>
 
+  <div>
+    <button @click="scrollToTop" class="scroll-btn top">&#8679;</button>
+    <button @click="scrollToBottom" class="scroll-btn bottom">&#8681;</button>
+  </div>
+
 <!-- Table Section -->
 <div class="flex justify-center">
   <div class="mt-2 text-center w-11/12">
@@ -79,7 +84,7 @@
   <thead class="text-xl text-center">
     <tr class="bg-green-800 text-white">
       <th class="p-2 text-base border border-gray-300">Requirements</th>
-      <th class="p-2 text-base border border-gray-300" style="width: 300px;">Upload Requirements<br>(PDF, Word, or any file)</th>
+      <th class="p-2 text-base border border-gray-300" style="width: 300px;">Upload Requirements <br> and Attachments</th>
       <th class="p-2 text-base border border-gray-300">Remarks/Status</th>
     </tr>
   </thead>
@@ -141,8 +146,8 @@
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput1"></textarea>
-        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput1"></textarea>
+        Remarks/Status: <textarea class="h-[155px] w-full border px-2" v-model="remarks.textInput1"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-[155px] w-full border p-2 text-red-700" v-model="recommendation.textInput1"></textarea>
         </div>
       </td>
     </tr>
@@ -202,8 +207,8 @@
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput2"></textarea>
-        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput2"></textarea>
+        Remarks/Status: <textarea class="h-[155px] w-full border px-2" v-model="remarks.textInput2"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-[155px] w-full border p-2 text-red-700" v-model="recommendation.textInput2"></textarea>
         </div>
       </td>
     </tr>
@@ -263,8 +268,8 @@
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput3"></textarea>
-        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput3"></textarea>
+        Remarks/Status: <textarea class="h-[155px] w-full border px-2" v-model="remarks.textInput3"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-[155px] w-full border p-2 text-red-700" v-model="recommendation.textInput3"></textarea>
         </div>
       </td>
     </tr>
@@ -326,8 +331,8 @@
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput4"></textarea>
-        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput4"></textarea>
+        Remarks/Status: <textarea class="h-[155px] w-full border px-2" v-model="remarks.textInput4"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-[155px] w-full border p-2 text-red-700" v-model="recommendation.textInput4"></textarea>
         </div>
       </td>
     </tr>
@@ -387,8 +392,8 @@
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput5"></textarea>
-        Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput5"></textarea>
+        Remarks/Status: <textarea class="h-[155px] w-full border px-2" v-model="remarks.textInput5"></textarea>
+        Recommendations/Lacking Submission: <textarea class="h-[155px] w-full border p-2 text-red-700" v-model="recommendation.textInput5"></textarea>
         </div>
       </td>
     </tr>
@@ -412,7 +417,7 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2">
-            <br><label>Remarks/Status: <p>{{ remarks.textInput1 }}</p></label>
+            <br><label>Remarks/Status: <p>{{ remarks.textInput1 }}</p></label><br>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput1 }}</p></label>   
           </td>
         </tr>
@@ -423,8 +428,8 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2">
-            <br><label>Remarks/Status: <p>{{ remarks.textInput2 }}</p></label>
-            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
+            <br><label>Remarks/Status: <p>{{ remarks.textInput2 }}</p></label><br>
+            <label class="mt-2">Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput2 }}</p></label>   
           </td>
         </tr>
 
@@ -434,8 +439,8 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2">
-            <br><label>Remarks/Status: <p>{{ remarks.textInput3 }}</p></label>
-            <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
+            <br><label>Remarks/Status: <p>{{ remarks.textInput3 }}</p></label><br>
+            <label class="mt-2">Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput3 }}</p></label>   
           </td>
         </tr>
 
@@ -447,7 +452,7 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2">
-            <br><label>Remarks/Status: <p>{{ remarks.textInput4 }}</p></label>
+            <br><label>Remarks/Status: <p>{{ remarks.textInput4 }}</p></label><br>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput4 }}</p></label>  
           </td>
         </tr>
@@ -458,7 +463,7 @@
           </td>
 
           <td class="text-left h-24 text-xs w-full border px-2">  
-            <br><label>Remarks/Status: <p>{{ remarks.textInput5 }}</p></label>
+            <br><label>Remarks/Status: <p>{{ remarks.textInput5 }}</p></label><br>
             <label>Recommendation or Lacking Submission: <p style="color: red;">{{ recommendation.textInput5 }}</p></label>  
           </td>
         </tr>
@@ -642,6 +647,12 @@ export default {
     };
   },
   methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    },
     getFileUrl(folder, file) {
       return `${API_BASE_URL}/storage/MandatoryRequirements/${folder}/${file}`; 
     },
@@ -967,4 +978,18 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.scroll-btn {
+  @apply fixed right-5 bg-amber-400 hover:bg-amber-200 text-black border-none px-4 py-2 rounded-md cursor-pointer text-lg shadow-md transition-colors;
+}
+
+.top {
+  @apply bottom-20;
+}
+
+.bottom {
+  @apply bottom-5;
+}
+</style>
 
