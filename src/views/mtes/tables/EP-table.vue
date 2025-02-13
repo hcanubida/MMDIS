@@ -61,7 +61,7 @@
                 <template v-else>▼</template>
               </span>
             </th>
-            <th class="border text-center p-2">Area (HA)</th>
+            <th class="border text-center p-2">Total Area (HA)</th>
             <th class="border text-center p-2 cursor-pointer" @click="sortmethod('date_filed')">
               Date Filed
               <span v-if="sortKey === 'date_filed'" aria-label="Sorted ascending">
@@ -69,9 +69,7 @@
                 <template v-else>▼</template>
               </span>
             </th>
-            <th class="border text-center p-2">Barangay</th>
-            <th class="border text-center p-2">City</th>
-            <th class="border text-center p-2">Province</th>
+            <th class="border text-center p-2">Locations</th>
             <th class="border text-center p-2">Commodity</th>
             <th class="border text-center p-2">Action</th>
           </tr>
@@ -82,22 +80,33 @@
             <td class="border text-center p-2">{{ detail.status }}</td>
             <td class="border text-center p-2">{{ detail.tenement_number }}</td>
             <td class="border text-center p-2">{{ detail.tenement_name }}</td>
-            <td class="border text-center p-2">{{ detail.area_hectares }}</td>
+            <td class="border text-center p-2">{{ calculateRowArea(detail) }}</td>
             <td class="border text-center p-2">{{ detail.date_filed }}</td>
-            <td class="border text-center p-2">{{ detail.barangay }}</td>
-            <td class="border text-center p-2">{{ detail.city }}</td>
-            <td class="border text-center p-2">{{ detail.province }}</td>
+            <td class="border text-center p-2"><span v-html="formatLocation(detail)"></span></td>
             <td class="border text-center p-2">{{ detail.commodity }}</td>
-            <td class="border p-2 flex items-center justify-center">
-              <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
-              <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
-                <!-- Red dot for comment availability -->
-                <span v-if="detail.comments && detail.comments.length > 0" class="absolute  top-[-3px] right-[5px]  w-2 h-2 rounded-full bg-red-600"></span>
-                <img src="../../../assets/icons/comment.png" style="width: 20px;">
-              </button>
-              <button @click="deleteDetail(detail.id)" class="bg-grey-100 text-white py-1 rounded">
-                <img src="../../../assets/icons/remove.png" style="width: 15px;">
-              </button>
+            <td class="border p-2 text-center">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <!-- View Button -->
+                <button @click="navigateTomodalView(detail.id)" class="rounded">
+                  <img src="../../../assets/icons/eye.png" class="w-6">
+                </button>
+
+                <!-- Comment Button with Red Dot -->
+                <div class="relative">
+                  <button @click="showComment(detail)" class="rounded">
+                    <img src="../../../assets/icons/comment.png" class="w-5">
+                  </button>
+                  <span 
+                    v-if="detail.comments && detail.comments.length > 0" 
+                    class="absolute top-0 right-0 w-2 h-2 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
+                  </span>
+                </div>
+
+                <!-- Delete Button -->
+                <button @click="deleteDetail(detail.id)" class="rounded">
+                  <img src="../../../assets/icons/remove.png" class="w-4">
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -125,6 +134,7 @@ export default {
       detail_id: null,
       sortKey: '',
       sortOrder: 'asc',
+      totalArea: 0,
     };
   },
   computed: {
@@ -158,6 +168,27 @@ export default {
     this.fetchDetails();
   },
   methods: {
+    calculateRowArea(detail) {
+      return (
+        (parseFloat(detail.area_hectares) || 0) +
+        (parseFloat(detail.area_hectares1) || 0) +
+        (parseFloat(detail.area_hectares2) || 0) +
+        (parseFloat(detail.area_hectares3) || 0)
+      );
+    },
+    formatLocation(detail) {
+      const locations = [
+        `${detail.barangay}, ${detail.city}, ${detail.province}`,
+        `${detail.barangay1}, ${detail.city1}, ${detail.province1}`,
+        `${detail.barangay2}, ${detail.city2}, ${detail.province2}`,
+        `${detail.barangay3}, ${detail.city3}, ${detail.province3}`
+      ];
+
+      // Filter out any locations that are `null`, `undefined`, or empty
+      const validLocations = locations.filter(loc => !loc.includes('null') && !loc.includes('undefined') && loc.trim() !== ', , ');
+
+      return validLocations.join('<br>'); // Join locations with a line break
+    },
     async fetchDetails() {
       try {
         const response = await axios.get(`${API_BASE_URL}/get_details/`);
