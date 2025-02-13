@@ -643,30 +643,29 @@ export default {
   },
   methods: {
     getFileUrl(folder, file) {
-  return `${API_BASE_URL}/storage/MandatoryRequirements/${folder}/${file}`; 
-},
-getImgUrl(folder, img) {
-  return `${API_BASE_URL}/storage/Images/${folder}/${img}`;
-},
-handleFileUpload(fileKey, event) {
-  const files = event?.target?.files;
-  if (files?.length) {
-    this.uploadFiles[fileKey] = Array.from(files);
-    console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
-  } else {
-    console.error(`No files found for key: ${fileKey}`);
-  }
-},
-handleImageUpload(imgKey, event) {
-  const images = event?.target?.files;
-  if (images?.length) {
-    this.imagesFiles[imgKey] = Array.from(images);
-    console.log(`Images for ${imgKey}:`, this.imagesFiles[imgKey]);
-  } else {
-    console.error(`No images found for key: ${imgKey}`);
-  }
-},
-
+      return `${API_BASE_URL}/storage/MandatoryRequirements/${folder}/${file}`; 
+    },
+    getImgUrl(folder, img) {
+      return `${API_BASE_URL}/storage/Images/${folder}/${img}`;
+    },
+    handleFileUpload(fileKey, event) {
+      const files = event?.target?.files;
+      if (files?.length) {
+        this.uploadFiles[fileKey] = Array.from(files);
+        console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+      } else {
+        console.error(`No files found for key: ${fileKey}`);
+      }
+    },
+    handleImageUpload(imgKey, event) {
+      const images = event?.target?.files;
+      if (images?.length) {
+        this.imagesFiles[imgKey] = Array.from(images);
+        console.log(`Images for ${imgKey}:`, this.imagesFiles[imgKey]);
+      } else {
+        console.error(`No images found for key: ${imgKey}`);
+      }
+    },
     formatLocation(detail) {
       const locations = [
         `${detail.barangay}, ${detail.city}, ${detail.province} <span style="color: red;">(${detail.area_hectares} hectare/s)</span>`, // Apply color to area_hectares
