@@ -7,6 +7,72 @@
 <!-- Table Section -->
 <div class="flex justify-center">
   <div class="mt-2 text-center w-11/12">
+
+<!-- APPLICANT'S SECTION -->
+<p class="text-left text-xl font-semibold p-5">APPLICATION DETAILS</p>
+<table class="w-full text-left border border-gray-300">
+  <tbody>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium" style="width: 210px;">Tenement Name</td>
+      <td class="border border-gray-300 p-3 text-sm" style="width: 700px;">{{ details.tenement_name }}</td>
+      <td class="border border-gray-300 p-3 text-sm font-medium" style="width: 210px;">Category</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.category }}</td>
+    </tr>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium">
+      Tenement Number
+      <span class="px-2 text-xs text-blue-600 cursor-pointer" @click="showEditModal">edit</span>
+      </td>
+
+      <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white p-5 rounded-lg shadow-lg w-96">
+          <h2 class="text-lg font-semibold mb-4">Edit Tenement Number</h2>
+          <input 
+            v-model="tenement_number" 
+            type="text" 
+            class="w-full p-2 border border-gray-300 rounded" 
+            placeholder="Add/Change Tenement Number"
+          />
+          <div class="flex justify-end mt-4">
+            <button @click="hideEditModal" class="px-4 py-2 bg-gray-400 text-white rounded mr-2">Cancel</button>
+            <button @click="savetenement_number" class="px-4 py-2 bg-blue-600 text-white rounded">Save</button>
+          </div>
+        </div>
+      </div>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.tenement_number }}</td>
+      <td class="border border-gray-300 p-3 text-sm font-medium">Email Address</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.email }}</td>
+    </tr>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium">Location/s</td>
+      <td class="border border-gray-300 p-3 text-sm">
+        <span v-html="formatLocation(details)"></span>
+      </td>
+      <td class="border border-gray-300 p-3 text-sm font-medium">Authorized Representative</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.authorized_rep }}</td>
+    </tr>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium">Commodity</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.commodity }}</td>
+      <td class="border border-gray-300 p-3 text-sm font-medium">Address</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.address }}</td>
+    </tr>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium">Date Filed</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.date_filed }}</td>
+      <td class="border border-gray-300 p-3 text-sm font-medium">Contact Number</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.contact_no }}</td>
+    </tr>
+    <tr class="border border-gray-300">
+      <td class="border border-gray-300 p-3 text-sm font-medium">Others</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.others }}</td>
+      <td class="border border-gray-300 p-3 text-sm font-medium">Others</td>
+      <td class="border border-gray-300 p-3 text-sm">{{ details.oth_rs }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
 <!-- MANDATORY REQUIREMENTS SECTION -->
 <p class="text-left text-xl font-semibold p-5">MANDATORY REQUIREMENTS</p>
 <table class="w-full text-left border-collapse border border-gray-300">
@@ -24,26 +90,53 @@
         <br><br>Filing Fee: PhP300.00/hectare but not less than PhP500,000/Application (pursuant to DENR Administrative Order No. 2013-10 dated February 21, 2013).
       </td>
       <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-gray-300">
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload: (max 10mb/10,000kb)
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
               </label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)"
-                ref="fileInput1"
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file1', $event)" ref="fileInput1"
                 class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file1" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
         </div>
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
-            <label
-              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Files uploaded:
-            </label>
-            <div v-for="(file, index) in uploadFiles.file1" :key="index">
-              <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-            </div>
+        
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Requirements Uploaded:
+          </label>
+          <div v-for="(file, index) in uploadFiles.file1" :key="index">
+            <a 
+              :href="getFileUrl('file1', file)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ file }}
+            </a>
+          </div>
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+          <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Table/Flowsheet/Images to upload: 
+          </label>
+          <input type="file" multiple accept="image/*" @change="handleImageUpload('img1', $event)" 
+            class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+          <div v-for="(img, index) in imagesFiles.img1" :key="index">
+            <p class="text-sm text-gray-500 ml-3">{{ img.name }}</p>
+          </div>
+        </div>
+
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm mb-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Attachments:
+          </label>
+          <div v-for="(img, index) in imagesFiles.img1" :key="index">
+            <a 
+              :href="getImgUrl('img1', img)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ img }}
+            </a>
+          </div>
         </div>
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
@@ -58,31 +151,58 @@
         <b>2.</b> Location Map/ Sketch Plan (1:50,000 NAMRIA topographic map) showing coordinates/ boundaries (in tabulated form) with major environmental features/ other projects (prepared, sealed and signed by a deputized Geodetic Engineer)
       </td>
       <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload: (max 10mb/10,000kb)
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
               </label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)"
-                ref="fileInput2"
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file2', $event)" ref="fileInput2"
                 class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file2" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
         </div>
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
-            <label
-              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Files uploaded:
-            </label>
-            <div v-for="(file, index) in uploadFiles.file2" :key="index">
-              <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-            </div>
+        
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Requirements Uploaded:
+          </label>
+          <div v-for="(file, index) in uploadFiles.file2" :key="index">
+            <a 
+              :href="getFileUrl('file2', file)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ file }}
+            </a>
+          </div>
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+          <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Table/Flowsheet/Images to upload: 
+          </label>
+          <input type="file" multiple accept="image/*" @change="handleImageUpload('img2', $event)" 
+            class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+          <div v-for="(img, index) in imagesFiles.img2" :key="index">
+            <p class="text-sm text-gray-500 ml-3">{{ img.name }}</p>
+          </div>
+        </div>
+
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm mb-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Attachments:
+          </label>
+          <div v-for="(img, index) in imagesFiles.img2" :key="index">
+            <a 
+              :href="getImgUrl('img2', img)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ img }}
+            </a>
+          </div>
         </div>
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput2"></textarea>
+        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput2"></textarea>
         Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput2"></textarea>
         </div>
       </td>
@@ -92,31 +212,58 @@
         <b>3.</b> Two (2)-Year Exploration Work Program (MGB Form No. 5-4), duly prepared, signed and sealed by a licensed Mining Engineer or Geologist
       </td>
       <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload: (max 10mb/10,000kb)
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
               </label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)"
-                ref="fileInput3"
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file3', $event)" ref="fileInput3"
                 class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
               <div v-for="(file) in uploadFiles.file3" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
         </div>
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
-            <label
-              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Files uploaded:
-            </label>
-            <div v-for="(file, index) in uploadFiles.file3" :key="index">
-              <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-            </div>
+        
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Requirements Uploaded:
+          </label>
+          <div v-for="(file, index) in uploadFiles.file3" :key="index">
+            <a 
+              :href="getFileUrl('file3', file)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ file }}
+            </a>
+          </div>
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+          <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Table/Flowsheet/Images to upload: 
+          </label>
+          <input type="file" multiple accept="image/*" @change="handleImageUpload('img3', $event)" 
+            class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+          <div v-for="(img, index) in imagesFiles.img3" :key="index">
+            <p class="text-sm text-gray-500 ml-3">{{ img.name }}</p>
+          </div>
+        </div>
+
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm mb-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Attachments:
+          </label>
+          <div v-for="(img, index) in imagesFiles.img3" :key="index">
+            <a 
+              :href="getImgUrl('img3', img)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ img }}
+            </a>
+          </div>
         </div>
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput3"></textarea>
+        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput3"></textarea>
         Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput3"></textarea>
         </div>
       </td>
@@ -128,31 +275,58 @@
         <br> &nbsp; &nbsp; &nbsp;4.2 Sworn commitment of the technical person(s) who will undertake the implementation of the Work Programs
       </td>
       <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload: (max 10mb/10,000kb)
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
               </label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)"
-                ref="fileInput4"
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file4', $event)" ref="fileInput4"
                 class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file ) in uploadFiles.file4" :key="file.name">
+              <div v-for="(file) in uploadFiles.file4" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
         </div>
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
-            <label
-              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Files uploaded:
-            </label>
-            <div v-for="(file, index) in uploadFiles.file4" :key="index">
-              <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-            </div>
+        
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Requirements Uploaded:
+          </label>
+          <div v-for="(file, index) in uploadFiles.file4" :key="index">
+            <a 
+              :href="getFileUrl('file4', file)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ file }}
+            </a>
+          </div>
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+          <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Table/Flowsheet/Images to upload: 
+          </label>
+          <input type="file" multiple accept="image/*" @change="handleImageUpload('img4', $event)" 
+            class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+          <div v-for="(img, index) in imagesFiles.img4" :key="index">
+            <p class="text-sm text-gray-500 ml-3">{{ img.name }}</p>
+          </div>
+        </div>
+
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm mb-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Attachments:
+          </label>
+          <div v-for="(img, index) in imagesFiles.img4" :key="index">
+            <a 
+              :href="getImgUrl('img4', img)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ img }}
+            </a>
+          </div>
         </div>
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput4"></textarea>
+        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput4"></textarea>
         Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput4"></textarea>
         </div>
       </td>
@@ -162,31 +336,58 @@
         <b>5.</b> Affidavit of Undertaking (using MGB Form No.99-10)
       </td>
       <td class="p-2 flex flex-col space-y-2 justify-center items-left text-sm border-t border-gray-300">
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-center">
-              <label
-                class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Files to upload: (max 10mb/10,000kb)
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+              <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Files to upload:
               </label>
-              <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)"
-                ref="fileInput5"
+              <input type="file" multiple accept="application/*" @change="handleFileUpload('file5', $event)" ref="fileInput5"
                 class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
-              <div v-for="(file ) in uploadFiles.file5" :key="file.name">
+              <div v-for="(file) in uploadFiles.file5" :key="file.name">
                 <p class="text-sm text-gray-500 ml-3">{{ file.name }}</p>
               </div>
         </div>
-        <div class="grid max-w-xs items-center gap-1.5 mx-5 my-4 justify-left">
-            <label
-              class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Files uploaded:
-            </label>
-            <div v-for="(file, index) in uploadFiles.file5" :key="index">
-              <p class="text-sm text-gray-500 ml-3">{{ file }}</p>
-            </div>
+        
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Requirements Uploaded:
+          </label>
+          <div v-for="(file, index) in uploadFiles.file5" :key="index">
+            <a 
+              :href="getFileUrl('file5', file)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ file }}
+            </a>
+          </div>
+        </div>
+        <div class="grid max-w-xs items-center gap-1.5 mx-5 justify-center">
+          <label class="text-sm mt-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Table/Flowsheet/Images to upload: 
+          </label>
+          <input type="file" multiple accept="image/*" @change="handleImageUpload('img5', $event)" 
+            class="hover:bg-amber-100 flex h-10 rounded-md border border-input bg-white px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-600 file:text-sm file:font-medium cursor-pointer">
+          <div v-for="(img, index) in imagesFiles.img5" :key="index">
+            <p class="text-sm text-gray-500 ml-3">{{ img.name }}</p>
+          </div>
+        </div>
+
+        <div class="grid max-w-xs items-center mx-5 justify-left">
+          <label class="text-sm mb-3 text-gray-400 font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Attachments:
+          </label>
+          <div v-for="(img, index) in imagesFiles.img5" :key="index">
+            <a 
+              :href="getImgUrl('img5', img)" 
+              target="_blank" 
+              class="text-sm text-blue-500 ml-3 hover:underline">
+              {{ img }}
+            </a>
+          </div>
         </div>
       </td>
       <td class="border border-gray-300 text-center text-sm p-3">
         <div class="flex flex-col items-start">
-        Remarks/Status: <textarea class="h-24 w-full border p-2" v-model="remarks.textInput5"></textarea>
+        Remarks/Status: <textarea class="h-24 w-full border px-2" v-model="remarks.textInput5"></textarea>
         Recommendations/Lacking Submission: <textarea class="h-24 w-full border p-2 text-red-700" v-model="recommendation.textInput5"></textarea>
         </div>
       </td>
@@ -377,7 +578,7 @@ import UserBtn from '../../components/user-dbbtn.vue'
 import imagees from '../../components/MTES/modals/imguploads.vue'
 import faxx from '../mtes/factsheet.vue'
 import { API_BASE_URL } from '../../config'
-// import { detail_id } from '../dashboards/FTAA-dashboard.vue';
+
 </script>
 
 <script>
@@ -399,7 +600,9 @@ export default {
       details: {},
         status: '',
         stage_of_processing: '',
-      
+      showModal: false,
+      tenement_number: '',
+      isLoading: false,
       id: null,
       selectedCategory: "",
       selectedOngoingProcessing: "",
@@ -429,24 +632,100 @@ export default {
         file4: [],
         file5: []
       },
-      imagesfile: {
-        file1: [],
-        file2: [],
-        file3: [],
-        file4: [],
-        file5: []
-      },
+      imagesFiles: {
+        img1: [],
+        img2: [],
+        img3: [],
+        img4: [],
+        img5: []
+      }
     };
   },
   methods: {
+    getFileUrl(folder, file) {
+      return `${API_BASE_URL}/storage/MandatoryRequirements/${folder}/${file}`; 
+    },
+    getImgUrl(folder, img) {
+      return `${API_BASE_URL}/storage/Images/${folder}/${img}`;
+    },
+    handleFileUpload(fileKey, event) {
+      if (event && event.target && event.target.files) {
+        this.uploadFiles[fileKey] = Array.from(event.target.files);
+        console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
+        console.log('Updated uploadFiles:', this.uploadFiles);
+      } else {
+        console.error('No files found on event target:', event);
+      }
+    },
+    handleImageUpload(imgKey, event) {
+      if (event && event.target && event.target.files) {
+        this.imagesFiles[imgKey] = Array.from(event.target.files);
+        console.log(`Images for ${imgKey}:`, this.imagesFiles[imgKey]);
+        console.log('Updated imagesFiles:', this.imagesFiles);
+      } else {
+        console.error('No Images found on event target:', event);
+      }
+    },
+    formatLocation(detail) {
+      const locations = [
+        `${detail.barangay}, ${detail.city}, ${detail.province} <span style="color: red;">(${detail.area_hectares} hectare/s)</span>`, // Apply color to area_hectares
+        `${detail.barangay1}, ${detail.city1}, ${detail.province1} <span style="color: red;">(${detail.area_hectares1} hectare/s)</span>`,
+        `${detail.barangay2}, ${detail.city2}, ${detail.province2} <span style="color: red;">(${detail.area_hectares2} hectare/s)</span>`,
+        `${detail.barangay3}, ${detail.city3}, ${detail.province3} <span style="color: red;">(${detail.area_hectares3} hectare/s)</span>`
+      ];
 
-  ///
+      // Filter out invalid locations
+      const validLocations = locations.filter(loc => 
+        !loc.includes('null') && !loc.includes('undefined') && loc.trim() !== ', , '
+      );
+
+      return validLocations.join('<br>'); // Join locations with a line break
+    },
     openEditModal() {
       this.EditModal = true;
     },
     closeEditModal() {
       this.EditModal = false;
       this.resetSelections();
+    },
+    showEditModal() {
+      this.showModal = true;
+    },
+    hideEditModal() {
+      this.showModal = false;
+    },
+    async savetenement_number() {
+      console.log(`Attempting to save changes with ID: ${this.id}`);
+      
+      if (!this.id) {
+        this.handleError('ID is undefined. Cannot save changes.');
+        return;
+      }
+
+      this.isLoading = true;
+      try {
+        const formData = this.createFormData1();
+        const response = await axios.post(`${API_BASE_URL}/update_details/${this.id}`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+
+        alert('Details updated successfully');
+        await this.fetchDetails(this.id);
+        this.hideEditModal();
+      } catch (error) {
+        this.handleError(error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    createFormData1() {
+      const formData = new FormData();
+      formData.append('tenement_number', this.tenement_number);
+      return formData;
+    },
+    handleError(error) {
+      console.error('Error:', error);
+      alert('An error occurred while saving the details.');
     },
     resetSelections() {
       this.selectedCategory = '';
@@ -513,17 +792,6 @@ export default {
       this.imagesfile[containerId] = images;
       console.log(`Uploaded images for ${containerId}:`, images);
     },
-
-    handleFileUpload(fileKey, event) {
-      if (event && event.target && event.target.files) {
-        this.uploadFiles[fileKey] = Array.from(event.target.files);
-        console.log(`Files for ${fileKey}:`, this.uploadFiles[fileKey]);
-        console.log('Updated uploadFiles:', this.uploadFiles);
-      } else {
-        console.error('No files found on event target:', event);
-      }
-    },
-
     async getDetails() {
     //Details applicants
       try {
@@ -601,140 +869,94 @@ export default {
       } catch (error) {
         console.error('Error fetching reco details:', error);
       }
-
       try {
-        const images = await axios.get(`${API_BASE_URL}/get_images`);
-        const imagesrequirements = images.data.filter(req => req.id_reference == this.$route.params.detail_id);
-        console.log(imagesrequirements);
-
-        Object.keys(this.imagesfile).forEach(key => {
-          this.imagesfile[key] = [];
+        const response = await axios.get(`${API_BASE_URL}/get_images`);
+        const imagesData = response.data.filter(req => req.id_reference == this.$route.params.detail_id);
+        
+        Object.keys(this.imagesFiles).forEach(key => {
+          this.imagesFiles[key] = [];
         });
-
-        for (let i = 1; i <= 5; i++) {
-          const key = `file${i}`;
-          this.imagesfile[key] = [];
-        }
-
-        imagesrequirements.forEach((req) => {
+        
+        imagesData.forEach(req => {
           for (let i = 1; i <= 5; i++) {
             const key = `file${i}`;
-
             if (req.hasOwnProperty(key) && req[key] !== null) {
               try {
-                this.imagesfile[key] = JSON.parse(req[key]);
+                this.imagesFiles[key] = JSON.parse(req[key]);
               } catch (e) {
                 console.error(`Error parsing JSON for ${key}:`, e);
-                this.imagesfile[key] = [];
+                this.imagesFiles[key] = [];
               }
             }
           }
         });
-
-
       } catch (error) {
-        console.error('Error fetching reco details:', error);
+        console.error('Error fetching images:', error);
       }
-
     },
-    update() {
-      // Show an alert message when the update process is initiated
-  alert('An update has been initiated.');
-      const formData = new FormData();
-      formData.append('id_reference', this.$route.params.detail_id);
-      formData.append('overallstatus', this.overallStatus);
-
-      axios.post(`${API_BASE_URL}/update_mtsrstatus/${this.$route.params.detail_id}`, formData)
-        .then(response => {
-          console.log('overallstatus added: ', response.data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
+    async update() {
+      try {
+        alert('An update has been initiated.');
+    
+        // Collecting FormData
+        const formDataStatus = new FormData();
+        formDataStatus.append('id_reference', this.$route.params.detail_id);
+        formDataStatus.append('overallstatus', this.overallStatus);
+    
+        const formDataRemarks = new FormData();
+        const formDataRecommendation = new FormData();
+        formDataRemarks.append('id_reference', this.$route.params.detail_id);
+        formDataRecommendation.append('id_reference', this.$route.params.detail_id);
+    
+        for (let i = 1; i <= 5; i++) {
+          formDataRemarks.append(`input${i}`, this.remarks[`textInput${i}`]);
+          formDataRecommendation.append(`input${i}`, this.recommendation[`textInput${i}`]);
+        }
+    
+        const formDataImages = new FormData();
+        formDataImages.append('id_reference', this.$route.params.detail_id);
+    
+        Object.entries(this.imagesFiles).forEach(([key, files]) => {
+          if (Array.isArray(files) && files.length) {
+            files.forEach(file => {
+              if (file instanceof File && ['jpeg', 'jpg', 'png'].includes(file.name.split('.').pop().toLowerCase())) {
+                formDataImages.append(`${key}[]`, file);
+                console.log(`Appending image file: ${file.name} to ${key}[]`); // Debugging log
+              }
+            });
+          }
         });
-
-      const formData1 = new FormData();
-      formData1.append('id_reference', this.$route.params.detail_id);
-
-      for (let i = 1; i <= 5; i++) {
-        formData1.append(`input${i}`, this.remarks[`textInput${i}`]);
-      }
-
-      axios.post(`${API_BASE_URL}/update_remarks/${this.$route.params.detail_id}`, formData1)
-        .then(response => {
-          console.log('Remarks updated successfully:', response.data);
-        })
-        .catch(error => {
-          console.error('Error updating remarks:', error);
-        });
-
-      const formData2 = new FormData();
-      formData2.append('id_reference', this.$route.params.detail_id);
-
-
-      for (let i = 1; i <= 5; i++) {
-        formData2.append(`input${i}`, this.recommendation[`textInput${i}`]);
-      }
-
-
-      axios.post(`${API_BASE_URL}/update_recommendation/${this.$route.params.detail_id}`, formData2)
-        .then(response => {
-          console.log('Recommendations updated successfully:', response.data);
-        })
-        .catch(error => {
-          console.error('Error updating recommendations:', error);
-        });
-
-      const formData4 = new FormData();
-      formData4.append('id_reference', this.$route.params.detail_id);
-
-      for (const containerId in this.imagesfile) {
-        if (this.imagesfile.hasOwnProperty(containerId)) {
-
-          const fileKey = `file${containerId.replace('file', '')}`;
-
-          this.imagesfile[containerId].forEach(file => {
-            if (file.file !== undefined) {
-              formData4.append(`${fileKey}[]`, file.file); 
-              console.log([...formData4])
+    
+        const formDataUploads = new FormData();
+        formDataUploads.append('id_reference', this.$route.params.detail_id);
+    
+        if (this.uploadFiles) {
+          Object.entries(this.uploadFiles).forEach(([key, files]) => {
+            if (Array.isArray(files)) {
+              files.forEach(file => {
+                if (file instanceof File && ['pdf', 'doc', 'docx'].includes(file.name.split('.').pop().toLowerCase())) {
+                  formDataUploads.append(`${key}[]`, file);
+                }
+              });
             }
           });
         }
+    
+        // Execute API calls in parallel
+        await Promise.all([
+          axios.post(`${API_BASE_URL}/update_mtsrstatus/${this.$route.params.detail_id}`, formDataStatus),
+          axios.post(`${API_BASE_URL}/update_remarks/${this.$route.params.detail_id}`, formDataRemarks),
+          axios.post(`${API_BASE_URL}/update_recommendation/${this.$route.params.detail_id}`, formDataRecommendation),
+          axios.post(`${API_BASE_URL}/update_images/${this.$route.params.detail_id}`, formDataImages, { headers: { 'Content-Type': 'multipart/form-data' } }),
+          axios.post(`${API_BASE_URL}/update_uploads/${this.$route.params.detail_id}`, formDataUploads)
+        ]);
+    
+        console.log('All updates completed successfully.');
+        window.location.reload(); // Refresh page only once after all requests complete
+      } catch (error) {
+        console.error('Error during update:', error);
+        window.location.reload(); // Refresh in case of error
       }
-
-      axios.post(`${API_BASE_URL}/update_images/${this.$route.params.detail_id}`, formData4)
-        .then(response => {
-          console.log('Images uploaded successfully:', response.data);
-        })
-        .catch(error => {
-          console.error('Error uploading images:', error);
-        });
-
-      const formData3 = new FormData();
-      formData3.append('id_reference', this.$route.params.detail_id);
-
-      if (this.uploadFiles) {
-        for (const [key, files] of Object.entries(this.uploadFiles)) {
-          if (Array.isArray(files) && files.length > 0) {
-            for (let i = 0; i < files.length; i++) {
-              const file = files[i];
-              const validExtensions = ['pdf', 'doc', 'docx'];
-              if (file.name && validExtensions.includes(file.name.split('.').pop().toLowerCase())) {
-                formData3.append(`${key}[]`, file);
-              }
-            }
-          }
-        }
-      }
-
-      axios.post(`${API_BASE_URL}/update_uploads/${this.$route.params.detail_id}`, formData3)
-        .then(response => {
-          console.log('Record uploaded successfully:', response.data);
-          window.location.reload()
-        })
-        .catch(error => {
-          console.error('Error uploading record:', error);
-          window.location.reload()
-        });
     },
   },
   mounted() {
