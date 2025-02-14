@@ -163,6 +163,20 @@ export default {
       // Return the count of entries with a specific status
       return (status) => this.details.filter((detail) => detail.status === status).length;
     },
+    async deleteDetail(id) {
+      const confirmed = confirm("Are you sure you want to delete this item?");
+      if (confirmed) {
+        try {
+          const response = await axios.delete(`${API_BASE_URL}/delete_detail/${id}`);
+          if (response.status === 200) {
+            // Remove the deleted detail from the list
+            this.details = this.details.filter((detail) => detail.id !== id);
+          }
+        } catch (error) {
+            console.error('Error deleting detail:', error);
+        }
+      }
+    },    
   },
   mounted() {
     this.fetchDetails();
