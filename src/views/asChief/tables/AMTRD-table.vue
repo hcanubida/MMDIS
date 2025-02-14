@@ -66,32 +66,33 @@
                   <template v-else>▼</template>
                 </span>
               </th>
-              <th class="border text-center p-2">Barangay</th>
-              <th class="border text-center p-2">City</th>
-              <th class="border text-center p-2">Province</th>
+              <th class="border text-center p-2">Location/s</th>
               <th class="border text-center p-2">Commodity</th>
               <th class="border text-center p-2">Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(detail, index) in filteredEntries" :key="index">
-              <td class="border text-center p-2">{{ detail.stage_of_processing }}</td>
-              <td class="border text-center p-2">{{ detail.status }}</td>
-              <td class="border text-center p-2">{{ detail.tenement_number }}</td>
-              <td class="border text-center p-2">{{ detail.tenement_name }}</td>
-              <td class="border text-center p-2">{{ detail.area_hectares }}</td>
-              <td class="border text-center p-2">{{ detail.date_filed }}</td>
-              <td class="border text-center p-2">{{ detail.barangay }}</td>
-              <td class="border text-center p-2">{{ detail.city }}</td>
-              <td class="border text-center p-2">{{ detail.province }}</td>
-              <td class="border text-center p-2">{{ detail.commodity }}</td>
-              <td class="border p-2 flex items-center justify-center">
-                <button @click="navigateTomodalView(detail.id)" class="pr-2 rounded"><img src="../../../assets/icons/eye.png" style="width: 25px;"></button>
+          <tr v-for="(detail, index) in filteredEntries" :key="index">
+            <td class="border text-center p-2">{{ detail.stage_of_processing }}</td>
+            <td class="border text-center p-2">{{ detail.status }}</td>
+            <td class="border text-center p-2">{{ detail.tenement_number }}</td>
+            <td class="border text-center p-2">{{ detail.tenement_name }}</td>
+            <td class="border text-center p-2">{{ calculateRowArea(detail) }}</td>
+            <td class="border text-center p-2">{{ detail.date_filed }}</td>
+            <td class="border text-center p-2"><span v-html="formatLocation(detail)"></span></td>
+            <td class="border text-center p-2">{{ detail.commodity }}</td>
+            <td class="border p-2 text-center">
+              <div class="flex flex-col items-center justify-center gap-2">
+                <!-- View Button -->
+                <button @click="navigateTomodalView(detail.id)" class="rounded">
+                  <img src="../../../assets/icons/eye.png" class="w-6">
+                </button>
                 <button @click="showComment(detail)" class="pr-2 rounded" style="position: relative;">
                   <img src="../../../assets/icons/comment.png" style="width: 20px;">
                 </button>
-              </td>
-            </tr>
+              </div>
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -150,6 +151,27 @@
         this.fetchDetails();
     },
     methods: {
+      calculateRowArea(detail) {
+      return (
+        (parseFloat(detail.area_hectares) || 0) +
+        (parseFloat(detail.area_hectares1) || 0) +
+        (parseFloat(detail.area_hectares2) || 0) +
+        (parseFloat(detail.area_hectares3) || 0)
+      );
+    },
+    formatLocation(detail) {
+      const locations = [
+        `${detail.barangay}, ${detail.city}, ${detail.province}`,
+        `${detail.barangay1}, ${detail.city1}, ${detail.province1}`,
+        `${detail.barangay2}, ${detail.city2}, ${detail.province2}`,
+        `${detail.barangay3}, ${detail.city3}, ${detail.province3}`
+      ];
+
+      // Filter out any locations that are `null`, `undefined`, or empty
+      const validLocations = locations.filter(loc => !loc.includes('null') && !loc.includes('undefined') && loc.trim() !== ', , ');
+
+      return validLocations.join('<br>'); // Join locations with a line break
+    },
         async fetchDetails() {
             try {
                 const response = await axios.get(`${API_BASE_URL}/get_details/`);
