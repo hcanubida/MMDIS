@@ -55,30 +55,47 @@ export default {
                         'cagayan de oro city (capital)': 0,
                         'iligan city': 0,
                     };
-                    // .filter(pie => pie.application === detail_id)
-                    // response.data.filter(pie => pie.application === detail_id)
-                    // console.log(response.data.filter(pie => pie.application === this.application))
 
-                    response.data.filter(pie => pie.application === this.application).forEach(item => {
-                        const province = item.province.toLowerCase(); // Convert province name to lowercase
-                        const city = item.city.toLowerCase(); // Convert province name to lowercase
-                        if (province in provinceCounts) {
-                            provinceCounts[province]++;
-                        }
-                        if (city in cityCounts) {
-                            cityCounts[city]++;
-                        }
-                        
-                    });
+                    response.data
+                        .filter(pie => pie.application === this.application)
+                        .forEach(item => {
+                            // Convert province values to lowercase for consistency
+                            const provinces = [
+                                item.province?.toLowerCase(),
+                                item.province1?.toLowerCase(),
+                                item.province2?.toLowerCase(),
+                                item.province3?.toLowerCase()
+                            ];
 
-                    this.updateChartData(provinceCounts,cityCounts);
-                    
+                            const cities = [
+                                item.city?.toLowerCase(),
+                                item.city1?.toLowerCase(),
+                                item.city2?.toLowerCase(),
+                                item.city3?.toLowerCase()
+                            ];
 
+                            // Count occurrences in province columns
+                            provinces.forEach(prov => {
+                                if (prov && provinceCounts.hasOwnProperty(prov)) {
+                                    provinceCounts[prov]++;
+                                }
+                            });
+
+                            // Count occurrences in city columns
+                            cities.forEach(cty => {
+                                if (cty && cityCounts.hasOwnProperty(cty)) {
+                                    cityCounts[cty]++;
+                                }
+                            });
+                        });
+
+                    this.updateChartData(provinceCounts, cityCounts);
                 })
                 .catch(error => {
                     console.error('Error fetching province data:', error);
                 });
         },
+
         updateChartData(provinceCounts,cityCounts) {
             const data = this.chartData.datasets[0].data;
             data[0] = provinceCounts['bukidnon'];

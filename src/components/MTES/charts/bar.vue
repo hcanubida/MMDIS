@@ -148,148 +148,64 @@ export default {
   },
   methods: {
     fetchProvinceData() {
-      axios.get(`${API_BASE_URL}/get_details/`)
-        .then(response => {
-          const District1 = {
-            'baungon': 0,
-            'libona': 0,
-            'malitbog': 0,
-            'manolo fortich': 0,
-            'sumilao': 0,
-            'talakag': 0,
-          };
-          const District2 = {
-            'cabanglasan': 0,
-            'impasugong': 0,
-            'lantapan': 0,
-            'city of malaybalay (capital)': 0,
-            'san fernando': 0,
-          };
-          const District3 = {
-            'damulog': 0,
-            'dangcagan': 0,
-            'don carlos': 0,
-            'kadingilan': 0,
-            'kibawe': 0,
-            'kitaotao': 0,
-            'maramag': 0,
-            'quezon': 0,
-          }
-          const District4 = {
-            'kalilangan': 0,
-            'pangantucan': 0,
-            'city of valencia': 0,
-          }
-          const misorDistrict1 = {
-            'gingoog': 0,
-            'balingasag': 0,
-            'balingoan': 0,
-            'binuangan': 0,
-            'kinoguitan': 0,
-            'lagonglong': 0,
-            'magsaysay (linugos)': 0,
-            'medina': 0,
-            'salay': 0,
-            'sugbongcogon': 0,
-            'talisayan': 0,
-            
-          }
-          const misorDistrict2 = {
-            'el salvador': 0,
-            'alubijid': 0,
-            'claveria': 0,
-            'gitagum': 0,
-            'initao': 0,
-            'jasaan': 0,
-            'laguindingan': 0,
-            'libertad': 0,
-            'lugait': 0,
-            'manticao': 0,
-            'naawan': 0,
-            'opol': 0,
-            'tagoloan': 0,
-            'billanueva': 0,
-            
-          }
-          const misoccDistrict1 = {
-            'misamis occidental': 0,
-          }
-          const lanaoDistrict1 = {
-            'lanao del norte': 0,
-          }
-          const camsDistrict1 = {
-            'camiguin': 0,
-          }
-          const cgyDistrict1 = {
-            'cagayan de oro city (capital)': 0,
-          }
-          const iligDistrict1 = {
-            'iligan city': 0,
-          }
-          // console.log(response.data.filter(bar => bar.application === this.application))
+  axios.get(`${API_BASE_URL}/get_details/`)
+    .then(response => {
+      const District1 = { 'baungon': 0, 'libona': 0, 'malitbog': 0, 'manolo fortich': 0, 'sumilao': 0, 'talakag': 0 };
+      const District2 = { 'cabanglasan': 0, 'impasugong': 0, 'lantapan': 0, 'city of malaybalay (capital)': 0, 'san fernando': 0 };
+      const District3 = { 'damulog': 0, 'dangcagan': 0, 'don carlos': 0, 'kadingilan': 0, 'kibawe': 0, 'kitaotao': 0, 'maramag': 0, 'quezon': 0 };
+      const District4 = { 'kalilangan': 0, 'pangantucan': 0, 'city of valencia': 0 };
+      const misorDistrict1 = { 'gingoog': 0, 'balingasag': 0, 'balingoan': 0, 'binuangan': 0, 'kinoguitan': 0, 'lagonglong': 0, 'magsaysay (linugos)': 0, 'medina': 0, 'salay': 0, 'sugbongcogon': 0, 'talisayan': 0 };
+      const misorDistrict2 = { 'el salvador': 0, 'alubijid': 0, 'claveria': 0, 'gitagum': 0, 'initao': 0, 'jasaan': 0, 'laguindingan': 0, 'libertad': 0, 'lugait': 0, 'manticao': 0, 'naawan': 0, 'opol': 0, 'tagoloan': 0, 'billanueva': 0 };
+      const misoccDistrict1 = { 'misamis occidental': 0 };
+      const lanaoDistrict1 = { 'lanao del norte': 0 };
+      const camsDistrict1 = { 'camiguin': 0 };
+      const cgyDistrict1 = { 'cagayan de oro city (capital)': 0 };
+      const iligDistrict1 = { 'iligan city': 0 };
 
-          response.data.filter(bar => bar.application === this.application).forEach(item => {
-            const city = item.city.toLowerCase(); // Convert province name to lowercase
-            const province = item.province.toLowerCase(); // Convert province name to lowercase
-            if (city in District1) {
-              District1[city]++;
-              // console.log(District1)
-            }
-            if (city in District2) {
-              District2[city]++;
-            }
-            if (city in District3) {
-              District3[city]++;
-            }
-            if (city in District4) {
-              District4[city]++;
-            }
-            if (city in misorDistrict1) {
-              misorDistrict1[city]++;
-            }
-            if (city in misorDistrict2) {
-              misorDistrict2[city]++;
-            }
-            if (province in misoccDistrict1) {
-              misoccDistrict1[province]++;
-            }
-            if (province in lanaoDistrict1) {
-              lanaoDistrict1[province]++;
-            }
-            if (province in camsDistrict1) {
-              camsDistrict1[province]++;
-            }
-            if (city in cgyDistrict1) {
-              cgyDistrict1[city]++;
-            }
-            if (city in iligDistrict1) {
-              iligDistrict1[city]++;
-            }
-          });
+      response.data.filter(bar => bar.application === this.application).forEach(item => {
+        // Array of all city fields
+        const cities = [item.city, item.city1, item.city2, item.city3].map(c => c?.toLowerCase()).filter(Boolean);
+        // Array of all province fields
+        const provinces = [item.province, item.province1, item.province2, item.province3].map(p => p?.toLowerCase()).filter(Boolean);
 
-
-          this.updateChartData(District1, 0);
-          this.updateChartData(District2, 1);
-          this.updateChartData(District3, 2);
-          this.updateChartData(District4, 3);
-
-          this.updateChart2Data(misorDistrict1, 0);
-          this.updateChart2Data(misorDistrict2, 1);
-
-          this.updateChart3Data(misoccDistrict1, 0);
-
-          this.updateChart4Data(lanaoDistrict1, 0);
-
-          this.updateChart5Data(camsDistrict1, 0);
-
-          this.updateChart6Data(cgyDistrict1, 0);
-
-          this.updateChart7Data(iligDistrict1, 0);
-        })
-        .catch(error => {
-          console.error('Error fetching province data:', error);
+        // Increment counts for each city
+        cities.forEach(city => {
+          if (city in District1) District1[city]++;
+          if (city in District2) District2[city]++;
+          if (city in District3) District3[city]++;
+          if (city in District4) District4[city]++;
+          if (city in misorDistrict1) misorDistrict1[city]++;
+          if (city in misorDistrict2) misorDistrict2[city]++;
+          if (city in cgyDistrict1) cgyDistrict1[city]++;
+          if (city in iligDistrict1) iligDistrict1[city]++;
         });
-    },
+
+        // Increment counts for each province
+        provinces.forEach(province => {
+          if (province in misoccDistrict1) misoccDistrict1[province]++;
+          if (province in lanaoDistrict1) lanaoDistrict1[province]++;
+          if (province in camsDistrict1) camsDistrict1[province]++;
+        });
+      });
+
+      // Update charts
+      this.updateChartData(District1, 0);
+      this.updateChartData(District2, 1);
+      this.updateChartData(District3, 2);
+      this.updateChartData(District4, 3);
+      this.updateChart2Data(misorDistrict1, 0);
+      this.updateChart2Data(misorDistrict2, 1);
+      this.updateChart3Data(misoccDistrict1, 0);
+      this.updateChart4Data(lanaoDistrict1, 0);
+      this.updateChart5Data(camsDistrict1, 0);
+      this.updateChart6Data(cgyDistrict1, 0);
+      this.updateChart7Data(iligDistrict1, 0);
+    })
+    .catch(error => {
+      console.error('Error fetching province data:', error);
+    });
+}
+,
     updateChartData(District1, indd) {
       const data = this.chartData1.datasets[0].data;
 

@@ -3,7 +3,7 @@
         <!-- Background overlay -->
         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         
-        <div class="relative rounded-2xl p-5 bg-zinc-100 w-full max-w-lg mx-4">
+        <div class="relative rounded-2xl p-5 bg-zinc-100 w-full max-w-[50rem] mx-4">
             <h3 id="modal-title" class="text-xl font-medium text-gray-900 text-center p-4">Application Details</h3>
             
             <div class="table-container">
@@ -18,16 +18,39 @@
                             <td class="border py-2 px-4">{{ details.tenement_number }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Location:</td>
-                            <td class="border py-2 px-4">{{ details.barangay }}, {{ details.city }}, {{ details.province }}</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Locations:</td>
+                            <td class="border py-2 px-4">
+                                <!-- First location (always displayed) -->
+        <span>
+            {{ details.barangay ? details.barangay + ', ' : '' }}
+            {{ details.city ? details.city + ', ' : '' }}
+            {{ details.province ? details.province : '' }}
+        </span>
+        <br v-if="details.barangay1 || details.city1 || details.province1">
+
+        <!-- Loop through additional locations dynamically -->
+        <template v-for="(barangay, index) in [details.barangay1, details.barangay2, details.barangay3]" :key="index">
+            <span v-if="barangay || details[`city${index+1}`] || details[`province${index+1}`]">
+                {{ barangay ? barangay + ', ' : '' }}
+                {{ details[`city${index+1}`] ? details[`city${index+1}`] + ', ' : '' }}
+                {{ details[`province${index+1}`] ? details[`province${index+1}`] : '' }}
+                <br v-if="index < 2"> 
+            </span>
+        </template>
+    </td>
                         </tr>
                         <tr>
                             <td class="border font-bold py-2 px-4 bg-green-300 w-60">Commodity:</td>
                             <td class="border py-2 px-4">{{ details.commodity }}</td>
                         </tr>
                         <tr>
-                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Area (HA):</td>
-                            <td class="border py-2 px-4">{{ details.area_hectares }}</td>
+                            <td class="border font-bold py-2 px-4 bg-green-300 w-60">Area (HA) per location/s:</td>
+                            <td class="border py-2 px-4">
+                                <template v-for="(value, index) in filteredAreas" :key="index">
+                                    {{ value }}<span v-if="index !== filteredAreas.length - 1"><br></span>
+                                </template>
+                                <span v-if="filteredAreas.length > 0"> = total of {{ calculateRowArea(details) }} hectares</span>
+                            </td>
                         </tr>
                         <tr>
                             <td class="border font-bold py-2 px-4 bg-green-300 w-60">Date Filed:</td>
@@ -47,7 +70,7 @@
                         </tr>
                     </tbody>
                 </table>
-
+  
                 <h3 id="modal-title" class="text-base font-medium text-gray-900 text-center p-4">Applicant's Details</h3>
                 <table class="w-full border-collapse rounded-lg overflow-hidden">
                     <tbody>
@@ -70,21 +93,21 @@
                     </tbody>
                 </table>
             </div>
-
+  
             <div class="flex justify-center mt-8 gap-4">
                 <button @click="navigateToMandatoryReqFTTA(detail_id)" class="w-auto px-4 py-2 bg-green-800 text-white rounded-md hover:bg-green-300 hover:text-black">Next</button>
-                <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md  hover:bg-red-700 bg-red-800 text-white">Close</button>
+                <button @click="Exit" type="button" class="w-auto px-4 py-2 rounded-md hover:bg-red-700 bg-red-800 text-white">Close</button>
             </div>
         </div>
     </div>
-</template>
-
-<script>
-import { viewDetail } from '../dashboards/v-FTAA-dashboard.vue';
-import axios from 'axios';
-import { API_BASE_URL } from '../../../config'
-
-export default { 
+  </template>
+  
+  <script>
+  import { viewDetail } from '../dashboards/v-FTAA-dashboard.vue';
+  import axios from 'axios';
+  import { API_BASE_URL } from '../../../config'
+  
+  export default { 
     props: {
         detail_id: String,
     },
@@ -99,7 +122,25 @@ export default {
             this.checkForComment(detail.id, index);
         });
     },
+    computed: {
+        filteredAreas() {
+            return [
+                this.details.area_hectares,
+                this.details.area_hectares1,
+                this.details.area_hectares2,
+                this.details.area_hectares3
+            ].filter(value => value); // Removes null, undefined, or empty values
+        }
+    },
     methods: {
+        calculateRowArea(detail) {
+        return (
+            (parseFloat(detail.area_hectares) || 0) +
+            (parseFloat(detail.area_hectares1) || 0) +
+            (parseFloat(detail.area_hectares2) || 0) +
+            (parseFloat(detail.area_hectares3) || 0)
+        );
+        },
         Exit() {
             viewDetail.value = false
         },
@@ -113,18 +154,9 @@ export default {
                 console.error('Error fetching details:', error);
             }
         },
-        async checkForComment(id, index) {
-            try {
-                const response = await fetch(`/comments/has/${id}`);
-                const data = await response.json();
-                this.details[index].hasComment = data.hasComment;
-            } catch (error) {
-                console.error('Error fetching comment status:', error);
-            }
-        },
         navigateToMandatoryReqFTTA(detail_id) {
-            window.open(`/mmd/MandatoryRequirements/${detail_id}`, '_blank');
+            window.location.href = `/mmd/MandatoryRequirements/${detail_id}`;
         },
     }
-}
-</script>
+  }
+  </script>
